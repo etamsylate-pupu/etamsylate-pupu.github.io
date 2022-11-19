@@ -4,44 +4,6 @@
   
     
     <entry>
-      <title>使用hexo框架搭建托管在Github上的个人博客</title>
-      <link href="/%E5%B7%A5%E5%85%B7/index.html"/>
-      <url>/%E5%B7%A5%E5%85%B7/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> 工具 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 学习笔记 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/uncategorized/index.html"/>
-      <url>/uncategorized/index.html</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>文献阅读技巧</title>
       <link href="/default/25.html"/>
       <url>/default/25.html</url>
@@ -179,7 +141,7 @@
       <link href="/%E7%94%9F%E6%B4%BB/4.html"/>
       <url>/%E7%94%9F%E6%B4%BB/4.html</url>
       
-        <content type="html"><![CDATA[<p>相信大家都听说过“江安动物园”这个说法，今天小编带大家感受一下。</p><p><strong>可爱鸭鸭</strong></p><p>明远湖鸭鸭——游泳健将</p><p>在长桥经过的时候经常可以看见鸭鸭游得飞快（只能看见小水花），今天小编准备去采访它们，没想到鸭鸭整齐排着队等着我！<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/duck.png" alt="duck"></p><p>随处可见鸭鸭——富贵老板</p><p>在校园里同学们的电动车车头上站着黄色鸭鸭，墨镜+金链子一看就是富贵老板！但是，喂喂喂，为啥给老板墨镜戴反了！<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/boss.png" alt="boss1"></p><p><strong>慵懒猫猫</strong></p><p>液态猫猫——大鸡腿</p><p>江安的围合环境适合长猫猫，经常看到各位幸运人士炫耀长在宿舍床上的猫猫，小编很是羡慕，于是跑到草丛抓猫猫（不是<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/cat.png" alt="cat1"></p><p><strong>胖小啾啾</strong><br>江安的小麻雀经常在地面跳来跳去，于是从小路前往第一教学楼的路上经常可以看到肥硕的身影，走到它们跟前也不飞走，太美好了呜呜。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/animals/bird.png" alt="bird"></p>]]></content>
+        <content type="html"><![CDATA[<p>  相信大家都听说过“江安动物园”这个说法，今天小编带大家感受一下。</p><p><strong>可爱鸭鸭</strong></p><p>明远湖鸭鸭——游泳健将</p><p>在长桥经过的时候经常可以看见鸭鸭游得飞快（只能看见小水花），今天小编准备去采访它们，没想到鸭鸭整齐排着队等着我！<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/duck.png" alt="duck"></p><p>随处可见鸭鸭——富贵老板</p><p>在校园里同学们的电动车车头上站着黄色鸭鸭，墨镜+金链子一看就是富贵老板！但是，喂喂喂，为啥给老板墨镜戴反了！<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/boss.png" alt="boss1"></p><p><strong>慵懒猫猫</strong></p><p>液态猫猫——大鸡腿</p><p>江安的围合环境适合长猫猫，经常看到各位幸运人士炫耀长在宿舍床上的猫猫，小编很是羡慕，于是跑到草丛抓猫猫（不是<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/cat.png" alt="cat1"></p><p><strong>胖小啾啾</strong><br>江安的小麻雀经常在地面跳来跳去，于是从小路前往第一教学楼的路上经常可以看到肥硕的身影，走到它们跟前也不飞走，太美好了呜呜。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/animals/bird.png" alt="bird"></p>]]></content>
       
       
       <categories>
@@ -198,7 +160,7 @@
       <link href="/%E7%A2%8E%E7%A2%8E%E5%BF%B5/3.html"/>
       <url>/%E7%A2%8E%E7%A2%8E%E5%BF%B5/3.html</url>
       
-        <content type="html"><![CDATA[<p>最近在微博看到一个词，叫做“自我内耗”。</p><p>  在传统的定义中，内耗（Internal friction）主要是从群体的角度出发，比如百度百科就将内耗效应定义为在群体心理学中，人们把社会或部门内部因不协调、或矛盾等造成的人力、物力等方面无谓的消耗而产生的负效应现象。另一种解释则更侧重个体，指一个人既不能够接纳现实因素，又难以做到坦然放下，从而陷入一种进退两难的境遇里。</p><p>  小马(weibo:<a href="https://weibo.com/tututu214">一匹英俊的小马</a>)把她的内耗描述为没有做什么但感觉很疲惫或者明明有事需要做但提不起精神的状态，最终只会导致脑子里一个劲胡思乱想但是实际上只在消耗情绪和精气神，任务进度条一点没涨。</p><p>  最近我好像也经常处于这个自我内耗的状态。大三的课表较前两学年来说空了不少，但是这学期总感觉更累了。每次形教课的话题总是谈到考研、保研、工作等这些需要尽快确定的决定，同学之间在学科竞赛、科研论文等活动不断推进，一下子突然被push甚至来不及从适应期过渡。虽然说这些努力和决定都是自己的选择、和自己未来相关的事情，但是可能依旧不够成熟不能自己担起责任，总是想着顺其自然暂且这样过着。心里当然还是会有不甘，在颓废和上进里来回横跳，于是桌上摆笔记本手里拿手机刷来刷去这个怪诞的操作对我来说总是很熟练。等玩耍一番后又立马进入贤者模式，开始懊悔浪费了时间愧对自己愧对家人。这样反复的情绪变化最后带来的却主要是疲惫的心理，在教室坐下自习只会带着一脑子的混乱思想，效率低到难以置信。</p><p>  那些有目标并且为之奋斗，有一步一步规划并且日复一日坚持的人在我身边也很常见，我很佩服他们也想成为他们。当我赖在床上睡大觉的时候，当我抱着零食笔记本屏幕播着视频的时候，当我完成作业万事大吉专业学习丢一边的时候，他们在图书馆和教学楼自习，在参加比赛做实验写论文，在考驾照考雅思托福，看live演出跑步健身……并不是说因为没有花大量时间学习让我感到焦虑落后，而是不能将娱乐和学习平衡好，并且没有自我能力的提升长期处于干皱皱的海绵状态。日常几乎只有按部就班的上课、完成作业和娱乐活动，没有看课外书没有自主学习，连计划的每日背单词阅读英语文章实际上坚持一两天就搁浅了。虽然以肥宅标榜自己，将肥宅生活作为今后美好追求，但是还没有可以支持这种生活的基础（泪目，所以还是需要现阶段转换状态。</p><hr><p>  “脑子腾空做事；还没有发生的，不用去猜。”  希望我们都能停止内耗。<br> <img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/%E7%8B%97%E5%8B%BE.jpg" alt="dog"></p>]]></content>
+        <content type="html"><![CDATA[<p>  最近在微博看到一个词，叫做“自我内耗”。</p><p>  在传统的定义中，内耗（Internal friction）主要是从群体的角度出发，比如百度百科就将内耗效应定义为在群体心理学中，人们把社会或部门内部因不协调、或矛盾等造成的人力、物力等方面无谓的消耗而产生的负效应现象。另一种解释则更侧重个体，指一个人既不能够接纳现实因素，又难以做到坦然放下，从而陷入一种进退两难的境遇里。</p><p>  小马(weibo:<a href="https://weibo.com/tututu214">一匹英俊的小马</a>)把她的内耗描述为没有做什么但感觉很疲惫或者明明有事需要做但提不起精神的状态，最终只会导致脑子里一个劲胡思乱想但是实际上只在消耗情绪和精气神，任务进度条一点没涨。</p><p>  最近我好像也经常处于这个自我内耗的状态。大三的课表较前两学年来说空了不少，但是这学期总感觉更累了。每次形教课的话题总是谈到考研、保研、工作等这些需要尽快确定的决定，同学之间在学科竞赛、科研论文等活动不断推进，一下子突然被push甚至来不及从适应期过渡。虽然说这些努力和决定都是自己的选择、和自己未来相关的事情，但是可能依旧不够成熟不能自己担起责任，总是想着顺其自然暂且这样过着。心里当然还是会有不甘，在颓废和上进里来回横跳，于是桌上摆笔记本手里拿手机刷来刷去这个怪诞的操作对我来说总是很熟练。等玩耍一番后又立马进入贤者模式，开始懊悔浪费了时间愧对自己愧对家人。这样反复的情绪变化最后带来的却主要是疲惫的心理，在教室坐下自习只会带着一脑子的混乱思想，效率低到难以置信。</p><p>  那些有目标并且为之奋斗，有一步一步规划并且日复一日坚持的人在我身边也很常见，我很佩服他们也想成为他们。当我赖在床上睡大觉的时候，当我抱着零食笔记本屏幕播着视频的时候，当我完成作业万事大吉专业学习丢一边的时候，他们在图书馆和教学楼自习，在参加比赛做实验写论文，在考驾照考雅思托福，看live演出跑步健身……并不是说因为没有花大量时间学习让我感到焦虑落后，而是不能将娱乐和学习平衡好，并且没有自我能力的提升长期处于干皱皱的海绵状态。日常几乎只有按部就班的上课、完成作业和娱乐活动，没有看课外书没有自主学习，连计划的每日背单词阅读英语文章实际上坚持一两天就搁浅了。虽然以肥宅标榜自己，将肥宅生活作为今后美好追求，但是还没有可以支持这种生活的基础（泪目，所以还是需要现阶段转换状态。</p><hr><p>  “脑子腾空做事；还没有发生的，不用去猜。”  希望我们都能停止内耗。<br> <img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/%E7%8B%97%E5%8B%BE.jpg" alt="dog"></p>]]></content>
       
       
       <categories>
@@ -263,6 +225,72 @@
       <title>时间轴</title>
       <link href="/timeline/index.html"/>
       <url>/timeline/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>碎碎念</title>
+      <link href="/%E7%A2%8E%E7%A2%8E%E5%BF%B5/index.html"/>
+      <url>/%E7%A2%8E%E7%A2%8E%E5%BF%B5/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>default</title>
+      <link href="/default/index.html"/>
+      <url>/default/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>美食</title>
+      <link href="/%E7%BE%8E%E9%A3%9F/index.html"/>
+      <url>/%E7%BE%8E%E9%A3%9F/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>技术</title>
+      <link href="/%E6%8A%80%E6%9C%AF/index.html"/>
+      <url>/%E6%8A%80%E6%9C%AF/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>anime</title>
+      <link href="/anime/index.html"/>
+      <url>/anime/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>生活</title>
+      <link href="/%E7%94%9F%E6%B4%BB/index.html"/>
+      <url>/%E7%94%9F%E6%B4%BB/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
