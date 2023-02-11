@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/default/25.html</loc>
+    <loc>https://etamsylate-pupu.github.io/%E6%8A%80%E6%9C%AF/40.html</loc>
     
     <lastmod>2023-02-11</lastmod>
     
@@ -11,7 +11,16 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/%E6%8A%80%E6%9C%AF/40.html</loc>
+    <loc>https://etamsylate-pupu.github.io/%E5%AD%A6%E6%9C%AF/25.html</loc>
+    
+    <lastmod>2023-02-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://etamsylate-pupu.github.io/%E5%AD%A6%E6%9C%AF/index.html</loc>
     
     <lastmod>2023-02-11</lastmod>
     
@@ -231,6 +240,13 @@
   
   <url>
     <loc>https://etamsylate-pupu.github.io/categories/%E7%BE%8E%E9%A3%9F/</loc>
+    <lastmod>2023-02-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://etamsylate-pupu.github.io/categories/%E5%AD%A6%E6%9C%AF/</loc>
     <lastmod>2023-02-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
