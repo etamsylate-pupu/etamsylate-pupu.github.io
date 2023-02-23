@@ -173,21 +173,7 @@
 
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/tags/food/</loc>
-    <lastmod>2023-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://etamsylate-pupu.github.io/tags/image-host/</loc>
-    <lastmod>2023-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://etamsylate-pupu.github.io/tags/website/</loc>
+    <loc>https://etamsylate-pupu.github.io/tags/academic/</loc>
     <lastmod>2023-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -208,6 +194,13 @@
   </url>
   
   <url>
+    <loc>https://etamsylate-pupu.github.io/tags/website/</loc>
+    <lastmod>2023-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://etamsylate-pupu.github.io/tags/zoo/</loc>
     <lastmod>2023-02-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -215,7 +208,14 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/tags/academic/</loc>
+    <loc>https://etamsylate-pupu.github.io/tags/image-host/</loc>
+    <lastmod>2023-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://etamsylate-pupu.github.io/tags/food/</loc>
     <lastmod>2023-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -238,7 +238,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/categories/%E7%94%9F%E6%B4%BB/</loc>
+    <loc>https://etamsylate-pupu.github.io/categories/%E5%AD%A6%E6%9C%AF/</loc>
     <lastmod>2023-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -259,14 +259,14 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/categories/%E7%BE%8E%E9%A3%9F/</loc>
+    <loc>https://etamsylate-pupu.github.io/categories/%E7%94%9F%E6%B4%BB/</loc>
     <lastmod>2023-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/categories/%E5%AD%A6%E6%9C%AF/</loc>
+    <loc>https://etamsylate-pupu.github.io/categories/%E7%BE%8E%E9%A3%9F/</loc>
     <lastmod>2023-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
