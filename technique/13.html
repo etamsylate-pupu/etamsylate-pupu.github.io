@@ -248,7 +248,7 @@
 
     
         <meta property="article:published_time" content="Wed Feb 22 2023 09:46:23 GMT+0800">
-        <meta property="article:modified_time" content="Fri Feb 24 2023 16:44:26 GMT+0800">
+        <meta property="article:modified_time" content="Wed Mar 15 2023 10:24:21 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -271,7 +271,7 @@
     "mainEntityOfPage": "https://etamsylate-pupu.github.io/technique/13.html",
     "headline": "思维导图在hexo页面展示",
     "datePublished": "Wed Feb 22 2023 09:46:23 GMT+0800",
-    "dateModified": "Fri Feb 24 2023 16:44:26 GMT+0800",
+    "dateModified": "Wed Mar 15 2023 10:24:21 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "etamsylate",
@@ -628,8 +628,21 @@ class XmindFileParser:
 
 `&#123;% endmarkmap %&#125;</code></p>
 <h3 id="hexo的其他插件"><a href="#hexo的其他插件" class="headerlink" title="hexo的其他插件"></a>hexo的其他插件</h3><blockquote>
-<p>hexo-tag-plugins<br>使用该插件的<minmap>标签，使用方法：</p>
+<p>hexo-tag-plugins</p>
 </blockquote>
+<p>使用该插件的<minmap>标签，使用方法（例）：</p>
+<pre><code>&#123;% mindmap 600 %&#125;
+- 计算机网络概述
+	-  计算机网络的基本概念
+		- 以能够相互共享资源的方式互连起来的自治计算机系统的集合
+	- 计算机网络的组成
+		- 组成部分角度
+            - 硬件：主机（端系统）、通信链路（双绞线、光纤等）、交换设备（路由器、交换机等）、通信处理机（网卡等
+		- 工作方式角度
+            - 核心部分：大量的网络和连接这些网络的路由器组成
+&#123;% endmindmap %&#125;
+</code></pre>
+<p>与markmap的不同：高度单位不加px；使用缩进构成不同层级</p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -688,6 +701,14 @@ class XmindFileParser:
             <!-- Post Prev & Next Nav -->
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
+    
+        <a href="/technique/14.html" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
     
 
     <!-- Section Spacer -->
@@ -787,7 +808,7 @@ class XmindFileParser:
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2023/02/">二月 2023<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/06/">六月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/12/">十二月 2020<span class="sidebar_archives-count">7</span></a>
+                <a class="sidebar_archives-link" href="/archives/2023/03/">三月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/02/">二月 2023<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/06/">六月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/12/">十二月 2020<span class="sidebar_archives-count">7</span></a>
             </ul>
         </li>
         
@@ -805,7 +826,7 @@ class XmindFileParser:
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/academic/">academic<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/knowledge/">knowledge<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/life/">life<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/technique/">technique<span class="sidebar_archives-count">6</span></a>
+                <a class="sidebar_archives-link" href="/categories/academic/">academic<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/knowledge/">knowledge<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/life/">life<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/technique/">technique<span class="sidebar_archives-count">7</span></a>
             </ul>
         </li>
         
@@ -865,7 +886,7 @@ class XmindFileParser:
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">13</span>
+                <span class="sidebar-badge">14</span>
             </a>
         </li>
         
