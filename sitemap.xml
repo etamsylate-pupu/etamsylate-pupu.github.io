@@ -2,7 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/technique/17.html</loc>
+    <loc>https://etamsylate-pupu.github.io/technique/17</loc>
+    
+    <lastmod>2023-07-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://etamsylate-pupu.github.io/technique/15</loc>
+    
+    <lastmod>2023-07-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://etamsylate-pupu.github.io/technique/14</loc>
+    
+    <lastmod>2023-07-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://etamsylate-pupu.github.io/uncategorized/null</loc>
     
     <lastmod>2023-04-21</lastmod>
     
@@ -11,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/technique/5.html</loc>
+    <loc>https://etamsylate-pupu.github.io/technique/5</loc>
     
     <lastmod>2023-04-18</lastmod>
     
@@ -20,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/technique/15.html</loc>
+    <loc>https://etamsylate-pupu.github.io/technique/16</loc>
     
     <lastmod>2023-04-17</lastmod>
     
@@ -29,25 +56,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/technique/16.html</loc>
-    
-    <lastmod>2023-04-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://etamsylate-pupu.github.io/technique/14.html</loc>
-    
-    <lastmod>2023-04-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://etamsylate-pupu.github.io/technique/13.html</loc>
+    <loc>https://etamsylate-pupu.github.io/technique/13</loc>
     
     <lastmod>2023-03-15</lastmod>
     
@@ -56,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/knowledge/12.html</loc>
+    <loc>https://etamsylate-pupu.github.io/knowledge/12</loc>
     
     <lastmod>2023-02-24</lastmod>
     
@@ -65,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/academic/11.html</loc>
+    <loc>https://etamsylate-pupu.github.io/academic/11</loc>
     
     <lastmod>2023-02-24</lastmod>
     
@@ -74,7 +83,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/technique/10.html</loc>
+    <loc>https://etamsylate-pupu.github.io/technique/10</loc>
     
     <lastmod>2023-02-24</lastmod>
     
@@ -83,7 +92,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/academic/9.html</loc>
+    <loc>https://etamsylate-pupu.github.io/academic/9</loc>
     
     <lastmod>2023-02-24</lastmod>
     
@@ -92,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/technique/8.html</loc>
+    <loc>https://etamsylate-pupu.github.io/technique/8</loc>
     
     <lastmod>2023-02-24</lastmod>
     
@@ -101,7 +110,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/technique/7.html</loc>
+    <loc>https://etamsylate-pupu.github.io/technique/7</loc>
     
     <lastmod>2023-02-24</lastmod>
     
@@ -110,7 +119,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/knowledge/6.html</loc>
+    <loc>https://etamsylate-pupu.github.io/knowledge/6</loc>
     
     <lastmod>2023-02-24</lastmod>
     
@@ -119,7 +128,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/technique/4.html</loc>
+    <loc>https://etamsylate-pupu.github.io/technique/4</loc>
     
     <lastmod>2023-02-24</lastmod>
     
@@ -128,7 +137,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/life/3.html</loc>
+    <loc>https://etamsylate-pupu.github.io/life/3</loc>
     
     <lastmod>2023-02-24</lastmod>
     
@@ -137,7 +146,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/life/2.html</loc>
+    <loc>https://etamsylate-pupu.github.io/life/2</loc>
     
     <lastmod>2023-02-24</lastmod>
     
@@ -146,7 +155,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/life/1.html</loc>
+    <loc>https://etamsylate-pupu.github.io/life/1</loc>
     
     <lastmod>2023-02-24</lastmod>
     
@@ -155,7 +164,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/about/index.html</loc>
+    <loc>https://etamsylate-pupu.github.io/about/</loc>
     
     <lastmod>2023-02-13</lastmod>
     
@@ -164,7 +173,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/categories/index.html</loc>
+    <loc>https://etamsylate-pupu.github.io/categories/</loc>
     
     <lastmod>2023-02-13</lastmod>
     
@@ -173,7 +182,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/links/index.html</loc>
+    <loc>https://etamsylate-pupu.github.io/links/</loc>
     
     <lastmod>2023-02-13</lastmod>
     
@@ -182,7 +191,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/timeline/index.html</loc>
+    <loc>https://etamsylate-pupu.github.io/timeline/</loc>
     
     <lastmod>2023-02-11</lastmod>
     
@@ -191,7 +200,7 @@
   </url>
   
   <url>
-    <loc>https://etamsylate-pupu.github.io/tags/index.html</loc>
+    <loc>https://etamsylate-pupu.github.io/tags/</loc>
     
     <lastmod>2022-05-26</lastmod>
     
@@ -202,7 +211,7 @@
 
   <url>
     <loc>https://etamsylate-pupu.github.io/</loc>
-    <lastmod>2023-04-21</lastmod>
+    <lastmod>2023-07-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -210,63 +219,63 @@
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/thinking/</loc>
-    <lastmod>2023-04-21</lastmod>
+    <lastmod>2023-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/mindmap/</loc>
-    <lastmod>2023-04-21</lastmod>
+    <lastmod>2023-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/hexo/</loc>
-    <lastmod>2023-04-21</lastmod>
+    <lastmod>2023-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/website/</loc>
-    <lastmod>2023-04-21</lastmod>
+    <lastmod>2023-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/zoo/</loc>
-    <lastmod>2023-04-21</lastmod>
+    <lastmod>2023-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/image-host/</loc>
-    <lastmod>2023-04-21</lastmod>
+    <lastmod>2023-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/food/</loc>
-    <lastmod>2023-04-21</lastmod>
+    <lastmod>2023-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/network/</loc>
-    <lastmod>2023-04-21</lastmod>
+    <lastmod>2023-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/coding/</loc>
-    <lastmod>2023-04-21</lastmod>
+    <lastmod>2023-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -275,28 +284,28 @@
   
   <url>
     <loc>https://etamsylate-pupu.github.io/categories/technique/</loc>
-    <lastmod>2023-04-21</lastmod>
+    <lastmod>2023-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/categories/life/</loc>
-    <lastmod>2023-04-21</lastmod>
+    <lastmod>2023-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/categories/academic/</loc>
-    <lastmod>2023-04-21</lastmod>
+    <lastmod>2023-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/categories/knowledge/</loc>
-    <lastmod>2023-04-21</lastmod>
+    <lastmod>2023-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
