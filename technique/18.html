@@ -248,7 +248,7 @@
 
     
         <meta property="article:published_time" content="Fri Apr 21 2023 11:36:21 GMT+0800">
-        <meta property="article:modified_time" content="Tue Jul 25 2023 22:37:16 GMT+0800">
+        <meta property="article:modified_time" content="Tue Jul 25 2023 22:46:53 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -271,7 +271,7 @@
     "mainEntityOfPage": "https://etamsylate-pupu.github.io/technique/18",
     "headline": "项目开发-Git操作篇",
     "datePublished": "Fri Apr 21 2023 11:36:21 GMT+0800",
-    "dateModified": "Tue Jul 25 2023 22:37:16 GMT+0800",
+    "dateModified": "Tue Jul 25 2023 22:46:53 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "etamsylate",
@@ -541,7 +541,7 @@
 <ol>
 <li>从线上主干拉取最新的稳定代码</li>
 </ol>
-<pre><code>`#`拉取最新的稳定主干分支
+<pre><code>拉取最新的稳定主干分支
 git checkout master
 git pull origin master
 
@@ -584,6 +584,19 @@ git branch -d release-*
 <p><strong>缺陷修复</strong></p>
 </blockquote>
 <p>   在第二步时创建对应的 bugfix-* 分支，其它步骤同功能开发。</p>
+<pre><code>git checkout master
+git pull origin master
+git checkout -b bugfix-*
+...
+git checkout dev
+git merge bugfix-*
+git push origin dev
+...
+git checkout master
+git merge bugfix-*
+git push origin master
+...
+</code></pre>
 <blockquote>
 <p><strong>需要注意</strong></p>
 </blockquote>
