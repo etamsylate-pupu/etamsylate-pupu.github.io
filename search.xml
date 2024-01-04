@@ -4,11 +4,86 @@
   
     
     <entry>
-      <title>项目开发-目录结构 | Go</title>
-      <link href="/technique/20.html"/>
-      <url>/technique/20.html</url>
+      <title>《Deep Learning for Computer vision》-01</title>
+      <link href="/knowledge/25.html"/>
+      <url>/knowledge/25.html</url>
       
-        <content type="html"><![CDATA[<p>如果仅是一个简单的功能，项目的布局并不需要精心设计。而在项目逐渐扩大的过程中，保持良好的代码结构非常重要。如果不注意，最终可能会得到一个混乱的代码，其中包含大量隐藏的依赖项和全局状态。当项目有更多的参与者时，也需要更多的组织结构。因此，了解如何有效地管理包和库、组织项目的布局是非常重要的。</p><p>项目的目录结构没有统一的模板，不同项目的目录结构，要依据项目类型、大小及灵活程度做调整，但也遵循一定的规范。</p><blockquote><p><strong>命名要求和规范</strong></p></blockquote><ol><li><p>命名清晰：目录命名要清晰、简洁，不要太长，也不要太短。目录名要能清晰地表达出该目录实现的功能，并且目录名最好用单数（特殊情况，如 &#x2F;docs、&#x2F;examples）。一方面是因为单数足以说明这个目录的功能，另一方面可以统规范，避免单复混用的情况。</p></li><li><p>功能明确：一个目录所要实现的功能应该是明确的、并且在整个项目目录中具有很高的辨识度。当需要新增一个功能时，我们能够非常清楚地知道把这个功能放在哪个目录下。</p></li><li><p>全面性：目录结构应该尽可能全面地包含研发过程中需要的功能，例如文档、脚本、源码管理、API 实现、工具、第三方包、测试、编译产物等</p></li><li><p>可观测性：项目规模一定是从小到大的，所以一个好的目录结构应该能够在项目变大时，仍然保持之前的目录结构。</p></li><li><p>可扩展性：每个日录下存放了同类的功能，在项目变大时，这些目录应该可以存放更多同类功能。</p></li></ol><blockquote><p><strong>MVC模式</strong></p></blockquote><p>MVC（Model View Controller）是软件工程中的一种软件架构模式，该模式将用户界面和业务逻辑分离，以使代码可扩展性、可复用性、可维护性、灵活性加强。它把软件系统分为三个基本部分：模型（model）、视图（view）、控制器（controller）。</p><p>View层是界面，Model层是业务逻辑，Controller层用来调度View层和Model层，将用户界面和业务逻辑合理的组织在一起，起粘合剂的效果。</p><p>Golang项目目录结构也有一些MVC的影子。</p><blockquote><p><strong>示例目录结构</strong></p></blockquote><ul><li><p><a href="https://github.com/golang-standards/project-layout">golang-standards&#x2F;project-layout</a></p><pre><code>├── api  ├── assets├── build├── cmd├── configs├── deployments├── docs├── examples├── githooks├── go.mod├── init├── internal├── LICENSE.md├── Makefile├── pkg├── README_zh-CN.md├── scripts├── test├── third_party├── tools├── vendor├── web└── website  </code></pre></li><li><p><a href="https://github.com/flipped-aurora/gin-vue-admin">gin-vue-admin</a></p><pre><code>├── server    ├── api             (api层)    │   └── v1          (v1版本接口)    ├── config          (配置包)    ├── core            (核心文件)    ├── docs            (swagger文档目录)    ├── global          (全局对象)                        ├── initialize      (初始化)                            │   └── internal    (初始化内部函数)                                ├── middleware      (中间件层)                            ├── model           (模型层)                        │   ├── request     (入参结构体)                            │   └── response    (出参结构体)                                ├── packfile        (静态文件打包)                            ├── resource        (静态资源文件夹)                            │   ├── excel       (excel导入导出默认路径)                            │   ├── page        (表单生成器)                            │   └── template    (模板)                                ├── router          (路由层)                        ├── service         (service层)                        ├── source          (source层)                        └── utils           (工具包)                            ├── timer       (定时器接口封装)                                └── upload      (oss接口封装)</code></pre></li><li><p>示例</p><pre><code>├── conf        (配置初始化)├── cache       (缓存处理)├── controller  (请求入口)├── biz         (业务逻辑)├── errorcode   (错误处理)├── format      (格式化数据处理)├── logs        (日志)├── middleware  (中间件)├── model       (数据关系映射)├── request     (参数处理)├── router      (路由)├── service     (服务底层处理/远程调用)├── utils        (工具类)</code></pre></li><li><p>示例</p><pre><code>├── app                (应用)    ├── api            (控制层)    ├── consts         (常量定义)    ├── dao            (数据层)        ├── internal   (模型生成)    ├── middleware     (中间件)    ├── model          (处理数据类型定义)    ├── request        (请求返回定义)    ├── service        (服务层)├── conf               (配置项)├── core               (核心)├── docs               (文档生成)├── logs               (日志)├── router             (路由)├── utils              (工具)</code></pre></li></ul>]]></content>
+        <content type="html"><![CDATA[<p>《Deep Learning for Computer Vision》是密歇根大学开设的计算机视觉课程，课程涵盖算法、神经网络架构、视觉识别任务中网络训练和微调的工程实际技巧的培训。</p><p>课程资源</p><ul><li>课程网站：<a href="https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/">1</a></li><li>课程教材：<a href="https://www.deeplearningbook.org/">2</a></li><li>课程视频：<a href="https://www.youtube.com/watch?v=YnQJTfbwBM8&list=PL5-TkQAfAZFbzxjBHtzdVCWE0Zbhomg7r">3</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> knowledge </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> cv </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>项目开发-Jenkins篇</title>
+      <link href="/technique/23.html"/>
+      <url>/technique/23.html</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://www.jenkins.io/doc/">Jenkins官方英文文档</a><br><a href="https://www.jenkins.io/zh/doc/">Jenkins官方中文文档</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Jenkins </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>项目开发-swagger篇</title>
+      <link href="/technique/22.html"/>
+      <url>/technique/22.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> swagger </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>项目开发-配置篇</title>
+      <link href="/technique/24.html"/>
+      <url>/technique/24.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
       
       
       <categories>
@@ -29,9 +104,9 @@
     
     
     <entry>
-      <title>项目开发-服务器篇</title>
-      <link href="/technique/19.html"/>
-      <url>/technique/19.html</url>
+      <title>项目开发-日志篇</title>
+      <link href="/technique/21.html"/>
+      <url>/technique/21.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -45,7 +120,57 @@
       
         <tags>
             
+            <tag> logs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>项目开发-docker篇</title>
+      <link href="/technique/20.html"/>
+      <url>/technique/20.html</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://docs.docker.com/">docker官方文档地址</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
             <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>项目开发-目录结构 | Go</title>
+      <link href="/technique/19.html"/>
+      <url>/technique/19.html</url>
+      
+        <content type="html"><![CDATA[<p>如果仅是一个简单的功能，项目的布局并不需要精心设计。而在项目逐渐扩大的过程中，保持良好的代码结构非常重要。如果不注意，最终可能会得到一个混乱的代码，其中包含大量隐藏的依赖项和全局状态。当项目有更多的参与者时，也需要更多的组织结构。因此，了解如何有效地管理包和库、组织项目的布局是非常重要的。</p><p>项目的目录结构没有统一的模板，不同项目的目录结构，要依据项目类型、大小及灵活程度做调整，但也遵循一定的规范。</p><blockquote><p><strong>命名要求和规范</strong></p></blockquote><ol><li><p>命名清晰：目录命名要清晰、简洁，不要太长，也不要太短。目录名要能清晰地表达出该目录实现的功能，并且目录名最好用单数（特殊情况，如 &#x2F;docs、&#x2F;examples）。一方面是因为单数足以说明这个目录的功能，另一方面可以统规范，避免单复混用的情况。</p></li><li><p>功能明确：一个目录所要实现的功能应该是明确的、并且在整个项目目录中具有很高的辨识度。当需要新增一个功能时，我们能够非常清楚地知道把这个功能放在哪个目录下。</p></li><li><p>全面性：目录结构应该尽可能全面地包含研发过程中需要的功能，例如文档、脚本、源码管理、API 实现、工具、第三方包、测试、编译产物等</p></li><li><p>可观测性：项目规模一定是从小到大的，所以一个好的目录结构应该能够在项目变大时，仍然保持之前的目录结构。</p></li><li><p>可扩展性：每个日录下存放了同类的功能，在项目变大时，这些目录应该可以存放更多同类功能。</p></li></ol><blockquote><p><strong>MVC模式</strong></p></blockquote><p>MVC（Model View Controller）是软件工程中的一种软件架构模式，该模式将用户界面和业务逻辑分离，以使代码可扩展性、可复用性、可维护性、灵活性加强。它把软件系统分为三个基本部分：模型（model）、视图（view）、控制器（controller）。</p><p>View层是界面，Model层是业务逻辑，Controller层用来调度View层和Model层，将用户界面和业务逻辑合理的组织在一起，起粘合剂的效果。</p><p>Golang项目目录结构也有一些MVC的影子。</p><blockquote><p><strong>示例目录结构</strong></p></blockquote><ul><li><p><a href="https://github.com/golang-standards/project-layout">golang-standards&#x2F;project-layout</a></p><pre><code>├── api  ├── assets├── build├── cmd├── configs├── deployments├── docs├── examples├── githooks├── go.mod├── init├── internal├── LICENSE.md├── Makefile├── pkg├── README_zh-CN.md├── scripts├── test├── third_party├── tools├── vendor├── web└── website  </code></pre></li><li><p><a href="https://github.com/flipped-aurora/gin-vue-admin">gin-vue-admin</a></p><pre><code>├── server    ├── api             (api层)    │   └── v1          (v1版本接口)    ├── config          (配置包)    ├── core            (核心文件)    ├── docs            (swagger文档目录)    ├── global          (全局对象)                        ├── initialize      (初始化)                            │   └── internal    (初始化内部函数)                                ├── middleware      (中间件层)                            ├── model           (模型层)                        │   ├── request     (入参结构体)                            │   └── response    (出参结构体)                                ├── packfile        (静态文件打包)                            ├── resource        (静态资源文件夹)                            │   ├── excel       (excel导入导出默认路径)                            │   ├── page        (表单生成器)                            │   └── template    (模板)                                ├── router          (路由层)                        ├── service         (service层)                        ├── source          (source层)                        └── utils           (工具包)                            ├── timer       (定时器接口封装)                                └── upload      (oss接口封装)</code></pre></li><li><p>示例</p><pre><code>├── conf        (配置初始化)├── cache       (缓存处理)├── controller  (请求入口)├── biz         (业务逻辑)├── errorcode   (错误处理)├── format      (格式化数据处理)├── logs        (日志)├── middleware  (中间件)├── model       (数据关系映射)├── request     (参数处理)├── router      (路由)├── service     (服务底层处理/远程调用)├── utils        (工具类)</code></pre></li><li><p>示例</p><pre><code>├── app                (应用)    ├── api            (控制层)    ├── consts         (常量定义)    ├── dao            (数据层)        ├── internal   (模型生成)    ├── middleware     (中间件)    ├── model          (处理数据类型定义)    ├── request        (请求返回定义)    ├── service        (服务层)├── conf               (配置项)├── core               (核心)├── docs               (文档生成)├── logs               (日志)├── router             (路由)├── utils              (工具)</code></pre></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> develop </tag>
             
         </tags>
       
@@ -397,31 +522,6 @@
         <tags>
             
             <tag> website </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>美食图鉴</title>
-      <link href="/life/3.html"/>
-      <url>/life/3.html</url>
-      
-        <content type="html"><![CDATA[<p>当初选择来成都求学的一个原因就是听说成都美食很多！于是某次回家我爸妈说我的脸怎么胖了一圈，直夸成都伙食太好！(p≧w≦q)</p><p><strong>胖哥俩肉蟹煲</strong><br>地址：武侯区天府大道北段1700号新世纪环球购物中心4楼C01<br>说明：目前只尝试过肉蟹煲，煲里的菜品有鸡爪、螃蟹、年糕、土豆以及成都必不可少的花椒。鸡爪糯糯的软软的很好吃，螃蟹吃起来稍微有点艰难，花椒一不留神就容易吃进嘴巴麻麻的，微博和小红书上都可以看到有人搞圆圆的饭团子蘸着汁儿吃，可见味道还是可以的。其它的凉菜小吃等等之类的因为不是主打的招牌也没有尝试很多，红糖糍粑还可以，山楂小乳酸就很一般。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/food/pgl.png" alt="肉蟹煲"></p><p><strong>守柴炉烤鸭</strong><br>地址：双流区锦华路二段北京华联4楼<br>说明：个人不太吃得惯烤鸭，觉得肉质偏肥，蘸料甜甜的不符合口味。酸萝卜鸭架汤锅感觉挺好吃的，汤锅里主要是豆芽、烤鸭以及酸萝卜，可以另外加菜，深海鱼柳就很不错，肉质嫩而且一点不腥！凉菜中酸辣蕨根粉很喜欢，一开始还把它想象成折耳根那种还担心难吃，没想到超出预期！<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/food/roast_duck.png" alt="烤鸭"></p><p><strong>馋道自助烤肉</strong><br>地址：双流区学府西路北三街110号<br>说明：人均57rmb，店里的点餐方式本肥宅直呼爽爽爽，直接扫桌面上的二维码点餐过会儿工作人员就会送来。店里提供饮料、水果、小吃甜点以及菜品，种类还是比较丰富的。其中甜点里的冰淇凌小蛋糕如果还有肚子的话我能解决好多好多个！菜品都没有什么不喜欢的，香辣八爪鱼、青虾、麻辣牛肉等等都好吃呜呜呜。然后说到小吃！包浆豆腐、红糖糍粑和小酥肉都好吃，特别是包浆豆腐，是目前我尝过的最好吃的。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/food/buffet_barbecue2.png" alt="自助烤肉"><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/food/buffet_barbecue.png" alt="自助烤肉"></p><p><strong>壹代・韩式炭火烤肉</strong><br>地址：双流区珠江路CGV影城对面小郡肝串串香停车场方向第2家<br>说明：与自助烤肉对比之后就稍微差了，但是价格以及口味中和起来应该也还行。厚切五花、薄切五花、牛五花等等都比较新鲜而且炭火烤出来就比较好吃，其它的用小碟子装的辣拌海带丝、卤煮花生、腌制萝卜等都可以续。总体也还可以吧。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/food/barbecue.png" alt="炭火烤肉"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> life </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> food </tag>
             
         </tags>
       
