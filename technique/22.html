@@ -248,7 +248,7 @@
 
     
         <meta property="article:published_time" content="Wed Oct 18 2023 10:07:00 GMT+0800">
-        <meta property="article:modified_time" content="Tue Jan 23 2024 11:35:25 GMT+0800">
+        <meta property="article:modified_time" content="Tue Jan 23 2024 15:31:55 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -271,7 +271,7 @@
     "mainEntityOfPage": "https://etamsylate-pupu.github.io/technique/22",
     "headline": "项目开发-swagger篇",
     "datePublished": "Wed Oct 18 2023 10:07:00 GMT+0800",
-    "dateModified": "Tue Jan 23 2024 11:35:25 GMT+0800",
+    "dateModified": "Tue Jan 23 2024 15:31:55 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "etamsylate",
@@ -364,7 +364,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#OpenAPI"><span class="post-toc-number">1.</span> <span class="post-toc-text">OpenAPI</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Swagger"><span class="post-toc-number">2.</span> <span class="post-toc-text">Swagger</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#OpenAPI%E8%A7%84%E8%8C%83"><span class="post-toc-number">1.</span> <span class="post-toc-text">OpenAPI规范</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Swagger"><span class="post-toc-number">2.</span> <span class="post-toc-text">Swagger</span></a></li></ol>
     </ul>
     
 
@@ -512,44 +512,101 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h3 id="OpenAPI"><a href="#OpenAPI" class="headerlink" title="OpenAPI"></a>OpenAPI</h3><p><a target="_blank" rel="noopener" href="https://openapi.apifox.cn/">OpenAPI 规范</a>（OpenAPI Specification），是定义一个标准的、与具体编程语言无关的RESTful API的规范。OpenAPI 规范可以在“不接触任何程序源代码和文档、不监控网络通信”的情况下理解一个服务的作用。遵循 OpenAPI 规范来定义 API，以使用文档生成工具来展示。主要的Swagger工具包括：</p>
+        <h3 id="OpenAPI规范"><a href="#OpenAPI规范" class="headerlink" title="OpenAPI规范"></a>OpenAPI规范</h3><p><a target="_blank" rel="noopener" href="https://openapi.apifox.cn/">OpenAPI 规范</a>（OpenAPI Specification），是定义一个标准的、与具体编程语言无关的RESTful API的规范。OpenAPI 规范可以在“不接触任何程序源代码和文档、不监控网络通信”的情况下理解一个服务的作用。遵循 OpenAPI 规范来定义 API，以使用文档生成工具来展示。主要的Swagger工具包括：</p>
 <ul>
 <li>Swagger Editor：基于浏览器的编辑器，可以在其中编写 OpenAPI 定义。</li>
 <li>Swagger UI：将 OpenAPI 定义渲染为交互式文档。</li>
 <li>Swagger Codegen：根据 OpenAPI 定义生成服务器存根和客户端库。</li>
 <li>Swagger Editor Next (beta)：基于浏览器的编辑器，可以在其中编写和审查 OpenAPI 和 AsyncAPI 定义。</li>
 <li>Swagger Core：用于创建、使用和处理 OpenAPI 定义的 Java 相关库。</li>
-<li>Swagger 解析器：用于解析 OpenAPI 定义的独立库</li>
+<li>Swagger Parser：用于解析 OpenAPI 定义的独立库</li>
 <li>Swagger APIDom：为描述各种描述语言和序列化格式的 API 提供单一、统一的结构。</li>
 </ul>
-<h3 id="Swagger"><a href="#Swagger" class="headerlink" title="Swagger"></a>Swagger</h3><p>Swagger 是一套围绕 OpenAPI 规范构建的开源工具，可帮助开发人员设计、构建、记录和使用 REST API，支持文档在线自动生成以及接口功能测试。</p>
-<p><a target="_blank" rel="noopener" href="https://swagger.io/">swagger官网</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/swagger-api">github仓库</a></p>
-<p>以下以go swagger为例</p>
+<h3 id="Swagger"><a href="#Swagger" class="headerlink" title="Swagger"></a>Swagger</h3><p><a target="_blank" rel="noopener" href="https://swagger.io/">Swagger</a> 是一套围绕 OpenAPI 规范构建的开源工具，可帮助开发人员设计、构建、记录和使用 REST API，支持文档在线自动生成以及接口功能测试。基于OpenAPI规范编写注解或通过扫描代码去生成注解，就能生成统一标准的接口文档和一系列 <a target="_blank" rel="noopener" href="https://github.com/swagger-api">Swagger 工具</a>。</p>
+<p>以下以<a target="_blank" rel="noopener" href="https://github.com/swaggo/swag">go swagger</a>为例，说明如何为代码自动生成接口文档。</p>
+<ol>
+<li><strong>环境准备</strong></li>
+</ol>
 <blockquote>
 <p>安装swgger</p>
 </blockquote>
 <p><code>go install github.com/swaggo/swag/cmd/swag@latest</code></p>
 <blockquote>
-<p>针对gin框架，安装gin-swagger扩展</p>
+<p>支持的web框架</p>
 </blockquote>
-<pre><code>go get -u -v github.com/swaggo/gin-swagger
-go get -u -v github.com/swaggo/files
-go get -u -v github.com/alecthomas/template
+<pre><code>gin
+buffalo
+net/http
+...
+</code></pre>
+<ol start="2">
+<li><strong>swagger使用</strong></li>
+</ol>
+<p>接口文档的生成过程：首先按照规范给接口代码（controller层）添加声明式注释，接着使用swagger工具扫描代码自动生成api接口文档数据，然后渲染在线接口文档页面。 </p>
+<blockquote>
+<p>添加注释</p>
+</blockquote>
+<p>注释规范说明</p>
+<p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/API.png" alt="api declarative comments format"></p>
+<pre class=" language-shell"><code class="language-shell">@Summary      摘要
+@Description  详细的说明
+@Tags         每个API操作的标签列表，以逗号分隔。
+@Accept       API可以使用的MIME类型列表，只影响具有请求正文的操作，例如POST、PUT、PATCH
+@Produce      可以产生的 MIME 类型列表，MIME 类型可以简单的理解为响应类型，例如：json、xml、html 等等
+@Param        参数格式，从左到右分别为：参数名、入参类型、数据类型、是否必填、注释
+@Success      响应成功，从左到右分别为：状态码、参数类型、数据类型、注释
+@Failure      响应失败，从左到右分别为：状态码、参数类型、数据类型、注释
+@Router       路由，从左到右分别为：路由地址，HTTP 方法
+</code></pre>
+<p>具体例子</p>
+<pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">// ShowAccount godoc</span>
+<span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">//	@Summary		Show an account</span>
+<span class="token comment" spellcheck="true">//	@Description	get string by ID</span>
+<span class="token comment" spellcheck="true">//	@Tags			accounts</span>
+<span class="token comment" spellcheck="true">//	@Accept			json</span>
+<span class="token comment" spellcheck="true">//	@Produce		json</span>
+<span class="token comment" spellcheck="true">//	@Param			id	path		int	true	"Account ID"</span>
+<span class="token comment" spellcheck="true">//	@Success		200	&amp;#123;object&amp;#125;	model.Account</span>
+<span class="token comment" spellcheck="true">//	@Failure		400	&amp;#123;object&amp;#125;	httputil.HTTPError</span>
+<span class="token comment" spellcheck="true">//	@Failure		404	&amp;#123;object&amp;#125;	httputil.HTTPError</span>
+<span class="token comment" spellcheck="true">//	@Failure		500	&amp;#123;object&amp;#125;	httputil.HTTPError</span>
+<span class="token comment" spellcheck="true">//	@Router			/accounts/&amp;#123;id&amp;#125; [get]</span>
+
+
+<span class="token comment" spellcheck="true">// UploadAccountImage godoc</span>
+<span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">//	@Summary		Upload account image</span>
+<span class="token comment" spellcheck="true">//	@Description	Upload file</span>
+<span class="token comment" spellcheck="true">//	@Tags			accounts</span>
+<span class="token comment" spellcheck="true">//	@Accept			multipart/form-data</span>
+<span class="token comment" spellcheck="true">//	@Produce		json</span>
+<span class="token comment" spellcheck="true">//	@Param			id		path		int		true	"Account ID"</span>
+<span class="token comment" spellcheck="true">//	@Param			file	formData	file	true	"account image"</span>
+<span class="token comment" spellcheck="true">//	@Success		200		&amp;#123;object&amp;#125;	controller.Message</span>
+<span class="token comment" spellcheck="true">//	@Failure		400		&amp;#123;object&amp;#125;	httputil.HTTPError</span>
+<span class="token comment" spellcheck="true">//	@Failure		404		&amp;#123;object&amp;#125;	httputil.HTTPError</span>
+<span class="token comment" spellcheck="true">//	@Failure		500		&amp;#123;object&amp;#125;	httputil.HTTPError</span>
+<span class="token comment" spellcheck="true">//	@Router			/accounts/&amp;#123;id&amp;#125;/images [post]</span>
 </code></pre>
 <blockquote>
-<p>swagger命令</p>
+<p>生成接口文档</p>
 </blockquote>
-<pre class=" language-shell"><code class="language-shell"># swag 格式化
-swag fmt . 
-</code></pre>
+<p>在包含main.go文件的项目根目录运行<code>swag init</code>，解析注释并生成需要的文件（<code>docs</code>文件夹和<code>docs/docs.go</code>）</p>
 <pre class=" language-shell"><code class="language-shell"># swag 生成命令
 swag init . 
 </code></pre>
+<p>确保导入了生成的<code>docs/docs.go</code>文件，这样特定的配置文件才会被初始化。</p>
+<p>如果部分接口不需要生成接口文档，则使用排除命令。</p>
 <pre class=" language-shell"><code class="language-shell"># swag 排除命令
 swag init -d ./ --exclude ./app/api/v2
 </code></pre>
-<pre class=" language-html"><code class="language-html">swag init -h
+<p>(可选) 可以使用<code>fmt</code>格式化 SWAG 注释。</p>
+<p><code>swag fmt</code></p>
+<blockquote>
+<p>Swag cli</p>
+</blockquote>
+<pre class=" language-shell"><code class="language-shell">swag init -h
 NAME:
 swag init - Create docs.go
 
@@ -570,6 +627,19 @@ OPTIONS:
 --parseInternal                        解析 internal 包中的go文件，默认禁用
 --parseDepth value                     依赖解析深度 (默认: 100)
 --instanceName value                   设置文档实例名 (默认: "swagger")
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">swag fmt -h
+NAME:
+   swag fmt - format swag comments
+
+USAGE:
+   swag fmt [command options] [arguments...]
+
+OPTIONS:
+   --dir value, -d value          API解析目录 (默认: "./")
+   --exclude value                解析扫描时排除的目录，多个目录可用逗号分隔（默认：空）
+   --generalInfo value, -g value  API通用信息所在的go源文件路径，如果是相对路径则基于API解析目录 (默认: "main.go")
+   --help, -h                     show help (default: false)
 </code></pre>
 
         
