@@ -248,7 +248,7 @@
 
     
         <meta property="article:published_time" content="Wed Oct 18 2023 10:07:00 GMT+0800">
-        <meta property="article:modified_time" content="Wed Oct 18 2023 10:31:44 GMT+0800">
+        <meta property="article:modified_time" content="Tue Jan 23 2024 11:35:25 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -271,7 +271,7 @@
     "mainEntityOfPage": "https://etamsylate-pupu.github.io/technique/22",
     "headline": "项目开发-swagger篇",
     "datePublished": "Wed Oct 18 2023 10:07:00 GMT+0800",
-    "dateModified": "Wed Oct 18 2023 10:31:44 GMT+0800",
+    "dateModified": "Tue Jan 23 2024 11:35:25 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "etamsylate",
@@ -357,6 +357,15 @@
 
     <!-- Left aligned menu below button -->
     
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#OpenAPI"><span class="post-toc-number">1.</span> <span class="post-toc-text">OpenAPI</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Swagger"><span class="post-toc-number">2.</span> <span class="post-toc-text">Swagger</span></a></li></ol>
+    </ul>
     
 
 
@@ -503,7 +512,66 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        
+        <h3 id="OpenAPI"><a href="#OpenAPI" class="headerlink" title="OpenAPI"></a>OpenAPI</h3><p><a target="_blank" rel="noopener" href="https://openapi.apifox.cn/">OpenAPI 规范</a>（OpenAPI Specification），是定义一个标准的、与具体编程语言无关的RESTful API的规范。OpenAPI 规范可以在“不接触任何程序源代码和文档、不监控网络通信”的情况下理解一个服务的作用。遵循 OpenAPI 规范来定义 API，以使用文档生成工具来展示。主要的Swagger工具包括：</p>
+<ul>
+<li>Swagger Editor：基于浏览器的编辑器，可以在其中编写 OpenAPI 定义。</li>
+<li>Swagger UI：将 OpenAPI 定义渲染为交互式文档。</li>
+<li>Swagger Codegen：根据 OpenAPI 定义生成服务器存根和客户端库。</li>
+<li>Swagger Editor Next (beta)：基于浏览器的编辑器，可以在其中编写和审查 OpenAPI 和 AsyncAPI 定义。</li>
+<li>Swagger Core：用于创建、使用和处理 OpenAPI 定义的 Java 相关库。</li>
+<li>Swagger 解析器：用于解析 OpenAPI 定义的独立库</li>
+<li>Swagger APIDom：为描述各种描述语言和序列化格式的 API 提供单一、统一的结构。</li>
+</ul>
+<h3 id="Swagger"><a href="#Swagger" class="headerlink" title="Swagger"></a>Swagger</h3><p>Swagger 是一套围绕 OpenAPI 规范构建的开源工具，可帮助开发人员设计、构建、记录和使用 REST API，支持文档在线自动生成以及接口功能测试。</p>
+<p><a target="_blank" rel="noopener" href="https://swagger.io/">swagger官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/swagger-api">github仓库</a></p>
+<p>以下以go swagger为例</p>
+<blockquote>
+<p>安装swgger</p>
+</blockquote>
+<p><code>go install github.com/swaggo/swag/cmd/swag@latest</code></p>
+<blockquote>
+<p>针对gin框架，安装gin-swagger扩展</p>
+</blockquote>
+<pre><code>go get -u -v github.com/swaggo/gin-swagger
+go get -u -v github.com/swaggo/files
+go get -u -v github.com/alecthomas/template
+</code></pre>
+<blockquote>
+<p>swagger命令</p>
+</blockquote>
+<pre class=" language-shell"><code class="language-shell"># swag 格式化
+swag fmt . 
+</code></pre>
+<pre class=" language-shell"><code class="language-shell"># swag 生成命令
+swag init . 
+</code></pre>
+<pre class=" language-shell"><code class="language-shell"># swag 排除命令
+swag init -d ./ --exclude ./app/api/v2
+</code></pre>
+<pre class=" language-html"><code class="language-html">swag init -h
+NAME:
+swag init - Create docs.go
+
+USAGE:
+swag init [command options] [arguments...]
+
+OPTIONS:
+--generalInfo value, -g value          API通用信息所在的go源文件路径，如果是相对路径则基于API解析目录 (默认: "main.go")
+--dir value, -d value                  API解析目录 (默认: "./")
+--exclude value                        解析扫描时排除的目录，多个目录可用逗号分隔（默认：空）
+--propertyStrategy value, -p value     结构体字段命名规则，三种：snakecase,camelcase,pascalcase (默认: "camelcase")
+--output value, -o value               文件(swagger.json, swagger.yaml and doc.go)输出目录 (默认: "./docs")
+--parseVendor                          是否解析vendor目录里的go源文件，默认不
+--parseDependency                      是否解析依赖目录中的go源文件，默认不
+--markdownFiles value, --md value      指定API的描述信息所使用的markdown文件所在的目录
+--generatedTime                        是否输出时间到输出文件docs.go的顶部，默认是
+--codeExampleFiles value, --cef value  解析包含用于 x-codeSamples 扩展的代码示例文件的文件夹，默认禁用
+--parseInternal                        解析 internal 包中的go文件，默认禁用
+--parseDepth value                     依赖解析深度 (默认: 100)
+--instanceName value                   设置文档实例名 (默认: "swagger")
+</code></pre>
+
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
                     <p><strong>
