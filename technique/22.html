@@ -92,7 +92,7 @@
         
             
                 <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-blue.min.css?JzPNzYHiyk6NZZiyI3wu7w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/atelier-sulphurpool-light.min.css?/Nfsq1v6eSrAgiV+c/CKvQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
             
         
 
@@ -248,7 +248,7 @@
 
     
         <meta property="article:published_time" content="Wed Oct 18 2023 10:07:00 GMT+0800">
-        <meta property="article:modified_time" content="Tue Jan 23 2024 15:31:55 GMT+0800">
+        <meta property="article:modified_time" content="Tue Jan 23 2024 15:58:02 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -271,7 +271,7 @@
     "mainEntityOfPage": "https://etamsylate-pupu.github.io/technique/22",
     "headline": "项目开发-swagger篇",
     "datePublished": "Wed Oct 18 2023 10:07:00 GMT+0800",
-    "dateModified": "Tue Jan 23 2024 15:31:55 GMT+0800",
+    "dateModified": "Tue Jan 23 2024 15:58:02 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "etamsylate",
@@ -524,27 +524,23 @@
 </ul>
 <h3 id="Swagger"><a href="#Swagger" class="headerlink" title="Swagger"></a>Swagger</h3><p><a target="_blank" rel="noopener" href="https://swagger.io/">Swagger</a> 是一套围绕 OpenAPI 规范构建的开源工具，可帮助开发人员设计、构建、记录和使用 REST API，支持文档在线自动生成以及接口功能测试。基于OpenAPI规范编写注解或通过扫描代码去生成注解，就能生成统一标准的接口文档和一系列 <a target="_blank" rel="noopener" href="https://github.com/swagger-api">Swagger 工具</a>。</p>
 <p>以下以<a target="_blank" rel="noopener" href="https://github.com/swaggo/swag">go swagger</a>为例，说明如何为代码自动生成接口文档。</p>
-<ol>
-<li><strong>环境准备</strong></li>
-</ol>
+<p><strong>环境准备</strong></p>
 <blockquote>
-<p>安装swgger</p>
+<p><strong>安装swgger</strong></p>
 </blockquote>
 <p><code>go install github.com/swaggo/swag/cmd/swag@latest</code></p>
 <blockquote>
-<p>支持的web框架</p>
+<p><strong>支持的web框架</strong></p>
 </blockquote>
 <pre><code>gin
 buffalo
 net/http
 ...
 </code></pre>
-<ol start="2">
-<li><strong>swagger使用</strong></li>
-</ol>
+<p><strong>swagger使用</strong></p>
 <p>接口文档的生成过程：首先按照规范给接口代码（controller层）添加声明式注释，接着使用swagger工具扫描代码自动生成api接口文档数据，然后渲染在线接口文档页面。 </p>
 <blockquote>
-<p>添加注释</p>
+<p><strong>添加注释</strong></p>
 </blockquote>
 <p>注释规范说明</p>
 <p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/API.png" alt="api declarative comments format"></p>
@@ -590,7 +586,7 @@ net/http
 <span class="token comment" spellcheck="true">//	@Router			/accounts/&amp;#123;id&amp;#125;/images [post]</span>
 </code></pre>
 <blockquote>
-<p>生成接口文档</p>
+<p><strong>生成接口文档</strong></p>
 </blockquote>
 <p>在包含main.go文件的项目根目录运行<code>swag init</code>，解析注释并生成需要的文件（<code>docs</code>文件夹和<code>docs/docs.go</code>）</p>
 <pre class=" language-shell"><code class="language-shell"># swag 生成命令
@@ -604,7 +600,7 @@ swag init -d ./ --exclude ./app/api/v2
 <p>(可选) 可以使用<code>fmt</code>格式化 SWAG 注释。</p>
 <p><code>swag fmt</code></p>
 <blockquote>
-<p>Swag cli</p>
+<p><strong>Swag cli</strong></p>
 </blockquote>
 <pre class=" language-shell"><code class="language-shell">swag init -h
 NAME:
