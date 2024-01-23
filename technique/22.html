@@ -248,7 +248,7 @@
 
     
         <meta property="article:published_time" content="Wed Oct 18 2023 10:07:00 GMT+0800">
-        <meta property="article:modified_time" content="Tue Jan 23 2024 15:58:02 GMT+0800">
+        <meta property="article:modified_time" content="Tue Jan 23 2024 16:04:42 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -271,7 +271,7 @@
     "mainEntityOfPage": "https://etamsylate-pupu.github.io/technique/22",
     "headline": "项目开发-swagger篇",
     "datePublished": "Wed Oct 18 2023 10:07:00 GMT+0800",
-    "dateModified": "Tue Jan 23 2024 15:58:02 GMT+0800",
+    "dateModified": "Tue Jan 23 2024 16:04:42 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "etamsylate",
@@ -555,35 +555,35 @@ net/http
 @Router       路由，从左到右分别为：路由地址，HTTP 方法
 </code></pre>
 <p>具体例子</p>
-<pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">// ShowAccount godoc</span>
-<span class="token comment" spellcheck="true">//</span>
-<span class="token comment" spellcheck="true">//	@Summary		Show an account</span>
-<span class="token comment" spellcheck="true">//	@Description	get string by ID</span>
-<span class="token comment" spellcheck="true">//	@Tags			accounts</span>
-<span class="token comment" spellcheck="true">//	@Accept			json</span>
-<span class="token comment" spellcheck="true">//	@Produce		json</span>
-<span class="token comment" spellcheck="true">//	@Param			id	path		int	true	"Account ID"</span>
-<span class="token comment" spellcheck="true">//	@Success		200	&amp;#123;object&amp;#125;	model.Account</span>
-<span class="token comment" spellcheck="true">//	@Failure		400	&amp;#123;object&amp;#125;	httputil.HTTPError</span>
-<span class="token comment" spellcheck="true">//	@Failure		404	&amp;#123;object&amp;#125;	httputil.HTTPError</span>
-<span class="token comment" spellcheck="true">//	@Failure		500	&amp;#123;object&amp;#125;	httputil.HTTPError</span>
-<span class="token comment" spellcheck="true">//	@Router			/accounts/&amp;#123;id&amp;#125; [get]</span>
+<pre><code>// ShowAccount godoc
+//
+//	@Summary		Show an account
+//	@Description	get string by ID
+//	@Tags			accounts
+//	@Accept			json
+//	@Produce		json
+//	@Param			id	path		int	true	&quot;Account ID&quot;
+//	@Success		200	&#123;object&#125;	model.Account
+//	@Failure		400	&#123;object&#125;	httputil.HTTPError
+//	@Failure		404	&#123;object&#125;	httputil.HTTPError
+//	@Failure		500	&#123;object&#125;	httputil.HTTPError
+//	@Router			/accounts/&#123;id&#125; [get]
 
 
-<span class="token comment" spellcheck="true">// UploadAccountImage godoc</span>
-<span class="token comment" spellcheck="true">//</span>
-<span class="token comment" spellcheck="true">//	@Summary		Upload account image</span>
-<span class="token comment" spellcheck="true">//	@Description	Upload file</span>
-<span class="token comment" spellcheck="true">//	@Tags			accounts</span>
-<span class="token comment" spellcheck="true">//	@Accept			multipart/form-data</span>
-<span class="token comment" spellcheck="true">//	@Produce		json</span>
-<span class="token comment" spellcheck="true">//	@Param			id		path		int		true	"Account ID"</span>
-<span class="token comment" spellcheck="true">//	@Param			file	formData	file	true	"account image"</span>
-<span class="token comment" spellcheck="true">//	@Success		200		&amp;#123;object&amp;#125;	controller.Message</span>
-<span class="token comment" spellcheck="true">//	@Failure		400		&amp;#123;object&amp;#125;	httputil.HTTPError</span>
-<span class="token comment" spellcheck="true">//	@Failure		404		&amp;#123;object&amp;#125;	httputil.HTTPError</span>
-<span class="token comment" spellcheck="true">//	@Failure		500		&amp;#123;object&amp;#125;	httputil.HTTPError</span>
-<span class="token comment" spellcheck="true">//	@Router			/accounts/&amp;#123;id&amp;#125;/images [post]</span>
+// UploadAccountImage godoc
+//
+//	@Summary		Upload account image
+//	@Description	Upload file
+//	@Tags			accounts
+//	@Accept			multipart/form-data
+//	@Produce		json
+//	@Param			id		path		int		true	&quot;Account ID&quot;
+//	@Param			file	formData	file	true	&quot;account image&quot;
+//	@Success		200		&#123;object&#125;	controller.Message
+//	@Failure		400		&#123;object&#125;	httputil.HTTPError
+//	@Failure		404		&#123;object&#125;	httputil.HTTPError
+//	@Failure		500		&#123;object&#125;	httputil.HTTPError
+//	@Router			/accounts/&#123;id&#125;/images [post]
 </code></pre>
 <blockquote>
 <p><strong>生成接口文档</strong></p>
