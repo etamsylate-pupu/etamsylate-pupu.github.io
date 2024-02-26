@@ -2,9 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://etamsylate-pupu.github.io/technique/22</loc>
+    
+    <lastmod>2024-02-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://etamsylate-pupu.github.io/technique/24</loc>
+    
+    <lastmod>2024-01-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://etamsylate-pupu.github.io/technique/21</loc>
     
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-01-26</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -14,15 +32,6 @@
     <loc>https://etamsylate-pupu.github.io/technique/20</loc>
     
     <lastmod>2024-01-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://etamsylate-pupu.github.io/technique/22</loc>
-    
-    <lastmod>2024-01-23</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -39,15 +48,6 @@
   
   <url>
     <loc>https://etamsylate-pupu.github.io/knowledge/25</loc>
-    
-    <lastmod>2023-11-21</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://etamsylate-pupu.github.io/technique/24</loc>
     
     <lastmod>2023-11-21</lastmod>
     
@@ -274,7 +274,7 @@
 
   <url>
     <loc>https://etamsylate-pupu.github.io/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -282,112 +282,112 @@
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/thinking/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/mindmap/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/hexo/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/website/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/zoo/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/image-host/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/network/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/coding/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/git/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/docker/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/develop/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/Jenkins/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/logs/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/cv/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/swagger/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/tags/paper/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -396,28 +396,28 @@
   
   <url>
     <loc>https://etamsylate-pupu.github.io/categories/technique/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/categories/life/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/categories/academic/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://etamsylate-pupu.github.io/categories/knowledge/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
