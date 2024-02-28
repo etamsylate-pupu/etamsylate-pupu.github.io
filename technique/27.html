@@ -52,7 +52,7 @@
     
     <title>
         
-            停止内耗 | 
+            cloudflare+worker搭建vless高速节点 | 
         
         Tsuki-shining
     </title>
@@ -63,7 +63,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="Carpe Diem and Do what I like">
-    <meta name="keywords" content=",thinking">
+    <meta name="keywords" content=",vless">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -224,7 +224,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Tsuki-shining">
-    <meta name="msapplication-starturl" content="https://etamsylate-pupu.github.io/life/1">
+    <meta name="msapplication-starturl" content="https://etamsylate-pupu.github.io/technique/27">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Tsuki-shining">
@@ -239,16 +239,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="https://etamsylate-pupu.github.io/life/1">
+    <meta property="og:url" content="https://etamsylate-pupu.github.io/technique/27">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="停止内耗 | Tsuki-shining">
+    <meta property="og:title" content="cloudflare+worker搭建vless高速节点 | Tsuki-shining">
     <meta property="og:image" content="/img/favicon.svg">
     <meta property="og:description" content="Carpe Diem and Do what I like">
-    <meta property="og:article:tag" content="thinking"> 
+    <meta property="og:article:tag" content="vless"> 
 
     
-        <meta property="article:published_time" content="Wed Dec 09 2020 03:23:00 GMT+0800">
-        <meta property="article:modified_time" content="Fri Feb 24 2023 16:41:47 GMT+0800">
+        <meta property="article:published_time" content="Wed Feb 28 2024 09:51:57 GMT+0800">
+        <meta property="article:modified_time" content="Wed Feb 28 2024 15:34:52 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -256,7 +256,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://etamsylate-pupu.github.io/life/1" />
+        <link rel="canonical" href="https://etamsylate-pupu.github.io/technique/27" />
     
 
     <!-- Structured-data for SEO -->
@@ -268,10 +268,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "https://etamsylate-pupu.github.io/life/1",
-    "headline": "停止内耗",
-    "datePublished": "Wed Dec 09 2020 03:23:00 GMT+0800",
-    "dateModified": "Fri Feb 24 2023 16:41:47 GMT+0800",
+    "mainEntityOfPage": "https://etamsylate-pupu.github.io/technique/27",
+    "headline": "cloudflare+worker搭建vless高速节点",
+    "datePublished": "Wed Feb 28 2024 09:51:57 GMT+0800",
+    "dateModified": "Wed Feb 28 2024 15:34:52 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "etamsylate",
@@ -289,7 +289,7 @@
             "url": "/img/favicon.svg"
         }
     },
-    "keywords": ",thinking",
+    "keywords": ",vless",
     "description": "Carpe Diem and Do what I like",
 }
 </script>
@@ -358,6 +358,15 @@
     <!-- Left aligned menu below button -->
     
     
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%87%86%E5%A4%87"><span class="post-toc-text">准备</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4"><span class="post-toc-text">搭建步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#worker%E5%88%9B%E5%BB%BA"><span class="post-toc-text">worker创建</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#V2rayN%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9"><span class="post-toc-text">V2rayN添加节点</span></a></li></ol></li></ol>
+    </ul>
+    
 
 
 
@@ -380,7 +389,7 @@
         
     
             <p class="article-headline-p">
-                停止内耗
+                cloudflare+worker搭建vless高速节点
             </p>
         </div>
 
@@ -399,7 +408,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>etamsylate</strong>
-        <span>12月 09, 2020</span>
+        <span>2月 28, 2024</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -423,7 +432,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-none-link" href="/tags/thinking/" rel="tag">thinking</a>
+        <a class="post_tag-none-link" href="/tags/vless/" rel="tag">vless</a>
     </ul>
     
 
@@ -451,7 +460,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=停止内耗&url=https://etamsylate-pupu.github.io/life/1&pic=https://etamsylate-pupu.github.io/img/favicon.svg&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=cloudflare+worker搭建vless高速节点&url=https://etamsylate-pupu.github.io/technique/27&pic=https://etamsylate-pupu.github.io/img/favicon.svg&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -460,7 +469,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=停止内耗&url=https://etamsylate-pupu.github.io/life/1&via=etamsylate" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=cloudflare+worker搭建vless高速节点&url=https://etamsylate-pupu.github.io/technique/27&via=etamsylate" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -469,7 +478,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://etamsylate-pupu.github.io/life/1" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://etamsylate-pupu.github.io/technique/27" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -478,7 +487,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://etamsylate-pupu.github.io/life/1" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://etamsylate-pupu.github.io/technique/27" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -503,13 +512,53 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>  最近在微博看到一个词，叫做“自我内耗”。</p>
-<p>  在传统的定义中，内耗（Internal friction）主要是从群体的角度出发，比如百度百科就将内耗效应定义为在群体心理学中，人们把社会或部门内部因不协调、或矛盾等造成的人力、物力等方面无谓的消耗而产生的负效应现象。另一种解释则更侧重个体，指一个人既不能够接纳现实因素，又难以做到坦然放下，从而陷入一种进退两难的境遇里。</p>
-<p>  小马(weibo:<a target="_blank" rel="noopener" href="https://weibo.com/tututu214">一匹英俊的小马</a>)把她的内耗描述为没有做什么但感觉很疲惫或者明明有事需要做但提不起精神的状态，最终只会导致脑子里一个劲胡思乱想但是实际上只在消耗情绪和精气神，任务进度条一点没涨。</p>
-<p>  最近我好像也经常处于这个自我内耗的状态。大三的课表较前两学年来说空了不少，但是这学期总感觉更累了。每次形教课的话题总是谈到考研、保研、工作等这些需要尽快确定的决定，同学之间在学科竞赛、科研论文等活动不断推进，一下子突然被push甚至来不及从适应期过渡。虽然说这些努力和决定都是自己的选择、和自己未来相关的事情，但是可能依旧不够成熟不能自己担起责任，总是想着顺其自然暂且这样过着。心里当然还是会有不甘，在颓废和上进里来回横跳，于是桌上摆笔记本手里拿手机刷来刷去这个怪诞的操作对我来说总是很熟练。等玩耍一番后又立马进入贤者模式，开始懊悔浪费了时间愧对自己愧对家人。这样反复的情绪变化最后带来的却主要是疲惫的心理，在教室坐下自习只会带着一脑子的混乱思想，效率低到难以置信。</p>
-<p>  那些有目标并且为之奋斗，有一步一步规划并且日复一日坚持的人在我身边也很常见，我很佩服他们也想成为他们。当我赖在床上睡大觉的时候，当我抱着零食笔记本屏幕播着视频的时候，当我完成作业万事大吉专业学习丢一边的时候，他们在图书馆和教学楼自习，在参加比赛做实验写论文，在考驾照考雅思托福，看live演出跑步健身……并不是说因为没有花大量时间学习让我感到焦虑落后，而是不能将娱乐和学习平衡好，并且没有自我能力的提升长期处于干皱皱的海绵状态。日常几乎只有按部就班的上课、完成作业和娱乐活动，没有看课外书没有自主学习，连计划的每日背单词阅读英语文章实际上坚持一两天就搁浅了。虽然以肥宅标榜自己，将肥宅生活作为今后美好追求，但是还没有可以支持这种生活的基础（泪目，所以还是需要现阶段转换状态。</p>
-<hr>
-<p>  “脑子腾空做事；还没有发生的，不用去猜。”  希望我们都能停止内耗。<br> <img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/%E7%8B%97%E5%8B%BE.jpg" alt="dog"></p>
+        <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul>
+<li>Cloudflare账号</li>
+<li>v2rayN或其他代理软件</li>
+<li>自己的域名（可选，在无优选IP时用）</li>
+</ul>
+<h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><h3 id="worker创建"><a href="#worker创建" class="headerlink" title="worker创建"></a>worker创建</h3><p>登录cloudflare，在Workers and Pages中创建Worker应用程序。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/cloudflare_worker.png" alt="cloudflare worker"></p>
+<p>部署脚本，名称可以随意选取<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/worker_script.png" alt="worker script"></p>
+<p>部署后，选择刚刚部署的worker，快速编辑脚本，将<a target="_blank" rel="noopener" href="https://github.com/zizifn/edgetunnel/blob/main/src/worker-vless.js">该脚本</a>复制，覆盖原hello world脚本。并修改其中的userID和ProxyIP。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/worker-vless.png" alt="worker-vless.js"></p>
+<p>userID就是UUID，UUID生成，有以下方法</p>
+<ul>
+<li><p>按照脚本注释所说</p>
+<p><code>Press &quot;Win + R&quot;, input cmd and run:  Powershell -NoExit -Command &quot;[guid]::NewGuid()&quot;</code></p>
+<p>即在命令行输入对应命令</p>
+</li>
+<li><p>V2rayN生成<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/v2rayN-uuid.png" alt="v2rayN uuid"></p>
+</li>
+<li><p>在线工具生成</p>
+<p><a target="_blank" rel="noopener" href="https://1024tools.com/uuid">https://1024tools.com/uuid</a></p>
+<p><a target="_blank" rel="noopener" href="https://it.huluohu.com/uuid-generator">https://it.huluohu.com/uuid-generator</a></p>
+</li>
+</ul>
+<p>ProxyIP设置的IP或域名用于中转流量，而不是直接路由到使用Cloudflare的网站。如果没有设置ProxyIP，托管在Cloudflare的一些网站会无法访问。</p>
+<p>3Kmfi6HP提供的CDN ProxyIP如下：</p>
+<pre><code>cdn-all.xn--b6gac.eu.org
+
+cdn.xn--b6gac.eu.org
+
+cdn-b100.xn--b6gac.eu.org
+
+edgetunnel.anycast.eu.org
+
+cdn.anycast.eu.org
+</code></pre>
+<p>UUID和ProxyIP设置后，保存并部署。<br>查看worker脚本603-626行的代码，查看vless和clash的节点配置信息。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/worker-vless-setting.png" alt="worker-js comment"><br>其中hostname是worker设置的反代地址（name+Zone），即路由地址。userID为刚刚设置的UUID。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/worker-host.png" alt="worker-host"></p>
+<p>也可以在浏览器输入：https:&#x2F;&#x2F;你的hostname&#x2F;你的UUID<br>查看赋值后的节点配置信息。（由于workers.dev域名已被强，因此无法直接访问）<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/worker-vless-info.png" alt="worker setting"></p>
+<h3 id="V2rayN添加节点"><a href="#V2rayN添加节点" class="headerlink" title="V2rayN添加节点"></a>V2rayN添加节点</h3><p>如上文提到的，workers.dev域名已无法直接访问，若也没有自己的域名，则只能使用http传输，无法使用443端口。需要使用<strong>优选ip</strong>进行反向代理。</p>
+<p>以下是优选ip的测试工具，测试后选择一个可行IP即可：</p>
+<pre><code>http://ip.flares.cloud/
+https://stock.hostmonit.com/CloudFlareYes
+https://vfarid.github.io/cf-ip-scanner/?max=30
+</code></pre>
+<p>使用优选IP进行反向代理，则此时节点的配置信息需要修改，将服务器地址改为优选IP，端口改为80或2052，不勾选传输层安全TLS（为空）。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/vless-setting.png" alt="vless-seeting"></p>
+<p>若有自己的域名，则可以通过<strong>自定义域名</strong>进行代理。<br>在Cloudflare-websites添加自己的域名<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/cloudflare-website.png" alt="cloudflare website"></p>
+<p>将域名服务器更改为Cloudflare的域名服务器。即将cloudflare提供的域名服务器信息覆盖自己注册域名所在平台DNS管理中的域名服务器信息(以下以阿里云→Cloudflare为例)。域名服务器更换成功，Cloudflare会发送邮件通知。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/cloudflare-NS.png" alt="cloudflare NS"><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/aliyun-DNS.png" alt="aliyun DNS"><br>并将原解析记录迁移至Cloudflare（即在Cloudflare添加原域名解析记录）。</p>
+<p>此时，在worker中选择triggers中的自定义域，添加自己的（子）域名，例如vless.example.com，添加成功后，DNS解析记录也会新增一条类型为worker的记录。<br>通过自定义域名，可以使用TLS和443端口。<br>此时节点的配置信息，可以开启传输层安全，服务器地址、tls servername填写自定义域名，端口可以选择443、2083、8443、2087、2053、2096.<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/vless-domain.png" alt="vless custom domain"></p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -518,7 +567,7 @@
                             版权声明：本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">CC BY 4.0</a>许可协议，转载请注明出处
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="https://etamsylate-pupu.github.io/life/1">https://etamsylate-pupu.github.io/life/1</a>
+                        <strong>本文链接：</strong><a href="https://etamsylate-pupu.github.io/technique/27">https://etamsylate-pupu.github.io/technique/27</a>
                     </p>
                 </blockquote>
         
@@ -538,8 +587,8 @@
     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'https://etamsylate-pupu.github.io/life/1';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'https://etamsylate-pupu.github.io/life/1'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'https://etamsylate-pupu.github.io/technique/27';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'https://etamsylate-pupu.github.io/technique/27'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 <script type="text/ls-javascript" id="disqus-thread-script">
@@ -569,19 +618,19 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/life/2" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
+    
+        <a href="/academic/26" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
     
 </nav>
 
