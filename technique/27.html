@@ -248,7 +248,7 @@
 
     
         <meta property="article:published_time" content="Wed Feb 28 2024 09:51:57 GMT+0800">
-        <meta property="article:modified_time" content="Wed Feb 28 2024 15:34:52 GMT+0800">
+        <meta property="article:modified_time" content="Wed Feb 28 2024 15:47:29 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -271,7 +271,7 @@
     "mainEntityOfPage": "https://etamsylate-pupu.github.io/technique/27",
     "headline": "cloudflare+worker搭建vless高速节点",
     "datePublished": "Wed Feb 28 2024 09:51:57 GMT+0800",
-    "dateModified": "Wed Feb 28 2024 15:34:52 GMT+0800",
+    "dateModified": "Wed Feb 28 2024 15:47:29 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "etamsylate",
@@ -534,7 +534,7 @@
 </li>
 </ul>
 <p>ProxyIP设置的IP或域名用于中转流量，而不是直接路由到使用Cloudflare的网站。如果没有设置ProxyIP，托管在Cloudflare的一些网站会无法访问。</p>
-<p>3Kmfi6HP提供的CDN ProxyIP如下：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/3Kmfi6HP">3Kmfi6HP</a>提供的CDN ProxyIP如下：</p>
 <pre><code>cdn-all.xn--b6gac.eu.org
 
 cdn.xn--b6gac.eu.org
@@ -545,20 +545,28 @@ edgetunnel.anycast.eu.org
 
 cdn.anycast.eu.org
 </code></pre>
-<p>UUID和ProxyIP设置后，保存并部署。<br>查看worker脚本603-626行的代码，查看vless和clash的节点配置信息。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/worker-vless-setting.png" alt="worker-js comment"><br>其中hostname是worker设置的反代地址（name+Zone），即路由地址。userID为刚刚设置的UUID。</p>
+<p>UUID和ProxyIP设置后，保存并部署。</p>
+<p>查看worker脚本603-626行的代码，vless和clash的节点配置信息如下。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/worker-vless-setting.png" alt="worker-js comment"></p>
+<p>其中hostname是worker设置的反代地址（name+Zone），即路由地址。userID为刚刚设置的UUID。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/worker-host.png" alt="worker-host"></p>
-<p>也可以在浏览器输入：https:&#x2F;&#x2F;你的hostname&#x2F;你的UUID<br>查看赋值后的节点配置信息。（由于workers.dev域名已被强，因此无法直接访问）<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/worker-vless-info.png" alt="worker setting"></p>
+<p>也可以在浏览器输入：https:&#x2F;&#x2F;你的hostname&#x2F;你的UUID<br>查看赋值后的节点配置信息。（由于workers.dev域名已被墙，因此无法直接访问）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/worker-vless-info.png" alt="worker setting"></p>
 <h3 id="V2rayN添加节点"><a href="#V2rayN添加节点" class="headerlink" title="V2rayN添加节点"></a>V2rayN添加节点</h3><p>如上文提到的，workers.dev域名已无法直接访问，若也没有自己的域名，则只能使用http传输，无法使用443端口。需要使用<strong>优选ip</strong>进行反向代理。</p>
 <p>以下是优选ip的测试工具，测试后选择一个可行IP即可：</p>
 <pre><code>http://ip.flares.cloud/
 https://stock.hostmonit.com/CloudFlareYes
 https://vfarid.github.io/cf-ip-scanner/?max=30
 </code></pre>
-<p>使用优选IP进行反向代理，则此时节点的配置信息需要修改，将服务器地址改为优选IP，端口改为80或2052，不勾选传输层安全TLS（为空）。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/vless-setting.png" alt="vless-seeting"></p>
-<p>若有自己的域名，则可以通过<strong>自定义域名</strong>进行代理。<br>在Cloudflare-websites添加自己的域名<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/cloudflare-website.png" alt="cloudflare website"></p>
-<p>将域名服务器更改为Cloudflare的域名服务器。即将cloudflare提供的域名服务器信息覆盖自己注册域名所在平台DNS管理中的域名服务器信息(以下以阿里云→Cloudflare为例)。域名服务器更换成功，Cloudflare会发送邮件通知。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/cloudflare-NS.png" alt="cloudflare NS"><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/aliyun-DNS.png" alt="aliyun DNS"><br>并将原解析记录迁移至Cloudflare（即在Cloudflare添加原域名解析记录）。</p>
-<p>此时，在worker中选择triggers中的自定义域，添加自己的（子）域名，例如vless.example.com，添加成功后，DNS解析记录也会新增一条类型为worker的记录。<br>通过自定义域名，可以使用TLS和443端口。<br>此时节点的配置信息，可以开启传输层安全，服务器地址、tls servername填写自定义域名，端口可以选择443、2083、8443、2087、2053、2096.<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/vless-domain.png" alt="vless custom domain"></p>
+<p>使用优选IP进行反向代理，则此时节点的配置信息需要修改，将服务器地址改为优选IP，端口改为80或2052，不勾选传输层安全TLS（为空）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/vless-setting.png" alt="vless-seeting"></p>
+<p>若有自己的域名，则可以通过<strong>自定义域名</strong>进行代理。<br>在Cloudflare-websites添加自己的域名</p>
+<p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/cloudflare-website.png" alt="cloudflare website"></p>
+<p>将域名服务器更改为Cloudflare的域名服务器。即将cloudflare提供的域名服务器信息覆盖自己注册域名所在平台DNS管理中的域名服务器信息(以下以阿里云→Cloudflare为例)。域名服务器更换成功，Cloudflare会发送邮件通知。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/cloudflare-NS.png" alt="cloudflare NS"><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/aliyun-DNS.png" alt="aliyun DNS"></p>
+<p>并将原解析记录迁移至Cloudflare（即在Cloudflare添加原域名解析记录）。</p>
+<p>此时，在worker中选择triggers中的自定义域，添加自己的（子）域名，例如vless.example.com，添加成功后，DNS解析记录也会新增一条类型为worker的记录。<br>通过自定义域名，可以使用TLS和443端口。<br>此时节点的配置信息，可以开启传输层安全，服务器地址、tls servername填写自定义域名，端口可以选择443、2083、8443、2087、2053、2096.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/vless-domain.png" alt="vless custom domain"></p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
