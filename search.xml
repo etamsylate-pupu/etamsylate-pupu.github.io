@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>docker私有库搭建</title>
+      <link href="/uncategorized/null.html"/>
+      <url>/uncategorized/null.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>cloudflare+worker搭建vless高速节点</title>
       <link href="/technique/27.html"/>
       <url>/technique/27.html</url>
@@ -183,7 +196,7 @@
       <link href="/technique/20.html"/>
       <url>/technique/20.html</url>
       
-        <content type="html"><![CDATA[<p><a href="https://docs.docker.com/">docker官方文档地址</a><br>Docker 是一个开源的容器化平台，用于构建、部署和运行应用程序。它可以让开发者打包应用以及依赖项到一个轻量级、可移植的容器中，该容器可以在任何支持Docker的环境中运行。</p><p>Docker解决了以下问题：</p><ul><li>环境不一致</li><li>隔离性</li><li>弹性伸缩</li></ul><p>Dockerfile编写</p><pre><code>FROM：指定基础镜像名称和版本，将打包的项目在该基础镜像上运行LABEL：为镜像添加元数据，可以用于标识镜像的作者、版本、描述等信息（可忽略）ENV：设置环境变量，可以在容器内部使用WORKDIR：设置工作目录，用于指定容器内部的工作目录，后续的命令都将在该目录下执行COPY：从本地复制文件至创建的镜像文件RUN: 对创建的镜像使用的命令CMD: 容器被创建启动时执行的命令</code></pre>]]></content>
+        <content type="html"><![CDATA[<p>应用程序通过隔离实现在运行时相互独立互不干扰，目前实现隔离的方式包括：虚拟机、容器。<br>与虚拟机通过操作系统实现隔离不同，容器技术只隔离应用程序的运行时环境，而容器之间可以共享同一个操作系统。在这里，运行时环境指的是程序运行所需的各种库和配置。</p><p><a href="https://docs.docker.com/">docker官方文档地址</a><br>Docker 是一个开源的容器化平台，用于构建、部署和运行应用程序。它可以让开发者打包应用以及依赖项到一个轻量级、可移植的容器中，该容器可以在任何支持Docker的环境中运行。</p><p>Docker解决了以下问题：</p><ul><li>环境不一致</li><li>隔离性</li><li>弹性伸缩</li></ul><h3 id="Docker基本概念"><a href="#Docker基本概念" class="headerlink" title="Docker基本概念"></a>Docker基本概念</h3><ul><li>Dokerfile<blockquote><p>Docker builds images by reading the instructions from a Dockerfile. A Dockerfile is a text file containing instructions for building your source code. </p></blockquote></li><li>Docker Images</li><li></li></ul><h3 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h3><p>官方地址：<a href="https://docs.docker.com/get-docker/">docs.docker.com&#x2F;get-docker</a><br>检查安装版本：<code>docker --version</code><br>docker启动&#x2F;停止命令：</p><pre><code>systemctl stop dockersystemctl start dockersystemctl restart docker</code></pre><p>docker状态查看：<code>systemctl status docker</code><br>docker信息查看：<code>docker info</code><br>docker镜像查看：<code>docker images</code><br>docker镜像删除：<code>docker rmi 镜像标识</code><br>docker容器查看：<code>docker ps -a</code></p><p>Dockerfile编写</p><pre><code>FROM：指定基础镜像名称和版本，将打包的项目在该基础镜像上运行LABEL：为镜像添加元数据，可以用于标识镜像的作者、版本、描述等信息（可忽略）ENV：设置环境变量，可以在容器内部使用WORKDIR：设置工作目录，用于指定容器内部的工作目录，后续的命令都将在该目录下执行COPY：从本地复制文件至创建的镜像文件RUN: 对创建的镜像使用的命令CMD: 容器被创建启动时执行的命令</code></pre>]]></content>
       
       
       <categories>
