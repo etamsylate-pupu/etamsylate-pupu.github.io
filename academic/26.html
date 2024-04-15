@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/bollnh/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+
+
+
+    <link rel="dns-prefetch" href="https://.disqus.com"/>
+
+
+
+    <link rel="dns-prefetch" href="https://hm.baidu.com"/>
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            论文阅读笔记-When Federated Learning meets Watermarking | 
+        
+        Tsuki-shining
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.svg">
+    <link rel="icon" href="/img/favicon.svg">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="Carpe Diem and Do what I like">
+    <meta name="keywords" content=",paper">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/atelier-sulphurpool-light.min.css?/Nfsq1v6eSrAgiV+c/CKvQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?ezyEvm8ST5CGfpA+kFFi1g==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Tsuki-shining">
+    <meta name="msapplication-starturl" content="https://etamsylate-pupu.github.io/academic/26">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Tsuki-shining">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.svg">
+
+    <!-- Site Verification -->
+    
+    <meta name="baidu-site-verification" content="codeva-zYnpO7oMbe" />
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://etamsylate-pupu.github.io/academic/26">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="论文阅读笔记-When Federated Learning meets Watermarking | Tsuki-shining">
+    <meta property="og:image" content="/img/favicon.svg">
+    <meta property="og:description" content="Carpe Diem and Do what I like">
+    <meta property="og:article:tag" content="paper"> 
+
+    
+        <meta property="article:published_time" content="Sun Dec 31 2023 14:28:04 GMT+0800">
+        <meta property="article:modified_time" content="Mon Apr 15 2024 14:43:08 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="https://etamsylate-pupu.github.io/academic/26" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://etamsylate-pupu.github.io/academic/26",
+    "headline": "论文阅读笔记-When Federated Learning meets Watermarking",
+    "datePublished": "Sun Dec 31 2023 14:28:04 GMT+0800",
+    "dateModified": "Mon Apr 15 2024 14:43:08 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "etamsylate",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Carpe Diem and Do what I like"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Tsuki-shining",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.svg"
+        }
+    },
+    "keywords": ",paper",
+    "description": "Carpe Diem and Do what I like",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+        <script>
+    var _hmt = _hmt || [];
+    (function() {var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?codeva-zYnpO7oMbe';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    
+    
+
+    <!-- Custom Head -->
+    
+
+<meta name="generator" content="Hexo 6.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Pure Thumbnail -->
+            <div class="post_thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#6c84b2 !important">
+        
+    
+            <p class="article-headline-p">
+                论文阅读笔记-When Federated Learning meets Watermarking
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>etamsylate</strong>
+        <span>12月 31, 2023</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-none-link" href="/tags/paper/" rel="tag">paper</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=论文阅读笔记-When Federated Learning meets Watermarking&url=https://etamsylate-pupu.github.io/academic/26&pic=https://etamsylate-pupu.github.io/img/favicon.svg&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=论文阅读笔记-When Federated Learning meets Watermarking&url=https://etamsylate-pupu.github.io/academic/26&via=etamsylate" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://etamsylate-pupu.github.io/academic/26" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://etamsylate-pupu.github.io/academic/26" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>论文地址：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2308.03573">arXiv:2308.03573</a><br>摘要：联邦学习是一种允许多个参与者协作训练深度神经网络而无需集中数据的技术。除其他优点外，它具有隐私保护特性，这使得它在敏感环境中的应用具有吸引力，例如医疗保健或军事。虽然数据没有显式交换，但训练过程需要共享有关参与者模型的信息。这使得单个模型容易被恶意行为者盗窃或未经授权的分发。为了解决机器学习背景下的所有权保护问题，深度神经网络水印方法在过去五年中得到了发展。大多数现有的工作集中在水印的方式，但只有少数方法已被设计为联邦学习及其独特的约束。在本文中，我们概述了联邦学习水印的最新进展，阐明了该领域出现的新挑战和机遇。</p>
+<ul>
+<li>机器学习<ul>
+<li>问题<ul>
+<li>敏感信息可能暴露给未经授权的实体</li>
+<li>训练模型的知识产权问题，外部方盗窃、剽窃和未经授权的使用</li>
+</ul>
+</li>
+<li>解决<ul>
+<li>联邦学习允许多个数据所有共同训练全局模型，无需直接共享他们的私有数据</li>
+<li>模型水印嵌入模型中，在非法模型泄露的情况下能够追踪来源<ul>
+<li>大多数仅解决局部&#x2F;集中训练的问题<ul>
+<li>如何识别参与方对联邦学习做出了贡献</li>
+<li>如何确保最终模型不会被聚合方滥用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>联邦学习<ul>
+<li>框架<ul>
+<li>中心-服务器</li>
+<li>无中心服务器，对等（随机选择客户端作为聚合器）</li>
+<li>Split-Learning<ul>
+<li>在服务器和客户端之间分裂模型，常见的是U型配置：每个客户端有第一层和最后一层，服务器有剩余的层</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>目的<ul>
+<li>确保客户端数据的安全性和隐私性，同时实现与集中式训练相当的模型性能</li>
+</ul>
+</li>
+<li>威胁<ul>
+<li>假设服务器是诚实但好奇的，它将遵循关于客户端选择和全局模型聚合&#x2F;分发的协议，但尝试推断关于客户端数据的信息<ul>
+<li>反转攻击<ul>
+<li>从参与方共享的梯度中重建用户学习的数据</li>
+<li>防御方法<ul>
+<li>同态加密<ul>
+<li>缺点<ul>
+<li>高计算和通信复杂度</li>
+<li>只允许对加密数据执行线性运算，限制了聚合的范围</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>差分隐私<ul>
+<li>缺点<ul>
+<li>难以平衡隐私与模型性能</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>可信执行环境<ul>
+<li>缺点</li>
+<li><ul>
+<li>资源消耗</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>安全多方计算<ul>
+<li>缺点<ul>
+<li>效率低</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>假设客户端是恶意的，引入恶意数据破坏模型的训练，导致模型错误地将特定模式地数据分类，同时保持其在主要任务上的性能<ul>
+<li>中毒攻击（后门攻击）</li>
+<li>具有鲁棒性的聚合方法<ul>
+<li>中值聚合</li>
+<li>Krum聚合</li>
+<li>修剪均值聚合</li>
+</ul>
+</li>
+<li>异常检测<ul>
+<li>执行模型聚合前过滤掉异常的客户端更新</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>安全FL环境的建立过程<ul>
+<li>对参与联邦学习的实体进行安全性分析，并评估他们的可信程度</li>
+<li>集成安全方法，确保数据和模型的隐私</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DNN水印<ul>
+<li>水印需求<ul>
+<li>机密性<ul>
+<li>任何分析模型的人无法检测到模型是否带有水印</li>
+</ul>
+</li>
+<li>保真度<ul>
+<li>保持模型在主要任务上的性能</li>
+</ul>
+</li>
+<li>可靠性<ul>
+<li>确保模型所有者在IP验证期间的低误报率</li>
+</ul>
+</li>
+<li>完整性<ul>
+<li>防止其他方的误报</li>
+</ul>
+</li>
+<li>通用性<ul>
+<li>水印算法应该独立于模型</li>
+</ul>
+</li>
+<li>鲁棒性<ul>
+<li>从被攻击的模型中重构出正确水印的可能性</li>
+</ul>
+</li>
+<li>容量<ul>
+<li>嵌入多个水印的能力</li>
+</ul>
+</li>
+<li>效率<ul>
+<li>水印嵌入和验证过程产生的性能成本</li>
+</ul>
+</li>
+<li>子主题</li>
+</ul>
+</li>
+<li>攻击<ul>
+<li>修剪攻击（Pruning Attack）<ul>
+<li>将冗余的模型权重归零，也可以移除冗余的神经元、滤波器或层来修剪模型。</li>
+</ul>
+</li>
+<li>微调（Fine Tuning Attack）<ul>
+<li>重新训练模型并更新其权重，而不降低精度。</li>
+</ul>
+</li>
+<li>覆盖攻击（Overwriting Attack）<ul>
+<li>嵌入一个新的水印来替换原来的水印</li>
+</ul>
+</li>
+<li>Wang and Kerschbaum Attack<ul>
+<li>针对静态白盒水印算法，依赖视觉检查来改变水印模型的权重分布</li>
+</ul>
+</li>
+<li>属性推断攻击（Property Inference Attack）<ul>
+<li>训练辨别模型以区分带水印模型和不带水印的模型</li>
+</ul>
+</li>
+<li>模糊攻击（Ambiguity Attack）<ul>
+<li>在模型上伪造一个新的水印，使外部实体难以确定合法的水印所有者</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>验证过程访问模型参数的类型<ul>
+<li>白盒<ul>
+<li>完全访问模型（架构、参数、激活映射）</li>
+<li>方法<ul>
+<li>以二进制字符串或图像的形式，将信息隐藏至模型参数</li>
+<li>激活映射</li>
+<li>添加护照层（passport layer）</li>
+</ul>
+</li>
+<li>典型方案<ul>
+<li>目标模型M，加水印版本Mwat，秘密密钥Kext，特征提取函数Ext，投影函数Proj，秘密密钥Kproj，水印b，从水印模型Mwat提取的水印bext</li>
+<li>提取模型特征，利用这些特征进行水印插入&#x2F;提取<ul>
+<li>所获得的特征可以是模型权重的子集、从触发集中秘密选择的特定输入数据的模型激活图</li>
+<li>使用特定正则化项Ewat正则化M<ul>
+<li>依赖在水印空间定义的距离度量d，距离度量可以是汉明距离、铰链距离或者交叉熵</li>
+<li>确保投影函数在预定的水印空间对水印进行编码</li>
+</ul>
+</li>
+<li>通过损失函数参数化的微调操作导出带水印模型</li>
+</ul>
+</li>
+<li>例子<ul>
+<li>方案1<ul>
+<li>特征提取函数涉及计算秘密选择的滤波器权重w的平均值</li>
+<li>使用二进制交叉熵作为水印正则化项Ewat的距离度量d</li>
+</ul>
+</li>
+<li>方案2<ul>
+<li>特征提取函数由批量归一化权重中的缩放参数组成</li>
+<li>铰链损失被用作水印正则化Ewat的距离度量d</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>黑盒<ul>
+<li>通过提供输入和接收相关预测与模型交互，只能通过API执行验证过程</li>
+<li>方法<ul>
+<li>通过改变模型的行为对其添加水印</li>
+<li>常用技术包括<ul>
+<li>使用触发集训练模型</li>
+</ul>
+</li>
+<li>每一个epoch训练期间，一个batch不是仅来自训练集，而是训练集和触发集之间的串联</li>
+</ul>
+</li>
+<li>例子<ul>
+<li>不同类型的输入<ul>
+<li>内容水印：将有意义的内容添加到训练集的图像中。模型应该由内容触发，并返回相关的固定标签。</li>
+<li>不相关水印：与模型的主要任务无关的图像。每个图像都有一个相关的标签，或者每个样本都可以有其特定的输出。</li>
+<li>噪声水印：为训练集中的图像添加特定的噪声。然后，该模型将具有该特定噪声的任何图像分类为预定义的标签。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>联邦学习模型水印<ul>
+<li>问题<ul>
+<li>存在多个参与者</li>
+<li>需要考虑参与方交换期间的威胁</li>
+<li>在训练完成后对模型进行水印处理，或是开始训练之前嵌入水印，存在模型被窃取以及水印剔除的风险</li>
+</ul>
+</li>
+<li>定义<ul>
+<li>一个或多个参与者将水印插入共享模型的过程，遵循客户端-服务器框架</li>
+<li>服务器<ul>
+<li>负责给全局模型加水印</li>
+</ul>
+</li>
+<li>客户端<ul>
+<li>一个或多个客户端对模型更新添加水印，以便为全局模型添加水印</li>
+</ul>
+</li>
+<li>服务器和客户端<ul>
+<li>服务器和客户端协作，共同为全局模型添加水印</li>
+</ul>
+</li>
+<li>水印需求<ul>
+<li>容量<ul>
+<li>避免插入不同客户端信息的冲突，需要足够的比特数</li>
+</ul>
+</li>
+<li>通用性<ul>
+<li>FL有许多额外的安全和隐私机制（如鲁棒聚合和差分隐私），水印需要独立地应用这些机制</li>
+</ul>
+</li>
+<li>效率<ul>
+<li>跨设备架构中，客户端的计算能力较低，需要考虑嵌入水印过程产生的成本</li>
+</ul>
+</li>
+<li>保密性<ul>
+<li>所有参与方未参与注册水印过程，应当没有水印被检测出</li>
+</ul>
+</li>
+<li>鲁棒性<ul>
+<li>每个参与者需要有唯一的一个水印，能够标识所有者</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>相关工作<ul>
+<li>WAFFLE<ul>
+<li>B,G, Tekgul,et al.“Waffle: Watermarking in federated learning“，SRDS.2021</li>
+<li>假设<ul>
+<li>服务器是一个可信方，使用黑盒水印技术。利用触发集嵌入模型水印</li>
+<li>客户端不能够使用后门、投毒或是嵌入自己的水印<ul>
+<li>被激励最大限度提高全局模型准确率</li>
+</ul>
+</li>
+<li>对手只能保存模型和应用模型</li>
+<li>可以使用不需要客户端数据的触发集，WAFFLEPattern：一组包含随机图案的图像，背景有噪声<ul>
+<li>WAFFLEPATTERN更好地保留了模型性能，并降低了通信和计算开销</li>
+<li>弹性的水印去除技术，包括微调，修剪和逆向工程，如果不超过10%的客户端串通击败水印程序。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>黑盒水印<ul>
+<li>预训练<ul>
+<li>使用触发集训练初始化的模型，直到该模型在该集合上具有良好的准确率</li>
+</ul>
+</li>
+<li>再训练<ul>
+<li>使用触发集微调模型，直到模型学习了水印</li>
+</ul>
+</li>
+<li>PreTrain用于在第一轮之前将水印嵌入到模型中。在每一轮中，在聚合过程之后，服务器使用ReTrain将水印重新嵌入到模型中。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>FedIPR<ul>
+<li>Li B,et al. “FedIPR: Ownership verification for federated deep neural network models”, TPAMI, 2022</li>
+<li>既有白盒水印也有黑盒水印<ul>
+<li>白盒水印<ul>
+<li>每个客户端生成一个随机秘密矩阵以及一个批量归一化层的位置，嵌入消息</li>
+<li>损失：原始消息和重建消息之间的类似铰链的损失</li>
+</ul>
+</li>
+<li>黑盒水印<ul>
+<li>每个客户端在本地数据训练的小型CNN中使用投影梯度下降技术生成触发集</li>
+<li>损失：和主任务的损失相同，但使用触发集作为输入</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>FedTracker<ul>
+<li>Shao S, et al. “Fedtracker:Furnishing ownership verification and traceability for federated learning model”, arxiv, 2022</li>
+<li>假设<ul>
+<li>服务器是一个可信方，不能访问与原始任务相关的数据</li>
+<li>客户端可能是恶意的，也可能是诚实的。恶意客户端可以复制和分发模型，但需要遵循训练过程以最大限度提高全局准确率</li>
+</ul>
+</li>
+<li>允许服务器嵌入全局黑盒水印，也可以嵌入特定于每个客户端的白盒水印<ul>
+<li>全局黑盒水印<ul>
+<li>使用WAFFLEPattern方法生成触发集</li>
+<li>聚合之后嵌入</li>
+</ul>
+</li>
+<li>白盒水印<ul>
+<li>服务器为每个客户端生成一个随机秘密矩阵和指纹</li>
+<li>损失：原始消息和重构消息之间类似铰链的损失</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Liu<ul>
+<li>Liu X, et al.“Secure federated learing model verification: A client-side backdoor triggered watermarking scheme”,SMC,2021</li>
+<li>客户端黑盒水印方案<ul>
+<li>假设<ul>
+<li>服务器是不可信的</li>
+<li>客户端也可能是恶意的</li>
+<li>验证过程中，一个完全值得信赖的第三方被招募为仲裁者</li>
+<li>引入比例因子避免特定客户端在每一轮被选中<ul>
+<li>客户端发送其乘以λ的模型权重<ul>
+<li>近似于每次迭代都选择该客户端，并且水印更容易嵌入</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>触发集<ul>
+<li>由发起者创建具有给定标签的高斯噪声图像组成的触发集</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>FedRight<ul>
+<li>Chen J, et al. “Fedright: An effective model copyright protection for federated learning”, Computers &amp; Security, 2023</li>
+<li>模型指纹（白盒）<ul>
+<li>假设<ul>
+<li>服务器是可信且诚实的</li>
+<li>客户端可能不可信</li>
+</ul>
+</li>
+<li>方法<ul>
+<li>服务器从一组输入（关键样本）中生成对抗性示例</li>
+<li>服务器提取每个预测的概率分布，并将其反馈至具有关键样本目标的检测器</li>
+<li>验证过程中，由检测器预测对应的模型是否是好的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>FedCIP<ul>
+<li>Liang J, Wang R.“FedCIP: Federated Client Intellectual Property Protection with Traitor Tracking”, arxiv, 2023</li>
+<li>白盒水印方案<ul>
+<li>假设<ul>
+<li>服务器是诚实但好奇的，不能直接修改模型的参数</li>
+<li>客户端可能是恶意的，可以发起模型窃取行为</li>
+<li>触发集不依赖于原始数据</li>
+</ul>
+</li>
+<li>方法<ul>
+<li>对于每个客户端，水印在一个周期期间是唯一的<ul>
+<li>如果该轮是循环的第一次迭代，则用新的水印替换先前的水印</li>
+<li>否则进行小的更新增强水印</li>
+</ul>
+</li>
+<li>Federated watermark进行水印验证<ul>
+<li>给定周期的所有贡献者的水印的级联</li>
+<li>如客户端泄露模型，可以通过计算具有高水印检测率的参与者与泄露模型的交集来识别</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Yang<ul>
+<li>Yang W, et al.“Watermarking in Secure FederatedLearming: A Verification Framework Based on Client-Side Backdooring”, arxiv,2022</li>
+<li>黑盒水印方案<ul>
+<li>方法<ul>
+<li>使用基于置换的密钥和基于噪声的模式构建图像<ul>
+<li>可以抵抗歧义攻击，无论是试图暴力破解密钥还是生成新的触发集</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Merkle Sign<ul>
+<li>Li F Q, et al, “Towards practical watermark for deep neural networks in federated learning”, arxiv, 2021</li>
+<li>Li F Q, et al.“Merkle-Sign: Watermarking Framework for Deep Neural Networks in Federated Learning”, arxiv, 2021</li>
+<li>假设<ul>
+<li>服务器是可信的</li>
+<li>客户端是诚实但好奇的</li>
+</ul>
+</li>
+<li>使用Merkle树的公共验证协议&amp;#x20;<ul>
+<li>服务器在每一轮使用嵌入函数将两条身份信息（密钥）插入全局模型中，一条标识服务器，另一条标识接收模型的客户端</li>
+<li>服务器上传密钥元组和由水印嵌入函数生成的验证函数元组，转化为具有事件记录的merkle树</li>
+<li>最后一轮，服务器将客户端生成的所有密钥嵌入全局模型并更新merkle树</li>
+</ul>
+</li>
+<li>黑盒水印方案<ul>
+<li>依赖于每个客户端的自动编码器</li>
+</ul>
+</li>
+<li>白盒水印</li>
+<li>防御<ul>
+<li>歧义攻击<ul>
+<li>使用授权的时间服务器或分散的共识协议进行授权</li>
+</ul>
+</li>
+<li>破坏攻击<ul>
+<li>应用多个水印</li>
+</ul>
+</li>
+<li>叛徒跟踪<ul>
+<li>为每个客户端嵌入唯一的水印</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>缺少训练终止后识别叛徒客户端的协议，因为模型的水印同时来自所有客户端的信息</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>FedZKP<ul>
+<li>Yang W, et al.“FedZKP: Federated Model Ownership Verification with Zero-knowledge Proof, arxiv, 2023</li>
+<li>假设<ul>
+<li>客户端是可信的</li>
+<li>服务器是诚实但好奇的</li>
+</ul>
+</li>
+<li>基于零知识证明的验证协议<ul>
+<li>用户需要与可信机构共享其公钥验证模型所有权<ul>
+<li>存在拦截密钥的攻击者</li>
+<li>使用零知识证明协议解决，确保只有拥有水印中公钥相关联的私钥的个人才能证明</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>白盒水印<ul>
+<li>每个客户端配备公钥和私钥</li>
+<li>客户端公钥的散列嵌入到模型中</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>子主题</li>
+</ul>
+</li>
+<li>讨论<ul>
+<li>基于触发集的服务器端水印算法<ul>
+<li>大多数方法通过在损失函数中添加正则化项，让模型在触发集上过拟合</li>
+<li>大多数黑盒水印算法基于主任务数据集构建触发集</li>
+<li>服务器没有自己的数据集，因此需要使用不相关或者基于噪声的输入（例如WafflePattern），或是从客户端提供的自动编码器生成触发集（例如Merkle Sign）<ul>
+<li>分别学习两项任务可能会对Fedelity产生负面影响<ul>
+<li>FedTracker使用持续学习和全局梯度记忆来防止先前学习的干扰</li>
+</ul>
+</li>
+<li>容易遭到Evasion attack</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>聚合函数<ul>
+<li>常见的聚合函数<ul>
+<li>FedAvg<ul>
+<li>在客户端执行多个epoch后，参数的平均</li>
+<li>每个客户端的权重矩阵乘以一个缩放因子<ul>
+<li>子主题<ul>
+<li>n为所有客户端数据集样本的数量</li>
+</ul>
+</li>
+<li>子主题</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>水印方法应该独立于聚合函数</li>
+<li>由于客户端的水印技术对嵌入消息和触发集敏感，因此他们保持远离彼此的更新<ul>
+<li>所使用安全聚合技术，一部分的更新可能会因此被拒绝</li>
+</ul>
+</li>
+<li>数据异构的情况，目前缺乏相关工作解决</li>
+</ul>
+</li>
+<li>客户端选择<ul>
+<li>考虑不同端嵌入水印时客户端选择的影响</li>
+</ul>
+</li>
+<li>跨设备设置<ul>
+<li>大部分方法处理的是少量客户端的情况</li>
+<li>黑盒水印，该问题来自低计算能力</li>
+<li>白盒水印，该问题来自嵌入容量</li>
+</ul>
+</li>
+<li>差分隐私和同态加密<ul>
+<li>差分隐私<ul>
+<li>服务器和客户端之间（或直接在客户端之间）共享模型或梯度更新，存在对潜在攻击的担忧，例如成员推断</li>
+<li>常见DP方法<ul>
+<li>将高斯随机噪声引入到发送到聚合器的梯度中，从而添加额外的隐私保护层</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>同态加密<ul>
+<li>客户端可以使用其公钥保护其模型更新，在将数据发送到服务器之前对其进行加密。服务器在加密空间中执行模型聚合，客户端可以在收到聚合的全局模型后使用其私钥对其进行解密。</li>
+<li>适合S1场景（客户端添加水印），不适用于S1（服务器端嵌入水印）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>非CS架构的联邦学习水印<ul>
+<li>U型架构服务器端执行黑盒水印较为困难，其无法在模型上使用输入和标签</li>
+</ul>
+</li>
+<li>来自客户端和服务器的攻击<ul>
+<li>服务器可以控制所选择的参与者或如何聚合模型参数。它有时也清楚地了解客户在每一轮的参数。然而，它没有数据，也无法完全控制客户是否严格遵守培训程序。</li>
+<li>客户端有自己的私有数据集，他们可以发送他们想要的更新。然而，他们无法控制服务器级别的更新。如果服务器想要避免客户端的子集对模型进行水印，它可以使用拜占庭攻击检测方法。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            版权声明：本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">CC BY 4.0</a>许可协议，转载请注明出处
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="https://etamsylate-pupu.github.io/academic/26">https://etamsylate-pupu.github.io/academic/26</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 DISQUS -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'https://etamsylate-pupu.github.io/academic/26';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'https://etamsylate-pupu.github.io/academic/26'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+<script type="text/ls-javascript" id="disqus-thread-script">
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/technique/27" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/knowledge/25" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="etamsylate's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        flickertsuki@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto: flickertsuki@gmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2024/03/">三月 2024<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2024/02/">二月 2024<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/12/">十二月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/11/">十一月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/10/">十月 2023<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/08/">八月 2023<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/07/">七月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/04/">四月 2023<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/03/">三月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/02/">二月 2023<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/06/">六月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/12/">十二月 2020<span class="sidebar_archives-count">6</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/academic/">academic<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/knowledge/">knowledge<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/life/">life<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/technique/">technique<span class="sidebar_archives-count">21</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">cloud</i>
+                
+                标签云
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="/links" title="友链">
+                
+                    <i class="material-icons sidebar-material-icons">links</i>
+                
+                友链
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">29</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/etamsylate-pupu" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;Tsuki-shining
+            
+                <br>
+                
+                    <a target="_blank" href="http://www.miitbeian.gov.cn" rel="nofollow noopener">赣ICP备2020013818号</a>
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/bollnh/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?wgjW/HuQG9JDgvPDPoRAng==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?LT4t6iE6m8TO1BLGGiNJqA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+   <!-- 使用 DISQUS js 代码 -->
+<script id="dsq-count-scr" src="//.disqus.com/count.js" async></script>
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<!-- <script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('
+<link rel="stylesheet" href="/css/uc.css">
+');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script> -->
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 2020;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/bollnh/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
