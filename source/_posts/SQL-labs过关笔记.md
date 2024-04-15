@@ -1,10 +1,11 @@
 ---
  title: SQL-labs过关笔记
  date: 2020-12-26 14:12:00
- categories: 技术
+ categories: technique
  tags: []
- urlname: 16
+ urlname: 7
 --- 
+
 SQL-labs靶场搭建；
 ①docker搭建：[参考链接][1]，博文还提供通关指南
 ②本地搭建：Github[链接][2]，将下载后的文件夹放入phpstudy中的www目录下，开启phpstudy的Apache和mysql服务，之后就可以通过`http://本机ip/sqli-labs` 访问靶场进行关卡选择
@@ -21,7 +22,7 @@ SQL-labs靶场搭建；
 (3)构造URL：`http://127.0.0.1/sqli-labs/Less-1/?id=2'` 并访问，页面返回了SQL语法报错信息，证明单引号已经拼接到后台SQL语句中，起到了闭合作用，并影响了后台SQL查询行为
 ![less-1.4][6]
 (4)构造URL：`http://127.0.0.1/sqli-labs/Less-1/?id=1' --+`访问，前者页面返回了数据库报错信息，后者页面返回正常，又--+在数据库中表示注释，猜测该系统后台SQL查询语句应该类似于如下语句：
-    SELECT username, password WHERE t_user WHERE UserID = '1' LIMIT 0,1
+    SELECT username, password FROME t_user WHERE UserID = '1' LIMIT 0,1
 ![less-1.5][7]
 (5)通过ORDER BY判断表的列数，因为 ORDER BY num 通过按第num列将元组排序，当num超过列数时返回错误信息，所以可以通过它判断表的列数，提交的URL格式为： `http://127.0.0.1/sqli-labs/Less-1/?id=1' ORDER BY num--+`，将 ORDER BY 的数字num从2逐步增大到3页面返回正常，直到增大为4时页面返回报错信息"Unknown column"，表明数据表的列数为3列：
 ![less-1.6][8]

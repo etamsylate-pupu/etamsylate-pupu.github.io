@@ -19,9 +19,9 @@ root: /
 permalink: :category/:urlname.html
 permalink_defaults:
   urlname: index
-#pretty_urls:
-#  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
-#  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+pretty_urls:
+ trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
+ trailing_html: false # Set to false to remove trailing '.html' from permalinks
 
 # Directory
 source_dir: source
@@ -48,7 +48,7 @@ relative_link: false
 future: true
 highlight:
   enable: false #true originally, modified by etamsylayte on 2022/5/26
-  line_number: true
+  line_number: false
   auto_detect: false
   tab_replace: ''
   wrap: true
@@ -56,7 +56,7 @@ highlight:
 prismjs:
   enable: false
   preprocess: true
-  line_number: true
+  line_number: false
   tab_replace: ''
 
 # Home page setting
@@ -106,11 +106,14 @@ theme: material  #modified by etamsylate 2022/5/24
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: git
+- type: git
   #repository: https://github.com/etamsylate-pupu/etamsylate-pupu.github.io.git
-  repository: git@github.com:etamsylate-pupu/etamsylate-pupu.github.io.git
-  branch: main
+  repository: 
+    github: git@github.com:etamsylate-pupu/etamsylate-pupu.github.io.git,main
+    coding: git@e.coding.net:redamancy7/hexoblog/hexoBlog.git,master
+  #branch: main
   # type: ''
+#- type: baidu_url_submitter
 
 
 #add hexo-generator-search plugin
@@ -128,11 +131,19 @@ baidusitemap:
 sitemap:
   path: sitemap.xml
 
+#设置百度主动推送
+# baidu_url_submit:
+#   count: 5
+#   host:  www.redamancy.tech #www.etamsylate-pupu.github.io
+#   token: 0P15CxDaYHhTpFKc #codeva-V3X1937QFp
+#   path: baidu_urls.txt # 文本文档的地址， 新链接会保存在此文本文档里，这个默认
+
 #代码高亮
 prism_plugin:
+  enable: false
   mode: 'preprocess'    # realtime/preprocess
-  theme: 'tomorrow'
-  line_number: false    # default false
+  theme: 'tomorrow' #tomorrow
+  line_number: false   # default false
   custom_css:
 
 #文章字数统计
