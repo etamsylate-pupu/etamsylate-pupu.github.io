@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://etamsylate-pupu.github.io/  #modified by etamsylate on 2022/5/25
+url: https://blog.redamancy.tech  #https://etamsylate-pupu.github.io/  #modified by etamsylate on 2022/5/25
 #permalink: :year/:month/:day/:title/ #modified by etamsylate on 2022/11/18
 root: /
 permalink: :category/:urlname.html
@@ -113,13 +113,13 @@ deploy:
     coding: git@e.coding.net:redamancy7/hexoblog/hexoBlog.git,master
   #branch: main
   # type: ''
-#- type: baidu_url_submitter
+- type: baidu_url_submitter
 
 
 #add hexo-generator-search plugin
 search:
   path: search.xml
-  field: all
+  field: post
 
 # #add SEO Optimization
 Plugins:
@@ -132,11 +132,11 @@ sitemap:
   path: sitemap.xml
 
 #设置百度主动推送
-# baidu_url_submit:
-#   count: 5
-#   host:  www.redamancy.tech #www.etamsylate-pupu.github.io
-#   token: 0P15CxDaYHhTpFKc #codeva-V3X1937QFp
-#   path: baidu_urls.txt # 文本文档的地址， 新链接会保存在此文本文档里，这个默认
+baidu_url_submit:
+  count: 5
+  host:  blog.redamancy.tech #www.etamsylate-pupu.github.io
+  token: 0P15CxDaYHhTpFKc #0P15CxDaYHhTpFKc #codeva-V3X1937QFp
+  path: baidu_urls.txt # 文本文档的地址， 新链接会保存在此文本文档里，这个默认
 
 #代码高亮
 prism_plugin:

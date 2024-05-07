@@ -11,5 +11,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: https://etamsylate-pupu.github.io/sitemap.xml
-Sitemap: https://etamsylate-pupu.github.io/baidusitemap.xml
+Sitemap: https://blog.redamancy.tech/sitemap.xml
+Sitemap: https://blog.redamancy.tech/baidusitemap.xml
