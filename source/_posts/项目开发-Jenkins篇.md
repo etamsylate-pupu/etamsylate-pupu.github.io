@@ -29,7 +29,7 @@ Jenkins中的节点是用于执行构建任务的计算机或计算机集群，�
 - 安装SSH Build Agents, Credentials插件。
 - 远程主机的 SSH 访问权限，并且该主机上安装了 Java。
 
-   ```bash
+   ```
    #安装OpenJDK 11
    sudo apt update
    sudo apt install openjdk-11-jdk
