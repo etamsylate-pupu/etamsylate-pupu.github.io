@@ -90,11 +90,6 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
-            
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/atelier-sulphurpool-light.min.css?/Nfsq1v6eSrAgiV+c/CKvQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-            
-        
 
     
 
@@ -233,7 +228,7 @@
 
     <!-- Site Verification -->
     
-    <meta name="baidu-site-verification" content="codeva-zYnpO7oMbe" />
+    <meta name="baidu-site-verification" content="codeva-BBmgiVZi5f" />
 
     <!-- RSS -->
     
@@ -248,7 +243,7 @@
 
     
         <meta property="article:published_time" content="Wed Oct 18 2023 11:46:52 GMT+0800">
-        <meta property="article:modified_time" content="Mon Apr 15 2024 14:43:08 GMT+0800">
+        <meta property="article:modified_time" content="Wed May 08 2024 17:43:33 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -271,7 +266,7 @@
     "mainEntityOfPage": "https://blog.redamancy.tech/technique/23",
     "headline": "项目开发-Jenkins篇",
     "datePublished": "Wed Oct 18 2023 11:46:52 GMT+0800",
-    "dateModified": "Mon Apr 15 2024 14:43:08 GMT+0800",
+    "dateModified": "Wed May 08 2024 17:43:33 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "etamsylate",
@@ -303,7 +298,7 @@
         <script>
     var _hmt = _hmt || [];
     (function() {var hm = document.createElement('script');
-    hm.src = 'https://hm.baidu.com/hm.js?codeva-zYnpO7oMbe';
+    hm.src = 'https://hm.baidu.com/hm.js?codeva-BBmgiVZi5f';
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(hm, s);
     })();
@@ -357,6 +352,15 @@
 
     <!-- Left aligned menu below button -->
     
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Jenkins%E8%8A%82%E7%82%B9"><span class="post-toc-number">1.</span> <span class="post-toc-text">Jenkins节点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%8A%82%E7%82%B9%E9%85%8D%E7%BD%AE%EF%BC%88Launch-agents-via-SSH%EF%BC%89-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">节点配置（Launch agents via SSH）-环境准备</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%8A%82%E7%82%B9%E9%85%8D%E7%BD%AE%EF%BC%88Launch-agents-via-SSH%EF%BC%89-%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">节点配置（Launch agents via SSH）-添加节点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%8A%82%E7%82%B9%E9%85%8D%E7%BD%AE%EF%BC%88Launch-agents-via-SSH%EF%BC%89-%E5%90%AF%E5%8A%A8%E8%8A%82%E7%82%B9"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">节点配置（Launch agents via SSH）-启动节点</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Jenkins%E4%BB%BB%E5%8A%A1"><span class="post-toc-number">2.</span> <span class="post-toc-text">Jenkins任务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BB%BB%E5%8A%A1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">创建任务</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Jenkins-Pipeline"><span class="post-toc-number">3.</span> <span class="post-toc-text">Jenkins Pipeline</span></a></li></ol>
+    </ul>
     
 
 
@@ -503,7 +507,144 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p><a target="_blank" rel="noopener" href="https://www.jenkins.io/doc/">Jenkins官方英文文档</a><br><a target="_blank" rel="noopener" href="https://www.jenkins.io/zh/doc/">Jenkins官方中文文档</a></p>
+        <p>Jenkins是一款开源 CI&amp;CD 软件，用于自动化各种任务，包括构建、测试和部署软件。其支持各种运行方式，可通过系统包、Docker 或者通过一个独立的 Java 程序。</p>
+<h3 id="Jenkins节点"><a href="#Jenkins节点" class="headerlink" title="Jenkins节点"></a>Jenkins节点</h3><p>Jenkins中的节点是用于执行构建任务的计算机或计算机集群，可以通过配置界面、CLI或API进行配置和管理，可以分为主节点和代理节点，用于实现任务执行的并行化、负载均衡和资源隔离。</p>
+<p>通常在安装Jenkins这台服务器默认就是一个主节点（俗称master），其他相对于这台安装Jenkins的机器都称为从节点或代理节点（俗称slaves, agent）。</p>
+<ul>
+<li><p>主节点是Jenkins的核心节点，负责管理整个Jenkins系统的配置和任务分发。主节点可以执行一部分构建任务，但通常不建议在主节点上执行耗时较长或资源占用较高的任务，以免影响Jenkins的整体性能。</p>
+</li>
+<li><p>代理节点是由主节点管理的其他计算机或计算机集群。代理节点可以执行构建任务，并将结果返回给主节点。代理节点可以根据需要添加多个，以提供更多的计算资源和并行执行能力。</p>
+</li>
+</ul>
+<p>不同的Jenkins任务有不同的操作环境需求，比如部署基于IIS服务的需要windows操作系统，构建IOS应用需要MacOs，构建脚本是shell的需要Linux操作系统。</p>
+<p>在 Jenkins 中添加一个 SSH 节点（称为 SSH Slave 或 SSH Agent），需要通过 SSH 连接到远程主机，并让 Jenkins 控制该节点上的构建任务。以下是具体的步骤：</p>
+<h4 id="节点配置（Launch-agents-via-SSH）-环境准备"><a href="#节点配置（Launch-agents-via-SSH）-环境准备" class="headerlink" title="节点配置（Launch agents via SSH）-环境准备"></a>节点配置（Launch agents via SSH）-环境准备</h4><ul>
+<li><p>Jenkins 已安装并运行。</p>
+</li>
+<li><p>安装SSH Build Agents, Credentials插件。</p>
+</li>
+<li><p>远程主机的 SSH 访问权限，并且该主机上安装了 Java。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#安装OpenJDK 11</span>
+<span class="token function">sudo</span> apt update
+<span class="token function">sudo</span> apt <span class="token function">install</span> openjdk-11-jdk
+<span class="token comment" spellcheck="true">#检查是否安装成功</span>
+java -version
+</code></pre>
+</li>
+<li><p>远程主机的 IP 地址或主机名、SSH 端口号、用户名和密码（用户名和密码认证）或私钥（密钥认证）。</p>
+</li>
+</ul>
+<h4 id="节点配置（Launch-agents-via-SSH）-添加节点"><a href="#节点配置（Launch-agents-via-SSH）-添加节点" class="headerlink" title="节点配置（Launch agents via SSH）-添加节点"></a>节点配置（Launch agents via SSH）-添加节点</h4><p>首先在节点管理处新增“固定节点”</p>
+<p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/node.png" alt="node entry"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/new_node.png" alt="new node"></p>
+<p>根据信息配置节点，填写远程主机信息以及SSH凭据。选项说明如下：</p>
+<ul>
+<li>Remote root directory: 输入 Jenkins 代理将运行工作的远程主机上的目录路径。</li>
+<li>Labels: 输入该节点的标签（可选，但有助于在构建时指定节点）。</li>
+<li>Usage: 通常选择 “Only build jobs with label expressions matching this node”。</li>
+<li>Launch method: 选择 “Launch agents via SSH”。</li>
+<li>Host: 输入远程主机的 IP 地址或主机名。</li>
+<li>Credentials: 点击 “Add” 按钮，然后在弹出的对话框中添加 SSH 凭据（用户名和密码或用户名和私钥）。<ul>
+<li>如果使用用户名和私钥，点击 “Kind” 下拉菜单选择 “SSH Username with private key”。</li>
+<li>在 “ID” 栏输入一个识别名。</li>
+<li>在 “Username” 栏输入远程主机的用户名。</li>
+<li>在 “Private Key” 部分，输入私钥或者上传私钥文件。</li>
+</ul>
+</li>
+<li>Host Key Verification Strategy: 根据安全需求选择一个选项，如果不介意安全风险，可以选择 “Non verifying Verification Strategy”。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/node_config1.png" alt="node configure"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/node_config2.png" alt="node configure"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/node_config3.png" alt="node configure"></p>
+<h4 id="节点配置（Launch-agents-via-SSH）-启动节点"><a href="#节点配置（Launch-agents-via-SSH）-启动节点" class="headerlink" title="节点配置（Launch agents via SSH）-启动节点"></a>节点配置（Launch agents via SSH）-启动节点</h4><p>通过点击节点旁边的 Launch agent 来启动。如果配置正确，Jenkins 将通过 SSH 连接到远程节点并启动代理。点击状态可查看启动信息，若启动失败，可根据日志中的报错信息修改。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/node_launch.png" alt="node launch"></p>
+<h3 id="Jenkins任务"><a href="#Jenkins任务" class="headerlink" title="Jenkins任务"></a>Jenkins任务</h3><p>Jenkins中的任务（Job）是指要执行的特定操作或一系列操作的定义。任务通过配置和设置来定义其行为和执行方式，包括触发器、构建步骤、构建参数、构建环境等。通过任务的配置和管理，可以实现自动化的构建、测试和部署流程。</p>
+<p>Jenkins Job中的一些概念如下：</p>
+<ul>
+<li><p>任务类型：Jenkins支持多种任务类型，例如自由风格项目、流水线项目、多配置项目等。每种任务类型都有不同的配置选项和执行方式。</p>
+</li>
+<li><p>构建触发器：任务可以通过不同的触发器来触发构建操作。常见的触发器包括定时触发、版本控制系统的变更触发、其他任务的成功触发等。</p>
+</li>
+<li><p>构建步骤：任务可以定义一系列的构建步骤，每个步骤执行特定的操作。例如，可以包括代码拉取、编译、测试、部署等步骤。</p>
+</li>
+<li><p>构建参数：任务可以定义输入参数，允许用户在执行任务时提供参数值。参数可以是文本、下拉列表、布尔值等类型。</p>
+</li>
+<li><p>构建环境：任务可以定义构建环境，包括设置环境变量、配置工具路径、指定构建代理节点等。</p>
+</li>
+<li><p>构建历史和报告：Jenkins会记录每次任务的构建历史，包括构建状态、执行时间、控制台输出等。任务还可以生成构建报告，用于查看构建结果和分析构建过程。</p>
+</li>
+<li><p>插件扩展：Jenkins提供了丰富的插件生态系统，可以扩展任务的功能和特性。通过安装和配置插件，可以实现更多的自定义和集成。</p>
+</li>
+</ul>
+<h4 id="创建任务"><a href="#创建任务" class="headerlink" title="创建任务"></a>创建任务</h4><p>以创建流水线任务为例，任务涉及通用、高级项目选项和流水线。通用配置包含上述提及的构建触发器，添加扩展后的扩展选项等。</p>
+<p>针对推送至仓库后的构建，以gitlab webhook为例，需要先安装“Gitlab”插件，接着任务配置中，构建触发器选择“Build when a change is pushed to Gitlab”，之后在gitlab对应的项目中，选择设置中的webhooks，将前一步的GitLab webhook URL和高级中的Secret Token填入，出发事件根据自己的需求设置，例如，当代码推送至dev分支时触发，则勾选”Push events-wildcard pattern”，填写分支名称”dev”。最后，点击测试中的对应事件（push events），若返回200，则说明配置成功。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/jenkins_job.png" alt="Jenkins job"><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/job_config.png" alt="Job configure"><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/job_config2.png" alt="Job configure"><br><img src="https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/gitlab_hook.png" alt="gitlab webhooks"></p>
+<p>流水线是项目运行需要执行的一系列操作，具体见下小节。</p>
+<h3 id="Jenkins-Pipeline"><a href="#Jenkins-Pipeline" class="headerlink" title="Jenkins Pipeline"></a>Jenkins Pipeline</h3><p>Jenkins Pipeline（或简称为 “Pipeline”）是一套插件，将持续交付的实现和实施集成到 Jenkins 中。Pipelines 由多个步骤（step）组成，允许构建、测试和部署应用。当一个步骤运行成功时继续运行下一个步骤。 当任何一个步骤执行失败时，Pipeline 的执行结果也为失败。</p>
+<p>在 Linux、BSD 和 Mac OS（类 Unix ）系统中的 shell 命令， 对应于 Pipeline 中的一个 sh 步骤（step）。</p>
+<p>以下是简单的hello word脚本。</p>
+<pre class=" language-Pipeline"><code class="language-Pipeline">pipeline &#123;
+    agent any
+    stages &#123;
+        stage('Build') &#123;
+            steps &#123;
+                sh 'echo "Hello World"'
+                sh '''
+                    echo "Multiline shell steps works too"
+                    ls -lah
+                '''
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<ul>
+<li><p>pipeline 定义一个流水线脚本</p>
+</li>
+<li><p>agent 指示 Jenkins 为整个流水线分配一个执行器（在 Jenkins 环境中的任何可用代理&#x2F;节点上）和工作区。</p>
+</li>
+<li><p>stages 全部的工作都在这里执行</p>
+</li>
+<li><p>stage 每个工作开始</p>
+</li>
+<li><p>steps jenkinsfile 声明式脚本往这里面写</p>
+</li>
+<li><p>echo 写一个简单的字符串到控制台输出。</p>
+</li>
+</ul>
+<p>以构建项目docker镜像为例，用Pipleine script编写部署脚本。项目根据镜像文件Dockerfile构建，拉取代码等一系列命令都在Dockerfile中。因此，此时项目运行额步骤包含：切换至镜像目录→暂停镜像→构建镜像→启动镜像→删除多余的镜像（避免镜像堆积导致内存占用）。</p>
+<p>此时命令执行的权限与节点认证时用户的权限有关，涉及sudo权限的，需要给当前用户赋予sudo权限，并需要设置为不需要输入密码（在&#x2F;etc&#x2F;sudoer文件中增加<code>Usename ALL=NOPASSWD: ALL</code>）。</p>
+<pre><code>pipeline &#123;
+    agent &#123;
+     node &#123;
+            label &#39;代理节点标签&#39;
+        &#125;
+    &#125;
+
+    stages &#123;
+        stage(&#39;Deploy&#39;) &#123;
+            steps &#123;
+                script &#123;
+
+                    try &#123;
+                        sh &#39;cd 镜像文件所在目录 &amp;&amp; sudo docker-compose down &amp;&amp; sudo docker-compose build --no-cache  &amp;&amp; sudo docker-compose up -d&#39;
+                        sh &#39;sudo docker image prune -f -a --filter \&#39;until=24h\&#39;&#39;
+                        echo &#39;部署完成&#39;
+                    &#125; catch (Exception e) &#123;
+                        error &quot;Command failed with exception: $&#123;e&#125;&quot;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+</code></pre>
+<p>参考资料：</p>
+<p><a target="_blank" rel="noopener" href="https://www.jenkins.io/doc/">Jenkins官方英文文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jenkins.io/zh/doc/">Jenkins官方中文文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wlddhj/article/details/134990223">Jenkins节点 node、凭据 credentials、任务 job</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.teambition.com/community/1917.html">jenkins添加ssh节点（SSH Server）教程</a></p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -669,7 +810,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2024/03/">三月 2024<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2024/02/">二月 2024<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/12/">十二月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/11/">十一月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/10/">十月 2023<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/08/">八月 2023<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/07/">七月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/04/">四月 2023<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/03/">三月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/02/">二月 2023<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/06/">六月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/12/">十二月 2020<span class="sidebar_archives-count">6</span></a>
+                <a class="sidebar_archives-link" href="/archives/2024/05/">五月 2024<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2024/04/">四月 2024<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2024/03/">三月 2024<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2024/02/">二月 2024<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/12/">十二月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/11/">十一月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/10/">十月 2023<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/08/">八月 2023<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/07/">七月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/04/">四月 2023<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/03/">三月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/02/">二月 2023<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/06/">六月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/12/">十二月 2020<span class="sidebar_archives-count">6</span></a>
             </ul>
         </li>
         
@@ -687,7 +828,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/academic/">academic<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/knowledge/">knowledge<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/life/">life<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/technique/">technique<span class="sidebar_archives-count">21</span></a>
+                <a class="sidebar_archives-link" href="/categories/academic/">academic<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/knowledge/">knowledge<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/life/">life<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/technique/">technique<span class="sidebar_archives-count">24</span></a>
             </ul>
         </li>
         
@@ -747,7 +888,7 @@
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">29</span>
+                <span class="sidebar-badge">33</span>
             </a>
         </li>
         
@@ -974,12 +1115,10 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
-    
-        
-            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
-        
-    
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
 
 
 <!-- Window Load -->
@@ -991,13 +1130,10 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
-        
-            $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-                prettyPrint();
-                })
-        
     
+        
+        
+        HanabiBrowser.start('pre code',false);
     
 </script>
 
