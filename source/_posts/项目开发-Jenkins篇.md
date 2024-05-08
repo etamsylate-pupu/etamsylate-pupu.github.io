@@ -69,6 +69,12 @@ Jenkins中的节点是用于执行构建任务的计算机或计算机集群，�
 ![node configure][9]
 
 
+#### 节点配置（Launch agents via SSH）-启动节点
+
+通过点击节点旁边的 Launch agent 来启动。如果配置正确，Jenkins 将通过 SSH 连接到远程节点并启动代理。点击状态可查看启动信息，若启动失败，可根据日志中的报错信息修改。
+
+![node launch][10]
+
 ### Jenkins任务
 
 Jenkins中的任务（Job）是指要执行的特定操作或一系列操作的定义。任务通过配置和设置来定义其行为和执行方式，包括触发器、构建步骤、构建参数、构建环境等。通过任务的配置和管理，可以实现自动化的构建、测试和部署流程。
@@ -89,11 +95,26 @@ Jenkins Job中的一些概念如下：
 
 - 插件扩展：Jenkins提供了丰富的插件生态系统，可以扩展任务的功能和特性。通过安装和配置插件，可以实现更多的自定义和集成。
 
+#### 创建任务
+
+以创建流水线任务为例，任务涉及通用、高级项目选项和流水线。通用配置包含上述提及的构建触发器，添加扩展后的扩展选项等。
+
+针对推送至仓库后的构建，以gitlab webhook为例，需要先安装“Gitlab”插件，接着任务配置中，构建触发器选择“Build when a change is pushed to Gitlab”，之后在gitlab对应的项目中，选择设置中的webhooks，将前一步的GitLab webhook URL和高级中的Secret Token填入，出发事件根据自己的需求设置，例如，当代码推送至dev分支时触发，则勾选"Push events-wildcard pattern"，填写分支名称"dev"。最后，点击测试中的对应事件（push events），若返回200，则说明配置成功。
+
+![Jenkins job][11]
+![Job configure][12]
+![Job configure][13]
+![gitlab webhooks][14]
+
+流水线是项目运行需要执行的一系列操作，具体见下小节。
+
 ### Jenkins Pipeline
 
 Jenkins Pipeline（或简称为 "Pipeline"）是一套插件，将持续交付的实现和实施集成到 Jenkins 中。Pipelines 由多个步骤（step）组成，允许构建、测试和部署应用。当一个步骤运行成功时继续运行下一个步骤。 当任何一个步骤执行失败时，Pipeline 的执行结果也为失败。
 
-在 Linux、BSD 和 Mac OS（类 Unix ) 系统中的 shell 命令， 对应于 Pipeline 中的一个 sh 步骤（step）。
+在 Linux、BSD 和 Mac OS（类 Unix ）系统中的 shell 命令， 对应于 Pipeline 中的一个 sh 步骤（step）。
+
+以下是简单的hello word脚本。
 
 ```Pipeline script
 pipeline {
@@ -113,11 +134,51 @@ pipeline {
 
 ```
 
+- pipeline 定义一个流水线脚本
+
+- agent 指示 Jenkins 为整个流水线分配一个执行器（在 Jenkins 环境中的任何可用代理/节点上）和工作区。
+
+- stages 全部的工作都在这里执行
+
+- stage 每个工作开始
+
+- steps jenkinsfile 声明式脚本往这里面写
+
+- echo 写一个简单的字符串到控制台输出。
 
 
+以构建项目docker镜像为例，用Pipleine script编写部署脚本。项目根据镜像文件Dockerfile构建，拉取代码等一系列命令都在Dockerfile中。因此，此时项目运行额步骤包含：切换至镜像目录→暂停镜像→构建镜像→启动镜像→删除多余的镜像（避免镜像堆积导致内存占用）。
+
+此时命令执行的权限与节点认证时用户的权限有关，涉及sudo权限的，需要给当前用户赋予sudo权限，并需要设置为不需要输入密码（在/etc/sudoer文件中增加`Usename ALL=NOPASSWD: ALL`）。
+
+```
+pipeline {
+    agent {
+     node {
+            label '代理节点标签'
+        }
+    }
+
+    stages {
+        stage('Deploy') {
+            steps {
+                script {
+
+                    try {
+                        sh 'cd 镜像文件所在目录 && sudo docker-compose down && sudo docker-compose build --no-cache  && sudo docker-compose up -d'
+                        sh 'sudo docker image prune -f -a --filter \'until=24h\''
+                        echo '部署完成'
+                    } catch (Exception e) {
+                        error "Command failed with exception: ${e}"
+                    }
+                }
+            }
+        }
+    }
+}
 
 
-
+```
 
 
 参考资料：
@@ -145,3 +206,8 @@ pipeline {
 [7]: https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/node_config1.png
 [8]: https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/node_config2.png
 [9]: https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/node_config3.png
+[10]: https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/node_launch.png
+[11]: https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/jenkins_job.png
+[12]: https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/job_config.png
+[13]: https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/job_config2.png
+[14]: https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/gitlab_hook.png
