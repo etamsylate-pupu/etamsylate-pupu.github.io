@@ -99,7 +99,7 @@ Jenkins Job中的一些概念如下：
 
 以创建流水线任务为例，任务涉及通用、高级项目选项和流水线。通用配置包含上述提及的构建触发器，添加扩展后的扩展选项等。
 
-针对推送至仓库后的构建，以gitlab webhook为例，需要先安装“Gitlab”插件，接着任务配置中，构建触发器选择“Build when a change is pushed to Gitlab”，之后在gitlab对应的项目中，选择设置中的webhooks，将前一步的GitLab webhook URL和高级中的Secret Token填入，出发事件根据自己的需求设置，例如，当代码推送至dev分支时触发，则勾选"Push events-wildcard pattern"，填写分支名称"dev"。最后，点击测试中的对应事件（push events），若返回200，则说明配置成功。
+针对推送至仓库后的构建，以gitlab webhook（[webhook介绍][15]）为例，需要先安装“Gitlab”插件，接着任务配置中，构建触发器选择“Build when a change is pushed to Gitlab”，之后在gitlab对应的项目中，选择设置中的webhooks，将前一步的GitLab webhook URL和高级中的Secret Token填入，出发事件根据自己的需求设置，例如，当代码推送至dev分支时触发，则勾选"Push events-wildcard pattern"，填写分支名称"dev"。最后，点击测试中的对应事件（push events），若返回200，则说明配置成功。
 
 ![Jenkins job][11]
 ![Job configure][12]
@@ -211,3 +211,4 @@ pipeline {
 [12]: https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/job_config.png
 [13]: https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/job_config2.png
 [14]: https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/develop/jenkins/gitlab_hook.png
+[15]: https://zhuanlan.zhihu.com/p/133449879

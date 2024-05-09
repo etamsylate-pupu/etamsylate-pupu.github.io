@@ -1,5 +1,5 @@
 ---
-title: 项目开发 K8s篇
+title: 项目开发-K8s篇
 tags: [k8s]
 date: 2024-04-24 10:22:34
 categories: technique

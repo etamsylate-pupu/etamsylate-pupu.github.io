@@ -6,6 +6,11 @@ categories: academic
 urlname: 31
 ---
 
+### 论文信息
+
+- 会议：ICMR （CCF B）
+- 发表时间：2017.04
+- 论文地址： [https://arxiv.org/pdf/1701.04082][1]
 
 
 ### 摘要
@@ -34,3 +39,7 @@ urlname: 31
 
 #### 水印需求
 
+
+
+
+[1]: https://arxiv.org/pdf/1701.04082
