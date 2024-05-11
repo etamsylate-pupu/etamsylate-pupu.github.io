@@ -16,3 +16,17 @@ Redis 提供了多种数据类型来支持不同的业务场景，比如 String(
 
 除此之外，Redis 还支持**事务 、持久化、Lua 脚本、多种集群方案（主从复制模式、哨兵模式、切片机群模式）、发布/订阅模式，内存淘汰机制、过期删除机制**等等。
 
+
+
+
+
+
+
+
+参考资料：
+
+[Redis 常见面试题][1]
+
+
+
+[1]: https://www.xiaolincoding.com/redis/base/redis_interview.html#%E4%BB%80%E4%B9%88%E6%98%AF-redis
