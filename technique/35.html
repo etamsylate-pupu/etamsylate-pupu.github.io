@@ -52,7 +52,7 @@
     
     <title>
         
-            归档 | 
+            项目开发-Nginx部署 | 
         
         Tsuki-shining
     </title>
@@ -63,7 +63,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="Carpe Diem and Do what I like">
-    <meta name="keywords" content="">
+    <meta name="keywords" content=",nginx">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -219,7 +219,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Tsuki-shining">
-    <meta name="msapplication-starturl" content="https://blog.redamancy.tech/archives/page/4/">
+    <meta name="msapplication-starturl" content="https://blog.redamancy.tech/technique/35">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Tsuki-shining">
@@ -234,13 +234,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="https://blog.redamancy.tech/archives/page/4/">
+    <meta property="og:url" content="https://blog.redamancy.tech/technique/35">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="归档 | Tsuki-shining">
+    <meta property="og:title" content="项目开发-Nginx部署 | Tsuki-shining">
     <meta property="og:image" content="/img/favicon.svg">
     <meta property="og:description" content="Carpe Diem and Do what I like">
-    
+    <meta property="og:article:tag" content="nginx"> 
 
+    
+        <meta property="article:published_time" content="Sat May 11 2024 11:13:54 GMT+0800">
+        <meta property="article:modified_time" content="Mon May 13 2024 15:50:56 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -248,13 +251,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://blog.redamancy.tech/archives/page/4/" />
+        <link rel="canonical" href="https://blog.redamancy.tech/technique/35" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://blog.redamancy.tech/technique/35",
+    "headline": "项目开发-Nginx部署",
+    "datePublished": "Sat May 11 2024 11:13:54 GMT+0800",
+    "dateModified": "Mon May 13 2024 15:50:56 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "etamsylate",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Carpe Diem and Do what I like"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Tsuki-shining",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.svg"
+        }
+    },
+    "keywords": ",nginx",
+    "description": "Carpe Diem and Do what I like",
+}
+</script>
 
 
     
@@ -297,350 +330,337 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85Nginx"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装Nginx</span></a></li></ol>
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Pure Thumbnail -->
-            <div class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#6c84b2 !important">
+            <div class="post_thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#6c84b2 !important">
+        
+    
+            <p class="article-headline-p">
+                项目开发-Nginx部署
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>etamsylate</strong>
+        <span>5月 11, 2024</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-none-link" href="/tags/nginx/" rel="tag">nginx</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
         
     
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/knowledge/6">学习站点推荐</a></p>
-    </div>
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=项目开发-Nginx部署&url=https://blog.redamancy.tech/technique/35&pic=https://blog.redamancy.tech/img/favicon.svg&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
 
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            编程语言学习：菜鸟教程、
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/knowledge/6" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="etamsylate's avatar">
-            </div>
-            <div>
-                <strong>etamsylate</strong>
-                <span>12月 26, 2020</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/knowledge/">knowledge</a>
-              </span>
-            
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=项目开发-Nginx部署&url=https://blog.redamancy.tech/technique/35&via=etamsylate" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
 
-            
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.redamancy.tech/technique/35" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
 
-            
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://blog.redamancy.tech/technique/35" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
 
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
 </div>
 
-            
-            
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>Nginx是一个开源（BSD许可）的异步框架的 Web 服务器，可以用作反向代理，负载均衡器和 HTTP 缓存。</p>
+<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><p>环境：Ubuntu 22.04</p>
+<p>通过apt工具包安装，终端输入：</p>
+<pre><code>sudo apt-get install nginx
+</code></pre>
+<p>可以在终端中输入以下命令来检查Nginx配置文件是否有语法错误，此时也能查看配置文件路径。（默认情况下，配置文件名为 nginx.conf，并放在目录 &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf，&#x2F;etc&#x2F;nginx 或 &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx 中。）</p>
+<pre><code>lab@bit-PowerEdge-R740xd:~$ sudo nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+</code></pre>
+<p>配置文件内容如下：</p>
+<pre><code>user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+include /etc/nginx/modules-enabled/*.conf;
+
+events &#123;
+        worker_connections 768;
+        # multi_accept on;
+&#125;
+
+http &#123;
+
+        ##
+        # Basic Settings
+        ##
+
+        sendfile on;
+        tcp_nopush on;
+        types_hash_max_size 2048;
+        # server_tokens off;
+
+        # server_names_hash_bucket_size 64;
+        # server_name_in_redirect off;
+
+        include /etc/nginx/mime.types;
+        default_type application/octet-stream;
+
+        ##
+        # SSL Settings
+        ##
+
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
+        ssl_prefer_server_ciphers on;
+
+        ##
+        # Logging Settings
+        ##
+
+        access_log /var/log/nginx/access.log;
+        error_log /var/log/nginx/error.log;
+
+        ##
+        # Gzip Settings
+        ##
+
+        gzip on;
+
+        # gzip_vary on;
+        # gzip_proxied any;
+        # gzip_comp_level 6;
+        # gzip_buffers 16 8k;
+        # gzip_http_version 1.1;
+        # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+
+        ##
+        # Virtual Host Configs
+        ##
+
+        include /etc/nginx/conf.d/*.conf;
+        include /etc/nginx/sites-enabled/*;
+&#125;
+                                     
+</code></pre>
+<p>如果虚拟主机的配置也在该文件，不便于管理。因此，通常使用<code>include /etc/nginx/conf.d/*.conf;</code>引入，在<code>/etc/nginx/conf.d/</code>目录下创建对应的域名配置文件。</p>
+<p>参考资料：<br><a target="_blank" rel="noopener" href="https://docs.nginx.com/">Nginx Docs</a></p>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            版权声明：本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">CC BY 4.0</a>许可协议，转载请注明出处
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="https://blog.redamancy.tech/technique/35">https://blog.redamancy.tech/technique/35</a>
+                    </p>
+                </blockquote>
         
     
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
     
-        
-            <!-- Pure Thumbnail -->
-            <div class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#6c84b2 !important">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/technique/5">搭建Github个人图床</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            定义图床一般指储存...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/technique/5" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="etamsylate's avatar">
-            </div>
-            <div>
-                <strong>etamsylate</strong>
-                <span>12月 25, 2020</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/technique/">technique</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
 </div>
 
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Pure Thumbnail -->
-            <div class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#6c84b2 !important">
-        
-    
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/technique/4">typecho建站Tips</a></p>
-    </div>
+                
 
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            域名...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/technique/4" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="etamsylate's avatar">
-            </div>
-            <div>
-                <strong>etamsylate</strong>
-                <span>12月 12, 2020</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/technique/">technique</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Pure Thumbnail -->
-            <div class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#6c84b2 !important">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/life/2">江安动物园</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-              相信大家都听说过“江安动物园”这个说法，今天小编带大家感受一下。
-可爱鸭鸭
-明远湖...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/life/2" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="etamsylate's avatar">
-            </div>
-            <div>
-                <strong>etamsylate</strong>
-                <span>12月 10, 2020</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/life/">life</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Pure Thumbnail -->
-            <div class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#6c84b2 !important">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/life/1">停止内耗</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-              最近在微博看到一个词，叫做“自我内耗”。
-  在传统的定义中，内耗（Internal friction）主要是从群体的角度出发，比...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/life/1" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="etamsylate's avatar">
-            </div>
-            <div>
-                <strong>etamsylate</strong>
-                <span>12月 09, 2020</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/life/">life</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-    <!-- Index nav -->
-        <nav class="material-nav mdl-cell mdl-cell--12-col">
-            <a class="extend prev" rel="prev" href="/archives/page/3/"><button aria-label="Last page" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_back</i></button></a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span>
-        </nav>
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
-    $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 DISQUS -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'https://blog.redamancy.tech/technique/35';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'https://blog.redamancy.tech/technique/35'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+<script type="text/ls-javascript" id="disqus-thread-script">
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
 </script>
 
-    
 </div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/academic/34" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
