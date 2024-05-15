@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://blog.redamancy.tech/technique/20.html</loc>
-    <lastmod>2024-05-13</lastmod>
+    <loc>https://blog.redamancy.tech/technique/29.html</loc>
+    <lastmod>2024-05-15</lastmod>
   </url>
   <url>
     <loc>https://blog.redamancy.tech/technique/35.html</loc>
+    <lastmod>2024-05-15</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.redamancy.tech/technique/20.html</loc>
     <lastmod>2024-05-13</lastmod>
   </url>
   <url>
@@ -38,10 +42,6 @@
   </url>
   <url>
     <loc>https://blog.redamancy.tech/technique/30.html</loc>
-    <lastmod>2024-05-08</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.redamancy.tech/technique/29.html</loc>
     <lastmod>2024-05-08</lastmod>
   </url>
   <url>

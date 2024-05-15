@@ -243,7 +243,7 @@
 
     
         <meta property="article:published_time" content="Sat May 11 2024 11:13:54 GMT+0800">
-        <meta property="article:modified_time" content="Mon May 13 2024 15:50:56 GMT+0800">
+        <meta property="article:modified_time" content="Wed May 15 2024 11:45:19 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -266,7 +266,7 @@
     "mainEntityOfPage": "https://blog.redamancy.tech/technique/35",
     "headline": "项目开发-Nginx部署",
     "datePublished": "Sat May 11 2024 11:13:54 GMT+0800",
-    "dateModified": "Mon May 13 2024 15:50:56 GMT+0800",
+    "dateModified": "Wed May 15 2024 11:45:19 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "etamsylate",
@@ -359,11 +359,30 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85Nginx"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装Nginx</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85Nginx"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装Nginx</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Nginx-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="post-toc-number">2.</span> <span class="post-toc-text">Nginx 配置文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%E4%B8%8E%E5%86%85%E5%AE%B9"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">文件结构与内容</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD%E9%85%8D%E7%BD%AE"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">重新加载配置</span></a></li></ol></li></ol>
     </ul>
     
 
 
+
+
+    
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 <!-- Layouts -->
@@ -508,16 +527,39 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <p>Nginx是一个开源（BSD许可）的异步框架的 Web 服务器，可以用作反向代理，负载均衡器和 HTTP 缓存。</p>
-<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><p>环境：Ubuntu 22.04</p>
-<p>通过apt工具包安装，终端输入：</p>
-<pre><code>sudo apt-get install nginx
-</code></pre>
-<p>可以在终端中输入以下命令来检查Nginx配置文件是否有语法错误，此时也能查看配置文件路径。（默认情况下，配置文件名为 nginx.conf，并放在目录 &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf，&#x2F;etc&#x2F;nginx 或 &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx 中。）</p>
+<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><p>在 Linux 系统上安装 Nginx 通常有以下几种方式：</p>
+<ol>
+<li><p>通过包管理工具安装：</p>
+<ul>
+<li>Debian&#x2F;Ubuntu 系统：可以使用 apt-get 命令安装 Nginx，命令为：<code>sudo apt-get install nginx</code></li>
+<li>CentOS&#x2F;RHEL 系统：可以使用 yum 命令安装 Nginx，命令为：<code>sudo yum install nginx</code></li>
+</ul>
+</li>
+<li><p>从源码编译安装：</p>
+<ul>
+<li>首先需要从 Nginx 官网下载源码包，并解压缩到本地</li>
+<li>进入解压后的 Nginx 目录，执行 <code>./configure</code> 命令进行配置，可以指定一些编译参数</li>
+<li>然后执行 <code>make</code> 命令编译源码</li>
+<li>最后执行 <code>make install</code> 命令进行安装</li>
+</ul>
+</li>
+<li><p>使用第三方工具安装：</p>
+<ul>
+<li>一些 Linux 发行版提供了一键安装脚本或工具来方便安装 Nginx，比如 OpenResty、Nginx Plus 等</li>
+</ul>
+</li>
+</ol>
+<p>安装完成后可以使用 <code>nginx -v</code> 命令来查看 Nginx 的版本信息，使用 <code>nginx -t</code> 命令来测试配置文件的语法是否正确，使用 <code>systemctl start nginx</code> 命令来启动 Nginx 服务。</p>
+<p>在终端中使用<code>nginx -t</code> 命令检查Nginx配置文件是否有语法错误时，终端也会输出配置文件路径。默认情况下，配置文件地址为“程序目录&#x2F;conf&#x2F;nginx.conf”，即配置文件通常放在目录 &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf（源码安装默认路径），&#x2F;etc&#x2F;nginx&#x2F;conf （包管理工具安装默认路径）或 &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;conf 中。）</p>
 <pre><code>lab@bit-PowerEdge-R740xd:~$ sudo nginx -t
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 </code></pre>
-<p>配置文件内容如下：</p>
+<h3 id="Nginx-配置文件"><a href="#Nginx-配置文件" class="headerlink" title="Nginx 配置文件"></a>Nginx 配置文件</h3><h4 id="文件结构与内容"><a href="#文件结构与内容" class="headerlink" title="文件结构与内容"></a>文件结构与内容</h4><p>配置文件由一些指令控制模块组成，其决定了 nginx 及其模块的工作方式。</p>
+<blockquote>
+<p>指令可分为简单指令和块指令。一个简单的指令是由空格分隔的名称和参数组成，并以分号 ; 结尾。块指令具有与简单指令相同的结构，但不是以分号结尾，而是以大括号{}包围的一组附加指令结尾。如果块指令的大括号内部可以有其它指令，则称这个块指令为上下文（例如：events，http，server 和 location）。<br>配置文件中被放置在任何上下文之外的指令都被认为是主上下文 main。events 和 http 指令在主 main 上下文中，server 在 http 中，location 又在 server 中</p>
+</blockquote>
+<p>配置文件nginx.conf内容如下：</p>
 <pre><code>user www-data;
 worker_processes auto;
 pid /run/nginx.pid;
@@ -581,8 +623,100 @@ http &#123;
 &#125;
                                      
 </code></pre>
-<p>如果虚拟主机的配置也在该文件，不便于管理。因此，通常使用<code>include /etc/nginx/conf.d/*.conf;</code>引入，在<code>/etc/nginx/conf.d/</code>目录下创建对应的域名配置文件。</p>
-<p>参考资料：<br><a target="_blank" rel="noopener" href="https://docs.nginx.com/">Nginx Docs</a></p>
+<p>常见的配置项含义如下：</p>
+<ul>
+<li>user：指定 Nginx worker 进程运行的用户和用户组</li>
+<li>worker_processes：指定 Nginx 启动时创建的 worker 进程数量</li>
+<li>error_log：指定错误日志文件的路径</li>
+<li>pid：指定 Nginx 主进程的 PID 文件路径</li>
+<li>events：指定 Nginx 事件模块的配置，如 worker_connections（每个 worker 进程的最大连接数）</li>
+<li>http：指定 HTTP 模块的配置，包括 server（定义虚拟主机）、upstream（定义负载均衡）、location（定义 URL 匹配规则）等配置项</li>
+<li>server：定义一个虚拟主机，包括监听的端口、域名、SSL 配置等</li>
+<li>location：定义 URL 匹配规则，包括匹配的 URL 路径、反向代理配置、缓存配置等</li>
+<li>access_log：指定访问日志文件的路径</li>
+<li>root：指定网站根目录的路径</li>
+<li>index：指定默认的首页文件</li>
+<li>include：包含其他配置文件</li>
+<li>upstream：定义负载均衡的后端服务器</li>
+<li>proxy_pass：指定反向代理的目标地址</li>
+<li>ssl_certificate &#x2F; ssl_certificate_key：指定 SSL 证书和私钥的路径</li>
+<li>gzip：开启或关闭 HTTP 响应的压缩</li>
+<li>server_name：指定虚拟主机的域名</li>
+<li>error_page：定义错误页面的处理方式</li>
+<li>rewrite：重定向 URL 请求</li>
+<li>limit_req_zone &#x2F; limit_req：限制请求速率</li>
+</ul>
+<p>如果虚拟主机的配置也在该文件，不便于管理。因此，通常使用<code>include /etc/nginx/conf.d/*.conf;</code>引入，并在<code>/etc/nginx/conf.d/</code>目录下创建对应的域名配置文件。</p>
+<p>在外网使用域名访问网站服务时，请求过程为：外网域名 -&gt; 外网服务器:80 -&gt; Nginx反向代理 -&gt; 内网前端:xx（前端显示） -&gt; （发出请求） -&gt; 外网域名 -&gt; 外网服务器:80 -&gt; 内网前端:xx -&gt; nginx分发 -&gt; 内网后端</p>
+<p>具体地，当使用域名访问时，根据DNS记录，域名被解析为对应的外网IP。HTTP默认访问80端口，HTTPS访问443端口，因此客户端对<a href="http://xxx.com的请求会被映射到外网IP:80上，对https//xxx.com的请求则映射到外网IP:443上。">http://xxx.com的请求会被映射到外网IP:80上，对https//xxx.com的请求则映射到外网IP:443上。</a></p>
+<p>服务器上的Nginx服务，监听对应的端口，并将该端口的请求转发至内网前端服务运行端口。此时，可以通过域名访问前端页面，并查看页面的静态内容。前端向内网后端发起请求，（此时前端向后端发起的请求的host是xxx.com，还无法访问到内网的后端服务，因此需要更改前端的API请求，将host改为域名。）</p>
+<pre><code>upstream xxx.com &#123;
+   server 127.0.0.1:8082;
+&#125;
+
+
+
+server &#123;
+   listen 443 ssl;
+   server_name xxx.com;
+
+
+   client_max_body_size 100M;
+
+   gzip off;
+   #gzip_min_length 256;
+   #gzip_comp_level 4;
+   #gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript text/x-js;
+
+   # ssl configurations
+   ssl_certificate /etc/nginx/cert/xxx.com.crt;
+   ssl_certificate_key /etc/nginx/cert/xxx.com.key;
+   ssl_protocols TLSv1.2 TLSv1.3;
+   ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+   ssl_prefer_server_ciphers on;
+
+
+   proxy_max_temp_file_size 0;
+   proxy_set_header Host $host:$server_port;
+   proxy_set_header X-Real-IP $remote_addr;
+   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+   proxy_set_header X-Forwarded-Host $host;
+   proxy_set_header X-Forwarded-Server $host;
+   proxy_set_header X-Forwarded-Proto  http;
+   #proxy_set_header Host $http_host;
+   #proxy_pass_request_headers on;
+   #proxy_set_header X-NginX-Proxy true;
+   #proxy_redirect off;
+
+   access_log  /etc/nginx/logs/xxx.com_access.log;
+   error_log   /etc/nginx/logs/xxx.com_error.log error;
+
+
+   location / &#123;
+       proxy_pass http://xxx.com;
+   &#125;
+&#125;
+
+
+
+
+server &#123;
+    listen 80;
+
+    server_name xxx.com;
+
+    rewrite ^(.*) https://$server_name$1 permanent;
+&#125;
+
+
+
+
+</code></pre>
+<h4 id="重新加载配置"><a href="#重新加载配置" class="headerlink" title="重新加载配置"></a>重新加载配置</h4><p>Nginx 有一个主进程（Master）和几个工作进程（Worker）。主进程的主要目的是读取和评估配置，并维护工作进程。工作进程对请求进行处理。</p>
+<p>若配置文件发生更改，可以重新启动Nginx使得配置生效，也可以将重新加载配置信号发送到 Nginx 的主进程。</p>
+<p>nginx 启动之后，可以通过调用可执行文件附带 -s 参数 来控制，命令为<code>nginx -s 信号</code>。要重新加载配置，执行的命令为：<code>nginx -s reload</code>。</p>
+<p>一旦主进程收到要重新加载配置的信号，它将检查新配置文件的语法有效性，并尝试应用其中提供的配置。如果成功，主进程将启动新的工作进程，并向旧工作进程发送消息，请求它们关闭。否则，主进程回滚更改，并继续使用旧配置。旧工作进程接收到关闭命令后，停止接受新的请求连接，并继续维护当前请求，直到这些请求都被处理完成之后，旧工作进程将退出。</p>
+<p>参考资料：<br><a target="_blank" rel="noopener" href="https://docs.nginx.com/">Nginx Docs</a><br><a target="_blank" rel="noopener" href="https://docshome.gitbook.io/nginx-docs/">Nginx 中文文档</a></p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
