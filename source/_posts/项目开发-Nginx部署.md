@@ -9,9 +9,11 @@ urlname: 35
 
 Nginx是一个开源（BSD许可）的异步框架的 Web 服务器，可以用作反向代理，负载均衡器和 HTTP 缓存。
 
+### Nginx代理与反向代理
 
+在Nginx代理中，Nginx服务器作为客户端和后端服务器之间的中间人，将客户端请求转发至后端服务器，并将后端服务器的响应返回给客户端。这种代理方式代替客户端发送请求，隐藏了真实的客户端，通常用于加速访问、负载均衡、缓存等目的。
 
-
+在Nginx反向代理中，Nginx服务器作为后端服务器的代理，客户端请求先到达Nginx服务器，然后Nginx服务器再将请求转发至后端服务器。后端服务器将响应返回给Nginx服务器，再由Nginx服务器返回给客户端。这种代理方式通常用于隐藏后端服务器的真实IP地址、负载均衡、安全过滤等目的。
 
 
 ### 安装Nginx
@@ -144,14 +146,91 @@ http {
 
 如果虚拟主机的配置也在该文件，不便于管理。因此，通常使用`include /etc/nginx/conf.d/*.conf;`引入，并在`/etc/nginx/conf.d/`目录下创建对应的域名配置文件。
 
-在外网使用域名访问网站服务时，请求过程为：外网域名 -> 外网服务器:80 -> Nginx反向代理 -> 内网前端:xx（前端显示） -> （发出请求） -> 外网域名 -> 外网服务器:80 -> 内网前端:xx -> nginx分发 -> 内网后端
+在外网使用域名访问网站服务时，请求过程为：外网域名 -> 外网服务器:80/443 -> 外网请求映射到内网 -> Nginx反向代理 -> 内网前端:xx（前端显示） -> （发出请求） -> 外网域名 -> 外网服务器:80 -> 内网前端:xx -> Nginx反向代理 -> 内网后端
 
 具体地，当使用域名访问时，根据DNS记录，域名被解析为对应的外网IP。HTTP默认访问80端口，HTTPS访问443端口，因此客户端对http://xxx.com的请求会被映射到外网IP:80上，对https//xxx.com的请求则映射到外网IP:443上。
 
-服务器上的Nginx服务，监听对应的端口，并将该端口的请求转发至内网前端服务运行端口。此时，可以通过域名访问前端页面，并查看页面的静态内容。前端向内网后端发起请求，（此时前端向后端发起的请求的host是xxx.com，还无法访问到内网的后端服务，因此需要更改前端的API请求，将host改为域名。）
+经过NAT转换将外网映射到内网服务器监听端口，内网服务器上的Nginx服务监听到请求后，将该端口的请求转发至内网前端服务运行端口。此时，可以通过域名访问前端页面，并查看页面的静态内容，之后，前端向内网后端发起请求加载动态内容。
+
+#### 具体例子
+
+将来自www.example.com域名的HTTP请求通过Nginx代理转发至本地的127.0.0.1:806地址，实现反向代理。Nginx配置文件如下：
+```
+#http
+server {
+    listen 80;
+    server_name www.example.com;
+
+    location / {
+        proxy_set_header HOST $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                # 代理地址
+        proxy_pass http://127.0.0.1:806/;
+    }
+}
+
 
 ```
-upstream xxx.com {
+
+
+实现对前端和后端API服务的反向代理和HTTPS加密配置，同时设置访问日志和错误日志的记录路径等功能。例如：其中dev.redamancy.tech对应前端服务，api-dev.redamancy.tech对应后端API服务，内网前端服务在800端口，内网后端服务在8082端口，前端Nginx配置文件frontend.dev.redamancy.tech.conf内容如下：
+
+```
+upstream dev-redamancy.tech {
+    server 127.0.0.1:800;
+}
+
+
+# https
+server {
+    listen 443  ssl;
+    server_name  dev.redamancy.tech;
+
+    include mime.types;
+
+    gzip on;
+    gzip_min_length 256;
+    gzip_comp_level 4;
+    gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript text/x-js;
+
+    # ssl configurations
+    ssl_certificate /etc/nginx/cert/xxx.crt;
+    ssl_certificate_key /etc/nginx/cert/xxx.key;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+    ssl_prefer_server_ciphers on;
+
+
+    access_log  /etc/nginx/logs/dev-redamancy.tech_access.log;
+    error_log   /etc/nginx/logs/dev-redamancy.tech.log error;
+
+    #static
+    location / {
+        proxy_pass http://dev-redamancy.tech;
+    }
+
+    error_page 405 =200 http://$host$request_uri;
+
+    underscores_in_headers on;
+
+}
+
+server {
+    listen 80;
+
+    server_name dev.redamancy.tech;
+
+    rewrite ^(.*) https://$server_name$1 permanent;
+}
+
+```
+
+后端Nginx配置文件api.dev.redamancy.tech.conf内容如下：
+
+```
+upstream api.dev-redamancy.tech {
    server 127.0.0.1:8082;
 }
 
@@ -159,7 +238,7 @@ upstream xxx.com {
 
 server {
    listen 443 ssl;
-   server_name xxx.com;
+   server_name api-dev.redamancy.tech;
 
 
    client_max_body_size 100M;
@@ -170,8 +249,8 @@ server {
    #gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript text/x-js;
 
    # ssl configurations
-   ssl_certificate /etc/nginx/cert/xxx.com.crt;
-   ssl_certificate_key /etc/nginx/cert/xxx.com.key;
+   ssl_certificate /etc/nginx/cert/xxx.crt;
+   ssl_certificate_key /etc/nginx/cert/xxx.key;
    ssl_protocols TLSv1.2 TLSv1.3;
    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
    ssl_prefer_server_ciphers on;
@@ -189,12 +268,12 @@ server {
    #proxy_set_header X-NginX-Proxy true;
    #proxy_redirect off;
 
-   access_log  /etc/nginx/logs/xxx.com_access.log;
-   error_log   /etc/nginx/logs/xxx.com_error.log error;
+   access_log  /etc/nginx/logs/api.dev-redamancy.tech_access.log;
+    error_log   /etc/nginx/logs/api.dev-redamancy.tech_error.log error;
 
 
    location / {
-       proxy_pass http://xxx.com;
+       proxy_pass http://api.dev-redamancy.tech;
    }
 }
 
@@ -204,20 +283,13 @@ server {
 server {
     listen 80;
 
-    server_name xxx.com;
+    server_name api-dev.redamancy.tech;
 
     rewrite ^(.*) https://$server_name$1 permanent;
 }
-
-
-
-
+                                                            
 
 ```
-
-
-
-
 
 
 
