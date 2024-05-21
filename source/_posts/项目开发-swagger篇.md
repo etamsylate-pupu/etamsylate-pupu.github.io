@@ -9,7 +9,11 @@ urlname: 22
 ### OpenAPI规范
 
 
-[OpenAPI 规范][1]（OpenAPI Specification），是定义一个标准的、与具体编程语言无关的RESTful API的规范。OpenAPI 规范可以在“不接触任何程序源代码和文档、不监控网络通信”的情况下理解一个服务的作用。遵循 OpenAPI 规范来定义 API，以使用文档生成工具来展示。主要的Swagger工具包括：
+[OpenAPI 规范][1]（OpenAPI Specification），是定义一个标准的、与具体编程语言无关的RESTful API的规范。
+
+> [RESTful][6] (REpresentational State Transfer)风格是一种基于HTTP协议设计Web API的软件架构风格，由Roy Fielding在2000年提出。它强调使用HTTP动词来表示对资源的操作（GET、POST、PUT、PATCH、DELETE等），并通过URI表示资源的唯一标识符。
+
+OpenAPI 规范可以在“不接触任何程序源代码和文档、不监控网络通信”的情况下理解一个服务的作用。遵循 OpenAPI 规范来定义 API，以使用文档生成工具来展示。主要的Swagger工具包括：
 
 - Swagger Editor：基于浏览器的编辑器，可以在其中编写 OpenAPI 定义。
 - Swagger UI：将 OpenAPI 定义渲染为交互式文档。
@@ -193,3 +197,4 @@ OPTIONS:
 [3]: https://github.com/swagger-api
 [4]: https://github.com/swaggo/swag
 [5]: https://cdn.jsdelivr.net/gh/etamsylate-pupu/Image-host/blogImg/hexoBlog/API.png
+[6]: https://restful.p2hp.com/
