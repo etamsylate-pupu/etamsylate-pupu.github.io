@@ -148,13 +148,13 @@ http {
 
 在外网使用域名访问网站服务时，请求过程为：外网域名 -> 外网服务器:80/443 -> 外网请求映射到内网 -> Nginx反向代理 -> 内网前端:xx（前端显示） -> （发出请求） -> 外网域名 -> 外网服务器:80 -> 内网前端:xx -> Nginx反向代理 -> 内网后端
 
-具体地，当使用域名访问时，根据DNS记录，域名被解析为对应的外网IP。HTTP默认访问80端口，HTTPS访问443端口，因此客户端对http://xxx.com的请求会被映射到外网IP:80上，对https//xxx.com的请求则映射到外网IP:443上。
+具体地，当使用域名访问时，根据DNS记录，域名被解析为对应的外网IP。HTTP默认访问80端口，HTTPS访问443端口，因此客户端对`http://xxx.com`的请求会被映射到外网IP:80上，对`https//xxx.com`的请求则映射到外网IP:443上。
 
 经过NAT转换将外网映射到内网服务器监听端口，内网服务器上的Nginx服务监听到请求后，将该端口的请求转发至内网前端服务运行端口。此时，可以通过域名访问前端页面，并查看页面的静态内容，之后，前端向内网后端发起请求加载动态内容。
 
 #### 具体例子
 
-将来自www.example.com域名的HTTP请求通过Nginx代理转发至本地的127.0.0.1:806地址，实现反向代理。Nginx配置文件如下：
+将来自`www.example.com`域名的HTTP请求通过Nginx代理转发至本地的`127.0.0.1:806`地址，实现反向代理。Nginx配置文件如下：
 ```
 #http
 server {
@@ -175,7 +175,7 @@ server {
 ```
 
 
-实现对前端和后端API服务的反向代理和HTTPS加密配置，同时设置访问日志和错误日志的记录路径等功能。例如：其中dev.redamancy.tech对应前端服务，api-dev.redamancy.tech对应后端API服务，内网前端服务在800端口，内网后端服务在8082端口，前端Nginx配置文件frontend.dev.redamancy.tech.conf内容如下：
+实现对前端和后端API服务的反向代理和HTTPS加密配置，同时设置访问日志和错误日志的记录路径等功能。例如：其中`dev.redamancy.tech`对应前端服务，`api-dev.redamancy.tech`对应后端API服务，内网前端服务在800端口，内网后端服务在8082端口，前端Nginx配置文件`frontend.dev.redamancy.tech.conf`内容如下：
 
 ```
 upstream dev-redamancy.tech {
