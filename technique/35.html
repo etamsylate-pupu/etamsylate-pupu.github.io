@@ -243,7 +243,7 @@
 
     
         <meta property="article:published_time" content="Sat May 11 2024 11:13:54 GMT+0800">
-        <meta property="article:modified_time" content="Thu May 23 2024 10:38:21 GMT+0800">
+        <meta property="article:modified_time" content="Wed May 29 2024 17:51:19 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -266,7 +266,7 @@
     "mainEntityOfPage": "https://blog.redamancy.tech/technique/35",
     "headline": "项目开发-Nginx部署",
     "datePublished": "Sat May 11 2024 11:13:54 GMT+0800",
-    "dateModified": "Thu May 23 2024 10:38:21 GMT+0800",
+    "dateModified": "Wed May 29 2024 17:51:19 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "etamsylate",
@@ -650,9 +650,9 @@ http &#123;
 </ul>
 <p>如果虚拟主机的配置也在该文件，不便于管理。因此，通常使用<code>include /etc/nginx/conf.d/*.conf;</code>引入，并在<code>/etc/nginx/conf.d/</code>目录下创建对应的域名配置文件。</p>
 <p>在外网使用域名访问网站服务时，请求过程为：外网域名 -&gt; 外网服务器:80&#x2F;443 -&gt; 外网请求映射到内网 -&gt; Nginx反向代理 -&gt; 内网前端:xx（前端显示） -&gt; （发出请求） -&gt; 外网域名 -&gt; 外网服务器:80 -&gt; 内网前端:xx -&gt; Nginx反向代理 -&gt; 内网后端</p>
-<p>具体地，当使用域名访问时，根据DNS记录，域名被解析为对应的外网IP。HTTP默认访问80端口，HTTPS访问443端口，因此客户端对<a href="http://xxx.com的请求会被映射到外网IP:80上，对https//xxx.com的请求则映射到外网IP:443上。">http://xxx.com的请求会被映射到外网IP:80上，对https//xxx.com的请求则映射到外网IP:443上。</a></p>
+<p>具体地，当使用域名访问时，根据DNS记录，域名被解析为对应的外网IP。HTTP默认访问80端口，HTTPS访问443端口，因此客户端对<code>http://xxx.com</code>的请求会被映射到外网IP:80上，对<code>https//xxx.com</code>的请求则映射到外网IP:443上。</p>
 <p>经过NAT转换将外网映射到内网服务器监听端口，内网服务器上的Nginx服务监听到请求后，将该端口的请求转发至内网前端服务运行端口。此时，可以通过域名访问前端页面，并查看页面的静态内容，之后，前端向内网后端发起请求加载动态内容。</p>
-<h4 id="具体例子"><a href="#具体例子" class="headerlink" title="具体例子"></a>具体例子</h4><p>将来自<a href="http://www.example.com域名的HTTP请求通过Nginx代理转发至本地的127.0.0.1:806地址，实现反向代理。Nginx配置文件如下：">www.example.com域名的HTTP请求通过Nginx代理转发至本地的127.0.0.1:806地址，实现反向代理。Nginx配置文件如下：</a></p>
+<h4 id="具体例子"><a href="#具体例子" class="headerlink" title="具体例子"></a>具体例子</h4><p>将来自<code>www.example.com</code>域名的HTTP请求通过Nginx代理转发至本地的<code>127.0.0.1:806</code>地址，实现反向代理。Nginx配置文件如下：</p>
 <pre><code>#http
 server &#123;
     listen 80;
@@ -669,7 +669,7 @@ server &#123;
 &#125;
 
 </code></pre>
-<p>实现对前端和后端API服务的反向代理和HTTPS加密配置，同时设置访问日志和错误日志的记录路径等功能。例如：其中dev.redamancy.tech对应前端服务，api-dev.redamancy.tech对应后端API服务，内网前端服务在800端口，内网后端服务在8082端口，前端Nginx配置文件frontend.dev.redamancy.tech.conf内容如下：</p>
+<p>实现对前端和后端API服务的反向代理和HTTPS加密配置，同时设置访问日志和错误日志的记录路径等功能。例如：其中<code>dev.redamancy.tech</code>对应前端服务，<code>api-dev.redamancy.tech</code>对应后端API服务，内网前端服务在800端口，内网后端服务在8082端口，前端Nginx配置文件<code>frontend.dev.redamancy.tech.conf</code>内容如下：</p>
 <pre><code>upstream dev-redamancy.tech &#123;
     server 127.0.0.1:800;
 &#125;

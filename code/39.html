@@ -243,7 +243,7 @@
 
     
         <meta property="article:published_time" content="Thu May 23 2024 20:25:06 GMT+0800">
-        <meta property="article:modified_time" content="Tue May 28 2024 10:12:33 GMT+0800">
+        <meta property="article:modified_time" content="Wed May 29 2024 16:56:56 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -266,7 +266,7 @@
     "mainEntityOfPage": "https://blog.redamancy.tech/code/39",
     "headline": "代码练习 | 数组（长度最小的子数组）",
     "datePublished": "Thu May 23 2024 20:25:06 GMT+0800",
-    "dateModified": "Tue May 28 2024 10:12:33 GMT+0800",
+    "dateModified": "Wed May 29 2024 16:56:56 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "etamsylate",
@@ -626,9 +626,25 @@ func findIndex(num int, nums []int) int&#123;
 <p>m &#x3D;&#x3D; s.length<br>n &#x3D;&#x3D; t.length<br>1 &lt;&#x3D; m, n &lt;&#x3D; $10^5$<br>s 和 t 由英文字母组成</p>
 <p>思路：首先可以找包含t字符串字符中的所有元素的子数组，这时不一定是最小的，因此需要从子数组的结束位置向前滑动，重新确认子数组起始位置。</p>
 <pre><code>func minWindow(s string, t string) string &#123;
-    deDuT := make(map[string]int)
-    for i:=0 ;i &lt; s.length();i++&#123;
-        deDut[s[i]] = -1
+    tMap := make(map[string]int)
+    for i:=0 ;i &lt; t.length();i++&#123;
+        tMap[t[i]] += 1 
+    &#125;
+    i := 0
+    for j:=0 ;j &lt; s.length(); j++&#123;
+        haveNum := 0
+        for k, v in range tMap&#123;
+            if s[j] == k&#123;
+                tMap[k] -= 1
+            &#125;
+            if v &lt;= 0&#123;
+                haveNum += 1
+            &#125;
+        &#125;
+        //移动
+        if haveNum == t.length&#123;
+            
+        &#125;
     &#125;
 &#125;
 
