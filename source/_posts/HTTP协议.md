@@ -18,14 +18,14 @@ HTTP 在应用的早期阶段非常简单，后来被称为 HTTP/0.9，有时也
 HTTP/0.9 请求由单行指令构成，以唯一可用方法 GET 开头，其后跟目标资源的路径（一旦连接到服务器，协议、服务器、端口号这些都不是必须的）。
 
 
-```http
+```
 GET /mypage.html
 
 ```
 
 响应也极其简单，只包含响应文档本身。由于其相应内容并不包含 HTTP 头，意味着只有 HTML 文件可以传送，无法传输其他类型的文件。也没有状态码或错误代码。一旦出现问题，一个特殊的包含问题描述信息的 HTML 文件将被发回，供人们查看。
 
-```html
+```
 <html>
     This is a simple example
 </html>
@@ -42,7 +42,7 @@ HTTP/1.0 相比 HTTP/0.9 ，扩展了以下内容：
 
 HTTP/1.0 请求的典型例子如下：
 
-```http
+```
 GET /mypage.html HTTP/1.0
 User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)
 
@@ -57,7 +57,7 @@ Content-Type: text/html
 
 ```
 
-```http
+```
 GET /myimage.gif HTTP/1.0
 User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)
 
@@ -84,7 +84,7 @@ HTTP/1.0 多种不同的实现方式在实际运用中显得有些混乱。HTTP/
 - 凭借 Host 标头，能够使不同域名配置在同一个 IP 地址的服务器上。
 
 
-```http
+```
 GET /zh-CN/docs/Glossary/Simple_header HTTP/1.1
 Host: developer.mozilla.org
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:50.0) Gecko/20100101 Firefox/50.0
