@@ -243,7 +243,7 @@
 
     
         <meta property="article:published_time" content="Tue Mar 19 2024 14:57:26 GMT+0800">
-        <meta property="article:modified_time" content="Fri May 10 2024 16:09:12 GMT+0800">
+        <meta property="article:modified_time" content="Thu May 30 2024 15:16:15 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -266,7 +266,7 @@
     "mainEntityOfPage": "https://blog.redamancy.tech/technique/28",
     "headline": "docker私有库搭建",
     "datePublished": "Tue Mar 19 2024 14:57:26 GMT+0800",
-    "dateModified": "Fri May 10 2024 16:09:12 GMT+0800",
+    "dateModified": "Thu May 30 2024 15:16:15 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "etamsylate",
@@ -566,7 +566,7 @@ docker ps
 <pre><code>#查看运行的容器，查看registry的容器ID以及此时COMMAND，确认/bin/bash, bin/sh, bash, sh是否支持。
 docker ps
 
-#进入容器
+#进入容器，在容器中开启一个交互模式的终端 -t: 分配一个伪终端
 docker exec -it 容器id /bin/sh
 ls /var/lib/
 </code></pre>

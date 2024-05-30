@@ -243,7 +243,7 @@
 
     
         <meta property="article:published_time" content="Wed Oct 18 2023 11:46:52 GMT+0800">
-        <meta property="article:modified_time" content="Wed May 08 2024 18:54:08 GMT+0800">
+        <meta property="article:modified_time" content="Thu May 30 2024 15:38:47 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -266,7 +266,7 @@
     "mainEntityOfPage": "https://blog.redamancy.tech/technique/23",
     "headline": "项目开发-Jenkins篇",
     "datePublished": "Wed Oct 18 2023 11:46:52 GMT+0800",
-    "dateModified": "Wed May 08 2024 18:54:08 GMT+0800",
+    "dateModified": "Thu May 30 2024 15:38:47 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "etamsylate",
@@ -631,7 +631,7 @@ java -version
 <li><p>echo 写一个简单的字符串到控制台输出。</p>
 </li>
 </ul>
-<p>以构建项目docker镜像为例，用Pipleine script编写部署脚本。项目根据镜像文件Dockerfile构建，拉取代码等一系列命令都在Dockerfile中。因此，此时项目运行额步骤包含：切换至镜像目录→暂停镜像→构建镜像→启动镜像→删除多余的镜像（避免镜像堆积导致内存占用）。</p>
+<p>以构建项目docker镜像为例，用Pipleine script编写部署脚本。项目根据镜像文件Dockerfile构建，拉取代码等一系列命令都在Dockerfile中。因此，此时项目运行的步骤包含：切换至镜像目录→暂停镜像→构建镜像→启动镜像→删除多余的镜像（避免镜像堆积导致内存占用）。</p>
 <p>此时命令执行的权限与节点认证时用户的权限有关，涉及sudo权限的，需要给当前用户赋予sudo权限，并需要设置为不需要输入密码（在&#x2F;etc&#x2F;sudoer文件中增加<code>Usename ALL=NOPASSWD: ALL</code>）。</p>
 <pre><code>pipeline &#123;
     agent &#123;
