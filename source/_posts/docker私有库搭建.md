@@ -75,7 +75,7 @@ docker ps
 #查看运行的容器，查看registry的容器ID以及此时COMMAND，确认/bin/bash, bin/sh, bash, sh是否支持。
 docker ps
 
-#进入容器
+#进入容器，在容器中开启一个交互模式的终端 -t: 分配一个伪终端
 docker exec -it 容器id /bin/sh
 ls /var/lib/
 ```
