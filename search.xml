@@ -4,106 +4,6 @@
   
     
     <entry>
-      <title>代码练习 | 数组（长度最小的子数组）</title>
-      <link href="/code/39.html"/>
-      <url>/code/39.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="长度最小的子数组"><a href="#长度最小的子数组" class="headerlink" title="长度最小的子数组"></a>长度最小的子数组</h2><h3 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209. 长度最小的子数组"></a>209. 长度最小的子数组</h3><p>leetcode链接：<a href="https://leetcode.cn/problems/minimum-size-subarray-sum/description/">长度最小的子数组</a></p><p>给定一个含有 n 个正整数的数组和一个正整数 target 。</p><p>找出该数组中满足其总和大于等于 target 的长度最小的 连续子数组 [numsl, numsl+1, …, numsr-1, numsr] ，并返回其长度。如果不存在符合条件的子数组，返回 0 。</p><p>示例 1：</p><p>输入：target &#x3D; 7, nums &#x3D; [2,3,1,2,4,3]<br>输出：2<br>解释：子数组 [4,3] 是该条件下的长度最小的子数组。<br>示例 2：</p><p>输入：target &#x3D; 4, nums &#x3D; [1,4,4]<br>输出：1<br>示例 3：</p><p>输入：target &#x3D; 11, nums &#x3D; [1,1,1,1,1,1,1,1]<br>输出：0</p><p>提示：</p><p>1 &lt;&#x3D; target &lt;&#x3D; $10^9$<br>1 &lt;&#x3D; nums.length &lt;&#x3D; $10^5$<br>1 &lt;&#x3D; nums[i] &lt;&#x3D; $10^5$</p><p>思路：需要找到其总和大于等于 target 的长度<strong>最小</strong>的 连续子数组，可以考虑双指针滑动，一个指针指向子数组起始位置，一个指针用于确定子数组结束位置。当子数组满足条件时，改变子数组起始位置（因为起始指针向右滑动后子数组也可能满足条件，起始指针向右滑动）。在遍历的过程中无法确定当前子数组长度是不是最小，可以设用一个额外的变量，初始值赋予一个大于原数组长度的值，当遇到满足条件的子数组时，对比该变量的值与子数组长度，保留较小值。</p><pre><code>func minSubArrayLen(target int, nums []int) int &#123;    minLength := len(nums) + 1    i := 0    sum := 0    j := 0    for (j &lt; len(nums))&#123;        sum += nums[j]        for sum &gt;= target&#123;            setLen := j - i + 1            if setLen &lt; minLength&#123;                minLength = setLen            &#125;                        sum -= nums[i]             i += 1        &#125;        j += 1    &#125;    if minLength &gt; len(nums)&#123;        return 0    &#125;    return minLength&#125;</code></pre><h3 id="904-水果成篮"><a href="#904-水果成篮" class="headerlink" title="904. 水果成篮"></a>904. 水果成篮</h3><p>leetcode链接：<a href="https://leetcode.cn/problems/fruit-into-baskets/description/">水果成篮</a></p><p>你正在探访一家农场，农场从左到右种植了一排果树。这些树用一个整数数组 fruits 表示，其中 fruits[i] 是第 i 棵树上的水果 种类 。</p><p>你想要尽可能多地收集水果。然而，农场的主人设定了一些严格的规矩，你必须按照要求采摘水果：</p><p>你只有 两个 篮子，并且每个篮子只能装 单一类型 的水果。每个篮子能够装的水果总量没有限制。<br>你可以选择任意一棵树开始采摘，你必须从 每棵 树（包括开始采摘的树）上 恰好摘一个水果 。采摘的水果应当符合篮子中的水果类型。每采摘一次，你将会向右移动到下一棵树，并继续采摘。<br>一旦你走到某棵树前，但水果不符合篮子的水果类型，那么就必须停止采摘。<br>给你一个整数数组 fruits ，返回你可以收集的水果的 最大 数目。</p><p>示例 1：</p><p>输入：fruits &#x3D; [1,2,1]<br>输出：3<br>解释：可以采摘全部 3 棵树。</p><p>示例 2：</p><p>输入：fruits &#x3D; [0,1,2,2]<br>输出：3<br>解释：可以采摘 [1,2,2] 这三棵树。<br>如果从第一棵树开始采摘，则只能采摘 [0,1] 这两棵树。</p><p>示例 3：</p><p>输入：fruits &#x3D; [1,2,3,2,2]<br>输出：4<br>解释：可以采摘 [2,3,2,2] 这四棵树。<br>如果从第一棵树开始采摘，则只能采摘 [1,2] 这两棵树。</p><p>示例 4：</p><p>输入：fruits &#x3D; [3,3,3,1,2,1,1,2,3,3,4]<br>输出：5<br>解释：可以采摘 [1,2,1,1,2] 这五棵树。</p><p>提示：</p><p>1 &lt;&#x3D; fruits.length &lt;&#x3D; $10^5$<br>0 &lt;&#x3D; fruits[i] &lt; fruits.length</p><p>思路：返回你可以收集的水果的 最大 数目即返回满足条件的子数组大小。此时相当于有两个目标值，且目标值可能发生变化。可以使用两个滑动指针，一个指向子数组的起始位置，一个指向子数组的结束位置。从数组开头滑动指针，第一个目标值为数组的第一个元素，遍历后续元素，若和目标值1不同，则赋值给目标值2，两个目标值确定后，第二个指针继续滑动，确定子数组结束位置。每次找到数组结束位置，需要寻找下一个满足条件的子数组，此时移动第一个指针的位置，使得两个指针内的子数组元素值与结束指针指向的值相同。</p><pre><code>func totalFruit(fruits []int) int &#123;    maxNum := 0    firstFruit := fruits[0]    secondFruit := -1    sum := 0    i := 0    for j := 0 ; j &lt; len(fruits); j++&#123;        if fruits[j] != firstFruit &amp;&amp; secondFruit == -1&#123;            secondFruit = fruits[j]        &#125;        if fruits[j] == firstFruit || fruits[j] == secondFruit&#123;            sum += 1        &#125;        if fruits[j] != firstFruit &amp;&amp; fruits[j] != secondFruit&#123;            if sum &gt; maxNum&#123;                maxNum = sum            &#125;            i = findIndex(fruits[j-1], fruits[:j])            sum = j - i + 1            firstFruit = fruits[j-1]            secondFruit = fruits[j]        &#125;            &#125;    if sum &gt; maxNum&#123;        maxNum = sum    &#125;    return maxNum&#125;func findIndex(num int, nums []int) int&#123;    for j := len(nums) -1 ; j &gt;= 0; j--&#123;        if nums[j] != num&#123;            return j + 1        &#125;    &#125;    return 0&#125;</code></pre><h3 id="76-最小覆盖子串"><a href="#76-最小覆盖子串" class="headerlink" title="76. 最小覆盖子串"></a>76. 最小覆盖子串</h3><p>leetcode链接：<a href="https://leetcode.cn/problems/minimum-window-substring/description/">最小覆盖子串</a></p><p>给你一个字符串 s 、一个字符串 t 。返回 s 中涵盖 t 所有字符的最小子串。如果 s 中不存在涵盖 t 所有字符的子串，则返回空字符串 “” 。</p><p>注意：</p><p>对于 t 中重复字符，我们寻找的子字符串中该字符数量必须不少于 t 中该字符数量。<br>如果 s 中存在这样的子串，我们保证它是唯一的答案。</p><p>示例 1：</p><p>输入：s &#x3D; “ADOBECODEBANC”, t &#x3D; “ABC”<br>输出：”BANC”<br>解释：最小覆盖子串 “BANC” 包含来自字符串 t 的 ‘A’、’B’ 和 ‘C’。<br>示例 2：</p><p>输入：s &#x3D; “a”, t &#x3D; “a”<br>输出：”a”<br>解释：整个字符串 s 是最小覆盖子串。<br>示例 3:</p><p>输入: s &#x3D; “a”, t &#x3D; “aa”<br>输出: “”<br>解释: t 中两个字符 ‘a’ 均应包含在 s 的子串中，<br>因此没有符合条件的子字符串，返回空字符串。</p><p>提示：</p><p>m &#x3D;&#x3D; s.length<br>n &#x3D;&#x3D; t.length<br>1 &lt;&#x3D; m, n &lt;&#x3D; $10^5$<br>s 和 t 由英文字母组成</p><p>思路：首先可以找包含t字符串字符中的所有元素的子数组，这时不一定是最小的，因此需要从子数组的结束位置向前滑动，重新确认子数组起始位置。</p><pre><code>func minWindow(s string, t string) string &#123;    tMap := make(map[string]int)    for i:=0 ;i &lt; t.length();i++&#123;        tMap[t[i]] += 1     &#125;    i := 0    for j:=0 ;j &lt; s.length(); j++&#123;        haveNum := 0        for k, v in range tMap&#123;            if s[j] == k&#123;                tMap[k] -= 1            &#125;            if v &lt;= 0&#123;                haveNum += 1            &#125;        &#125;        //移动        if haveNum == t.length&#123;                    &#125;    &#125;&#125;</code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> code </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> leetcode </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>项目开发-MQTT篇</title>
-      <link href="/technique/38.html"/>
-      <url>/technique/38.html</url>
-      
-        <content type="html"><![CDATA[<p><a href="https://mqtt.org/">MQTT</a>（Message Queuing Telemetry Transport，消息队列遥测传输协议），是一种基于发布&#x2F;订阅（publish&#x2F;subscribe）模式的”轻量级”通讯协议。MQTT 作为一种低开销、低带宽占用的即时通讯协议，使其在物联网、小型设备、移动应用等方面有较广泛的应用。</p><p>应用场景：</p><p>IoT设备通信：MQTT 在 IoT 领域被广泛使用，可以方便地连接和通信各种设备，实现设备之间的实时数据交换和控制。</p><p>传感器数据采集：传感器节点将采集的数据发布到 MQTT 主题，服务器订阅这些主题来获取实时数据，方便对数据进行分析和处理。</p><p>即时通讯：MQTT 协议可以用于即时通讯，例如聊天应用，基于发布&#x2F;订阅模式实现消息的快速传递。</p><p>远程监控和控制：通过 MQTT 可以实现远程监控和控制系统，例如智能家居、工业物联网等场景。</p><p>数据传输和传播：MQTT 可以用于在不同系统之间传输数据或事件通知，有助于信息的快速传播和处理。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> technique </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> MQ </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>项目开发-Kafka篇</title>
-      <link href="/technique/37.html"/>
-      <url>/technique/37.html</url>
-      
-        <content type="html"><![CDATA[<p>Apache Kafka 是一种分布式流处理平台，常用于构建实时数据处理系统、消息队列、日志收集等大规模数据处理场景，具有高可扩展性、高吞吐量和容错性。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> technique </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Kafka </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>项目开发-MQ篇</title>
-      <link href="/technique/36.html"/>
-      <url>/technique/36.html</url>
-      
-        <content type="html"><![CDATA[<p>消息队列（Message Queue，MQ），指保存消息的一个容器，它将消息存储在队列中，用于在不同组件或系统之间传递消息，以确保发送者和接收者之间的异步通信。</p><p>消息队列一般采用先进先出（FIFO）的方式来管理消息，确保消息的顺序传递和处理。通过消息队列，生产者可以将消息发送到队列中，而消费者则可以从队列中获取并处理消息，实现了解耦和异步通信。</p><p>消息队列被广泛应用于微服务架构、大数据处理、实时数据流处理等场景中，提高系统的可伸缩性、可靠性和性能。通过合理使用消息队列，可以<strong>降低系统耦合性、实现任务异步、流量削峰以及日志处理</strong>。</p><ul><li><p>解耦：消息的发送方（生产者）和接收方（消费者）不直接依赖于彼此，而是通过消息队列来进行通信和数据传递，只要保证消息格式不变，生产者和消费者并不需要彼此联系，也不需要受对方的影响</p></li><li><p>异步：将比较耗时而且不需要即时（同步）返回结果的操作，通过消息队列来实现异步化，减小响应时间</p></li><li><p>流量削锋：为了防止系统在短时间内的峰值流量冲垮，往往采用消息队列作为缓冲来削弱峰值流量，在一些秒杀、促销活动中，合理使用消息队列可以有效抵御促销活动刚开始大量订单涌入对系统的冲击</p></li><li><p>日志处理：将日志数据发送到消息队列中，然后由消费者从消息队列中读取这些日志数据并进行相应的处理，比如Kafka的应用，解决大量日志传输的问题</p></li></ul><p>常见的消息队列系统有以下几种：</p><ul><li><p>RabbitMQ：RabbitMQ是一个开源的消息队列系统，基于AMQP协议。它支持多种消息传递模式，如点对点、发布&#x2F;订阅等。RabbitMQ具有高可用性、高性能和可扩展性，被广泛应用于分布式系统中。</p></li><li><p>Apache Kafka：Kafka是一个分布式流处理平台，也可以被用作消息队列。它基于发布&#x2F;订阅模式，支持高吞吐量、水平扩展和持久性。Kafka被广泛应用于日志处理、实时数据分析等领域。</p></li><li><p>RocketMQ: 一款云原生“消息、事件、流”实时数据处理平台，借鉴了 Kafka ，具有高吞吐量、高可用性、适合大规模分布式系统应用的特点。</p></li><li><p>Redis：Redis是一个内存数据库系统，也可以被用作消息队列。它支持发布&#x2F;订阅模式、列表、队列等数据结构，适用于快速数据交换和实时通信。</p></li></ul><p>参考资料：</p><p><a href="https://zhuanlan.zhihu.com/p/431149128">深入消息队列MQ，看这篇就够了！</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> technique </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> MQ </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>项目开发-Nginx部署</title>
       <link href="/technique/35.html"/>
       <url>/technique/35.html</url>
@@ -179,31 +79,6 @@
     
     
     <entry>
-      <title>项目开发-K8s篇</title>
-      <link href="/technique/32.html"/>
-      <url>/technique/32.html</url>
-      
-        <content type="html"><![CDATA[<p>官方文档（中文）: <a href="https://kubernetes.io/zh-cn/docs/home/">地址</a><br>官方文档（英文）: <a href="https://kubernetes.io/docs/home/">地址</a></p><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><blockquote><p>Kubernetes is an open source system for managing containerized applications across multiple hosts. It provides basic mechanisms for deployment, maintenance, and scaling of applications.</p></blockquote><p>Kubernetes 是一个可移植、可扩展的开源平台，用于<strong>管理容器化的工作负载和服务</strong>，方便进行声明式配置和自动化。Kubernetes 拥有一个庞大且快速增长的生态系统，其服务、支持和工具的使用范围广泛。</p><p>参考资料：<br><a href="https://zhuanlan.zhihu.com/p/339008746">Kubernetes 入门&amp;进阶实战 - 知乎</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> technique </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> k8s </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>项目开发-Redis篇</title>
       <link href="/technique/33.html"/>
       <url>/technique/33.html</url>
@@ -246,56 +121,6 @@
         <tags>
             
             <tag> paper </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>代码练习 | 数组（移除元素）</title>
-      <link href="/technique/30.html"/>
-      <url>/technique/30.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a>移除元素</h2><h3 id="27-移除元素"><a href="#27-移除元素" class="headerlink" title="27. 移除元素"></a>27. 移除元素</h3><p>leetcode链接：<a href="https://leetcode.cn/problems/remove-element/description/">移除元素</a></p><p>给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素。元素的顺序可能发生改变。然后返回 nums 中与 val 不同的元素的数量。</p><p>假设 nums 中不等于 val 的元素数量为 k，要通过此题，您需要执行以下操作：</p><p>更改 nums 数组，使 nums 的前 k 个元素包含不等于 val 的元素。nums 的其余元素和 nums 的大小并不重要。<br>返回 k。</p><p>示例 1：</p><p>输入：nums &#x3D; [3,2,2,3], val &#x3D; 3<br>输出：2, nums &#x3D; [2,2,<em>,</em>]<br>解释：你的函数函数应该返回 k &#x3D; 2, 并且 nums 中的前两个元素均为 2。<br>你在返回的 k 个元素之外留下了什么并不重要（因此它们并不计入评测）。<br>示例 2：</p><p>输入：nums &#x3D; [0,1,2,2,3,0,4,2], val &#x3D; 2<br>输出：5, nums &#x3D; [0,1,4,0,3,<em>,</em>,_]<br>解释：你的函数应该返回 k &#x3D; 5，并且 nums 中的前五个元素为 0,0,1,3,4。<br>注意这五个元素可以任意顺序返回。<br>你在返回的 k 个元素之外留下了什么并不重要（因此它们并不计入评测）。</p><p>提示：</p><p>0 &lt;&#x3D; nums.length &lt;&#x3D; 100<br>0 &lt;&#x3D; nums[i] &lt;&#x3D; 50<br>0 &lt;&#x3D; val &lt;&#x3D; 100</p><p>思路：需要原地移除目标元素，那么需要将非目标元素移动至返回的k个元素内。可以考虑用两个滑动指针确定元素位置，一个指针用于最终确定非目标元素，一个指针用于遍历元素。前者指向的元素为目标值时，暂停滑动，待后者指针滑动到非目标值元素，两处元素值互换，互换后继续移动。当后者滑动值数组最后一个元素结束。</p><p>又因为只考虑返回的前 k 个元素，k 个元素之外留下了什么并不重要。因此可以考虑后者指针从数组尾部开始向前遍历。</p><pre><code>func removeElement(nums []int, val int) int &#123;    i := 0    j := len(nums) - 1    for (i &lt;= j)&#123;        if nums[i] == val &amp;&amp; nums[j] != val&#123;            nums[i] = nums[j]            nums[j] = val            i++            j--        &#125;        if nums[i] != val&#123;            i++        &#125;        if nums[j] == val&#123;            j--        &#125;    &#125;     return i &#125;</code></pre><h3 id="26-删除有序数组中的重复项"><a href="#26-删除有序数组中的重复项" class="headerlink" title="26. 删除有序数组中的重复项"></a>26. 删除有序数组中的重复项</h3><p>leetcode链接：<a href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array/description/">删除有序数组中的重复项</a></p><p>给你一个 非严格递增排列 的数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。元素的 相对顺序 应该保持 一致 。然后返回 nums 中唯一元素的个数。</p><p>考虑 nums 的唯一元素的数量为 k ，你需要做以下事情确保你的题解可以被通过：</p><p>更改数组 nums ，使 nums 的前 k 个元素包含唯一元素，并按照它们最初在 nums 中出现的顺序排列。nums 的其余元素与 nums 的大小不重要。<br>返回 k 。</p><p>示例 1：</p><p>输入：nums &#x3D; [1,1,2]<br>输出：2, nums &#x3D; [1,2,_]<br>解释：函数应该返回新的长度 2 ，并且原数组 nums 的前两个元素被修改为 1, 2 。不需要考虑数组中超出新长度后面的元素。<br>示例 2：</p><p>输入：nums &#x3D; [0,0,1,1,1,2,2,3,3,4]<br>输出：5, nums &#x3D; [0,1,2,3,4]<br>解释：函数应该返回新的长度 5 ， 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4 。不需要考虑数组中超出新长度后面的元素。</p><p>提示：</p><p>1 &lt;&#x3D; nums.length &lt;&#x3D; 3 * 104<br>$-10^4$ &lt;&#x3D; nums[i] &lt;&#x3D; $10^4$</p><p>nums 已按 非严格递增 排列</p><p>思路：由于数组是非严格递增排列的数组，重复元素为临近元素。要求原地删除，则可考虑使用两个滑动指针从数组第一个元素开始滑动，一个指针用于确定非重复元素，一个指针用于遍历元素。当后者指向的元素与前者指针指向元素值相同时，继续向右滑动，若元素值不同，则前者指针移动一位，并将该位置元素值替换为后者指针指向的元素（确保不重复），后者指针继续滑动。待后者指针滑动至数组末尾结束后，返回前者指针索引增1后的值。</p><pre><code>func removeDuplicates(nums []int) int &#123;    slowIndex := 0    for fastIndex := 0; fastIndex &lt; len(nums); fastIndex++&#123;        if nums[slowIndex] != nums[fastIndex]&#123;            slowIndex += 1            nums[slowIndex] = nums[fastIndex]        &#125;    &#125;    return slowIndex + 1&#125;</code></pre><h3 id="283-移动零"><a href="#283-移动零" class="headerlink" title="283. 移动零"></a>283. 移动零</h3><p>leetcode链接：<a href="https://leetcode.cn/problems/move-zeroes/description/">移动零</a></p><p>给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。</p><p>请注意 ，必须在不复制数组的情况下原地对数组进行操作。</p><p>示例 1:</p><p>输入: nums &#x3D; [0,1,0,3,12]<br>输出: [1,3,12,0,0]<br>示例 2:</p><p>输入: nums &#x3D; [0]<br>输出: [0]</p><p>提示:</p><p>1 &lt;&#x3D; nums.length &lt;&#x3D; $10^4$<br>$-2^{31}$ &lt;&#x3D; nums[i] &lt;&#x3D; $2^{31} - 1$</p><p>思路：需要原地移除目标元素，那么需要将非目标元素移动至返回的k个元素内。类似27，可以考虑用两个滑动指针，一个指针用于最终确定非目标元素，一个指针用于遍历元素。前者指向的元素为目标值时，暂停滑动，待后者指针滑动到非目标值元素，两处元素值互换，互换后继续移动。当后者滑动值数组最后一个元素结束。与27不同的是，此时要求<strong>保持非零元素的相对顺序</strong>且<strong>所有 0 移动到数组的末尾</strong>，因此后者指针也需要从数组起始元素开始滑动，移动后将前者指针指向元素之后的数组值全替换为0。</p><pre><code>func moveZeroes(nums []int)  &#123;    slowIndex := 0    for fastIndex := 0; fastIndex &lt; len(nums); fastIndex++&#123;        if nums[fastIndex] != 0 &#123;            nums[slowIndex] = nums[fastIndex]            slowIndex += 1        &#125;    &#125;    for slowIndex &lt; len(nums)&#123;        nums[slowIndex] = 0        slowIndex += 1    &#125;&#125;</code></pre><h3 id="844-比较含退格的元素"><a href="#844-比较含退格的元素" class="headerlink" title="844. 比较含退格的元素"></a>844. 比较含退格的元素</h3><p>leetcode链接：<a href="https://leetcode.cn/problems/backspace-string-compare/description/">比较含退格的元素</a></p><p>给定 s 和 t 两个字符串，当它们分别被输入到空白的文本编辑器后，如果两者相等，返回 true 。# 代表退格字符。</p><p>注意：如果对空文本输入退格字符，文本继续为空。</p><p>示例 1：</p><p>输入：s &#x3D; “ab#c”, t &#x3D; “ad#c”<br>输出：true<br>解释：s 和 t 都会变成 “ac”。<br>示例 2：</p><p>输入：s &#x3D; “ab##”, t &#x3D; “c#d#”<br>输出：true<br>解释：s 和 t 都会变成 “”。<br>示例 3：</p><p>输入：s &#x3D; “a#c”, t &#x3D; “b”<br>输出：false<br>解释：s 会变成 “c”，但 t 仍然是 “b”。</p><p>提示：</p><p>1 &lt;&#x3D; s.length, t.length &lt;&#x3D; 200<br>s 和 t 只含有小写字母以及字符 ‘#’</p><p>思路：当遇到退格字符’#’时，需要向前删除一个元素。因此，可以考虑使用两个滑动指针从数组起始位置开始滑动，一个用来确定最后的元素，一个用遍历元素。当后者指向的元素不为退格字符时，其指向的元素覆盖前者指针指向的元素，两者一起向右滑动一位；值当后者指向的元素为退格字符时，需要向前删除一个元素，即前者指针向左移动一位，不过需要考虑溢出的可能。</p><pre><code>func backspaceCompare(s string, t string) bool &#123;    a := removeElement([]byte(s))    b := removeElement([]byte(t))    if strings.Compare(a,b) == 0&#123;        return true    &#125;else&#123;        return false    &#125;&#125;func removeElement(s []byte)string&#123;    slowIndex := 0    for fastIndex := 0; fastIndex &lt; len(s) ; fastIndex++&#123;        if s[fastIndex] != &#39;#&#39;&#123;            s[slowIndex] = s[fastIndex]            slowIndex += 1        &#125;        if s[fastIndex] == &#39;#&#39; &amp;&amp; slowIndex &gt; 0&#123;            slowIndex -= 1        &#125;    &#125;    return string(s[:slowIndex])&#125;</code></pre><h3 id="977-有序数组的平方"><a href="#977-有序数组的平方" class="headerlink" title="977. 有序数组的平方"></a>977. 有序数组的平方</h3><p>leetcode链接：<a href="https://leetcode.cn/problems/squares-of-a-sorted-array/description/">有序数组的平方</a></p><p>给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。</p><p>示例 1：</p><p>输入：nums &#x3D; [-4,-1,0,3,10]<br>输出：[0,1,9,16,100]<br>解释：平方后，数组变为 [16,1,0,9,100]<br>排序后，数组变为 [0,1,9,16,100]<br>示例 2：</p><p>输入：nums &#x3D; [-7,-3,2,3,11]<br>输出：[4,9,9,49,121]</p><p>提示：</p><p>1 &lt;&#x3D; nums.length &lt;&#x3D; $10^4$<br>$-10^4$ &lt;&#x3D; nums[i] &lt;&#x3D; $10^4$<br>nums 已按 非递减顺序 排序</p><p>思路：由于数组为非递减顺序 排序的整数数组，要求输出每个数字的平方 组成的<strong>新数组</strong>，即不需要原地操作。考虑到数组特性，使用两个滑动指针分别从数组起始位置和数组结束位置向中间滑动，对比两指针指向元素平方值，将大的值存放在新数组的末尾，对应的指针向中间移动，继续与另一指针的值对比，并存放在新数组的下一位置。</p><pre><code>func sortedSquares(nums []int) []int &#123;    left := 0    newn := make([]int, len(nums))    right := len(nums)-1    for k := len(nums)-1; k &gt;= 0 ; k--&#123;        lnum := nums[left] * nums[left]        rnum := nums[right] * nums[right]        if lnum &gt; rnum&#123;            newn[k] = lnum            left += 1        &#125;else&#123;            newn[k] = rnum            right -= 1        &#125;    &#125;    return newn&#125;</code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> technique </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> leetcode </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>代码练习 | 数组（二分查找）</title>
-      <link href="/technique/29.html"/>
-      <url>/technique/29.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><h3 id="704-二分查找"><a href="#704-二分查找" class="headerlink" title="704. 二分查找"></a>704. 二分查找</h3><p>leetcode链接：<a href="https://leetcode.cn/problems/binary-search/description/">二分查找</a></p><p>给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。</p><p>示例 1:</p><p>输入: nums &#x3D; [-1,0,3,5,9,12], target &#x3D; 9<br>输出: 4<br>解释: 9 出现在 nums 中并且下标为 4<br>示例 2:</p><p>输入: nums &#x3D; [-1,0,3,5,9,12], target &#x3D; 2<br>输出: -1<br>解释: 2 不存在 nums 中因此返回 -1</p><p>提示：</p><p>你可以假设 nums 中的所有元素是不重复的。<br>n 将在 [1, 10000]之间。<br>nums 的每个元素都将在 [-9999, 9999]之间。</p><p>思路：<br>考虑在闭区间[left, right]查找与target值相同的元素，left初始值为0，right初始值为len(nums) -1，由于left &#x3D; right时区间是有意义的，因此考虑循环条件为left &lt;&#x3D; right。当middle位置元素大于target，则说明目标元素可能在[left, middle-1]，right更新。当middle位置元素小于target，则说明目标元素可能在[middle + 1, right]，当middle位置元素等于target，直接返回middle。循环结束则不存在目标值，返回-1。</p><p>核心代码实现：</p><pre><code>func search(nums []int, target int) int &#123;    left := 0    right := len(nums) - 1    for (left &lt;= right)&#123;        middle := left + ((right - left) / 2)        if(target &lt; nums[middle])&#123;            right = middle - 1            &#125;        if(target &gt; nums[middle])&#123;             left = middle + 1            &#125;        if target == nums[middle]&#123;            return middle        &#125;     &#125;    return -1&#125;</code></pre><h3 id="35-搜索插入位置"><a href="#35-搜索插入位置" class="headerlink" title="35. 搜索插入位置"></a>35. 搜索插入位置</h3><p>leetcode链接：<a href="https://leetcode.cn/problems/search-insert-position/description/">搜索插入位置</a></p><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p><p>请必须使用时间复杂度为 O(log n) 的算法</p><p>示例 1:<br>输入: nums &#x3D; [1,3,5,6], target &#x3D; 5<br>输出: 2</p><p>示例 2:<br>输入: nums &#x3D; [1,3,5,6], target &#x3D; 2<br>输出: 1</p><p>示例 3:<br>输入: nums &#x3D; [1,3,5,6], target &#x3D; 7<br>输出: 4</p><p>提示:</p><p>1 &lt;&#x3D; nums.length &lt;&#x3D; $10^4$<br>$-10^4$ &lt;&#x3D; nums[i] &lt;&#x3D; $10^4$<br>nums 为 无重复元素 的 升序 排列数组<br>$-10^4$ &lt;&#x3D; target &lt;&#x3D; $10^4$</p><p>思路：当遇到排序数组时，就可以考虑二分查找。由题意知“nums为<strong>无重复元素</strong>的<strong>升序</strong>数组”，和704思路类似，考虑在闭区间[left, right]查找与target值相同的元素，但是此时若查找不到目标元素需要将“按顺序插入的位置”返回。针对查找不到目标元素这一情景，因为我们考虑的是闭区间[left, right]，循环条件为left &lt;&#x3D; right，循环结束时，left &gt; right，target值插入位置位于left。</p><p>核心代码实现：</p><pre><code>func searchInsert(nums []int, target int) int &#123;    left := 0    right := len(nums) - 1    middle := 0    for (left &lt;= right)&#123;        middle = left + ((right - left) / 2)         if target &lt; nums[middle]&#123;            right = middle - 1        &#125;        if target &gt; nums[middle]  &#123;            left = middle + 1        &#125;        if nums[middle] == target&#123;            return middle        &#125;    &#125;    return left&#125;</code></pre><h3 id="34-在排序数组中查找元素的第一个和最后一个位置"><a href="#34-在排序数组中查找元素的第一个和最后一个位置" class="headerlink" title="34. 在排序数组中查找元素的第一个和最后一个位置"></a>34. 在排序数组中查找元素的第一个和最后一个位置</h3><p>leetcode链接：<a href="https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/">在排序数组中查找元素的第一个和最后一个位置</a></p><p>给你一个按照非递减顺序排列的整数数组 nums，和一个目标值 target。请你找出给定目标值在数组中的开始位置和结束位置。</p><p>如果数组中不存在目标值 target，返回 [-1, -1]。</p><p>你必须设计并实现时间复杂度为 O(log n) 的算法解决此问题。</p><p>示例 1：</p><p>输入：nums &#x3D; [5,7,7,8,8,10], target &#x3D; 8<br>输出：[3,4]<br>示例 2：</p><p>输入：nums &#x3D; [5,7,7,8,8,10], target &#x3D; 6<br>输出：[-1,-1]<br>示例 3：</p><p>输入：nums &#x3D; [], target &#x3D; 0<br>输出：[-1,-1]</p><p>提示：</p><p>0 &lt;&#x3D; nums.length &lt;&#x3D; $10^5$<br>$-10^9$ &lt;&#x3D; nums[i] &lt;&#x3D; $10^9$<br>nums 是一个非递减数组<br>$-10^9$ &lt;&#x3D; target &lt;&#x3D; $10^9$</p><p>思路：当遇到排序数组时，且要求时间复杂度为O(log n)时，可以考虑二分查找。之后，考虑在闭区间[left, right]查找与target值相同的元素，若元素不存在，则返回 [-1, -1]；若元素存在，由于数组是非递减顺序排列的，因此向左查找目标值起始位置，向右查找结束位置。</p><pre><code>func searchRange(nums []int, target int) []int &#123;    head := 0    tail := len(nums) - 1    left := 0    right := 0    for (head &lt;= tail)&#123;        middle := head + ((tail - head) / 2)        if target &lt; nums[middle]&#123;            tail = middle - 1        &#125;        if target &gt; nums[middle]&#123;            head = middle + 1        &#125;        if target == nums[middle]&#123;            for i := middle; i &gt;= head; i--&#123;                if nums[i] == target&#123;                    left = i                &#125;            &#125;            for j := middle; j &lt;= tail; j++&#123;                if nums[j] == target&#123;                    right = j                &#125;            &#125;            return []int&#123;left, right&#125;        &#125;    &#125;    return []int&#123;-1, -1&#125;&#125;</code></pre><h3 id="69-x的平方根"><a href="#69-x的平方根" class="headerlink" title="69. x的平方根"></a>69. x的平方根</h3><p>leetcode链接：<a href="https://leetcode.cn/problems/sqrtx/description/">x的平方根</a></p><p>给你一个非负整数 x ，计算并返回 x 的 算术平方根 。</p><p>由于返回类型是整数，结果只保留 整数部分 ，小数部分将被 舍去 。</p><p>注意：不允许使用任何内置指数函数和算符，例如 pow(x, 0.5) 或者 x ** 0.5 。</p><p>示例 1：</p><p>输入：x &#x3D; 4<br>输出：2<br>示例 2：</p><p>输入：x &#x3D; 8<br>输出：2<br>解释：8 的算术平方根是 2.82842…, 由于返回类型是整数，小数部分将被舍去。</p><p>提示：</p><p>0 &lt;&#x3D; x &lt;&#x3D; $2^{31}$ - 1</p><p>思路：一个非负整数的算术平方根一定小于等于它本身。不使用任何内置函数和算符，则可以通过查找 [0,1,…,x] 内的元素，计算元素的平方是否和 x 值相同，由于x的算术平方根只保留整数结果，当元素平方不和 x 相同时，相当于找插入位置前一元素。这符合二分查找的场景，同35类似。</p><pre><code>func mySqrt(x int) int &#123;    left := 0    right := x    for (left &lt;= right)&#123;        middle := left + ((right - left) / 2)        if middle*middle &lt; x&#123;            left = middle + 1        &#125;        if middle*middle &gt; x&#123;            right = middle - 1        &#125;        if middle*middle == x&#123;            return middle        &#125;    &#125;    return right&#125;</code></pre><h3 id="367-有效的完全平方数"><a href="#367-有效的完全平方数" class="headerlink" title="367. 有效的完全平方数"></a>367. 有效的完全平方数</h3><p>leetcode链接：<a href="https://leetcode.cn/problems/valid-perfect-square/description/">有效的完全平方数</a></p><p>给你一个正整数 num 。如果 num 是一个完全平方数，则返回 true ，否则返回 false 。</p><p>完全平方数 是一个可以写成某个整数的平方的整数。换句话说，它可以写成某个整数和自身的乘积。</p><p>不能使用任何内置的库函数，如  sqrt 。</p><p>示例 1：</p><p>输入：num &#x3D; 16<br>输出：true<br>解释：返回 true ，因为 4 * 4 &#x3D; 16 且 4 是一个整数。<br>示例 2：</p><p>输入：num &#x3D; 14<br>输出：false<br>解释：返回 false ，因为 3.742 * 3.742 &#x3D; 14 但 3.742 不是一个整数。</p><p>提示：</p><p>1 &lt;&#x3D; num &lt;&#x3D; $2^{31}$ - 1</p><p>思路：查看一个正整数是否为完全平方数，可以在[1,…,num]内查找元素的平方是否与目标值相同。这符合二分查找的场景，和704类似。</p><pre><code>func isPerfectSquare(num int) bool &#123;    left := 0    right := num    for (left &lt;= right)&#123;        middle := left + ((right - left) / 2)        if middle * middle &lt; num&#123;            left = middle + 1        &#125;        if middle * middle &gt; num&#123;            right = middle - 1        &#125;        if middle * middle == num&#123;            return true        &#125;    &#125;    return false&#125;</code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> technique </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> leetcode </tag>
             
         </tags>
       
