@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.redamancy.tech/academic/34</loc>
+    
+    <lastmod>2024-06-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.redamancy.tech/technique/23</loc>
     
     <lastmod>2024-05-30</lastmod>
@@ -30,15 +39,6 @@
   
   <url>
     <loc>https://blog.redamancy.tech/academic/31</loc>
-    
-    <lastmod>2024-05-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.redamancy.tech/academic/34</loc>
     
     <lastmod>2024-05-23</lastmod>
     
@@ -319,7 +319,7 @@
 
   <url>
     <loc>https://blog.redamancy.tech/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -327,126 +327,126 @@
   
   <url>
     <loc>https://blog.redamancy.tech/tags/vless/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/tags/docker/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/tags/hexo/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/tags/mindmap/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/tags/cv/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/tags/thinking/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/tags/coding/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/tags/website/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/tags/image-host/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/tags/zoo/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/tags/network/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/tags/paper/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/tags/git/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/tags/Jenkins/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/tags/swagger/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/tags/logs/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/tags/develop/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/tags/nginx/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -455,28 +455,28 @@
   
   <url>
     <loc>https://blog.redamancy.tech/categories/technique/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/categories/academic/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/categories/knowledge/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.redamancy.tech/categories/life/</loc>
-    <lastmod>2024-06-01</lastmod>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
