@@ -95,9 +95,9 @@ curl http://主机ip:5000/v2/_catalog
 根据Dockerfile构建镜像
 
 ```
-docker build -t local-image:tag
+docker build -t local-image:tag .
 
-# docker build -t lab_dev:1.0
+# docker build -t lab_dev:1.0 .
 ```
 
 #### 推送本地镜像至私有库
