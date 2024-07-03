@@ -31,7 +31,7 @@ func main() {
 		})
 	})
 
-	// PoST endpoint
+	// POST endpoint
 	r.POST("/foo", func(c *gin.Context) {
 		var json Foo
 		if err := c.ShouldBindJSON(&json); err != nil {
@@ -80,7 +80,7 @@ Error: EOF
 【原因】：在 Gin 框架中，使用`application/json`格式的参数请求POST接口时，多次调用 `ShouldBind(&data)` 或 `ShouldBindJSON(&data)`方法，使用了c.Request.Body，会导致c.Request.Body(请求体的数据流)被读取多次。由于gin的Context中的Request.Body对象在第一次调用ShouldBind / ShouldBindJSON 方法后已经被读取完毕，再次调用时已经到达了EOF，导致无法再次读取请求体。
 
 
-那么，使用`application/form-data`格式的参数调用POST接口，结构体增加`form`，多次调用 `ShouldBind()`方法，结果如何？
+那么，使用`application/form-data`格式的参数调用POST接口，结构体增加`form`映射，多次调用 `ShouldBind()`方法，结果如何？
 ```
 [GIN] 2024/07/03 - 17:21:44 | 200 |       4.942ms |       127.0.0.1 | POST     "/foo"
 first: {Alice 12}
