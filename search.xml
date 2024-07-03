@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>for range 介绍 | Go</title>
+      <link href="/technique/38.html"/>
+      <url>/technique/38.html</url>
+      
+        <content type="html"><![CDATA[<p>go常用的遍历方式，有for和for range。</p><p>首先，针对go中的for循环，如下</p><pre><code>for i := 0; i &lt; 10; i++&#123;    //dosomething    fmt.Printf(&quot;%d &quot;, i)&#125;//output//0 1 2 3 4 5 6 7 8 9</code></pre><p>其次，go中的for range：</p><pre><code>//for range over an arrayarr := [3]int&#123;1,2,3&#125;for index,value := range arr&#123;    //dosomething    fmt.Printf(&quot;index: %d, value: %d \n&quot;, index, value)&#125;//output//index: 0, value: 1//index: 1, value: 2//index: 2, value: 3//for range over a slice.nums := []int&#123;1,2,3,4&#125;for index,value := range nums&#123;    //dosomething    fmt.Printf(&quot;index: %d, value: %d \n&quot;, index, value)&#125;//output//index: 0, value: 1//index: 1, value: 2//index: 2, value: 3//index: 3, value: 4//for range over a stringstr := &quot;hello world&quot;for index,value := range str&#123;    //dosomething    fmt.Printf(&quot;index: %d, value: %c \n&quot;, index, value)&#125;//output//index: 0, value: h//index: 1, value: e//index: 2, value: l//index: 3, value: l//index: 4, value: o//index: 5, value://index: 6, value: w//index: 7, value: o//index: 8, value: r//index: 9, value: l//index: 10, value: d//for range over a mapuserMap := map[string]int&#123;    &quot;Alice&quot;: 18,    &quot;Bob&quot;: 20,    &quot;Lily&quot;: 16,&#125;for key,value := range userMap&#123;    //dosomething    fmt.Printf(&quot;key: %s, value: %d \n&quot;, key, value)&#125;//output//key: Lily, value: 16//key: Alice, value: 18//key: Bob, value: 20//for range over a channelch := make(chan int, 3)go func() &#123;    defer close(ch)    for i := 0; i &lt; 3; i++ &#123;        ch &lt;- i    &#125;&#125;()for value := range ch &#123;    //dosomething    fmt.Printf(&quot;value: %d\n&quot;, value)&#125;//value: 0//value: 1//value: 2</code></pre><blockquote><p>语法糖（Syntactic Sugar）是指编程语言中的一种语法结构，这种结构并不会改变语言的功能或能力，而只是为了让代码的书写更加简洁、更易于理解。通常来说使用语法糖能够增加程序的可读性，从而减少程序代码出错的机会。举个例子：在 C 语言里用 a[i] 表示 *(a+i)，用 a[i][j] 表示 <em>(</em>(a+i)+j)</p></blockquote><p>for range其实是一种语法糖，内部调用还是 for 循环，初始化会拷贝需要遍历的对象，每次对象的值&#x2F;地址赋值给同一个元素。（查看<a href="https://github.com/golang/gofrontend/blob/e387439bfd24d5e142874b8e68e7039f74c744d7/go/statements.cc#L5484">go 遍历array编译源码</a>。<code>range_temp := range </code>在这里对原对象进行了拷贝，每次是对同一个变量<code>value_temp</code>赋值。）</p><pre><code>//for range over an array//The loop we generate:len_temp := len(range)range_temp := rangefor index_temp = 0; index_temp &lt; len_temp; index_temp++ &#123;    value_temp = range_temp[index_temp]    index = index_temp    value = value_temp    original body&#125;</code></pre><p>考虑如下代码，遍历一个切片并将每次遍历的索引追加至切片，遍历会停止吗？  会停止，遍历3次结束，结束后切片v为<code>[1 2 3 0 1 2]</code>。如上所述，遍历前对v做了拷贝，所以期间对原来v的修改不会反映到遍历中。</p><pre><code>v := []int&#123;1, 2, 3&#125;for i := range v &#123;    v = append(v, i)&#125;</code></pre><p>考虑如下代码，遍历一个数组并将变量的地址追加到切片，输出解引用后的切片元素，输出是什么？ 可以发现，切片的每一个元素解引用后的值都是数组最后一个元素的值，也就是说，存储的地址是同一个。如上所述，go在for range遍历数组时，每次是对同一个变量<code>value_temp</code>赋值。，因为<code>v</code>变量的地址在遍历过程中是不变的，切片元素存储同一个变量的地址，最后一次遍历，<code>v</code>变量值为2，因此最后的输出为<code>2 2</code>。</p><pre><code>arr := [2]int&#123;1, 2&#125;res := []*int&#123;&#125;for _, v := range arr &#123;    res = append(res, &amp;v)&#125;fmt.Println(*res[0],*res[1])//expect: 1 2//but output: 2 2fmt.Println(res[0],res[1])//0xc000014158 0xc000014158</code></pre><p>那遍历时，拷贝是深拷贝还是浅拷贝呢？首先，回忆一下什么是深拷贝和浅拷贝</p><blockquote><p>浅拷贝：是对对象的表面层次的复制。它创建一个新的对象，并复制原始对象的所有非引用类型字段的值。然而，对于引用类型的字段（如切片、映射、通道、接口和指向结构体或数组的指针），浅拷贝仅仅复制了引用的地址，而非引用的实际内容。这意味着新对象和原始对象共享相同的引用类型字段的数据。<br>深拷贝：是对对象的完全复制，包括对象引用的其他对象。它递归地遍历原始对象的所有字段，并创建新的内存空间来存储这些字段的值，包括引用类型字段所指向的实际数据。这样，深拷贝后的对象与原始对象在内存中是完全独立的，对其中一个对象的修改不会影响另一个对象。</p></blockquote><blockquote><p>值类型：变量直接存储值，内存通常在栈上分配，栈在函数调用完会被释放。比如：int、float、bool、string、array、sturct 等。<br>引用类型：变量存储的是一个地址（变量的值存储的是对最终值的引用），这个地址存储最终的值。内存通常在堆上分配，通过GC回收。</p></blockquote><p>也就是说，深拷贝和浅拷贝的主要区别在于它们处理<strong>引用类型</strong>字段的方式，浅拷贝仅仅复制了引用的地址，因此新对象和原始对象共享相同的数据。相反，深拷贝则创建了新的内存空间来存储引用类型字段的数据，确保新对象与原始对象完全独立。</p><p>查看一下<a href="https://github.com/golang/gofrontend/blob/e387439bfd24d5e142874b8e68e7039f74c744d7/go/statements.cc#L5576">go遍历切片源码</a>。</p><p>那么如何让输出变为<code>1 2</code>。</p><ul><li>使用局部变量拷贝v</li></ul><pre><code>arr := [2]int&#123;1, 2&#125;res := []*int&#123;&#125;for _, v := range arr &#123;    m := v    res = append(res, &amp;m)&#125;fmt.Println(*res[0],*res[1])fmt.Println(res[0],res[1])//output//1 2//0xc000014158 0xc000014160</code></pre><ul><li>直接通过索引获取原数组元素</li></ul><pre><code>arr := [2]int&#123;1, 2&#125;res := []*int&#123;&#125;for k := range arr &#123;    res = append(res, &amp;arr[k])&#125;fmt.Println(*res[0],*res[1])fmt.Println(res[0],res[1])//output//1 2//0xc0000a6130 0xc0000a6138</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> go </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>项目开发-Nginx部署</title>
       <link href="/technique/35.html"/>
       <url>/technique/35.html</url>
