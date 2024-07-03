@@ -212,12 +212,14 @@ func MakeSlice(typ Type, len, cap int) Value {
 
 
 - 对slice进行append生成
+
 ```
 slice := make([]int,5,10)
 slice = append(slice,6)
 ```
 
 append func说明如下，append会追加一个或多个数据至slice中，这些数据会存储在slice的持有的数组中，最后返回一个新的slice，因此必须保存append的结果：
+
 ```
 // builtin/builtin.go
 // The append built-in function appends elements to the end of a slice. If
@@ -284,7 +286,7 @@ func Append(s Value, x ...Value) Value {
 
 注意，`s.Index(i).Set(x[j])`，此时追加元素，向索引为当前切片长度值的位置设置值，因此，要注意make和append一起的使用。
 
-例如，此时长度和容量都为10，前10个元素都为0，追加元素时，从尾部添加。因此，需要使用`info := make([]int,0,10)`，设置长度为0，
+例如下面的代码，info长度和容量都为10，前10个元素都为0，追加元素时，从尾部添加。因此，需要使用`info := make([]int,0,10)`，设置长度为0，
 ```
 info := make([]int,10)
 info = append(info,1)
