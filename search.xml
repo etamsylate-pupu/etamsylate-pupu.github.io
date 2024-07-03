@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>数组与切片 | Go</title>
+      <link href="/technique/40.html"/>
+      <url>/technique/40.html</url>
+      
+        <content type="html"><![CDATA[<p>数组是具有<strong>相同唯一类型</strong>的一组<strong>长度固定</strong>的数据项序列。类型可以是任意的原始类型例如整型、字符串或者自定义类型。数组长度必须是一个常量表达式（且为非负整数），数组长度也是数组类型的一部分，所以 [5] int 和 [10] int 是属于不同类型的。数组元素可以通过 索引（位置）来读取（或者修改），索引从 0 开始。</p><p>数组声明的格式如下，声明数组时所有的元素都会被自动初始化为类型的零值：</p><pre><code>var identifier [len]type//var arr [5]int</code></pre><p>如果数组值已经提前知道了，那么可以通过 数组常量 的方法来初始化数组：</p><pre><code>var arr1 = [5]int&#123;18, 20, 15, 22, 16&#125;//arr2时有 10 个元素的数组，除了前三个元素外其他元素都为 0。var arr2 = [10]int &#123;1, 2, 3&#125; </code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> go </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>gin参数重复绑定 | Go</title>
       <link href="/technique/39.html"/>
       <url>/technique/39.html</url>
