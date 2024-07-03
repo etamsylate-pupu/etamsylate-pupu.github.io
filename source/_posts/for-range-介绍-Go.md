@@ -133,7 +133,7 @@ for k, v := range slice {
 - 2：因其range前仅有一个接收变量，因此代表此次循环仅关心返回的索引，不关心返回的数据，此代码等同于for k,_ := range slice
 - 3：该方法是range的完全体使用形式，因此代表此次循环及关心返回的索引，也关心返回的数据。
 
-for range其实是一种语法糖，内部调用还是 for 循环，初始化会拷贝需要遍历的对象，每次对象的值/地址赋值给同一个元素。（查看[go编译源码](https://github.com/golang/gofrontend/blob/e387439bfd24d5e142874b8e68e7039f74c744d7/go/statements.cc#L5484)，伪代码如下。以array为例，`range_temp := range `在这里对原对象进行了拷贝，`value_temp = range_temp[index_temp]`每次是对同一个变量`value_temp`赋值。）
+for range其实是一种语法糖，内部调用还是 for 循环，初始化会拷贝需要遍历的对象，每次对象的值赋值给同一个元素。（查看[go编译源码](https://github.com/golang/gofrontend/blob/e387439bfd24d5e142874b8e68e7039f74c744d7/go/statements.cc#L5484)，伪代码如下。以array为例，`range_temp := range `在这里对原对象进行了拷贝，`value_temp = range_temp[index_temp]`每次是对同一个变量`value_temp`赋值。）
 
 > 语法糖（Syntactic Sugar）是指编程语言中的一种语法结构，这种结构并不会改变语言的功能或能力，而只是为了让代码的书写更加简洁、更易于理解。通常来说使用语法糖能够增加程序的可读性，从而减少程序代码出错的机会。举个例子：在 C 语言里用 a[i] 表示 *(a+i)，用 a[i][j] 表示 *(*(a+i)+j)
 
