@@ -243,7 +243,7 @@
 
     
         <meta property="article:published_time" content="Wed Jul 03 2024 18:49:32 GMT+0800">
-        <meta property="article:modified_time" content="Wed Jul 03 2024 22:04:41 GMT+0800">
+        <meta property="article:modified_time" content="Wed Jul 03 2024 22:11:43 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -266,7 +266,7 @@
     "mainEntityOfPage": "https://blog.redamancy.tech/technique/40",
     "headline": "数组与切片 | Go",
     "datePublished": "Wed Jul 03 2024 18:49:32 GMT+0800",
-    "dateModified": "Wed Jul 03 2024 22:04:41 GMT+0800",
+    "dateModified": "Wed Jul 03 2024 22:11:43 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "etamsylate",
@@ -702,11 +702,11 @@ func MakeSlice(typ Type, len, cap int) Value &#123;
 &#125;
 </code></pre>
 <ul>
-<li>对slice进行append生成<pre><code>slice := make([]int,5,10)
+<li>对slice进行append生成</li>
+</ul>
+<pre><code>slice := make([]int,5,10)
 slice = append(slice,6)
 </code></pre>
-</li>
-</ul>
 <p>append func说明如下，append会追加一个或多个数据至slice中，这些数据会存储在slice的持有的数组中，最后返回一个新的slice，因此必须保存append的结果：</p>
 <pre><code>// builtin/builtin.go
 // The append built-in function appends elements to the end of a slice. If
@@ -769,7 +769,7 @@ func Append(s Value, x ...Value) Value &#123;
 &#125;
 </code></pre>
 <p>注意，<code>s.Index(i).Set(x[j])</code>，此时追加元素，向索引为当前切片长度值的位置设置值，因此，要注意make和append一起的使用。</p>
-<p>例如，此时长度和容量都为10，前10个元素都为0，追加元素时，从尾部添加。因此，需要使用<code>info := make([]int,0,10)</code>，设置长度为0，</p>
+<p>例如下面的代码，info长度和容量都为10，前10个元素都为0，追加元素时，从尾部添加。因此，需要使用<code>info := make([]int,0,10)</code>，设置长度为0，</p>
 <pre><code>info := make([]int,10)
 info = append(info,1)
 fmt.Print(info)
