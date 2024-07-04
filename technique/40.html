@@ -243,7 +243,7 @@
 
     
         <meta property="article:published_time" content="Wed Jul 03 2024 18:49:32 GMT+0800">
-        <meta property="article:modified_time" content="Wed Jul 03 2024 22:11:43 GMT+0800">
+        <meta property="article:modified_time" content="Thu Jul 04 2024 10:47:13 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -266,7 +266,7 @@
     "mainEntityOfPage": "https://blog.redamancy.tech/technique/40",
     "headline": "数组与切片 | Go",
     "datePublished": "Wed Jul 03 2024 18:49:32 GMT+0800",
-    "dateModified": "Wed Jul 03 2024 22:11:43 GMT+0800",
+    "dateModified": "Thu Jul 04 2024 10:47:13 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "etamsylate",
@@ -537,7 +537,7 @@
 //arr2时有 10 个元素的数组，除了前三个元素外其他元素都为 0。
 var arr2 = [10]int &#123;1, 2, 3&#125; 
 
-//
+
 var arr3 = [...]int&#123;5, 6, 7, 8, 22&#125;
 
 //只有索引 3 和 4 被赋予实际的值，其他元素都被设置为空的字符串
@@ -626,7 +626,7 @@ The capacity of slice1 is 4
 </code></pre>
 使用make创建切片，make 的使用方式是：<code>func make([]T, len, cap)</code>，其中 cap 是可选参数。</li>
 </ul>
-<p><code>var slice1 []type = make([]type, len)</code>，也可以简写为<code>slice1 := make([]type, len)</code>。这里 len 是底层数组的长度并且也是 slice 的初始长度，容量大小也为len。</p>
+<p><code>var slice1 []type = make([]type, len)</code>，也可以简写为<code>slice1 := make([]type, len)</code>。这里 len 是底层数组的长度并且也是 slice 的初始长度，容量大小也为len。【也要注意使用make时设置的长度和容量】</p>
 <p>makeslice分配的内存大小为类型et的size * cap，创建时会判断是否超过允许的分配的最大内存。</p>
 <pre><code>// runtime/malloc.go
 func makeslice(et *_type, len, cap int) unsafe.Pointer &#123;
@@ -723,10 +723,7 @@ slice = append(slice,6)
 //	slice = append([]byte(&quot;hello &quot;), &quot;world&quot;...)
 func append(slice []Type, elems ...Type) []Type
 </code></pre>
-<p>再看Append源码，首先判断当前slice长度i0与追加数据的总长度i1是否溢出，溢出则报错；接着，若i1小于&#x2F;等于slice的cap，直接返回原slice的起始及结束数据部分，否则，当前底层数组已无法存储所有的追加数据，需要进行扩容处理；使用扩容后的容量构建新的slice，将原slice拷贝至新slice中。</p>
-<blockquote>
-<p>go 1.18版本之前：当原 slice 容量小于 1024 的时候，新 slice 容量变成原来的 2 倍；原 slice 容量超过 1024，新 slice 容量变成原来的1.25倍。go 1.18版本之后：当原slice容量(oldcap)小于256的时候，新slice(newcap)容量为原来的2倍；原slice容量超过256，新slice容量newcap &#x3D; oldcap+(oldcap+3*256)&#x2F;4。但实际上，newcap 作了一个内存对齐（内存地址是所存储数据大小（按字节为单位）的整数倍，以便CPU可以一次将该数据从内存中读取出来），这和内存分配策略相关。进行内存对齐之后，新 slice 的容量是要 大于等于 按照前半部分生成的newcap。因此，当slice容量超过256时，新分配的容量是大于等于上述计算的值。</p>
-</blockquote>
+<p>再看Append源码，首先判断当前slice长度i0与追加数据的总长度i1是否溢出，溢出则报错；接着，若i1小于&#x2F;等于slice的cap，直接返回原slice的起始及结束数据部分，否则，当前底层数组已无法存储所有的追加数据（如果索引 len-1 所指向的元素已经是底层数组的最后一个元素），会迁移到新的内存位置进行扩容处理；使用扩容后的容量构建新的slice，将原slice拷贝至新slice中。</p>
 <pre><code>// refelct/value.go
 // grow grows the slice s so that it can hold extra more values, allocating
 // more capacity if needed. It also returns the old and new slice lengths.
@@ -769,12 +766,82 @@ func Append(s Value, x ...Value) Value &#123;
 &#125;
 </code></pre>
 <p>注意，<code>s.Index(i).Set(x[j])</code>，此时追加元素，向索引为当前切片长度值的位置设置值，因此，要注意make和append一起的使用。</p>
-<p>例如下面的代码，info长度和容量都为10，前10个元素都为0，追加元素时，从尾部添加。因此，需要使用<code>info := make([]int,0,10)</code>，设置长度为0，</p>
+<p>例如下面的代码，info长度和容量都为10，前10个元素都为0，追加元素时，从尾部添加。因此，需要使用<code>info := make([]int,0,10)</code>或者<code>info := make([]int,0)</code>，设置长度为0。</p>
 <pre><code>info := make([]int,10)
 info = append(info,1)
 fmt.Print(info)
 //output
 //[0 0 0 0 0 0 0 0 0 0 1]
+</code></pre>
+<blockquote>
+<p>go 1.18版本之前：当原 slice 容量小于 1024 的时候，新 slice 容量变成原来的 2 倍；原 slice 容量超过 1024，新 slice 容量变成原来的1.25倍。go 1.18版本之后：当原slice容量(oldcap)小于256的时候，新slice(newcap)容量为原来的2倍；原slice容量超过256，新slice容量newcap &#x3D; oldcap+(oldcap+3*256)&#x2F;4。但实际上，newcap 作了一个内存对齐<code>capmem = roundupsize(uintptr(newcap) * ptrSize)</code>（内存地址是所存储数据大小（按字节为单位）的整数倍，以便CPU可以一次将该数据从内存中读取出来），这和内存分配策略相关。进行内存对齐之后，新 slice 的容量是要 大于等于 按照前半部分生成的newcap。</p>
+</blockquote>
+<pre><code>// runtime/slice.go
+func growslice(et *_type, old slice, cap int) slice &#123;
+    // ……
+    newcap := old.cap
+    doublecap := newcap + newcap
+    if cap &gt; doublecap &#123;
+        newcap = cap
+    &#125; else &#123;
+        const threshold = 256
+        if old.cap &lt; threshold &#123;
+            newcap = doublecap
+        &#125; else &#123;
+            for 0 &lt; newcap &amp;&amp; newcap &lt; cap &#123;
+                // Transition from growing 2x for small slices
+                // to growing 1.25x for large slices. This formula
+                // gives a smooth-ish transition between the two.
+                newcap += (newcap + 3*threshold) / 4
+            &#125;
+            if newcap &lt;= 0 &#123;
+                newcap = cap
+            &#125;
+        &#125;
+    &#125;
+    // ……
+    
+    capmem = roundupsize(uintptr(newcap) * ptrSize)
+    newcap = int(capmem / ptrSize)
+&#125;
+</code></pre>
+<p>使用代码验证go1.18版本之后的扩容机制</p>
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() &#123;
+    s := make([]int, 0)
+
+    oldCap := cap(s)
+
+    for i := 0; i &lt; 2048; i++ &#123;
+        s = append(s, i)
+
+        newCap := cap(s)
+
+        if newCap != oldCap &#123;   //容量不足时
+            fmt.Printf(&quot;[%d -&gt; %4d] cap = %-4d  |  after append %-4d  cap = %-4d\n&quot;, 0, i-1, oldCap, i, newCap)
+            oldCap = newCap
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>输出：</p>
+<pre><code>[0 -&gt;   -1] cap = 0     |  after append 0     cap = 1
+[0 -&gt;    0] cap = 1     |  after append 1     cap = 2
+[0 -&gt;    1] cap = 2     |  after append 2     cap = 4
+[0 -&gt;    3] cap = 4     |  after append 4     cap = 8
+[0 -&gt;    7] cap = 8     |  after append 8     cap = 16
+[0 -&gt;   15] cap = 16    |  after append 16    cap = 32
+[0 -&gt;   31] cap = 32    |  after append 32    cap = 64
+[0 -&gt;   63] cap = 64    |  after append 64    cap = 128
+[0 -&gt;  127] cap = 128   |  after append 128   cap = 256
+[0 -&gt;  255] cap = 256   |  after append 256   cap = 512
+[0 -&gt;  511] cap = 512   |  after append 512   cap = 848
+[0 -&gt;  847] cap = 848   |  after append 848   cap = 1280
+[0 -&gt; 1279] cap = 1280  |  after append 1280  cap = 1792
+[0 -&gt; 1791] cap = 1792  |  after append 1792  cap = 2560
 </code></pre>
 <p>下面的代码输出什么？<a target="_blank" rel="noopener" href="https://golang.design/go-questions/slice/vs-array/">数组与切片有什么异同</a></p>
 <pre><code>package main
@@ -802,7 +869,7 @@ func main() &#123;
 [0 1 2 3 20 5 6 7 100 9]
 </code></pre>
 <p>参考资料：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xz_studying/article/details/106311831">深入了解Go Slice（一）—— make的详细处理过程</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/xz_studying/article/details/106483759">深入了解Go slice（二）—— append的处理过程</a><br><a target="_blank" rel="noopener" href="https://learnku.com/docs/the-way-to-go/72-slice/3613">切片</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xz_studying/article/details/106311831">深入了解Go Slice（一）—— make的详细处理过程</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/xz_studying/article/details/106483759">深入了解Go slice（二）—— append的处理过程</a><br><a target="_blank" rel="noopener" href="https://learnku.com/docs/the-way-to-go/72-slice/3613">切片</a><br><a target="_blank" rel="noopener" href="https://golang.design/go-questions/slice/vs-array/">数组与切片</a></p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -861,6 +928,14 @@ func main() &#123;
             <!-- Post Prev & Next Nav -->
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
+    
+        <a href="/uncategorized/null" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
     
 
     <!-- Section Spacer -->
@@ -960,7 +1035,7 @@ func main() &#123;
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2024/07/">七月 2024<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2024/05/">五月 2024<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2024/04/">四月 2024<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2024/03/">三月 2024<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2024/02/">二月 2024<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/12/">十二月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/11/">十一月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/10/">十月 2023<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/08/">八月 2023<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/07/">七月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/04/">四月 2023<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/03/">三月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/02/">二月 2023<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/06/">六月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/12/">十二月 2020<span class="sidebar_archives-count">6</span></a>
+                <a class="sidebar_archives-link" href="/archives/2024/07/">七月 2024<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2024/05/">五月 2024<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2024/04/">四月 2024<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2024/03/">三月 2024<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2024/02/">二月 2024<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/12/">十二月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/11/">十一月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/10/">十月 2023<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/08/">八月 2023<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/07/">七月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/04/">四月 2023<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/03/">三月 2023<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2023/02/">二月 2023<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/06/">六月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/12/">十二月 2020<span class="sidebar_archives-count">6</span></a>
             </ul>
         </li>
         
@@ -1038,7 +1113,7 @@ func main() &#123;
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">33</span>
+                <span class="sidebar-badge">34</span>
             </a>
         </li>
         
