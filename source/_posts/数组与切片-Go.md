@@ -470,6 +470,69 @@ func main() {
 [0 1 2 3 20 5 6 7 100 9]
 ```
 
+Go 语言的函数参数传递，只有值传递，没有引用传递。如果传递给函数的是一个指针，指针的值（一个地址）会被复制，但指针的值所指向的地址上的值不会被复制，对指针类型而言，变量的值是指针，即传递的值也是指针，传递指针也是值传递。切片作为函数参数时，不管传的是 slice 还是 slice 指针，slice 结构体自身不会被改变，也就是说底层数据地址不会被改变。 但是通过指向底层数据的指针，可以改变切片的底层数据。通过 slice 的 array 字段就可以拿到数组的地址。在代码里，是直接通过类似 s[i]=10 这种操作改变 slice 底层数组元素值。
+
+```
+func main() {
+	s := []int{1, 1, 1}
+	f(s)
+	fmt.Println(s)
+}
+
+func f(s []int) {
+	// i只是一个副本，不能改变s中元素的值
+	/*for _, i := range s {
+		i++
+	}
+	*/
+
+	for i := range s {
+		s[i] += 1
+	}
+}
+```
+
+输出为：
+```
+[2 2 2]
+```
+
+要改变外层 slice，只有将返回的新的 slice 赋值到原始 slice，或者向函数传递一个指向 slice 的指针
+```
+func myAppend(s []int) []int {
+	// s为外部切片的拷贝，使用append返回新的切片，不影响外层函数的s
+	s = append(s, 100)
+	return s
+}
+
+func myAppendPtr(s *[]int) {
+	// 会改变外层 s 本身
+	*s = append(*s, 100)
+	return
+}
+
+func main() {
+	s := []int{1, 1, 1}
+	newS := myAppend(s)
+
+	fmt.Println(s)
+	fmt.Println(newS)
+
+	s = newS
+
+	myAppendPtr(&s)
+	fmt.Println(s)
+}
+```
+
+输出：
+
+```
+[1 1 1]
+[1 1 1 100]
+[1 1 1 100 100]
+```
+
 
 
 参考资料：
