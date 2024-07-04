@@ -372,6 +372,66 @@ func main() {
 ```
 
 
+再看下面这段代码。
+```
+func main() {
+	s := []int{1,2}
+	s = append(s,4,5,6)
+	fmt.Printf("len=%d, cap=%d",len(s),cap(s))
+}
+```
+
+再看这段代码，这段代码和上面代码的输出一致吗？如果不一致，分别是什么？
+
+```
+func main() {
+	s := []int{1, 2}
+	s = append(s, 4)
+	s = append(s, 5)
+	s = append(s, 6)
+	fmt.Printf("len=%d, cap=%d", len(s), cap(s))
+}
+```
+
+第一段代码输出为：
+
+```
+len=5, cap=6
+```
+
+第二段代码输出为：
+
+```
+len=5, cap=8
+```
+
+为什么两段代码输出不一致？
+
+两段代码中的s原来都只有2个元素，len和cap都为2。
+
+- 第一段代码一次append三个元素后，len变为5，cap最小要变成5，调用`growslice`函数时，传入`cap=5`，旧slice`old = []int{1, 2}`，因此doublecap为4，满足第一个if条件，`newcap`更新为5，接着调用`roundupsize(uintptr(newcap) * ptrSize)`，ptrSize是指一个指针的大小，在64位机上是8，查看roundupsize的源码，传入size = 8*5 = 40 < smallSizeMax-8=1016，因此计算`class_to_size[size_to_class8[(size+smallSizeDiv-1)/smallSizeDiv]]`，class_to_size通过 spanClass 获取 span划分的 object大小。而 size_to_class8 表示通过 size 获取它的 spanClass。`(size+smallSizeDiv-1)/smallSizeDiv = 5`，`size_to_class8[5] = 5`,`class_to_size[5] = 48`，因此`newcap = int(capmem / ptrSize) = 48/8 = 6`，新的slice容量为6。
+
+- 第二段代码每次append一个元素，满足第二个if条件`cap <= doublecap`，且旧slice容量小于256，因此直接分为doublecap，再进行内存对齐，最后为8。
+
+```
+// runtime/msize.go
+func roundupsize(size uintptr) uintptr {
+	if size < _MaxSmallSize {
+		if size <= smallSizeMax-8 {
+			return uintptr(class_to_size[size_to_class8[(size+smallSizeDiv-1)/smallSizeDiv]])
+		} else {
+			//……
+		}
+	}
+    //……
+}
+
+const _MaxSmallSize = 32768
+const smallSizeMax = 1024
+const smallSizeDiv = 8
+
+```
+
 
 下面的代码输出什么？[数组与切片有什么异同](https://golang.design/go-questions/slice/vs-array/)
 ```
