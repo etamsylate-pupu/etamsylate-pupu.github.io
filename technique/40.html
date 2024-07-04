@@ -243,7 +243,7 @@
 
     
         <meta property="article:published_time" content="Wed Jul 03 2024 18:49:32 GMT+0800">
-        <meta property="article:modified_time" content="Thu Jul 04 2024 16:53:33 GMT+0800">
+        <meta property="article:modified_time" content="Thu Jul 04 2024 18:58:33 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -266,7 +266,7 @@
     "mainEntityOfPage": "https://blog.redamancy.tech/technique/40",
     "headline": "数组与切片 | Go",
     "datePublished": "Wed Jul 03 2024 18:49:32 GMT+0800",
-    "dateModified": "Thu Jul 04 2024 16:53:33 GMT+0800",
+    "dateModified": "Thu Jul 04 2024 18:58:33 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "etamsylate",
@@ -567,9 +567,10 @@ type slice struct &#123;
 </code></pre>
 <p>创建slice的方式有以下几种：</p>
 <ul>
-<li>对数组&#x2F;切片进行切片生成<pre><code>var data [10]int
-slice := data[2:8]
+<li>对数组&#x2F;切片进行截取（左闭右开）<pre><code>var data [10]int
+slice := data[2:8]  //仅指定索引和长度
 slice = slice[1:3]
+slice1 := data[1:2:3] //指定长度为2-1 = 1，容量为3-1 = 2
 </code></pre>
 </li>
 </ul>
