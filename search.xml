@@ -5,12 +5,24 @@
     
     <entry>
       <title>经典内部排序算法 | Go实现</title>
-      <link href="/uncategorized/null.html"/>
-      <url>/uncategorized/null.html</url>
+      <link href="/technique/42.html"/>
+      <url>/technique/42.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>内部排序的所有排序操作都在内存中完成，不需要额外的磁盘或其他存储设备的辅助。这适用于数据量小到足以完全加载到内存中的情况。常见的内部排序算法有：插入排序、希尔排序、选择排序、冒泡排序、归并排序、快速排序、堆排序等。外部排序通常涉及到数据的分区处理，部分数据被暂时存储在外部磁盘等存储设备上。常见的外部排序算法有计数排序、基数排序、桶排序。</p><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><ul><li><p>描述：对于要排序的数组，从第一位开始从前往后比较相邻两个数字，若前者大，则交换两数字位置，然后比较位向右移动一位。记录前一轮交换的最终位置，该位置之后的元素为已排序状态，下一轮的交换只需执行到该处，每一轮的比较将使得当前未排序数字中的最大者被排序，未排序数字总数减 1。第 $arr.length - 1$ 轮结束后排序完成。</p></li><li><p>稳定性：稳定</p></li><li><p>优化：当某一轮比较均未发生交换，说明排序已完成，可设置一个布尔值记录一轮排序是否有发生交换，若无则提前退出循环结束程序。</p></li><li><p>时间复杂度分析：有序数组为O($n$)，无序数组为O($n^2$)</p></li><li><p>空间复杂度：O(1)</p></li><li><p>代码：</p><pre><code>func bubbleSort(arr []int) &#123;  n := len(arr)  for i := 0; i &lt; n-1; i++ &#123;      swapped := false      for j := 0; j &lt; n-i-1; j++ &#123;          if arr[j] &gt; arr[j+1] &#123;              arr[j], arr[j+1] = arr[j+1], arr[j]              swapped = true          &#125;      &#125;      // 如果一轮遍历没有发生交换，说明数组已经有序，可以提前退出      if !swapped &#123;          break      &#125;  &#125;&#125;</code></pre></li></ul><h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><ul><li><p>描述：对于要排序的数组，设置一个 $minIdx$ 记录最小数字下标。先假设第 1 个数字最小，此时 minIdx &#x3D; 0 ，将 $arr[minIdx]$ 与后续数字逐一比较，当遇到更小的数字时，使 $minIdx$ 等于该数字下标，第1轮比较将找出此时数组中最小的数字。找到后将 $minIdx$ 下标的数字与第 1 个数字交换，此时称一个数字已被排序。然后开始第2轮比较，令 minIdx &#x3D; 1，重复上述过程。每一轮的比较将使得当前未排序数字中的最小者被排序，未排序数字总数减 1。第 $arr.length - 1$ 轮结束后排序完成。</p></li><li><p>稳定性：不稳定。存在跨越交换。找到本轮次最小值之后，将其与本轮起始数字交换，此时若中间有与起始元素同值的元素，将打破稳定性。例:　7 7 2 。第一轮交换第一个 7 和 2，则两个 7 位置关系改变。</p></li><li><p>时间复杂度分析：O($n^2$)（选择排序的交换次数是 $O(n)$，而冒泡排序的平均交换次数是O($n^2$)）</p></li><li><p>空间复杂度：O(1)</p></li><li><p>代码：</p></li></ul><pre><code>//单元选择func selectSort(nums []int)&#123;    minIndex := 0    for i := 0; i &lt; len(nums) - 1; i++&#123;        //查找最小值        for j := i+1; j &lt; len(nums); j++&#123;            if nums[minIndex] &gt; nums[j]&#123;                minIndex = j            &#125;        &#125;        //更新最小值        if nums[i] != nums[minIndex]&#123;            nums[i], nums[minIndex] = nums[minIndex], nums[i]        &#125;                minIndex = i + 1    &#125;&#125;</code></pre><pre><code>//双元选择 在遍历寻找最小值下标时，可以同时寻找最大值下标func biSelectSort(nums []int) &#123;    minIndex := 0    for i := 0; i &lt; len(nums)- i- 1; i++ &#123;        maxIndex := len(nums) - i - 1        if nums[maxIndex] &lt; nums[minIndex] &#123;            nums[minIndex], nums[maxIndex] = nums[maxIndex], nums[minIndex]        &#125;        //查找最大值，最小值        for j := i + 1; j &lt; len(nums)-i-1; j++ &#123;            if nums[minIndex] &gt; nums[j] &#123;                minIndex = j            &#125;            if nums[maxIndex] &lt; nums[j] &#123;                maxIndex = j            &#125;        &#125;        //更新最大值，最小值        if nums[i] != nums[minIndex] &#123;            nums[i], nums[minIndex] = nums[minIndex], nums[i]        &#125;        if nums[maxIndex] != nums[len(nums)-i-1] &#123;            nums[maxIndex], nums[len(nums)-i-1] = nums[len(nums)-i-1], nums[maxIndex]        &#125;        minIndex = i + 1    &#125;&#125;</code></pre>]]></content>
       
       
+      <categories>
+          
+          <category> technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> sort </tag>
+            
+        </tags>
       
     </entry>
     
