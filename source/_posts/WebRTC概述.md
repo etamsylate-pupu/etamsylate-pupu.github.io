@@ -3,7 +3,7 @@ title: WebRTC 概述
 tags: [webrtc]
 date: 2024-08-03 18:49:32
 categories: technique
-urlname: 47
+urlname: 48
 ---
 
 WebRTC（Web Real-Time Communication）既是 API 也是协议。WebRTC 协议是两个 WebRTC Agent 协商双向安全实时通信的一组规则，其允许在浏览器和移动应用程序中进行实时音视频通信和数据共享，而无需借助中间服务器。
