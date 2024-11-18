@@ -6,6 +6,14 @@ categories: technique
 urlname: 38
 ---
 
+【针对下文提到的循环变量问题，GO1.22已解决。GO1.21可以通过编译代码时在环境中设置GOEXPERIMENT=loopvar，将新语义将应用于所有循环】
+
+> For Go 1.22, we plan to change for loops to make these variables have per-iteration scope instead of per-loop scope. 
+
+[具体说明](https://go.dev/blog/loopvar-preview)
+
+
+
 go常用的遍历方式，有for和for range。
 
 针对go中的for循环，如下
